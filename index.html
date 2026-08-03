@@ -22,7 +22,7 @@
   @keyframes fadeInUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes floatSlow { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-16px) rotate(3deg); } }
   @keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 0 0 oklch(70% 0.15 150 / 0.35); } 50% { box-shadow: 0 0 0 8px oklch(70% 0.15 150 / 0); } }
-  @media (max-width: 640px) { .nav-links-desktop { display: none !important; } .nav-cta-full { display: none !important; } .nav-cta-short { display: inline-block !important; } .mobile-menu-btn { display: flex !important; } }
+  @media (max-width: 640px) { .nav-links-desktop { display: none !important; } .nav-cta-full { display: none !important; } .nav-cta-short { display: inline-block !important; } .mobile-menu-btn { display: flex !important; } .new-arrivals-grid { grid-template-columns: repeat(2, 1fr) !important; } }
   .nav-cta-short { display: none; }
   .mobile-menu-btn { display: none; }
 </style>
@@ -82,7 +82,7 @@
       <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(58% 0.15 35); margin-bottom: 14px;">New Arrivals</div>
       <h2 style="font-family: Sora, sans-serif; font-size: clamp(26px, 3.5vw, 34px); font-weight: 700; margin: 0;">Latest Collection Highlights</h2>
     </div>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 14px;">
+    <div class="new-arrivals-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;">
       <a href="#products" onClick="{{ goProducts }}" style="display: block; border-radius: 18px; overflow: hidden;">
         <image-slot id="feat-new-01" style="width: 100%; height: clamp(150px, 34vw, 280px);" shape="rect" fit="cover" placeholder="Drop photo" src="./assets/prod-new-01.jpg"></image-slot>
       </a>
