@@ -35,18 +35,19 @@
     <div style="display: flex; align-items: center; gap: 10px;"><img src="./assets/yubei-logo.png" alt="Yubei logo" style="width: 40px; height: 40px; border-radius: 50%;"><div style="font-family: Sora, sans-serif; font-weight: 800; font-size: 22px; letter-spacing: 0.02em;">YUBEI <span style="color: oklch(58% 0.15 35);">APPAREL</span></div></div>
     <div style="display: flex; align-items: center; gap: clamp(12px, 2vw, 36px); flex-wrap: nowrap;">
       <div class="nav-links-desktop" style="display: flex; align-items: center; gap: clamp(12px, 2vw, 36px);">
-        <a href="#about" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 15px; white-space: nowrap; transition: color 0.2s;">About</a>
+        <a href="#about" onClick="{{ goAbout }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 15px; white-space: nowrap; transition: color 0.2s;">About</a>
         <a href="#products" onClick="{{ goProducts }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 15px; white-space: nowrap; transition: color 0.2s;">Products</a>
-        <a href="#services" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 15px; white-space: nowrap; transition: color 0.2s;">Services</a>
-        <a href="#certificates" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 15px; white-space: nowrap; transition: color 0.2s;">Certificates</a>
-        <a href="#contact" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 15px; white-space: nowrap; transition: color 0.2s;">Contact</a>
+        <a href="#services" onClick="{{ goServices }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 15px; white-space: nowrap; transition: color 0.2s;">Services</a>
+        <a href="#certificates" onClick="{{ goCertificates }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 15px; white-space: nowrap; transition: color 0.2s;">Certificates</a>
+        <a href="#contact" onClick="{{ goContact }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 15px; white-space: nowrap; transition: color 0.2s;">Contact</a>
       </div>
-      <a href="#contact" class="nav-cta-full" style="background: oklch(58% 0.15 35); color: white; padding: 11px 22px; border-radius: 999px; font-weight: 600; font-size: 14px; white-space: nowrap; flex-shrink: 0; transition: transform 0.2s, background 0.2s; display: inline-block;" style-hover="background: oklch(50% 0.15 35); transform: scale(1.05);">Request Quote</a>
-      <a href="#contact" class="nav-cta-short" style="background: oklch(58% 0.15 35); color: white; padding: 10px 16px; border-radius: 999px; font-weight: 600; font-size: 13px; white-space: nowrap; flex-shrink: 0;">Quote</a>
+      <a href="#quote" onClick="{{ goQuote }}" class="nav-cta-full" style="background: oklch(58% 0.15 35); color: white; padding: 11px 22px; border-radius: 999px; font-weight: 600; font-size: 14px; white-space: nowrap; flex-shrink: 0; transition: transform 0.2s, background 0.2s; display: inline-block;" style-hover="background: oklch(50% 0.15 35); transform: scale(1.05);">Request Quote</a>
+      <a href="#quote" onClick="{{ goQuote }}" class="nav-cta-short" style="background: oklch(58% 0.15 35); color: white; padding: 10px 16px; border-radius: 999px; font-weight: 600; font-size: 13px; white-space: nowrap; flex-shrink: 0;">Quote</a>
     </div>
   </div>
 
   <!-- HERO -->
+  <sc-if value="{{ showHome }}" hint-placeholder-val="{{ true }}">
   <div style="position: relative; display: grid; grid-template-columns: minmax(320px, 1.1fr) minmax(280px, 1fr); gap: 60px; align-items: center; padding: 90px 6vw 100px; max-width: 1400px; margin: 0 auto;">
     <div style="position: absolute; top: 40px; right: 12%; width: 90px; height: 90px; border-radius: 50%; background: oklch(90% 0.07 150 / 0.5); animation: floatSlow 7s ease-in-out infinite; z-index: 0;"></div>
     <div style="position: absolute; bottom: 20px; left: 4%; width: 60px; height: 60px; border-radius: 16px; background: oklch(88% 0.08 35 / 0.4); animation: floatSlow 6s ease-in-out infinite 1s; z-index: 0;"></div>
@@ -55,7 +56,7 @@
       <h1 style="font-family: Sora, sans-serif; font-size: clamp(34px, 4vw, 54px); line-height: 1.08; font-weight: 800; margin: 0 0 22px; letter-spacing: -0.01em; animation: fadeInUp 0.7s ease 0.1s both;">Your Trusted Partner in Kids' Wear</h1>
       <p style="font-size: 18px; line-height: 1.65; color: oklch(38% 0.02 80); max-width: 520px; margin: 0 0 34px; animation: fadeInUp 0.7s ease 0.2s both;">A professional foreign trade enterprise integrating design, production, sales, and export &mdash; based in Huzhou, Zhejiang, the heart of China's children's clothing manufacturing hub.</p>
       <div style="display: flex; gap: 16px; flex-wrap: wrap; animation: fadeInUp 0.7s ease 0.3s both;">
-        <a href="#contact" style="background: oklch(58% 0.15 35); color: white; padding: 15px 30px; border-radius: 999px; font-weight: 600; font-size: 15px; white-space: nowrap; transition: transform 0.2s, box-shadow 0.2s;" style-hover="transform: translateY(-3px) scale(1.03); box-shadow: 0 10px 24px oklch(58% 0.15 35 / 0.35);">Request a Quote</a>
+        <a href="#quote" onClick="{{ goQuote }}" style="background: oklch(58% 0.15 35); color: white; padding: 15px 30px; border-radius: 999px; font-weight: 600; font-size: 15px; white-space: nowrap; transition: transform 0.2s, box-shadow 0.2s;" style-hover="transform: translateY(-3px) scale(1.03); box-shadow: 0 10px 24px oklch(58% 0.15 35 / 0.35);">Request a Quote</a>
         <a href="#products" onClick="{{ goProducts }}" style="border: 1.5px solid oklch(75% 0.02 80); color: oklch(24% 0.02 80); padding: 15px 30px; border-radius: 999px; font-weight: 600; font-size: 15px; white-space: nowrap; transition: transform 0.2s, border-color 0.2s;" style-hover="transform: translateY(-3px) scale(1.03); border-color: oklch(58% 0.15 35);">View Collection</a>
       </div>
     </div>
@@ -63,36 +64,36 @@
   </div>
 
   <!-- FEATURED PHOTOS (opening page teaser, no price) -->
-  <sc-if value="{{ showHome }}" hint-placeholder-val="{{ true }}">
   <div style="padding: 0 6vw 90px; max-width: 1400px; margin: 0 auto;">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
-      <sc-for list="{{ featured }}" as="f" hint-placeholder-count="4">
-        <a href="#products" onClick="{{ goProducts }}" style="display: block; border-radius: 18px; overflow: hidden;">
-          <image-slot id="{{ f.imgId }}" style="width: 100%; height: 280px;" shape="rect" fit="contain" placeholder="{{ f.placeholder }}"></image-slot>
-        </a>
-      </sc-for>
+    <div style="text-align: center; margin-bottom: 36px;">
+      <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(58% 0.15 35); margin-bottom: 14px;">New Arrivals</div>
+      <h2 style="font-family: Sora, sans-serif; font-size: clamp(26px, 3.5vw, 34px); font-weight: 700; margin: 0;">Latest Collection Highlights</h2>
     </div>
-  </div>
-  </sc-if>
-
-  <!-- ABOUT -->
-  <div id="about" ref="{{ aboutRef }}" style="padding: 80px 6vw; background: white; opacity: {{ aboutVisible.opacity }}; transform: {{ aboutVisible.transform }}; transition: {{ aboutVisible.transition }};">
-    <div style="max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 70px; align-items: center;">
-      <image-slot id="about-img" style="width: 100%; height: 420px;" shape="rounded" radius="24" placeholder="Drop showroom photo"></image-slot>
-      <div>
-        <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(58% 0.15 35); margin-bottom: 14px;">About Us</div>
-        <h2 style="font-family: Sora, sans-serif; font-size: clamp(28px, 4vw, 36px); font-weight: 700; margin: 0 0 20px; line-height: 1.15;">One-Stop Service for Global Clients</h2>
-        <p style="font-size: 16.5px; line-height: 1.75; color: oklch(38% 0.02 80); margin: 0 0 20px;">We specialize in providing a one-stop service for global clients, including OEM, ODM, custom design, sample processing, and bulk wholesale. Our commitment is to deliver high-quality, comfortable, and fashionable children's clothing to customers worldwide.</p>
-        <sc-for list="{{ capabilities }}" as="cap" hint-placeholder-count="4">
-          <div style="display: flex; gap: 14px; margin-bottom: 18px; opacity: {{ cap.style.opacity }}; transform: {{ cap.style.transform }}; transition: {{ cap.style.transition }};">
-            <div style="width: 8px; height: 8px; border-radius: 50%; background: oklch(58% 0.15 35); margin-top: 8px; flex-shrink: 0;"></div>
-            <div>
-              <div style="font-weight: 600; font-size: 16px; margin-bottom: 3px;">{{ cap.title }}</div>
-              <div style="font-size: 14.5px; color: oklch(45% 0.02 80); line-height: 1.55;">{{ cap.desc }}</div>
-            </div>
-          </div>
-        </sc-for>
-      </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+      <a href="#products" onClick="{{ goProducts }}" style="display: block; border-radius: 18px; overflow: hidden;">
+        <image-slot id="feat-new-01" style="width: 100%; height: 280px;" shape="rect" fit="cover" placeholder="Drop photo" src="./assets/prod-new-01.jpg"></image-slot>
+      </a>
+      <a href="#products" onClick="{{ goProducts }}" style="display: block; border-radius: 18px; overflow: hidden;">
+        <image-slot id="feat-new-02" style="width: 100%; height: 280px;" shape="rect" fit="cover" placeholder="Drop photo" src="./assets/prod-new-02.png"></image-slot>
+      </a>
+      <a href="#products" onClick="{{ goProducts }}" style="display: block; border-radius: 18px; overflow: hidden;">
+        <image-slot id="feat-new-03" style="width: 100%; height: 280px;" shape="rect" fit="cover" placeholder="Drop photo" src="./assets/prod-new-03.png"></image-slot>
+      </a>
+      <a href="#products" onClick="{{ goProducts }}" style="display: block; border-radius: 18px; overflow: hidden;">
+        <image-slot id="feat-new-04" style="width: 100%; height: 280px;" shape="rect" fit="cover" placeholder="Drop photo" src="./assets/prod-new-04.png"></image-slot>
+      </a>
+      <a href="#products" onClick="{{ goProducts }}" style="display: block; border-radius: 18px; overflow: hidden;">
+        <image-slot id="feat-new-05" style="width: 100%; height: 280px;" shape="rect" fit="cover" placeholder="Drop photo" src="./assets/prod-new-05.jpg"></image-slot>
+      </a>
+      <a href="#products" onClick="{{ goProducts }}" style="display: block; border-radius: 18px; overflow: hidden;">
+        <image-slot id="feat-new-06" style="width: 100%; height: 280px;" shape="rect" fit="cover" placeholder="Drop photo" src="./assets/prod-new-06.jpg"></image-slot>
+      </a>
+      <a href="#products" onClick="{{ goProducts }}" style="display: block; border-radius: 18px; overflow: hidden;">
+        <image-slot id="feat-new-07" style="width: 100%; height: 280px;" shape="rect" fit="cover" placeholder="Drop photo" src="./assets/prod-new-07.jpg"></image-slot>
+      </a>
+      <a href="#products" onClick="{{ goProducts }}" style="display: block; border-radius: 18px; overflow: hidden;">
+        <image-slot id="feat-new-08" style="width: 100%; height: 280px;" shape="rect" fit="cover" placeholder="Drop photo" src="./assets/prod-new-08.jpg"></image-slot>
+      </a>
     </div>
   </div>
 
@@ -110,7 +111,63 @@
     </div>
   </div>
 
-  <!-- PRODUCTS PAGE (separate from opening page) -->
+  <!-- WHY CHOOSE US -->
+  <div ref="{{ advantagesRef }}" style="padding: 80px 6vw; background: oklch(20% 0.015 260);">
+    <div style="max-width: 1400px; margin: 0 auto;">
+      <div style="text-align: center; margin-bottom: 52px;">
+        <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(75% 0.1 35); margin-bottom: 14px;">Why Choose Us</div>
+        <h2 style="font-family: Sora, sans-serif; font-size: clamp(26px, 3.5vw, 34px); font-weight: 700; margin: 0; color: white;">Our Core Advantages</h2>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px;">
+        <sc-for list="{{ advantages }}" as="a" hint-placeholder-count="4">
+          <div style="background: oklch(26% 0.02 260); border-radius: 18px; padding: 30px 24px; opacity: {{ a.style.opacity }}; transform: {{ a.style.transform }}; transition: {{ a.style.transition }}, translate 0.25s; " style-hover="translate: 0 -6px;">
+            <div style="font-family: Sora, sans-serif; font-weight: 700; font-size: 18px; color: white; margin-bottom: 10px;">{{ a.title }}</div>
+            <div style="font-size: 14.5px; color: oklch(75% 0.02 260); line-height: 1.6;">{{ a.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ABOUT -->
+  <sc-if value="{{ showAbout }}" hint-placeholder-val="{{ false }}">
+  <div id="about" ref="{{ aboutRef }}" style="padding: 80px 6vw; background: white; opacity: {{ aboutVisible.opacity }}; transform: {{ aboutVisible.transform }}; transition: {{ aboutVisible.transition }};">
+    <div style="max-width: 1400px; margin: 0 auto;">
+      <a href="#" onClick="{{ goHome }}" style="display: inline-block; margin-bottom: 32px; color: oklch(45% 0.02 80); font-weight: 500; font-size: 14.5px;">&larr; Back to Home</a>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 70px; align-items: center;">
+      <image-slot id="about-img" style="width: 100%; height: 420px;" shape="rounded" radius="24" placeholder="Drop showroom photo"></image-slot>
+      <div>
+        <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(58% 0.15 35); margin-bottom: 14px;">About Us</div>
+        <h2 style="font-family: Sora, sans-serif; font-size: clamp(28px, 4vw, 36px); font-weight: 700; margin: 0 0 20px; line-height: 1.15;">One-Stop Service for Global Clients</h2>
+        <p style="font-size: 16.5px; line-height: 1.75; color: oklch(38% 0.02 80); margin: 0 0 20px;">We specialize in providing a one-stop service for global clients, including OEM, ODM, custom design, sample processing, and bulk wholesale. Our commitment is to deliver high-quality, comfortable, and fashionable children's clothing to customers worldwide.</p>
+        <sc-for list="{{ capabilities }}" as="cap" hint-placeholder-count="4">
+          <div style="display: flex; gap: 14px; margin-bottom: 18px; opacity: {{ cap.style.opacity }}; transform: {{ cap.style.transform }}; transition: {{ cap.style.transition }};">
+            <div style="width: 8px; height: 8px; border-radius: 50%; background: oklch(58% 0.15 35); margin-top: 8px; flex-shrink: 0;"></div>
+            <div>
+              <div style="font-weight: 600; font-size: 16px; margin-bottom: 3px;">{{ cap.title }}</div>
+              <div style="font-size: 14.5px; color: oklch(45% 0.02 80); line-height: 1.55;">{{ cap.desc }}</div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="margin-top: 70px;">
+      <div style="text-align: center; margin-bottom: 32px;">
+        <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(58% 0.15 35); margin-bottom: 14px;">Our Showroom</div>
+        <h3 style="font-family: Sora, sans-serif; font-size: clamp(24px, 3vw, 30px); font-weight: 700; margin: 0;">A Look Inside Yubei</h3>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+        <image-slot id="showroom-gallery-01" style="width: 100%; height: 260px;" shape="rounded" radius="18" fit="cover" placeholder="Drop showroom photo" src="./assets/showroom-01.jpg"></image-slot>
+        <image-slot id="showroom-gallery-02" style="width: 100%; height: 260px;" shape="rounded" radius="18" fit="cover" placeholder="Drop showroom photo" src="./assets/showroom-02.jpg"></image-slot>
+        <image-slot id="showroom-gallery-03" style="width: 100%; height: 260px;" shape="rounded" radius="18" fit="cover" placeholder="Drop showroom photo" src="./assets/showroom-03.jpg"></image-slot>
+        <image-slot id="showroom-gallery-04" style="width: 100%; height: 260px;" shape="rounded" radius="18" fit="cover" placeholder="Drop showroom photo" src="./assets/showroom-04.jpg"></image-slot>
+        <image-slot id="showroom-gallery-05" style="width: 100%; height: 260px;" shape="rounded" radius="18" fit="cover" placeholder="Drop showroom photo" src="./assets/showroom-05.jpg"></image-slot>
+        <image-slot id="showroom-gallery-06" style="width: 100%; height: 260px;" shape="rounded" radius="18" fit="cover" placeholder="Drop showroom photo" src="./assets/showroom-06.jpg"></image-slot>
+      </div>
+    </div>
+  </div>
+  </sc-if>
   <sc-if value="{{ showProducts }}" hint-placeholder-val="{{ false }}">
   <div id="products" ref="{{ productsRef }}" style="padding: 90px 6vw; background: white;">
     <div style="max-width: 1400px; margin: 0 auto;">
@@ -119,6 +176,11 @@
         <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(58% 0.15 35); margin-bottom: 14px;">Product Collection</div>
         <h2 style="font-family: Sora, sans-serif; font-size: clamp(28px, 3.5vw, 36px); font-weight: 700; margin: 0 0 16px;">Fashionable &amp; Comfortable Overalls Sets</h2>
         <p style="font-size: 16.5px; color: oklch(40% 0.02 80); max-width: 620px; margin: 0 auto; line-height: 1.65;">Our main product line features high-quality overalls sets for girls &mdash; designed for comfort, durability, and style.</p>
+      </div>
+      <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 44px;">
+        <sc-for list="{{ seasons }}" as="s" hint-placeholder-count="4">
+          <button onClick="{{ s.onClick }}" style="border: 1.5px solid {{ s.btnStyle.borderColor }}; background: {{ s.btnStyle.background }}; color: {{ s.btnStyle.color }}; padding: 10px 26px; border-radius: 999px; font-weight: 600; font-size: 14.5px; cursor: pointer; font-family: Inter, sans-serif; transition: all 0.2s;">{{ s.label }}</button>
+        </sc-for>
       </div>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px;">
         <sc-for list="{{ products }}" as="p" hint-placeholder-count="6">
@@ -143,27 +205,11 @@
   </div>
   </sc-if>
 
-  <!-- WHY CHOOSE US -->
-  <div ref="{{ advantagesRef }}" style="padding: 80px 6vw; background: oklch(20% 0.015 260);">
-    <div style="max-width: 1400px; margin: 0 auto;">
-      <div style="text-align: center; margin-bottom: 52px;">
-        <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(75% 0.1 35); margin-bottom: 14px;">Why Choose Us</div>
-        <h2 style="font-family: Sora, sans-serif; font-size: clamp(26px, 3.5vw, 34px); font-weight: 700; margin: 0; color: white;">Our Core Advantages</h2>
-      </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px;">
-        <sc-for list="{{ advantages }}" as="a" hint-placeholder-count="4">
-          <div style="background: oklch(26% 0.02 260); border-radius: 18px; padding: 30px 24px; opacity: {{ a.style.opacity }}; transform: {{ a.style.transform }}; transition: {{ a.style.transition }}, translate 0.25s; " style-hover="translate: 0 -6px;">
-            <div style="font-family: Sora, sans-serif; font-weight: 700; font-size: 18px; color: white; margin-bottom: 10px;">{{ a.title }}</div>
-            <div style="font-size: 14.5px; color: oklch(75% 0.02 260); line-height: 1.6;">{{ a.desc }}</div>
-          </div>
-        </sc-for>
-      </div>
-    </div>
-  </div>
-
   <!-- SERVICES -->
+  <sc-if value="{{ showServices }}" hint-placeholder-val="{{ false }}">
   <div id="services" ref="{{ servicesRef }}" style="padding: 90px 6vw; background: white;">
     <div style="max-width: 1400px; margin: 0 auto;">
+      <a href="#" onClick="{{ goHome }}" style="display: inline-block; margin-bottom: 32px; color: oklch(45% 0.02 80); font-weight: 500; font-size: 14.5px;">&larr; Back to Home</a>
       <div style="text-align: center; margin-bottom: 52px;">
         <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(58% 0.15 35); margin-bottom: 14px;">Our Services</div>
         <h2 style="font-family: Sora, sans-serif; font-size: clamp(26px, 3.5vw, 34px); font-weight: 700; margin: 0;">Flexible Cooperation Models</h2>
@@ -179,10 +225,13 @@
       </div>
     </div>
   </div>
+  </sc-if>
 
   <!-- CERTIFICATES -->
+  <sc-if value="{{ showCertificates }}" hint-placeholder-val="{{ false }}">
   <div id="certificates" ref="{{ certsRef }}" style="padding: 90px 6vw; background: oklch(96% 0.015 80);">
     <div style="max-width: 1400px; margin: 0 auto;">
+      <a href="#" onClick="{{ goHome }}" style="display: inline-block; margin-bottom: 32px; color: oklch(45% 0.02 80); font-weight: 500; font-size: 14.5px;">&larr; Back to Home</a>
       <div style="text-align: center; margin-bottom: 52px;">
         <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(58% 0.15 35); margin-bottom: 14px;">Certifications</div>
         <h2 style="font-family: Sora, sans-serif; font-size: clamp(26px, 3.5vw, 34px); font-weight: 700; margin: 0 0 16px;">Quality &amp; Compliance You Can Trust</h2>
@@ -201,32 +250,85 @@
       </div>
     </div>
   </div>
+  </sc-if>
+
+  <!-- REQUEST QUOTE -->
+  <sc-if value="{{ showQuote }}" hint-placeholder-val="{{ false }}">
+  <div id="quote" style="padding: 90px 6vw; background: white;">
+    <div style="max-width: 680px; margin: 0 auto;">
+      <a href="#" onClick="{{ goHome }}" style="display: inline-block; margin-bottom: 32px; color: oklch(45% 0.02 80); font-weight: 500; font-size: 14.5px;">&larr; Back to Home</a>
+      <div style="text-align: center; margin-bottom: 44px;">
+        <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(58% 0.15 35); margin-bottom: 14px;">Request a Quote</div>
+        <h2 style="font-family: Sora, sans-serif; font-size: clamp(28px, 3.5vw, 36px); font-weight: 700; margin: 0 0 16px;">Tell Us What You Need</h2>
+        <p style="font-size: 16.5px; color: oklch(40% 0.02 80); line-height: 1.65;">Fill in your requirements below and our team will reply with pricing and lead time.</p>
+      </div>
+      <form onSubmit="{{ submitQuote }}" style="display: grid; gap: 18px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px;">
+          <div>
+            <label style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px;">Name *</label>
+            <input required="true" type="text" value="{{ quoteForm.name }}" onChange="{{ setQuoteName }}" style="width: 100%; padding: 12px 14px; border: 1.5px solid oklch(88% 0.01 80); border-radius: 10px; font-size: 15px; font-family: Inter, sans-serif; box-sizing: border-box;"/>
+          </div>
+          <div>
+            <label style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px;">Company</label>
+            <input type="text" value="{{ quoteForm.company }}" onChange="{{ setQuoteCompany }}" style="width: 100%; padding: 12px 14px; border: 1.5px solid oklch(88% 0.01 80); border-radius: 10px; font-size: 15px; font-family: Inter, sans-serif; box-sizing: border-box;"/>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px;">
+          <div>
+            <label style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px;">Email *</label>
+            <input required="true" type="email" value="{{ quoteForm.email }}" onChange="{{ setQuoteEmail }}" style="width: 100%; padding: 12px 14px; border: 1.5px solid oklch(88% 0.01 80); border-radius: 10px; font-size: 15px; font-family: Inter, sans-serif; box-sizing: border-box;"/>
+          </div>
+          <div>
+            <label style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px;">Phone / WhatsApp</label>
+            <input type="text" value="{{ quoteForm.phone }}" onChange="{{ setQuotePhone }}" style="width: 100%; padding: 12px 14px; border: 1.5px solid oklch(88% 0.01 80); border-radius: 10px; font-size: 15px; font-family: Inter, sans-serif; box-sizing: border-box;"/>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px;">
+          <div>
+            <label style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px;">Product Interest</label>
+            <input type="text" placeholder="e.g. Summer overalls set" value="{{ quoteForm.product }}" onChange="{{ setQuoteProduct }}" style="width: 100%; padding: 12px 14px; border: 1.5px solid oklch(88% 0.01 80); border-radius: 10px; font-size: 15px; font-family: Inter, sans-serif; box-sizing: border-box;"/>
+          </div>
+          <div>
+            <label style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px;">Quantity Needed</label>
+            <input type="text" placeholder="e.g. 500 pcs" value="{{ quoteForm.quantity }}" onChange="{{ setQuoteQuantity }}" style="width: 100%; padding: 12px 14px; border: 1.5px solid oklch(88% 0.01 80); border-radius: 10px; font-size: 15px; font-family: Inter, sans-serif; box-sizing: border-box;"/>
+          </div>
+        </div>
+        <div>
+          <label style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px;">Additional Requirements</label>
+          <textarea rows="5" value="{{ quoteForm.message }}" onChange="{{ setQuoteMessage }}" style="width: 100%; padding: 12px 14px; border: 1.5px solid oklch(88% 0.01 80); border-radius: 10px; font-size: 15px; font-family: Inter, sans-serif; box-sizing: border-box; resize: vertical;"></textarea>
+        </div>
+        <button type="submit" style="justify-self: start; background: oklch(58% 0.15 35); color: white; padding: 15px 34px; border-radius: 999px; font-weight: 600; font-size: 15.5px; border: none; cursor: pointer; font-family: Inter, sans-serif; transition: transform 0.2s, box-shadow 0.2s;" style-hover="transform: translateY(-3px) scale(1.03); box-shadow: 0 10px 24px oklch(58% 0.15 35 / 0.35);">Submit Request</button>
+      </form>
+    </div>
+  </div>
+  </sc-if>
 
   <!-- CONTACT -->
-  <div id="contact" ref="{{ contactRef }}" style="padding: 90px 6vw; background: oklch(96% 0.015 80); opacity: {{ contactVisible.opacity }}; transform: {{ contactVisible.transform }}; transition: {{ contactVisible.transition }};">
+  <div id="contact" ref="{{ contactRef }}" style="padding: 44px 6vw; background: oklch(96% 0.015 80); opacity: {{ contactVisible.opacity }}; transform: {{ contactVisible.transform }}; transition: {{ contactVisible.transition }};">
     <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
-      <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(58% 0.15 35); margin-bottom: 14px;">Contact Us</div>
-      <h2 style="font-family: Sora, sans-serif; font-size: clamp(28px, 3.5vw, 36px); font-weight: 700; margin: 0 0 16px;">Let's Build a Successful Partnership</h2>
-      <p style="font-size: 16.5px; color: oklch(40% 0.02 80); max-width: 620px; margin: 0 auto 48px; line-height: 1.65;">Huzhou Zhili Yubei Clothing Co., Ltd. &mdash; we're eager to hear from you and discuss how we can work together to achieve mutual success.</p>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; text-align: left;">
-        <div style="background: white; border-radius: 16px; padding: 24px;">
-          <div style="font-size: 12.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: oklch(58% 0.02 80); margin-bottom: 8px;">Address</div>
-          <div style="font-size: 14.5px; line-height: 1.55;">No. 317, Fangqian Road, Zhili Town, Wuxing District, Huzhou City, Zhejiang, China</div>
-        </div>
-        <div style="background: white; border-radius: 16px; padding: 24px;">
-          <div style="font-size: 12.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: oklch(58% 0.02 80); margin-bottom: 8px;">Contact Person</div>
-          <div style="font-size: 14.5px; line-height: 1.55;">Ms. Sun</div>
-        </div>
-        <div style="background: white; border-radius: 16px; padding: 24px;">
-          <div style="font-size: 12.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: oklch(58% 0.02 80); margin-bottom: 8px;">Phone</div>
-          <div style="font-size: 14.5px; line-height: 1.55;">+86-XXX-XXXX-XXXX</div>
-        </div>
-        <div style="background: white; border-radius: 16px; padding: 24px;">
-          <div style="font-size: 12.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: oklch(58% 0.02 80); margin-bottom: 8px;">Email</div>
-          <div style="font-size: 14.5px; line-height: 1.55;"><a href="mailto:info@yubeiapparel.com">info@yubeiapparel.com</a></div>
-        </div>
+      <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(58% 0.15 35); margin-bottom: 8px;">Contact Us</div>
+      <h2 style="font-family: Sora, sans-serif; font-size: clamp(20px, 2.4vw, 24px); font-weight: 700; margin: 0 0 20px;">Let's Build a Successful Partnership</h2>
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; text-align: left; font-size: 13.5px; margin-bottom: 22px;">
+        <div><span style="font-weight: 700; color: oklch(58% 0.02 80); text-transform: uppercase; font-size: 11px; letter-spacing: 0.04em;">Address:</span> No. 317, Fangqian Road, Zhili Town, Huzhou, Zhejiang</div>
+        <div><span style="font-weight: 700; color: oklch(58% 0.02 80); text-transform: uppercase; font-size: 11px; letter-spacing: 0.04em;">Contact:</span> Ms. Sun</div>
+        <div><span style="font-weight: 700; color: oklch(58% 0.02 80); text-transform: uppercase; font-size: 11px; letter-spacing: 0.04em;">Phone:</span> +86 183 6725 9637</div>
+        <div><span style="font-weight: 700; color: oklch(58% 0.02 80); text-transform: uppercase; font-size: 11px; letter-spacing: 0.04em;">Email:</span> <a href="mailto:info@yubeiapparel.com">info@yubeiapparel.com</a></div>
       </div>
-      <a href="mailto:info@yubeiapparel.com" style="display: inline-block; margin-top: 44px; background: oklch(58% 0.15 35); color: white; padding: 16px 36px; border-radius: 999px; font-weight: 600; font-size: 15.5px; transition: transform 0.2s, box-shadow 0.2s;" style-hover="transform: translateY(-3px) scale(1.03); box-shadow: 0 10px 24px oklch(58% 0.15 35 / 0.35);">Email Us Now</a>
+      <div style="display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap;">
+        <a href="mailto:info@yubeiapparel.com" style="display: inline-block; background: oklch(58% 0.15 35); color: white; padding: 11px 26px; border-radius: 999px; font-weight: 600; font-size: 14px; transition: transform 0.2s, box-shadow 0.2s;" style-hover="transform: translateY(-3px) scale(1.03); box-shadow: 0 10px 24px oklch(58% 0.15 35 / 0.35);">Email Us Now</a>
+        <a href="https://wa.me/8618367259637" target="_blank" rel="noopener" aria-label="WhatsApp" style="width: 38px; height: 38px; border-radius: 50%; background: white; display: flex; align-items: center; justify-content: center; color: oklch(24% 0.02 80); transition: transform 0.2s, background 0.2s;" style-hover="transform: translateY(-3px); background: oklch(58% 0.15 35); color: white;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1-.2.2-.3.2-.6.1-.9-.5-1.9-1.2-2.7-2.1-.6-.7-1.1-1.4-1.4-2.1-.1-.3 0-.4.1-.6.2-.2.4-.4.6-.6.1-.2.2-.4.1-.6-.1-.2-.7-1.6-.9-2.1-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.7.7-1.1 1.5-1.1 2.5 0 1.5 1.1 3 1.2 3.2.2.2 2.1 3.3 5.1 4.5 3 1.2 3 .8 3.6.7.6-.1 1.7-.7 1.9-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/><path d="M12 2.3C6.7 2.3 2.4 6.6 2.4 11.9c0 1.9.5 3.6 1.5 5.2L2.3 21.7l4.7-1.5c1.5.8 3.2 1.3 5 1.3 5.3 0 9.6-4.3 9.6-9.6S17.3 2.3 12 2.3zm0 17.5c-1.7 0-3.3-.5-4.6-1.3l-.3-.2-3 1 1-2.9-.2-.3c-.9-1.4-1.4-3-1.4-4.7 0-4.6 3.7-8.3 8.3-8.3 4.6 0 8.3 3.7 8.3 8.3s-3.5 8.4-8.1 8.4z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61590309144910" target="_blank" rel="noopener" aria-label="Facebook" style="width: 38px; height: 38px; border-radius: 50%; background: white; display: flex; align-items: center; justify-content: center; color: oklch(24% 0.02 80); transition: transform 0.2s, background 0.2s;" style-hover="transform: translateY(-3px); background: oklch(58% 0.15 35); color: white;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.5 17.5 2 12 2S2 6.5 2 12.06c0 5 3.66 9.16 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.5 1.49-3.89 3.78-3.89 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.9h-2.34V22c4.78-.78 8.44-4.94 8.44-9.94z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/yubei_fashionkids/" target="_blank" rel="noopener" aria-label="Instagram" style="width: 38px; height: 38px; border-radius: 50%; background: white; display: flex; align-items: center; justify-content: center; color: oklch(24% 0.02 80); transition: transform 0.2s, background 0.2s;" style-hover="transform: translateY(-3px); background: oklch(58% 0.15 35); color: white;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.9.2 2.3.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.3 1 .4 2.3.1 1.3.1 1.6.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.9-.4 2.3-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .3-2.3.4-1.3.1-1.6.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.9-.2-2.3-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.3-1-.4-2.3C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-1.9.4-2.3.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.3 2.3-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-1 .1-1.6.2-1.9.3-.5.2-.8.4-1.2.8-.4.4-.6.7-.8 1.2-.1.3-.3.9-.3 1.9-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1 .2 1.6.3 1.9.2.5.4.8.8 1.2.4.4.7.6 1.2.8.3.1.9.3 1.9.3 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1-.1 1.6-.2 1.9-.3.5-.2.8-.4 1.2-.8.4-.4.6-.7.8-1.2.1-.3.3-.9.3-1.9.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1-.2-1.6-.3-1.9-.2-.5-.4-.8-.8-1.2-.4-.4-.7-.6-1.2-.8-.3-.1-.9-.3-1.9-.3-1.2-.1-1.6-.1-4.7-.1zm0 4.3a4.7 4.7 0 1 1 0 9.4 4.7 4.7 0 0 1 0-9.4zm0 1.8a2.9 2.9 0 1 0 0 5.8 2.9 2.9 0 0 0 0-5.8zm5.9-2.3a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0z"/></svg>
+        </a>
+        <a href="https://tiktok.com/@yubeiapparel" target="_blank" rel="noopener" aria-label="TikTok" style="width: 38px; height: 38px; border-radius: 50%; background: white; display: flex; align-items: center; justify-content: center; color: oklch(24% 0.02 80); transition: transform 0.2s, background 0.2s;" style-hover="transform: translateY(-3px); background: oklch(58% 0.15 35); color: white;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.8a4.3 4.3 0 0 1-3-2.6h-3v12.3a2.6 2.6 0 1 1-1.8-2.5v-3.1a5.7 5.7 0 1 0 4.8 5.6V9.5a7.3 7.3 0 0 0 4.3 1.4V7.8a4.3 4.3 0 0 1-1.3-2z"/></svg>
+        </a>
+      </div>
     </div>
   </div>
 
@@ -246,14 +348,28 @@ const CAPABILITIES = [
   { title: "Ready Stock & Delivery", desc: "We maintain substantial ready stock to enable quick response to urgent orders and fast delivery." }
 ];
 const REGIONS = ["Middle East", "Southeast Asia", "Central Asia", "Africa", "Europe & America"];
-const PRODUCTS = [
-  { style2: "YB-OW-001", price: "$12.50 / pc", size: "110\u2013150cm", material: "Cotton Blend", weight: "0.45kg", season: "Spring/Autumn", imgId: "prod-1", placeholder: "Drop photo \u2014 YB-OW-001" },
-  { style2: "YB-OW-002", price: "$12.50 / pc", size: "110\u2013150cm", material: "Cotton Blend", weight: "0.45kg", season: "Spring/Autumn", imgId: "prod-2", placeholder: "Drop photo \u2014 YB-OW-002" },
-  { style2: "YB-OW-003", price: "$12.50 / pc", size: "110\u2013150cm", material: "Cotton Blend", weight: "0.45kg", season: "Spring/Autumn", imgId: "prod-3", placeholder: "Drop photo \u2014 YB-OW-003" },
-  { style2: "YB-OW-004", price: "$12.50 / pc", size: "110\u2013150cm", material: "Cotton Blend", weight: "0.45kg", season: "Spring/Autumn", imgId: "prod-4", placeholder: "Drop photo \u2014 YB-OW-004" },
-  { style2: "YB-OW-005", price: "$12.50 / pc", size: "110\u2013150cm", material: "Cotton Blend", weight: "0.45kg", season: "Spring/Autumn", imgId: "prod-5", placeholder: "Drop photo \u2014 YB-OW-005" },
-  { style2: "YB-OW-006", price: "$12.50 / pc", size: "110\u2013150cm", material: "Cotton Blend", weight: "0.45kg", season: "Spring/Autumn", imgId: "prod-6", placeholder: "Drop photo \u2014 YB-OW-006" }
+const SEASONS = [
+  { key: "summer", label: "Summer", code: "SU" },
+  { key: "autumn", label: "Autumn", code: "AU" },
+  { key: "winter", label: "Winter", code: "WI" },
+  { key: "spring", label: "Spring", code: "SP" }
 ];
+function makeSeasonProducts(code, seasonLabel, count) {
+  const out = [];
+  for (let i = 1; i <= count; i++) {
+    const n = String(i).padStart(3, "0");
+    const style2 = "YB-" + code + "-" + n;
+    out.push({ style2, price: "$12.50 / pc", size: "110\u2013150cm", material: "Cotton Blend", weight: "0.45kg", season: seasonLabel, imgId: "prod-" + code.toLowerCase() + "-" + n, placeholder: "Drop photo \u2014 " + style2 });
+  }
+  return out;
+}
+const PRODUCTS_BY_SEASON = {
+  summer: makeSeasonProducts("SU", "Summer", 20),
+  autumn: makeSeasonProducts("AU", "Autumn", 20),
+  winter: makeSeasonProducts("WI", "Winter", 20),
+  spring: makeSeasonProducts("SP", "Spring", 20)
+};
+const PRODUCTS = PRODUCTS_BY_SEASON.summer;
 const ADVANTAGES = [
   { title: "Superior Quality", desc: "We use premium fabrics and maintain strict quality control throughout the production process." },
   { title: "Rich Experience", desc: "Years of experience exporting to diverse markets ensures we understand international standards and customer needs." },
@@ -274,7 +390,11 @@ const SERVICES = [
 ];
 
 class Component extends DCLogic {
-  state = { visible: {}, view: "home" };
+  state = { visible: {}, view: "home", productSeason: "summer", quoteForm: {} };
+
+  setSeason(key) {
+    this.setState({ productSeason: key });
+  }
 
   goProducts(e) {
     if (e) e.preventDefault();
@@ -282,10 +402,53 @@ class Component extends DCLogic {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
+  goAbout(e) {
+    if (e) e.preventDefault();
+    this.setState({ view: "about" });
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  goServices(e) {
+    if (e) e.preventDefault();
+    this.setState({ view: "services" });
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  goCertificates(e) {
+    if (e) e.preventDefault();
+    this.setState({ view: "certificates" });
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
   goHome(e) {
     if (e) e.preventDefault();
     this.setState({ view: "home" });
     window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  goContact(e) {
+    if (e) e.preventDefault();
+    this.setState({ view: "home" }, () => {
+      const el = document.getElementById("contact");
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    });
+  }
+
+  goQuote(e) {
+    if (e) e.preventDefault();
+    this.setState({ view: "quote" });
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  updateQuoteField(field, value) {
+    this.setState((s) => ({ quoteForm: { ...s.quoteForm, [field]: value } }));
+  }
+
+  submitQuote(e) {
+    e.preventDefault();
+    const f = this.state.quoteForm;
+    const body = "Name: " + (f.name || "") + "\nCompany: " + (f.company || "") + "\nEmail: " + (f.email || "") + "\nPhone: " + (f.phone || "") + "\nProduct Interest: " + (f.product || "") + "\nQuantity: " + (f.quantity || "") + "\n\nRequirements:\n" + (f.message || "");
+    window.location.href = "mailto:info@yubeiapparel.com?subject=" + encodeURIComponent("Quote Request from " + (f.name || "Website Visitor")) + "&body=" + encodeURIComponent(body);
   }
 
   makeRef(key) {
@@ -338,15 +501,37 @@ class Component extends DCLogic {
       contactVisible: this.revealStyle(!!v.contact, 0),
       capabilities: this.stagger(CAPABILITIES, "about"),
       regions: REGIONS.map((name, i) => ({ name, style: this.revealStyle(!!v.regions, i * 0.07) })),
-      featured: PRODUCTS.map((p) => ({ imgId: "feat-" + p.imgId, placeholder: "Drop photo \u2014 " + p.style2 })),
-      products: this.stagger(PRODUCTS, "products"),
+      featured: PRODUCTS.slice(0, 4).map((p) => ({ imgId: "feat-" + p.imgId, placeholder: "Drop photo \u2014 " + p.style2 })),
+      seasons: SEASONS.map((s) => {
+        const active = this.state.productSeason === s.key;
+        return { ...s, active, onClick: () => this.setSeason(s.key), btnStyle: { borderColor: active ? "oklch(58% 0.15 35)" : "oklch(80% 0.02 80)", background: active ? "oklch(58% 0.15 35)" : "white", color: active ? "white" : "oklch(30% 0.02 80)" } };
+      }),
+      products: this.stagger(PRODUCTS_BY_SEASON[this.state.productSeason], "products"),
       advantages: this.stagger(ADVANTAGES, "advantages"),
       services: this.stagger(SERVICES, "services"),
       certificates: this.stagger(CERTIFICATES, "certs"),
       showHome: this.state.view === "home",
+      showAbout: this.state.view === "about",
       showProducts: this.state.view === "products",
+      showServices: this.state.view === "services",
+      showCertificates: this.state.view === "certificates",
+      showQuote: this.state.view === "quote",
       goProducts: (e) => this.goProducts(e),
-      goHome: (e) => this.goHome(e)
+      goAbout: (e) => this.goAbout(e),
+      goServices: (e) => this.goServices(e),
+      goCertificates: (e) => this.goCertificates(e),
+      goHome: (e) => this.goHome(e),
+      goContact: (e) => this.goContact(e),
+      goQuote: (e) => this.goQuote(e),
+      quoteForm: this.state.quoteForm,
+      submitQuote: (e) => this.submitQuote(e),
+      setQuoteName: (e) => this.updateQuoteField("name", e.target.value),
+      setQuoteCompany: (e) => this.updateQuoteField("company", e.target.value),
+      setQuoteEmail: (e) => this.updateQuoteField("email", e.target.value),
+      setQuotePhone: (e) => this.updateQuoteField("phone", e.target.value),
+      setQuoteProduct: (e) => this.updateQuoteField("product", e.target.value),
+      setQuoteQuantity: (e) => this.updateQuoteField("quantity", e.target.value),
+      setQuoteMessage: (e) => this.updateQuoteField("message", e.target.value)
     };
   }
 }
