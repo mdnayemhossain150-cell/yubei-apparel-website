@@ -179,9 +179,14 @@
     </div>
     <div style="margin-top: 70px;">
       <div style="text-align: center; margin-bottom: 32px;">
-        <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(58% 0.15 35); margin-bottom: 14px;">Our Showroom</div>
-        <h3 style="font-family: Sora, sans-serif; font-size: clamp(24px, 3vw, 30px); font-weight: 700; margin: 0;">A Look Inside Yubei</h3>
+        <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(58% 0.15 35); margin-bottom: 14px;">Behind The Brand</div>
+        <h3 style="font-family: Sora, sans-serif; font-size: clamp(24px, 3vw, 30px); font-weight: 700; margin: 0 0 24px;">A Look Inside Yubei</h3>
+        <div style="display: inline-flex; gap: 10px;">
+          <button onClick="{{ setGalleryShowroom }}" style="border: 1.5px solid {{ galleryShowroomStyle.borderColor }}; background: {{ galleryShowroomStyle.background }}; color: {{ galleryShowroomStyle.color }}; padding: 10px 26px; border-radius: 999px; font-weight: 600; font-size: 14.5px; cursor: pointer; font-family: Inter, sans-serif; transition: all 0.2s;">Showroom</button>
+          <button onClick="{{ setGalleryFactory }}" style="border: 1.5px solid {{ galleryFactoryStyle.borderColor }}; background: {{ galleryFactoryStyle.background }}; color: {{ galleryFactoryStyle.color }}; padding: 10px 26px; border-radius: 999px; font-weight: 600; font-size: 14.5px; cursor: pointer; font-family: Inter, sans-serif; transition: all 0.2s;">Factory</button>
+        </div>
       </div>
+      <sc-if value="{{ showShowroomGallery }}" hint-placeholder-val="{{ true }}">
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
         <image-slot id="showroom-gallery-01" style="width: 100%; height: 260px;" shape="rounded" radius="18" fit="cover" placeholder="Drop showroom photo" src="./assets/showroom-01.jpg"></image-slot>
         <image-slot id="showroom-gallery-02" style="width: 100%; height: 260px;" shape="rounded" radius="18" fit="cover" placeholder="Drop showroom photo" src="./assets/showroom-02.jpg"></image-slot>
@@ -190,6 +195,17 @@
         <image-slot id="showroom-gallery-05" style="width: 100%; height: 260px;" shape="rounded" radius="18" fit="cover" placeholder="Drop showroom photo" src="./assets/showroom-05.jpg"></image-slot>
         <image-slot id="showroom-gallery-06" style="width: 100%; height: 260px;" shape="rounded" radius="18" fit="cover" placeholder="Drop showroom photo" src="./assets/showroom-06.jpg"></image-slot>
       </div>
+      </sc-if>
+      <sc-if value="{{ showFactoryGallery }}" hint-placeholder-val="{{ false }}">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+        <image-slot id="factory-gallery-01" style="width: 100%; height: 260px;" shape="rounded" radius="18" fit="cover" placeholder="Drop factory photo"></image-slot>
+        <image-slot id="factory-gallery-02" style="width: 100%; height: 260px;" shape="rounded" radius="18" fit="cover" placeholder="Drop factory photo"></image-slot>
+        <image-slot id="factory-gallery-03" style="width: 100%; height: 260px;" shape="rounded" radius="18" fit="cover" placeholder="Drop factory photo"></image-slot>
+        <image-slot id="factory-gallery-04" style="width: 100%; height: 260px;" shape="rounded" radius="18" fit="cover" placeholder="Drop factory photo"></image-slot>
+        <image-slot id="factory-gallery-05" style="width: 100%; height: 260px;" shape="rounded" radius="18" fit="cover" placeholder="Drop factory photo"></image-slot>
+        <image-slot id="factory-gallery-06" style="width: 100%; height: 260px;" shape="rounded" radius="18" fit="cover" placeholder="Drop factory photo"></image-slot>
+      </div>
+      </sc-if>
     </div>
     </div>
   </div>
@@ -456,7 +472,11 @@ const SERVICES = [
 ];
 
 class Component extends DCLogic {
-  state = { visible: {}, view: "home", productSeason: "summer", quoteForm: {}, mobileMenuOpen: false };
+  state = { visible: {}, view: "home", productSeason: "summer", quoteForm: {}, mobileMenuOpen: false, aboutGallery: "showroom" };
+
+  setGallery(key) {
+    this.setState({ aboutGallery: key });
+  }
 
   toggleMobileMenu() {
     this.setState((s) => ({ mobileMenuOpen: !s.mobileMenuOpen }));
@@ -597,6 +617,12 @@ class Component extends DCLogic {
       goCertificates: (e) => this.goCertificates(e),
       goHome: (e) => this.goHome(e),
       goContact: (e) => this.goContact(e),
+      setGalleryShowroom: () => this.setGallery("showroom"),
+      setGalleryFactory: () => this.setGallery("factory"),
+      showShowroomGallery: this.state.aboutGallery === "showroom",
+      showFactoryGallery: this.state.aboutGallery === "factory",
+      galleryShowroomStyle: { borderColor: this.state.aboutGallery === "showroom" ? "oklch(58% 0.15 35)" : "oklch(80% 0.02 80)", background: this.state.aboutGallery === "showroom" ? "oklch(58% 0.15 35)" : "white", color: this.state.aboutGallery === "showroom" ? "white" : "oklch(30% 0.02 80)" },
+      galleryFactoryStyle: { borderColor: this.state.aboutGallery === "factory" ? "oklch(58% 0.15 35)" : "oklch(80% 0.02 80)", background: this.state.aboutGallery === "factory" ? "oklch(58% 0.15 35)" : "white", color: this.state.aboutGallery === "factory" ? "white" : "oklch(30% 0.02 80)" },
       mobileMenuOpen: this.state.mobileMenuOpen,
       toggleMobileMenu: () => this.toggleMobileMenu(),
       goAboutMobile: (e) => this.goAboutMobile(e),
