@@ -22,8 +22,9 @@
   @keyframes fadeInUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes floatSlow { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-16px) rotate(3deg); } }
   @keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 0 0 oklch(70% 0.15 150 / 0.35); } 50% { box-shadow: 0 0 0 8px oklch(70% 0.15 150 / 0); } }
-  @media (max-width: 640px) { .nav-links-desktop { display: none !important; } .nav-cta-full { display: none !important; } .nav-cta-short { display: inline-block !important; } }
+  @media (max-width: 640px) { .nav-links-desktop { display: none !important; } .nav-cta-full { display: none !important; } .nav-cta-short { display: inline-block !important; } .mobile-menu-btn { display: flex !important; } }
   .nav-cta-short { display: none; }
+  .mobile-menu-btn { display: none; }
 </style>
 <script src="./image-slot.js"></script>
 </helmet>
@@ -43,8 +44,20 @@
       </div>
       <a href="#quote" onClick="{{ goQuote }}" class="nav-cta-full" style="background: oklch(58% 0.15 35); color: white; padding: 11px 22px; border-radius: 999px; font-weight: 600; font-size: 14px; white-space: nowrap; flex-shrink: 0; transition: transform 0.2s, background 0.2s; display: inline-block;" style-hover="background: oklch(50% 0.15 35); transform: scale(1.05);">Request Quote</a>
       <a href="#quote" onClick="{{ goQuote }}" class="nav-cta-short" style="background: oklch(58% 0.15 35); color: white; padding: 10px 16px; border-radius: 999px; font-weight: 600; font-size: 13px; white-space: nowrap; flex-shrink: 0;">Quote</a>
+      <button class="mobile-menu-btn" onClick="{{ toggleMobileMenu }}" aria-label="Menu" style="border: none; background: transparent; width: 40px; height: 40px; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; padding: 0;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="oklch(24% 0.02 80)" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
     </div>
   </div>
+  <sc-if value="{{ mobileMenuOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position: sticky; top: 76px; z-index: 49; background: oklch(98% 0.01 80); border-bottom: 1px solid oklch(90% 0.01 80); display: flex; flex-direction: column; padding: 8px 6vw 16px;">
+    <a href="#about" onClick="{{ goAboutMobile }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 16px; padding: 12px 0; border-bottom: 1px solid oklch(92% 0.01 80);">About</a>
+    <a href="#products" onClick="{{ goProductsMobile }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 16px; padding: 12px 0; border-bottom: 1px solid oklch(92% 0.01 80);">Products</a>
+    <a href="#services" onClick="{{ goServicesMobile }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 16px; padding: 12px 0; border-bottom: 1px solid oklch(92% 0.01 80);">Services</a>
+    <a href="#certificates" onClick="{{ goCertificatesMobile }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 16px; padding: 12px 0; border-bottom: 1px solid oklch(92% 0.01 80);">Certificates</a>
+    <a href="#contact" onClick="{{ goContactMobile }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 16px; padding: 12px 0;">Contact</a>
+  </div>
+  </sc-if>
 
   <!-- HERO -->
   <sc-if value="{{ showHome }}" hint-placeholder-val="{{ true }}">
@@ -69,42 +82,42 @@
       <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(58% 0.15 35); margin-bottom: 14px;">New Arrivals</div>
       <h2 style="font-family: Sora, sans-serif; font-size: clamp(26px, 3.5vw, 34px); font-weight: 700; margin: 0;">Latest Collection Highlights</h2>
     </div>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 14px;">
       <a href="#products" onClick="{{ goProducts }}" style="display: block; border-radius: 18px; overflow: hidden;">
-        <image-slot id="feat-new-01" style="width: 100%; height: 280px;" shape="rect" fit="cover" placeholder="Drop photo" src="./assets/prod-new-01.jpg"></image-slot>
+        <image-slot id="feat-new-01" style="width: 100%; height: clamp(150px, 34vw, 280px);" shape="rect" fit="cover" placeholder="Drop photo" src="./assets/prod-new-01.jpg"></image-slot>
       </a>
       <a href="#products" onClick="{{ goProducts }}" style="display: block; border-radius: 18px; overflow: hidden;">
-        <image-slot id="feat-new-02" style="width: 100%; height: 280px;" shape="rect" fit="cover" placeholder="Drop photo" src="./assets/prod-new-02.png"></image-slot>
+        <image-slot id="feat-new-02" style="width: 100%; height: clamp(150px, 34vw, 280px);" shape="rect" fit="cover" placeholder="Drop photo" src="./assets/prod-new-02.png"></image-slot>
       </a>
       <a href="#products" onClick="{{ goProducts }}" style="display: block; border-radius: 18px; overflow: hidden;">
-        <image-slot id="feat-new-03" style="width: 100%; height: 280px;" shape="rect" fit="cover" placeholder="Drop photo" src="./assets/prod-new-03.png"></image-slot>
+        <image-slot id="feat-new-03" style="width: 100%; height: clamp(150px, 34vw, 280px);" shape="rect" fit="cover" placeholder="Drop photo" src="./assets/prod-new-03.png"></image-slot>
       </a>
       <a href="#products" onClick="{{ goProducts }}" style="display: block; border-radius: 18px; overflow: hidden;">
-        <image-slot id="feat-new-04" style="width: 100%; height: 280px;" shape="rect" fit="cover" placeholder="Drop photo" src="./assets/prod-new-04.png"></image-slot>
+        <image-slot id="feat-new-04" style="width: 100%; height: clamp(150px, 34vw, 280px);" shape="rect" fit="cover" placeholder="Drop photo" src="./assets/prod-new-04.png"></image-slot>
       </a>
       <a href="#products" onClick="{{ goProducts }}" style="display: block; border-radius: 18px; overflow: hidden;">
-        <image-slot id="feat-new-05" style="width: 100%; height: 280px;" shape="rect" fit="cover" placeholder="Drop photo" src="./assets/prod-new-05.jpg"></image-slot>
+        <image-slot id="feat-new-05" style="width: 100%; height: clamp(150px, 34vw, 280px);" shape="rect" fit="cover" placeholder="Drop photo" src="./assets/prod-new-05.jpg"></image-slot>
       </a>
       <a href="#products" onClick="{{ goProducts }}" style="display: block; border-radius: 18px; overflow: hidden;">
-        <image-slot id="feat-new-06" style="width: 100%; height: 280px;" shape="rect" fit="cover" placeholder="Drop photo" src="./assets/prod-new-06.jpg"></image-slot>
+        <image-slot id="feat-new-06" style="width: 100%; height: clamp(150px, 34vw, 280px);" shape="rect" fit="cover" placeholder="Drop photo" src="./assets/prod-new-06.jpg"></image-slot>
       </a>
       <a href="#products" onClick="{{ goProducts }}" style="display: block; border-radius: 18px; overflow: hidden;">
-        <image-slot id="feat-new-07" style="width: 100%; height: 280px;" shape="rect" fit="cover" placeholder="Drop photo" src="./assets/prod-new-07.jpg"></image-slot>
+        <image-slot id="feat-new-07" style="width: 100%; height: clamp(150px, 34vw, 280px);" shape="rect" fit="cover" placeholder="Drop photo" src="./assets/prod-new-07.jpg"></image-slot>
       </a>
       <a href="#products" onClick="{{ goProducts }}" style="display: block; border-radius: 18px; overflow: hidden;">
-        <image-slot id="feat-new-08" style="width: 100%; height: 280px;" shape="rect" fit="cover" placeholder="Drop photo" src="./assets/prod-new-08.jpg"></image-slot>
+        <image-slot id="feat-new-08" style="width: 100%; height: clamp(150px, 34vw, 280px);" shape="rect" fit="cover" placeholder="Drop photo" src="./assets/prod-new-08.jpg"></image-slot>
       </a>
       <div style="display: block; border-radius: 18px; overflow: hidden;">
-        <image-slot id="feat-new-09" style="width: 100%; height: 280px;" shape="rect" fit="cover" placeholder="Drop photo" src="./assets/prod-new-09.jpg"></image-slot>
+        <image-slot id="feat-new-09" style="width: 100%; height: clamp(150px, 34vw, 280px);" shape="rect" fit="cover" placeholder="Drop photo" src="./assets/prod-new-09.jpg"></image-slot>
       </div>
       <div style="display: block; border-radius: 18px; overflow: hidden;">
-        <image-slot id="feat-new-10" style="width: 100%; height: 280px;" shape="rect" fit="cover" placeholder="Drop photo" src="./assets/prod-new-10.jpg"></image-slot>
+        <image-slot id="feat-new-10" style="width: 100%; height: clamp(150px, 34vw, 280px);" shape="rect" fit="cover" placeholder="Drop photo" src="./assets/prod-new-10.jpg"></image-slot>
       </div>
       <div style="display: block; border-radius: 18px; overflow: hidden;">
-        <image-slot id="feat-new-11" style="width: 100%; height: 280px;" shape="rect" fit="cover" placeholder="Drop photo" src="./assets/prod-new-11.jpg"></image-slot>
+        <image-slot id="feat-new-11" style="width: 100%; height: clamp(150px, 34vw, 280px);" shape="rect" fit="cover" placeholder="Drop photo" src="./assets/prod-new-11.jpg"></image-slot>
       </div>
       <div style="display: block; border-radius: 18px; overflow: hidden;">
-        <image-slot id="feat-new-12" style="width: 100%; height: 280px;" shape="rect" fit="cover" placeholder="Drop photo" src="./assets/prod-new-12.jpg"></image-slot>
+        <image-slot id="feat-new-12" style="width: 100%; height: clamp(150px, 34vw, 280px);" shape="rect" fit="cover" placeholder="Drop photo" src="./assets/prod-new-12.jpg"></image-slot>
       </div>
     </div>
   </div>
@@ -441,7 +454,11 @@ const SERVICES = [
 ];
 
 class Component extends DCLogic {
-  state = { visible: {}, view: "home", productSeason: "summer", quoteForm: {} };
+  state = { visible: {}, view: "home", productSeason: "summer", quoteForm: {}, mobileMenuOpen: false };
+
+  toggleMobileMenu() {
+    this.setState((s) => ({ mobileMenuOpen: !s.mobileMenuOpen }));
+  }
 
   setSeason(key) {
     this.setState({ productSeason: key });
@@ -479,9 +496,15 @@ class Component extends DCLogic {
 
   goContact(e) {
     if (e) e.preventDefault();
-    this.setState({ view: "contact" });
+    this.setState({ view: "contact", mobileMenuOpen: false });
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
+
+  goAboutMobile(e) { this.goAbout(e); this.setState({ mobileMenuOpen: false }); }
+  goProductsMobile(e) { this.goProducts(e); this.setState({ mobileMenuOpen: false }); }
+  goServicesMobile(e) { this.goServices(e); this.setState({ mobileMenuOpen: false }); }
+  goCertificatesMobile(e) { this.goCertificates(e); this.setState({ mobileMenuOpen: false }); }
+  goContactMobile(e) { this.goContact(e); }
 
   goQuote(e) {
     if (e) e.preventDefault();
@@ -572,6 +595,13 @@ class Component extends DCLogic {
       goCertificates: (e) => this.goCertificates(e),
       goHome: (e) => this.goHome(e),
       goContact: (e) => this.goContact(e),
+      mobileMenuOpen: this.state.mobileMenuOpen,
+      toggleMobileMenu: () => this.toggleMobileMenu(),
+      goAboutMobile: (e) => this.goAboutMobile(e),
+      goProductsMobile: (e) => this.goProductsMobile(e),
+      goServicesMobile: (e) => this.goServicesMobile(e),
+      goCertificatesMobile: (e) => this.goCertificatesMobile(e),
+      goContactMobile: (e) => this.goContactMobile(e),
       goQuote: (e) => this.goQuote(e),
       quoteForm: this.state.quoteForm,
       submitQuote: (e) => this.submitQuote(e),
