@@ -187,7 +187,7 @@
         </div>
       </div>
       <sc-if value="{{ showShowroomGallery }}" hint-placeholder-val="{{ true }}">
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
         <image-slot id="showroom-gallery-01" style="width: 100%; height: 260px;" shape="rounded" radius="18" fit="cover" placeholder="Drop showroom photo" src="./assets/showroom-01.jpg"></image-slot>
         <image-slot id="showroom-gallery-02" style="width: 100%; height: 260px;" shape="rounded" radius="18" fit="cover" placeholder="Drop showroom photo" src="./assets/showroom-02.jpg"></image-slot>
         <image-slot id="showroom-gallery-03" style="width: 100%; height: 260px;" shape="rounded" radius="18" fit="cover" placeholder="Drop showroom photo" src="./assets/showroom-03.jpg"></image-slot>
@@ -197,7 +197,7 @@
       </div>
       </sc-if>
       <sc-if value="{{ showFactoryGallery }}" hint-placeholder-val="{{ false }}">
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
         <image-slot id="factory-gallery-01" style="width: 100%; height: 260px;" shape="rounded" radius="18" fit="cover" placeholder="Drop factory photo" src="./assets/factory-01.jpg"></image-slot>
         <image-slot id="factory-gallery-02" style="width: 100%; height: 260px;" shape="rounded" radius="18" fit="cover" placeholder="Drop factory photo" src="./assets/factory-02.jpg"></image-slot>
         <image-slot id="factory-gallery-03" style="width: 100%; height: 260px;" shape="rounded" radius="18" fit="cover" placeholder="Drop factory photo" src="./assets/factory-03.jpg"></image-slot>
