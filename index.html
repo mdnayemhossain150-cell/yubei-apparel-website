@@ -215,15 +215,11 @@
     <div style="max-width: 1400px; margin: 0 auto;">
       <a href="#" onClick="{{ goHome }}" style="display: inline-block; margin-bottom: 32px; color: oklch(45% 0.02 80); font-weight: 500; font-size: 14.5px;">&larr; Back to Home</a>
       <div style="text-align: center; margin-bottom: 56px;">
-        <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(58% 0.15 35); margin-bottom: 14px;">Product Collection</div>
+        <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(58% 0.15 35); margin-bottom: 14px;">Winter Collection</div>
         <h2 style="font-family: Sora, sans-serif; font-size: clamp(28px, 3.5vw, 36px); font-weight: 700; margin: 0 0 16px;">Fashionable &amp; Comfortable Overalls Sets</h2>
-        <p style="font-size: 16.5px; color: oklch(40% 0.02 80); max-width: 620px; margin: 0 auto; line-height: 1.65;">Our main product line features high-quality overalls sets for girls &mdash; designed for comfort, durability, and style.</p>
+        <p style="font-size: 16.5px; color: oklch(40% 0.02 80); max-width: 620px; margin: 0 auto; line-height: 1.65;">Our main product line features high-quality overalls sets for girls &mdash; designed for comfort, durability, and style. More seasonal collections coming soon.</p>
       </div>
-      <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 44px;">
-        <sc-for list="{{ seasons }}" as="s" hint-placeholder-count="4">
-          <button onClick="{{ s.onClick }}" style="border: 1.5px solid {{ s.btnStyle.borderColor }}; background: {{ s.btnStyle.background }}; color: {{ s.btnStyle.color }}; padding: 10px 26px; border-radius: 999px; font-weight: 600; font-size: 14.5px; cursor: pointer; font-family: Inter, sans-serif; transition: all 0.2s;">{{ s.label }}</button>
-        </sc-for>
-      </div>
+
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px;">
         <sc-for list="{{ products }}" as="p" hint-placeholder-count="6">
           <div style="border: 1px solid oklch(91% 0.01 80); border-radius: 20px; overflow: hidden; background: oklch(98% 0.01 80); opacity: {{ p.style.opacity }}; transform: {{ p.style.transform }}; transition: {{ p.style.transition }}, box-shadow 0.25s, translate 0.25s;" style-hover="box-shadow: 0 16px 32px oklch(30% 0.02 80 / 0.12); translate: 0 -6px;">
@@ -472,7 +468,7 @@ const SERVICES = [
 ];
 
 class Component extends DCLogic {
-  state = { visible: {}, view: "home", productSeason: "summer", quoteForm: {}, mobileMenuOpen: false, aboutGallery: "showroom" };
+  state = { visible: {}, view: "home", productSeason: "winter", quoteForm: {}, mobileMenuOpen: false, aboutGallery: "showroom" };
 
   setGallery(key) {
     this.setState({ aboutGallery: key });
