@@ -166,6 +166,7 @@
         <image-slot id="showroom-gallery-06" style="width: 100%; height: 260px;" shape="rounded" radius="18" fit="cover" placeholder="Drop showroom photo" src="./assets/showroom-06.jpg"></image-slot>
       </div>
     </div>
+    </div>
   </div>
   </sc-if>
   <sc-if value="{{ showProducts }}" hint-placeholder-val="{{ false }}">
@@ -303,6 +304,44 @@
   </div>
   </sc-if>
 
+  <!-- CONTACT PAGE -->
+  <sc-if value="{{ showContactPage }}" hint-placeholder-val="{{ false }}">
+  <div style="padding: 80px 6vw; background: white;">
+    <div style="max-width: 1100px; margin: 0 auto;">
+      <a href="#" onClick="{{ goHome }}" style="display: inline-block; margin-bottom: 32px; color: oklch(45% 0.02 80); font-weight: 500; font-size: 14.5px;">&larr; Back to Home</a>
+      <div style="text-align: center; margin-bottom: 48px;">
+        <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(58% 0.15 35); margin-bottom: 14px;">Get In Touch</div>
+        <h2 style="font-family: Sora, sans-serif; font-size: clamp(28px, 3.5vw, 36px); font-weight: 700; margin: 0 0 16px;">We'd Love to Hear From You</h2>
+        <p style="font-size: 16.5px; color: oklch(40% 0.02 80); max-width: 640px; margin: 0 auto; line-height: 1.65;">Whether you're exploring a bulk order, custom design, or a new partnership, our team in Huzhou is ready to help. Reach out and we'll respond within 24 hours.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 48px; align-items: start;">
+        <div style="display: flex; flex-direction: column; gap: 22px;">
+          <div>
+            <div style="font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: oklch(58% 0.02 80); margin-bottom: 6px;">Address</div>
+            <div style="font-size: 16px; color: oklch(24% 0.02 80); line-height: 1.5;">No. 317, Fangqian Road, Zhili Town, Huzhou, Zhejiang, China</div>
+          </div>
+          <div>
+            <div style="font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: oklch(58% 0.02 80); margin-bottom: 6px;">Contact Person</div>
+            <div style="font-size: 16px; color: oklch(24% 0.02 80);">Ms. Diana Sun</div>
+          </div>
+          <div>
+            <div style="font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: oklch(58% 0.02 80); margin-bottom: 6px;">Phone / WhatsApp</div>
+            <div style="font-size: 16px; color: oklch(24% 0.02 80);">+86 183 6725 9637</div>
+          </div>
+          <div>
+            <div style="font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: oklch(58% 0.02 80); margin-bottom: 6px;">Email</div>
+            <div style="font-size: 16px;"><a href="mailto:info@yubeiapparel.com" style="color: oklch(58% 0.15 35); text-decoration: none;">info@yubeiapparel.com</a></div>
+          </div>
+          <a href="#quote" onClick="{{ goQuote }}" style="display: inline-block; margin-top: 6px; background: oklch(58% 0.15 35); color: white; padding: 13px 28px; border-radius: 999px; font-weight: 600; font-size: 14.5px; text-align: center; width: fit-content; transition: transform 0.2s, box-shadow 0.2s;" style-hover="transform: translateY(-3px); box-shadow: 0 10px 24px oklch(58% 0.15 35 / 0.35);">Request a Quote</a>
+        </div>
+        <div style="border-radius: 18px; overflow: hidden; height: 380px; border: 1px solid oklch(91% 0.01 80);">
+          <iframe title="Yubei Apparel location map" src="https://www.google.com/maps?q=No.+317+Fangqian+Road+Zhili+Town+Huzhou+Zhejiang+China&output=embed" style="width: 100%; height: 100%; border: 0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
   <!-- CONTACT -->
   <div id="contact" ref="{{ contactRef }}" style="padding: 44px 6vw; background: oklch(96% 0.015 80); opacity: {{ contactVisible.opacity }}; transform: {{ contactVisible.transform }}; transition: {{ contactVisible.transition }};">
     <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
@@ -310,7 +349,7 @@
       <h2 style="font-family: Sora, sans-serif; font-size: clamp(20px, 2.4vw, 24px); font-weight: 700; margin: 0 0 20px;">Let's Build a Successful Partnership</h2>
       <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; text-align: left; font-size: 13.5px; margin-bottom: 22px;">
         <div><span style="font-weight: 700; color: oklch(58% 0.02 80); text-transform: uppercase; font-size: 11px; letter-spacing: 0.04em;">Address:</span> No. 317, Fangqian Road, Zhili Town, Huzhou, Zhejiang</div>
-        <div><span style="font-weight: 700; color: oklch(58% 0.02 80); text-transform: uppercase; font-size: 11px; letter-spacing: 0.04em;">Contact:</span> Ms. Sun</div>
+        <div><span style="font-weight: 700; color: oklch(58% 0.02 80); text-transform: uppercase; font-size: 11px; letter-spacing: 0.04em;">Contact:</span> Ms. Diana Sun</div>
         <div><span style="font-weight: 700; color: oklch(58% 0.02 80); text-transform: uppercase; font-size: 11px; letter-spacing: 0.04em;">Phone:</span> +86 183 6725 9637</div>
         <div><span style="font-weight: 700; color: oklch(58% 0.02 80); text-transform: uppercase; font-size: 11px; letter-spacing: 0.04em;">Email:</span> <a href="mailto:info@yubeiapparel.com">info@yubeiapparel.com</a></div>
       </div>
@@ -428,10 +467,8 @@ class Component extends DCLogic {
 
   goContact(e) {
     if (e) e.preventDefault();
-    this.setState({ view: "home" }, () => {
-      const el = document.getElementById("contact");
-      if (el) el.scrollIntoView({ behavior: "smooth" });
-    });
+    this.setState({ view: "contact" });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   goQuote(e) {
@@ -515,6 +552,7 @@ class Component extends DCLogic {
       showProducts: this.state.view === "products",
       showServices: this.state.view === "services",
       showCertificates: this.state.view === "certificates",
+      showContactPage: this.state.view === "contact",
       showQuote: this.state.view === "quote",
       goProducts: (e) => this.goProducts(e),
       goAbout: (e) => this.goAbout(e),
