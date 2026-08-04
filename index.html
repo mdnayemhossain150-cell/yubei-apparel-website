@@ -55,6 +55,7 @@
         <a href="#products" onClick="{{ goProducts }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 15px; white-space: nowrap; transition: color 0.2s;">Products</a>
         <a href="#services" onClick="{{ goServices }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 15px; white-space: nowrap; transition: color 0.2s;">Services</a>
         <a href="#certificates" onClick="{{ goCertificates }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 15px; white-space: nowrap; transition: color 0.2s;">Certificates</a>
+        <a href="#activity" onClick="{{ goActivity }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 15px; white-space: nowrap; transition: color 0.2s;">Activity</a>
         <a href="#contact" onClick="{{ goContact }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 15px; white-space: nowrap; transition: color 0.2s;">Contact</a>
       </div>
       <a href="#quote" onClick="{{ goQuote }}" class="nav-cta-full" style="background: oklch(58% 0.15 35); color: white; padding: 11px 22px; border-radius: 999px; font-weight: 600; font-size: 14px; white-space: nowrap; flex-shrink: 0; transition: transform 0.2s, background 0.2s; display: inline-block;" style-hover="background: oklch(50% 0.15 35); transform: scale(1.05);">Request Quote</a>
@@ -70,6 +71,7 @@
     <a href="#products" onClick="{{ goProductsMobile }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 16px; padding: 12px 0; border-bottom: 1px solid oklch(92% 0.01 80);">Products</a>
     <a href="#services" onClick="{{ goServicesMobile }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 16px; padding: 12px 0; border-bottom: 1px solid oklch(92% 0.01 80);">Services</a>
     <a href="#certificates" onClick="{{ goCertificatesMobile }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 16px; padding: 12px 0; border-bottom: 1px solid oklch(92% 0.01 80);">Certificates</a>
+    <a href="#activity" onClick="{{ goActivityMobile }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 16px; padding: 12px 0; border-bottom: 1px solid oklch(92% 0.01 80);">Activity</a>
     <a href="#contact" onClick="{{ goContactMobile }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 16px; padding: 12px 0;">Contact</a>
   </div>
   </sc-if>
@@ -221,6 +223,13 @@
         <image-slot id="factory-gallery-06" style="width: 100%; height: 260px;" shape="rounded" radius="18" fit="cover" placeholder="Drop factory photo" src="./assets/factory-06.jpg"></image-slot>
       </div>
       </sc-if>
+    </div>
+    <div style="margin-top: 70px; padding-top: 60px; border-top: 1px solid oklch(90% 0.01 80); display: grid; grid-template-columns: minmax(220px, 320px) 1fr; gap: 48px; align-items: center;">
+      <image-slot id="founder-photo" style="width: 100%; height: 340px;" shape="rounded" radius="20" placeholder="Drop founder photo"></image-slot>
+      <div>
+        <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(58% 0.15 35); margin-bottom: 14px;">Founder Speech</div>
+        <div style="font-size: 17.5px; line-height: 1.75; color: oklch(30% 0.02 80); font-style: italic;">"Drop the founder's message here &mdash; a few sentences about the company's mission, values, and commitment to customers."</div>
+      </div>
     </div>
     </div>
   </div>
@@ -581,6 +590,17 @@ class Component extends DCLogic {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
+  goActivity(e) {
+    if (e) e.preventDefault();
+    this.setState({ view: "activity" });
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  goActivityMobile(e) {
+    this.goActivity(e);
+    this.setState({ mobileMenuOpen: false });
+  }
+
   goCertificates(e) {
     if (e) e.preventDefault();
     this.setState({ view: "certificates" });
@@ -668,6 +688,9 @@ class Component extends DCLogic {
       advantagesRef: this.makeRef("advantages"),
       servicesRef: this.makeRef("services"),
       certsRef: this.makeRef("certs"),
+      activityRef: this.makeRef("activity"),
+      goActivity: (e) => this.goActivity(e),
+      goActivityMobile: (e) => this.goActivityMobile(e),
       contactRef: this.makeRef("contact"),
       contactVisible: this.revealStyle(!!v.contact, 0),
       capabilities: this.stagger(CAPABILITIES, "about"),
@@ -687,6 +710,15 @@ class Component extends DCLogic {
       showProducts: this.state.view === "products",
       showServices: this.state.view === "services",
       showCertificates: this.state.view === "certificates",
+      showActivity: this.state.view === "activity",
+      activityPhotos: this.stagger([
+        { imgId: "activity-01", placeholder: "Drop exhibition photo" },
+        { imgId: "activity-02", placeholder: "Drop exhibition photo" },
+        { imgId: "activity-03", placeholder: "Drop customer meeting photo" },
+        { imgId: "activity-04", placeholder: "Drop customer meeting photo" },
+        { imgId: "activity-05", placeholder: "Drop exhibition photo" },
+        { imgId: "activity-06", placeholder: "Drop customer meeting photo" }
+      ], "activity"),
       showContactPage: this.state.view === "contact",
       showQuote: this.state.view === "quote",
       goProducts: (e) => this.goProducts(e),
