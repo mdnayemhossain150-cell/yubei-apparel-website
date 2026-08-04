@@ -97,79 +97,144 @@
   </div>
 
   <!-- STATS BANNER -->
-  <div id="statsBanner" style="background: oklch(14% 0.02 260); padding: 0 6vw;">
+  <style>
+    #statsBanner {
+      background: linear-gradient(135deg, oklch(13% 0.03 260) 0%, oklch(18% 0.04 280) 50%, oklch(13% 0.03 260) 100%);
+      padding: 0 6vw;
+      position: relative;
+      overflow: hidden;
+    }
+    #statsBanner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 100% at 50% 50%, oklch(58% 0.15 35 / 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .stat-item {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 44px 40px; flex: 1; min-width: 160px; position: relative;
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .stat-item.revealed { opacity: 1; transform: translateY(0); }
+    .stat-icon {
+      font-size: 22px; margin-bottom: 10px; display: block;
+      filter: drop-shadow(0 0 8px oklch(58% 0.15 35 / 0.6));
+    }
+    .stat-number {
+      font-family: Sora, sans-serif;
+      font-size: clamp(36px, 4.5vw, 56px);
+      font-weight: 800; color: white; line-height: 1;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #fff 40%, oklch(80% 0.12 35) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .stat-label {
+      font-size: 11.5px; font-weight: 700;
+      color: oklch(58% 0.05 80);
+      text-transform: uppercase; letter-spacing: 0.1em; margin-top: 8px;
+    }
+    .stat-bar {
+      width: 0; height: 2px;
+      background: linear-gradient(90deg, oklch(58% 0.15 35), oklch(70% 0.12 60));
+      border-radius: 2px; margin-top: 14px;
+      transition: width 1.2s ease;
+    }
+    .stat-item.revealed .stat-bar { width: 48px; }
+    .stat-divider {
+      position: absolute; right: 0; top: 20%; height: 60%;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, oklch(35% 0.02 80), transparent);
+    }
+    @media (max-width: 640px) {
+      .stat-item { padding: 28px 12px; min-width: 130px; }
+      .stat-divider { display: none; }
+      .stat-icon { font-size: 18px; margin-bottom: 7px; }
+    }
+  </style>
+  <div id="statsBanner">
     <div style="max-width: 1400px; margin: 0 auto; display: flex; justify-content: center; align-items: stretch; flex-wrap: wrap; gap: 0;">
-      <div class="stat-item" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 32px 48px; flex: 1; min-width: 160px; position: relative;">
-        <div style="font-family: Sora, sans-serif; font-size: clamp(32px, 4vw, 48px); font-weight: 800; color: white; line-height: 1; letter-spacing: -0.02em;">
-          <span class="stat-count" data-target="500" data-suffix="+">0</span>
-        </div>
-        <div style="font-size: 13px; font-weight: 600; color: oklch(65% 0.02 80); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 8px;">Styles</div>
+      <div class="stat-item" style="transition-delay: 0s;">
+        <span class="stat-icon">👗</span>
+        <div class="stat-number"><span class="stat-count" data-target="500" data-suffix="+">0</span></div>
+        <div class="stat-label">Styles</div>
+        <div class="stat-bar"></div>
         <div class="stat-divider"></div>
       </div>
-      <div class="stat-item" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 32px 48px; flex: 1; min-width: 160px; position: relative;">
-        <div style="font-family: Sora, sans-serif; font-size: clamp(32px, 4vw, 48px); font-weight: 800; color: white; line-height: 1; letter-spacing: -0.02em;">
-          <span class="stat-count" data-target="30" data-suffix="+">0</span>
-        </div>
-        <div style="font-size: 13px; font-weight: 600; color: oklch(65% 0.02 80); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 8px;">Countries</div>
+      <div class="stat-item" style="transition-delay: 0.12s;">
+        <span class="stat-icon">🌍</span>
+        <div class="stat-number"><span class="stat-count" data-target="30" data-suffix="+">0</span></div>
+        <div class="stat-label">Countries</div>
+        <div class="stat-bar"></div>
         <div class="stat-divider"></div>
       </div>
-      <div class="stat-item" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 32px 48px; flex: 1; min-width: 160px; position: relative;">
-        <div style="font-family: Sora, sans-serif; font-size: clamp(32px, 4vw, 48px); font-weight: 800; color: white; line-height: 1; letter-spacing: -0.02em;">
-          <span class="stat-count" data-target="10" data-suffix="+">0</span>
-        </div>
-        <div style="font-size: 13px; font-weight: 600; color: oklch(65% 0.02 80); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 8px;">Years Experience</div>
+      <div class="stat-item" style="transition-delay: 0.24s;">
+        <span class="stat-icon">🏭</span>
+        <div class="stat-number"><span class="stat-count" data-target="10" data-suffix="+">0</span></div>
+        <div class="stat-label">Years Experience</div>
+        <div class="stat-bar"></div>
         <div class="stat-divider"></div>
       </div>
-      <div class="stat-item" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 32px 48px; flex: 1; min-width: 160px; position: relative;">
-        <div style="font-family: Sora, sans-serif; font-size: clamp(32px, 4vw, 48px); font-weight: 800; color: white; line-height: 1; letter-spacing: -0.02em;">
-          <span class="stat-count" data-target="98" data-suffix="%">0</span>
-        </div>
-        <div style="font-size: 13px; font-weight: 600; color: oklch(65% 0.02 80); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 8px;">Repeat Buyers</div>
+      <div class="stat-item" style="transition-delay: 0.36s;">
+        <span class="stat-icon">🤝</span>
+        <div class="stat-number"><span class="stat-count" data-target="98" data-suffix="%">0</span></div>
+        <div class="stat-label">Repeat Buyers</div>
+        <div class="stat-bar"></div>
       </div>
     </div>
   </div>
-  <style>
-    .stat-divider {
-      position: absolute;
-      right: 0; top: 25%; height: 50%;
-      width: 1px;
-      background: oklch(30% 0.02 80);
-    }
-    @media (max-width: 640px) {
-      .stat-item { padding: 24px 16px; min-width: 140px; }
-      .stat-divider { display: none; }
-    }
-  </style>
   <script>
     (function() {
-      function easeOutQuart(t) { return 1 - Math.pow(1 - t, 4); }
+      function easeOutExpo(t) { return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); }
       function animateCount(el) {
         const target = +el.dataset.target;
         const suffix = el.dataset.suffix || "";
-        const duration = 1800;
+        const duration = 2000;
         const start = performance.now();
         function step(now) {
           const elapsed = Math.min(now - start, duration);
-          const progress = easeOutQuart(elapsed / duration);
+          const progress = easeOutExpo(elapsed / duration);
           const value = Math.round(progress * target);
           el.textContent = value + suffix;
           if (elapsed < duration) requestAnimationFrame(step);
         }
         requestAnimationFrame(step);
       }
-      const banner = document.getElementById("statsBanner");
-      const counters = banner.querySelectorAll(".stat-count");
+      function runStats() {
+        const items = document.querySelectorAll('#statsBanner .stat-item');
+        items.forEach(function(item, i) {
+          setTimeout(function() {
+            item.classList.add('revealed');
+            const counter = item.querySelector('.stat-count');
+            if (counter) animateCount(counter);
+          }, i * 140);
+        });
+      }
+      // Fire immediately if already visible, otherwise observe
+      const banner = document.getElementById('statsBanner');
       let fired = false;
-      const obs = new IntersectionObserver(function(entries) {
-        if (entries[0].isIntersecting && !fired) {
+      function tryFire(rect) {
+        if (fired) return;
+        if (!rect) rect = banner.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
           fired = true;
-          counters.forEach(function(el, i) {
-            setTimeout(function() { animateCount(el); }, i * 120);
-          });
-          obs.disconnect();
+          runStats();
+          return true;
         }
-      }, { threshold: 0.4 });
-      obs.observe(banner);
+        return false;
+      }
+      // Try on load first
+      if (!tryFire()) {
+        const obs = new IntersectionObserver(function(entries) {
+          if (entries[0].isIntersecting && !fired) {
+            fired = true;
+            runStats();
+            obs.disconnect();
+          }
+        }, { threshold: 0.1 });
+        obs.observe(banner);
+      }
     })();
   </script>
 
