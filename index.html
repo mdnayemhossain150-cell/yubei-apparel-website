@@ -200,7 +200,7 @@
     (function() {
       function easeOutExpo(t) { return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); }
       function animateCount(el) {
-        if (el._counting) return; // prevent double-firing
+        if (el._counting) return;
         el._counting = true;
         const target = +el.dataset.target;
         const suffix = el.dataset.suffix || "";
@@ -210,42 +210,22 @@
           const elapsed = Math.min(now - start, duration);
           const progress = easeOutExpo(elapsed / duration);
           el.textContent = Math.round(progress * target) + suffix;
-          if (elapsed < duration) {
-            requestAnimationFrame(step);
-          } else {
-            el._counting = false;
-          }
+          if (elapsed < duration) { requestAnimationFrame(step); } else { el._counting = false; }
         }
         requestAnimationFrame(step);
       }
-      function tryRunCounters() {
+      window._runStatCounters = function() {
         const counters = document.querySelectorAll('#statsBanner .stat-count');
-        if (!counters.length) return;
         counters.forEach(function(el, i) {
-          // If showing 0 or empty, re-animate
-          const val = parseInt(el.textContent);
-          if (!val || val === 0) {
-            setTimeout(function() { animateCount(el); }, i * 130);
-          }
+          el._counting = false; // reset so it can re-animate
+          setTimeout(function() { animateCount(el); }, i * 130);
         });
-      }
-      // Watch for DOM changes — re-run counters whenever statsBanner content updates
-      const observer = new MutationObserver(function() {
-        tryRunCounters();
-      });
-      function attachObserver() {
-        const banner = document.getElementById('statsBanner');
-        if (banner) {
-          observer.observe(banner, { childList: true, subtree: true, characterData: true });
-          tryRunCounters();
-        } else {
-          setTimeout(attachObserver, 100);
-        }
-      }
+      };
+      // Run on initial page load
       if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', attachObserver);
+        document.addEventListener('DOMContentLoaded', function() { setTimeout(window._runStatCounters, 400); });
       } else {
-        attachObserver();
+        setTimeout(window._runStatCounters, 400);
       }
     })();
   </script>
@@ -796,6 +776,7 @@ class Component extends DCLogic {
     if (e) e.preventDefault();
     this.setState({ view: "home" });
     window.scrollTo({ top: 0, behavior: "smooth" });
+    setTimeout(function() { window._runStatCounters && window._runStatCounters(); }, 100);
   }
 
   goContact(e) {
