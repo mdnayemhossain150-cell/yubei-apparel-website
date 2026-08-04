@@ -230,7 +230,7 @@
     <div style="max-width: 1400px; margin: 0 auto;">
       <a href="#" onClick="{{ goHome }}" style="display: inline-block; margin-bottom: 32px; color: oklch(45% 0.02 80); font-weight: 500; font-size: 14.5px;">&larr; Back to Home</a>
       <div style="text-align: center; margin-bottom: 56px;">
-        <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(58% 0.15 35); margin-bottom: 14px;">Winter Collection</div>
+        <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(58% 0.15 35); margin-bottom: 14px;">{{ activeSeasonLabel }} Collection</div>
         <h2 style="font-family: Sora, sans-serif; font-size: clamp(28px, 3.5vw, 36px); font-weight: 700; margin: 0 0 16px;">Fashionable &amp; Comfortable Overalls Sets</h2>
         <p style="font-size: 16.5px; color: oklch(40% 0.02 80); max-width: 620px; margin: 0 auto; line-height: 1.65;">Our main product line features high-quality overalls sets for children &mdash; designed for comfort, durability, and style. More seasonal collections coming soon.</p>
       </div>
@@ -488,6 +488,19 @@ PRODUCTS_BY_SEASON.summer.forEach((p, i) => {
   const ov = SUMMER_OVERRIDES[i + 1];
   if (ov) { p.style2 = ov.style2; p.size = ov.size; }
 });
+const AUTUMN_PHOTOS = ["autumn-01.jpg","autumn-02.jpg","autumn-03.jpg","autumn-04.jpg","autumn-05.jpg","autumn-06.jpg","autumn-07.jpg","autumn-08.jpg","autumn-09.jpg","autumn-10.jpg"];
+const AUTUMN_OVERRIDES = {
+  1: { style2: "YB0224", size: "120\u2013160cm" },
+  6: { style2: "YB0286", size: "110\u2013150cm" },
+  7: { style2: "YB0264", size: "110\u2013150cm" },
+  9: { style2: "YB0292", size: "110\u2013150cm" },
+  10: { style2: "YB0277", size: "110\u2013150cm" }
+};
+PRODUCTS_BY_SEASON.autumn.forEach((p, i) => {
+  if (AUTUMN_PHOTOS[i]) p.src = "./assets/" + AUTUMN_PHOTOS[i];
+  const ov = AUTUMN_OVERRIDES[i + 1];
+  if (ov) { p.style2 = ov.style2; p.size = ov.size; }
+});
 const PRODUCTS = PRODUCTS_BY_SEASON.summer;
 const ADVANTAGES = [
   { title: "Superior Quality", desc: "We use premium fabrics and maintain strict quality control throughout the production process." },
@@ -633,6 +646,7 @@ class Component extends DCLogic {
       capabilities: this.stagger(CAPABILITIES, "about"),
       regions: REGIONS.map((name, i) => ({ name, style: this.revealStyle(!!v.regions, i * 0.07) })),
       featured: PRODUCTS.slice(0, 4).map((p) => ({ imgId: "feat-" + p.imgId, placeholder: "Drop photo \u2014 " + p.style2 })),
+      activeSeasonLabel: (SEASONS.find((s) => s.key === this.state.productSeason) || SEASONS[0]).label,
       seasons: SEASONS.map((s) => {
         const active = this.state.productSeason === s.key;
         return { ...s, active, onClick: () => this.setSeason(s.key), btnStyle: { borderColor: active ? "oklch(58% 0.15 35)" : "oklch(80% 0.02 80)", background: active ? "oklch(58% 0.15 35)" : "white", color: active ? "white" : "oklch(30% 0.02 80)" } };
