@@ -81,20 +81,75 @@
 
   <!-- HERO -->
   <sc-if value="{{ showHome }}" hint-placeholder-val="{{ true }}">
-  <div style="position: relative; display: grid; grid-template-columns: minmax(320px, 1.1fr) minmax(280px, 1fr); gap: 60px; align-items: center; padding: 90px 6vw 100px; max-width: 1400px; margin: 0 auto;">
-    <div class="float-blob" style="position: absolute; top: 40px; right: 12%; width: 90px; height: 90px; border-radius: 50%; background: oklch(90% 0.07 150 / 0.5); animation: floatSlow 7s ease-in-out infinite; z-index: 0;"></div>
-    <div class="float-blob" style="position: absolute; bottom: 20px; left: 4%; width: 60px; height: 60px; border-radius: 16px; background: oklch(88% 0.08 35 / 0.4); animation: floatSlow 6s ease-in-out infinite 1s; z-index: 0;"></div>
-    <div style="position: relative; z-index: 1;">
-      <div class="pulse-glow" style="display: inline-block; background: oklch(92% 0.06 150); color: oklch(38% 0.09 150); font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; padding: 7px 16px; border-radius: 999px; margin-bottom: 24px; animation: fadeInUp 0.7s ease both, pulseGlow 2.8s ease-in-out 1s infinite;">Certified Quality Supplier</div>
-      <h1 style="font-family: Sora, sans-serif; font-size: clamp(34px, 4vw, 54px); line-height: 1.08; font-weight: 800; margin: 0 0 22px; letter-spacing: -0.01em; animation: fadeInUp 0.7s ease 0.1s both;">Your Trusted Partner in Kids' Wear</h1>
-      <p style="font-size: 18px; line-height: 1.65; color: oklch(38% 0.02 80); max-width: 520px; margin: 0 0 34px; animation: fadeInUp 0.7s ease 0.2s both;">A professional foreign trade enterprise integrating design, production, sales, and export &mdash; based in Huzhou, Zhejiang, the heart of China's children's clothing manufacturing hub.</p>
-      <div style="display: flex; gap: 16px; flex-wrap: wrap; animation: fadeInUp 0.7s ease 0.3s both;">
-        <a href="#quote" onClick="{{ goQuote }}" style="background: oklch(58% 0.15 35); color: white; padding: 15px 30px; border-radius: 999px; font-weight: 600; font-size: 15px; white-space: nowrap; transition: transform 0.2s, box-shadow 0.2s;" style-hover="transform: translateY(-3px) scale(1.03); box-shadow: 0 10px 24px oklch(58% 0.15 35 / 0.35);">Request a Quote</a>
-        <a href="#products" onClick="{{ goProducts }}" style="border: 1.5px solid oklch(75% 0.02 80); color: oklch(24% 0.02 80); padding: 15px 30px; border-radius: 999px; font-weight: 600; font-size: 15px; white-space: nowrap; transition: transform 0.2s, border-color 0.2s;" style-hover="transform: translateY(-3px) scale(1.03); border-color: oklch(58% 0.15 35);">View Collection</a>
+  <div style="position: relative; width: 100%; overflow: hidden; min-height: 92vh; display: flex; align-items: center;">
+
+    <!-- VIDEO BACKGROUND -->
+    <video id="hero-video" autoplay muted loop playsinline
+      style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
+      <source src="./assets/hero-video.mp4" type="video/mp4">
+      <source src="./assets/hero-video.webm" type="video/webm">
+    </video>
+
+    <!-- DARK OVERLAY -->
+    <div style="position: absolute; inset: 0; background: linear-gradient(120deg, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.15) 100%); z-index: 1;"></div>
+
+    <!-- FLOATING BLOBS (subtle on dark) -->
+    <div class="float-blob" style="position: absolute; top: 40px; right: 12%; width: 90px; height: 90px; border-radius: 50%; background: oklch(90% 0.07 150 / 0.15); animation: floatSlow 7s ease-in-out infinite; z-index: 2;"></div>
+    <div class="float-blob" style="position: absolute; bottom: 20px; left: 4%; width: 60px; height: 60px; border-radius: 16px; background: oklch(88% 0.08 35 / 0.12); animation: floatSlow 6s ease-in-out infinite 1s; z-index: 2;"></div>
+
+    <!-- HERO CONTENT -->
+    <div style="position: relative; z-index: 3; max-width: 1400px; width: 100%; margin: 0 auto; padding: 100px 6vw 110px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+      <div>
+        <div class="pulse-glow" style="display: inline-block; background: oklch(92% 0.06 150 / 0.18); border: 1px solid oklch(92% 0.06 150 / 0.4); color: oklch(85% 0.09 150); font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; padding: 7px 16px; border-radius: 999px; margin-bottom: 24px; animation: fadeInUp 0.7s ease both, pulseGlow 2.8s ease-in-out 1s infinite;">Certified Quality Supplier</div>
+        <h1 style="font-family: Sora, sans-serif; font-size: clamp(34px, 4vw, 58px); line-height: 1.08; font-weight: 800; margin: 0 0 22px; letter-spacing: -0.01em; color: white; animation: fadeInUp 0.7s ease 0.1s both;">Your Trusted Partner in Kids' Wear</h1>
+        <p style="font-size: 18px; line-height: 1.65; color: rgba(255,255,255,0.78); max-width: 520px; margin: 0 0 34px; animation: fadeInUp 0.7s ease 0.2s both;">A professional foreign trade enterprise integrating design, production, sales, and export — based in Huzhou, Zhejiang, the heart of China's children's clothing manufacturing hub.</p>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap; animation: fadeInUp 0.7s ease 0.3s both;">
+          <a href="#quote" onClick="{{ goQuote }}" style="background: oklch(58% 0.15 35); color: white; padding: 15px 30px; border-radius: 999px; font-weight: 600; font-size: 15px; white-space: nowrap; transition: transform 0.2s, box-shadow 0.2s;" style-hover="transform: translateY(-3px) scale(1.03); box-shadow: 0 10px 24px oklch(58% 0.15 35 / 0.45);">Request a Quote</a>
+          <a href="#products" onClick="{{ goProducts }}" style="border: 1.5px solid rgba(255,255,255,0.5); color: white; padding: 15px 30px; border-radius: 999px; font-weight: 600; font-size: 15px; white-space: nowrap; transition: transform 0.2s, border-color 0.2s, background 0.2s;" style-hover="transform: translateY(-3px) scale(1.03); border-color: white; background: rgba(255,255,255,0.1);">View Collection</a>
+        </div>
+      </div>
+
+      <!-- RIGHT: video preview card with play indicator -->
+      <div style="display: flex; align-items: center; justify-content: center;">
+        <div style="position: relative; width: 100%; max-width: 420px; border-radius: 24px; overflow: hidden; box-shadow: 0 32px 80px rgba(0,0,0,0.45); animation: fadeInUp 0.8s ease 0.15s both;">
+          <div style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 24px; padding: 28px; text-align: center; backdrop-filter: blur(12px);">
+            <div style="width: 64px; height: 64px; border-radius: 50%; background: oklch(58% 0.15 35); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; box-shadow: 0 8px 24px oklch(58% 0.15 35 / 0.5);">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <div style="font-family: Sora, sans-serif; font-size: 16px; font-weight: 700; color: white; margin-bottom: 6px;">Watch Our Story</div>
+            <div style="font-size: 13px; color: rgba(255,255,255,0.6);">Kids wearing our latest collection</div>
+          </div>
+        </div>
       </div>
     </div>
-    <image-slot id="hero-img" style="width: 100%; height: min(480px, 40vw); position: relative; z-index: 1; animation: fadeInUp 0.8s ease 0.15s both;" shape="rounded" radius="24" placeholder="Drop hero photo — kids wearing overalls set" src="./assets/company-building.png"></image-slot>
+
+    <!-- SCROLL INDICATOR -->
+    <div style="position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 6px; animation: fadeInUp 1s ease 0.6s both;">
+      <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5);">Scroll</div>
+      <div style="width: 1px; height: 36px; background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent); animation: scrollLine 1.8s ease-in-out infinite;"></div>
+    </div>
   </div>
+  <style>
+    @keyframes scrollLine {
+      0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+      50% { opacity: 1; transform: scaleY(1); }
+    }
+    @media (max-width: 640px) {
+      #hero-video { object-position: center center; }
+      #heroContent { grid-template-columns: 1fr !important; }
+    }
+  </style>
+  <script>
+    // Ensure video plays on mobile (some browsers need a nudge)
+    document.addEventListener('DOMContentLoaded', function() {
+      var v = document.getElementById('hero-video');
+      if (v) {
+        v.play().catch(function() {
+          // Autoplay blocked — video stays as static poster
+        });
+      }
+    });
+  </script>
 
   <!-- STATS BANNER -->
   <style>
