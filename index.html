@@ -96,6 +96,83 @@
     <image-slot id="hero-img" style="width: 100%; height: min(480px, 40vw); position: relative; z-index: 1; animation: fadeInUp 0.8s ease 0.15s both;" shape="rounded" radius="24" placeholder="Drop hero photo — kids wearing overalls set" src="./assets/company-building.png"></image-slot>
   </div>
 
+  <!-- STATS BANNER -->
+  <div id="statsBanner" style="background: oklch(14% 0.02 260); padding: 0 6vw;">
+    <div style="max-width: 1400px; margin: 0 auto; display: flex; justify-content: center; align-items: stretch; flex-wrap: wrap; gap: 0;">
+      <div class="stat-item" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 32px 48px; flex: 1; min-width: 160px; position: relative;">
+        <div style="font-family: Sora, sans-serif; font-size: clamp(32px, 4vw, 48px); font-weight: 800; color: white; line-height: 1; letter-spacing: -0.02em;">
+          <span class="stat-count" data-target="500" data-suffix="+">0</span>
+        </div>
+        <div style="font-size: 13px; font-weight: 600; color: oklch(65% 0.02 80); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 8px;">Styles</div>
+        <div class="stat-divider"></div>
+      </div>
+      <div class="stat-item" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 32px 48px; flex: 1; min-width: 160px; position: relative;">
+        <div style="font-family: Sora, sans-serif; font-size: clamp(32px, 4vw, 48px); font-weight: 800; color: white; line-height: 1; letter-spacing: -0.02em;">
+          <span class="stat-count" data-target="30" data-suffix="+">0</span>
+        </div>
+        <div style="font-size: 13px; font-weight: 600; color: oklch(65% 0.02 80); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 8px;">Countries</div>
+        <div class="stat-divider"></div>
+      </div>
+      <div class="stat-item" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 32px 48px; flex: 1; min-width: 160px; position: relative;">
+        <div style="font-family: Sora, sans-serif; font-size: clamp(32px, 4vw, 48px); font-weight: 800; color: white; line-height: 1; letter-spacing: -0.02em;">
+          <span class="stat-count" data-target="10" data-suffix="+">0</span>
+        </div>
+        <div style="font-size: 13px; font-weight: 600; color: oklch(65% 0.02 80); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 8px;">Years Experience</div>
+        <div class="stat-divider"></div>
+      </div>
+      <div class="stat-item" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 32px 48px; flex: 1; min-width: 160px; position: relative;">
+        <div style="font-family: Sora, sans-serif; font-size: clamp(32px, 4vw, 48px); font-weight: 800; color: white; line-height: 1; letter-spacing: -0.02em;">
+          <span class="stat-count" data-target="98" data-suffix="%">0</span>
+        </div>
+        <div style="font-size: 13px; font-weight: 600; color: oklch(65% 0.02 80); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 8px;">Repeat Buyers</div>
+      </div>
+    </div>
+  </div>
+  <style>
+    .stat-divider {
+      position: absolute;
+      right: 0; top: 25%; height: 50%;
+      width: 1px;
+      background: oklch(30% 0.02 80);
+    }
+    @media (max-width: 640px) {
+      .stat-item { padding: 24px 16px; min-width: 140px; }
+      .stat-divider { display: none; }
+    }
+  </style>
+  <script>
+    (function() {
+      function easeOutQuart(t) { return 1 - Math.pow(1 - t, 4); }
+      function animateCount(el) {
+        const target = +el.dataset.target;
+        const suffix = el.dataset.suffix || "";
+        const duration = 1800;
+        const start = performance.now();
+        function step(now) {
+          const elapsed = Math.min(now - start, duration);
+          const progress = easeOutQuart(elapsed / duration);
+          const value = Math.round(progress * target);
+          el.textContent = value + suffix;
+          if (elapsed < duration) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+      const banner = document.getElementById("statsBanner");
+      const counters = banner.querySelectorAll(".stat-count");
+      let fired = false;
+      const obs = new IntersectionObserver(function(entries) {
+        if (entries[0].isIntersecting && !fired) {
+          fired = true;
+          counters.forEach(function(el, i) {
+            setTimeout(function() { animateCount(el); }, i * 120);
+          });
+          obs.disconnect();
+        }
+      }, { threshold: 0.4 });
+      obs.observe(banner);
+    })();
+  </script>
+
   <!-- FEATURED PHOTOS (opening page teaser, no price) -->
   <div style="padding: 0 6vw 90px; max-width: 1400px; margin: 0 auto;">
     <div style="text-align: center; margin-bottom: 36px;">
