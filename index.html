@@ -99,7 +99,9 @@
   <!-- STATS BANNER -->
   <style>
     #statsBanner {
-      background: linear-gradient(135deg, oklch(13% 0.03 260) 0%, oklch(18% 0.04 280) 50%, oklch(13% 0.03 260) 100%);
+      background: white;
+      border-top: 1px solid oklch(92% 0.01 80);
+      border-bottom: 1px solid oklch(92% 0.01 80);
       padding: 0 6vw;
       position: relative;
       overflow: hidden;
@@ -108,7 +110,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 60% 100% at 50% 50%, oklch(58% 0.15 35 / 0.08) 0%, transparent 70%);
+      background: radial-gradient(ellipse 70% 120% at 50% 50%, oklch(96% 0.04 35 / 0.5) 0%, transparent 70%);
       pointer-events: none;
     }
     .stat-item {
@@ -119,38 +121,37 @@
     }
     .stat-item.revealed { opacity: 1; transform: translateY(0); }
     .stat-icon {
-      font-size: 22px; margin-bottom: 10px; display: block;
-      filter: drop-shadow(0 0 8px oklch(58% 0.15 35 / 0.6));
+      font-size: 24px; margin-bottom: 10px; display: block;
     }
     .stat-number {
       font-family: Sora, sans-serif;
       font-size: clamp(36px, 4.5vw, 56px);
-      font-weight: 800; color: white; line-height: 1;
+      font-weight: 800;
+      color: oklch(58% 0.15 35);
+      line-height: 1;
       letter-spacing: -0.02em;
-      background: linear-gradient(135deg, #fff 40%, oklch(80% 0.12 35) 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
     .stat-label {
       font-size: 11.5px; font-weight: 700;
-      color: oklch(58% 0.05 80);
+      color: oklch(52% 0.02 80);
       text-transform: uppercase; letter-spacing: 0.1em; margin-top: 8px;
     }
     .stat-bar {
       width: 0; height: 2px;
-      background: linear-gradient(90deg, oklch(58% 0.15 35), oklch(70% 0.12 60));
+      background: linear-gradient(90deg, oklch(58% 0.15 35), oklch(72% 0.12 60));
       border-radius: 2px; margin-top: 14px;
-      transition: width 1.2s ease;
+      transition: width 1.2s ease 0.3s;
     }
     .stat-item.revealed .stat-bar { width: 48px; }
     .stat-divider {
       position: absolute; right: 0; top: 20%; height: 60%;
       width: 1px;
-      background: linear-gradient(to bottom, transparent, oklch(35% 0.02 80), transparent);
+      background: linear-gradient(to bottom, transparent, oklch(85% 0.01 80), transparent);
     }
     @media (max-width: 640px) {
       .stat-item { padding: 28px 12px; min-width: 130px; }
       .stat-divider { display: none; }
-      .stat-icon { font-size: 18px; margin-bottom: 7px; }
+      .stat-icon { font-size: 20px; margin-bottom: 7px; }
     }
   </style>
   <div id="statsBanner">
