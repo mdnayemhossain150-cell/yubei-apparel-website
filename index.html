@@ -84,7 +84,7 @@
   <div style="position: relative; width: 100%; overflow: hidden; min-height: 92vh; display: flex; align-items: center;">
 
     <!-- VIDEO BACKGROUND -->
-    <video id="hero-video" autoplay muted loop playsinline poster="./assets/company-building.png"
+    <video id="hero-video" autoplay muted loop playsinline
       style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
       <source src="./assets/hero-video.mp4" type="video/mp4">
       <source src="./assets/hero-video.webm" type="video/webm">
@@ -111,16 +111,16 @@
 
       <!-- RIGHT: company photo -->
       <div style="display: flex; align-items: center; justify-content: center; animation: fadeInUp 0.8s ease 0.15s both;">
-        <div style="position: relative; width: 100%; max-width: 480px;">
-          <image-slot id="hero-img" style="width: 100%; height: min(480px, 40vw); border-radius: 24px; box-shadow: 0 32px 80px rgba(0,0,0,0.45);" shape="rounded" radius="24" placeholder="Drop hero photo — kids wearing overalls set" src="./assets/company-building.png"></image-slot>
+        <div style="position: relative; width: 100%; max-width: 380px;">
+          <image-slot id="hero-img" style="width: 100%; height: 320px; border-radius: 20px; box-shadow: 0 24px 60px rgba(0,0,0,0.5); display: block;" shape="rounded" radius="20" placeholder="Drop hero photo — kids wearing overalls set" src="./assets/company-building.png"></image-slot>
           <!-- Small floating badge on photo -->
-          <div style="position: absolute; bottom: -16px; left: 24px; background: white; border-radius: 14px; padding: 12px 18px; box-shadow: 0 8px 28px rgba(0,0,0,0.18); display: flex; align-items: center; gap: 10px;">
-            <div style="width: 36px; height: 36px; border-radius: 50%; background: oklch(58% 0.15 35); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div style="position: absolute; bottom: -14px; left: 20px; background: white; border-radius: 12px; padding: 10px 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.18); display: flex; align-items: center; gap: 10px;">
+            <div style="width: 32px; height: 32px; border-radius: 50%; background: oklch(58% 0.15 35); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             </div>
             <div>
-              <div style="font-family: Sora, sans-serif; font-size: 13px; font-weight: 700; color: oklch(14% 0.02 80);">Certified Exporter</div>
-              <div style="font-size: 11.5px; color: oklch(52% 0.02 80);">Huzhou, Zhejiang</div>
+              <div style="font-family: Sora, sans-serif; font-size: 12px; font-weight: 700; color: oklch(14% 0.02 80);">Certified Exporter</div>
+              <div style="font-size: 11px; color: oklch(52% 0.02 80);">Huzhou, Zhejiang</div>
             </div>
           </div>
         </div>
