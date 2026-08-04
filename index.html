@@ -198,9 +198,10 @@
       <div style="text-align: center; margin-bottom: 32px;">
         <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(58% 0.15 35); margin-bottom: 14px;">Behind The Brand</div>
         <h3 style="font-family: Sora, sans-serif; font-size: clamp(24px, 3vw, 30px); font-weight: 700; margin: 0 0 24px;">A Look Inside Yubei</h3>
-        <div style="display: inline-flex; gap: 10px;">
+        <div style="display: inline-flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
           <button onClick="{{ setGalleryShowroom }}" style="border: 1.5px solid {{ galleryShowroomStyle.borderColor }}; background: {{ galleryShowroomStyle.background }}; color: {{ galleryShowroomStyle.color }}; padding: 10px 26px; border-radius: 999px; font-weight: 600; font-size: 14.5px; cursor: pointer; font-family: Inter, sans-serif; transition: all 0.2s;">Showroom</button>
           <button onClick="{{ setGalleryFactory }}" style="border: 1.5px solid {{ galleryFactoryStyle.borderColor }}; background: {{ galleryFactoryStyle.background }}; color: {{ galleryFactoryStyle.color }}; padding: 10px 26px; border-radius: 999px; font-weight: 600; font-size: 14.5px; cursor: pointer; font-family: Inter, sans-serif; transition: all 0.2s;">Factory</button>
+          <button onClick="{{ setGalleryFounder }}" style="border: 1.5px solid {{ galleryFounderStyle.borderColor }}; background: {{ galleryFounderStyle.background }}; color: {{ galleryFounderStyle.color }}; padding: 10px 26px; border-radius: 999px; font-weight: 600; font-size: 14.5px; cursor: pointer; font-family: Inter, sans-serif; transition: all 0.2s;">Founder &amp; Vision</button>
         </div>
       </div>
       <sc-if value="{{ showShowroomGallery }}" hint-placeholder-val="{{ true }}">
@@ -223,13 +224,40 @@
         <image-slot id="factory-gallery-06" style="width: 100%; height: 260px;" shape="rounded" radius="18" fit="cover" placeholder="Drop factory photo" src="./assets/factory-06.jpg"></image-slot>
       </div>
       </sc-if>
-    </div>
-    <div style="margin-top: 70px; padding-top: 60px; border-top: 1px solid oklch(90% 0.01 80); display: grid; grid-template-columns: minmax(220px, 320px) 1fr; gap: 48px; align-items: center;">
-      <image-slot id="founder-photo" style="width: 100%; height: 340px;" shape="rounded" radius="20" placeholder="Drop founder photo"></image-slot>
-      <div>
-        <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(58% 0.15 35); margin-bottom: 14px;">Founder Speech</div>
-        <div style="font-size: 17.5px; line-height: 1.75; color: oklch(30% 0.02 80); font-style: italic;">"Drop the founder's message here &mdash; a few sentences about the company's mission, values, and commitment to customers."</div>
+      <sc-if value="{{ showFounderGallery }}" hint-placeholder-val="{{ false }}">
+      <div style="background: oklch(96% 0.015 80); border-radius: 24px; padding: clamp(28px, 4vw, 52px); margin-bottom: 60px;">
+        <image-slot id="founder-photo" style="width: 100%; aspect-ratio: 1100 / 505; box-shadow: 0 18px 40px oklch(30% 0.02 80 / 0.18); margin-bottom: 40px;" shape="rounded" radius="20" fit="cover" placeholder="Drop founder photo" src="./assets/founder-photo.jpg"></image-slot>
+        <div style="font-size: 16px; line-height: 1.8; color: oklch(30% 0.02 80); max-width: 720px;">
+          <div style="width: 44px; height: 3px; background: oklch(58% 0.15 35); margin-bottom: 18px;"></div>
+          <div style="font-family: Sora, sans-serif; font-weight: 700; font-size: 26px; margin-bottom: 20px;">Founder Speech</div>
+          <p style="margin: 0 0 16px;">Dear Valued Customers and Partners, it is my pleasure to welcome you to Yubei and share the passion and vision behind our brand.</p>
+          <p style="margin: 0 0 16px;">Yubei was created with a simple belief: every child deserves clothing that is comfortable, stylish, and made with care.</p>
+          <p style="margin: 0 0 16px;">We believe children's clothing is not only about appearance, but also about comfort, confidence, and the beautiful memories created during childhood. Every design we create reflects our commitment to quality, creativity, and attention to detail.</p>
+          <p style="margin: 0 0 16px;">At Yubei, we continuously develop fashionable and practical children's wear while building trusted and lasting relationships with customers and partners around the world.</p>
+          <p style="margin: 0 0 22px;">Thank you for your trust and support. Together, we hope to bring more happiness, confidence, and beautiful memories to children everywhere.</p>
+          <div style="display: flex; align-items: center; gap: 14px; padding-top: 18px; border-top: 1px solid oklch(88% 0.01 80);">
+            <div style="width: 40px; height: 40px; border-radius: 50%; background: oklch(58% 0.15 35); color: white; display: flex; align-items: center; justify-content: center; font-family: Sora, sans-serif; font-weight: 700; font-size: 16px; flex-shrink: 0;">Y</div>
+            <div style="font-weight: 700; font-family: Sora, sans-serif; font-size: 15.5px;">Founder of Yubei Children's Clothes</div>
+          </div>
+        </div>
       </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px;">
+        <div style="background: oklch(96% 0.015 80); border-radius: 20px; padding: 36px 32px; position: relative; overflow: hidden;">
+          <div style="width: 46px; height: 46px; border-radius: 50%; background: oklch(58% 0.15 35); display: flex; align-items: center; justify-content: center; margin-bottom: 18px;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 3"></path></svg>
+          </div>
+          <div style="font-family: Sora, sans-serif; font-weight: 700; font-size: 19px; margin-bottom: 12px;">Our Mission</div>
+          <div style="font-size: 15px; color: oklch(38% 0.02 80); line-height: 1.75;">To create high-quality children's clothing that combines comfort, creativity, and style, while bringing confidence and happiness to children and peace of mind to parents.</div>
+        </div>
+        <div style="background: oklch(96% 0.015 80); border-radius: 20px; padding: 36px 32px; position: relative; overflow: hidden;">
+          <div style="width: 46px; height: 46px; border-radius: 50%; background: oklch(58% 0.15 35); display: flex; align-items: center; justify-content: center; margin-bottom: 18px;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+          </div>
+          <div style="font-family: Sora, sans-serif; font-weight: 700; font-size: 19px; margin-bottom: 12px;">Our Vision</div>
+          <div style="font-size: 15px; color: oklch(38% 0.02 80); line-height: 1.75;">To become a trusted global children's fashion brand, recognized for quality, innovation, and meaningful partnerships with families and businesses worldwide.</div>
+        </div>
+      </div>
+      </sc-if>
     </div>
     </div>
   </div>
@@ -729,10 +757,13 @@ class Component extends DCLogic {
       goContact: (e) => this.goContact(e),
       setGalleryShowroom: () => this.setGallery("showroom"),
       setGalleryFactory: () => this.setGallery("factory"),
+      setGalleryFounder: () => this.setGallery("founder"),
       showShowroomGallery: this.state.aboutGallery === "showroom",
       showFactoryGallery: this.state.aboutGallery === "factory",
+      showFounderGallery: this.state.aboutGallery === "founder",
       galleryShowroomStyle: { borderColor: this.state.aboutGallery === "showroom" ? "oklch(58% 0.15 35)" : "oklch(80% 0.02 80)", background: this.state.aboutGallery === "showroom" ? "oklch(58% 0.15 35)" : "white", color: this.state.aboutGallery === "showroom" ? "white" : "oklch(30% 0.02 80)" },
       galleryFactoryStyle: { borderColor: this.state.aboutGallery === "factory" ? "oklch(58% 0.15 35)" : "oklch(80% 0.02 80)", background: this.state.aboutGallery === "factory" ? "oklch(58% 0.15 35)" : "white", color: this.state.aboutGallery === "factory" ? "white" : "oklch(30% 0.02 80)" },
+      galleryFounderStyle: { borderColor: this.state.aboutGallery === "founder" ? "oklch(58% 0.15 35)" : "oklch(80% 0.02 80)", background: this.state.aboutGallery === "founder" ? "oklch(58% 0.15 35)" : "white", color: this.state.aboutGallery === "founder" ? "white" : "oklch(30% 0.02 80)" },
       mobileMenuOpen: this.state.mobileMenuOpen,
       toggleMobileMenu: () => this.toggleMobileMenu(),
       goAboutMobile: (e) => this.goAboutMobile(e),
