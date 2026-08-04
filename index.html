@@ -488,13 +488,20 @@ PRODUCTS_BY_SEASON.summer.forEach((p, i) => {
   const ov = SUMMER_OVERRIDES[i + 1];
   if (ov) { p.style2 = ov.style2; p.size = ov.size; }
 });
-const AUTUMN_PHOTOS = ["autumn-01.jpg","autumn-02.jpg","autumn-03.jpg","autumn-04.jpg","autumn-05.jpg","autumn-06.jpg","autumn-07.jpg","autumn-08.jpg","autumn-09.jpg","autumn-10.jpg"];
+const AUTUMN_PHOTOS = ["autumn-01.jpg","autumn-02.jpg","autumn-03.jpg","autumn-04.jpg","autumn-05.jpg","autumn-06.jpg","autumn-07.jpg","autumn-08.jpg","autumn-09.jpg","autumn-10.jpg","autumn-11.jpg","autumn-12.jpg","autumn-13.jpg","autumn-14.jpg","autumn-15.jpg","autumn-16.jpg","autumn-17.jpg","autumn-18.jpg","autumn-19.jpg","autumn-20.jpg"];
 const AUTUMN_OVERRIDES = {
   1: { style2: "YB0224", size: "120\u2013160cm" },
   6: { style2: "YB0286", size: "110\u2013150cm" },
   7: { style2: "YB0264", size: "110\u2013150cm" },
   9: { style2: "YB0292", size: "110\u2013150cm" },
-  10: { style2: "YB0277", size: "110\u2013150cm" }
+  10: { style2: "YB0277", size: "110\u2013150cm" },
+  12: { style2: "31136#", size: "6Y\u201314Y" },
+  13: { style2: "111536#", size: "6Y\u201314Y" },
+  14: { style2: "31536#", size: "6Y\u201314Y" },
+  17: { style2: "315128#", size: "120\u2013160cm" },
+  18: { style2: "16236#", size: "6Y\u201314Y" },
+  19: { style2: "315428#", size: "120\u2013160cm" },
+  20: { style2: "YB0214", size: "120\u2013160cm" }
 };
 PRODUCTS_BY_SEASON.autumn.forEach((p, i) => {
   if (AUTUMN_PHOTOS[i]) p.src = "./assets/" + AUTUMN_PHOTOS[i];
