@@ -597,30 +597,30 @@ class Component extends DCLogic {
   }
 
   setSeason(key) {
-    this.setState({ productSeason: key });
+    this.setState((s) => ({ productSeason: key, visible: { ...s.visible, products: true } }));
   }
 
   goProducts(e) {
     if (e) e.preventDefault();
-    this.setState({ view: "products" });
+    this.setState((s) => ({ view: "products", visible: { ...s.visible, products: true } }));
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   goAbout(e) {
     if (e) e.preventDefault();
-    this.setState({ view: "about" });
+    this.setState((s) => ({ view: "about", visible: { ...s.visible, about: true } }));
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   goServices(e) {
     if (e) e.preventDefault();
-    this.setState({ view: "services" });
+    this.setState((s) => ({ view: "services", visible: { ...s.visible, services: true } }));
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   goActivity(e) {
     if (e) e.preventDefault();
-    this.setState({ view: "activity" });
+    this.setState((s) => ({ view: "activity", visible: { ...s.visible, activity: true } }));
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
