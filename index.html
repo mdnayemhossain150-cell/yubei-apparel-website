@@ -37,7 +37,10 @@
   @keyframes fadeInUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes floatSlow { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-16px) rotate(3deg); } }
   @keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 0 0 oklch(70% 0.15 150 / 0.35); } 50% { box-shadow: 0 0 0 8px oklch(70% 0.15 150 / 0); } }
-  @media (max-width: 640px) { .nav-links-desktop { display: none !important; } .nav-cta-full { display: none !important; } .nav-cta-short { display: inline-block !important; } .mobile-menu-btn { display: flex !important; } .new-arrivals-grid { grid-template-columns: repeat(2, 1fr) !important; } .gallery-grid-3 { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; } .products-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; } .products-grid .prod-img { height: clamp(140px, 42vw, 240px) !important; } }
+  @media (max-width: 640px) { .nav-links-desktop { display: none !important; } .nav-cta-full { display: none !important; } .nav-cta-short { display: inline-block !important; } .mobile-menu-btn { display: flex !important; } .new-arrivals-grid { grid-template-columns: repeat(2, 1fr) !important; } .gallery-grid-3 { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; } .products-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; } .products-grid .prod-img { height: clamp(140px, 42vw, 240px) !important; } .float-blob { animation: none !important; } .pulse-glow { animation: fadeInUp 0.7s ease both !important; } .prod-card { transition: none !important; } }
+  .products-grid { contain: layout style; }
+  .float-blob { will-change: transform; }
+  .prod-card { will-change: transform; }
   .nav-cta-short { display: none; }
   .mobile-menu-btn { display: none; }
 </style>
@@ -79,10 +82,10 @@
   <!-- HERO -->
   <sc-if value="{{ showHome }}" hint-placeholder-val="{{ true }}">
   <div style="position: relative; display: grid; grid-template-columns: minmax(320px, 1.1fr) minmax(280px, 1fr); gap: 60px; align-items: center; padding: 90px 6vw 100px; max-width: 1400px; margin: 0 auto;">
-    <div style="position: absolute; top: 40px; right: 12%; width: 90px; height: 90px; border-radius: 50%; background: oklch(90% 0.07 150 / 0.5); animation: floatSlow 7s ease-in-out infinite; z-index: 0;"></div>
-    <div style="position: absolute; bottom: 20px; left: 4%; width: 60px; height: 60px; border-radius: 16px; background: oklch(88% 0.08 35 / 0.4); animation: floatSlow 6s ease-in-out infinite 1s; z-index: 0;"></div>
+    <div class="float-blob" style="position: absolute; top: 40px; right: 12%; width: 90px; height: 90px; border-radius: 50%; background: oklch(90% 0.07 150 / 0.5); animation: floatSlow 7s ease-in-out infinite; z-index: 0;"></div>
+    <div class="float-blob" style="position: absolute; bottom: 20px; left: 4%; width: 60px; height: 60px; border-radius: 16px; background: oklch(88% 0.08 35 / 0.4); animation: floatSlow 6s ease-in-out infinite 1s; z-index: 0;"></div>
     <div style="position: relative; z-index: 1;">
-      <div style="display: inline-block; background: oklch(92% 0.06 150); color: oklch(38% 0.09 150); font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; padding: 7px 16px; border-radius: 999px; margin-bottom: 24px; animation: fadeInUp 0.7s ease both, pulseGlow 2.8s ease-in-out 1s infinite;">Certified Quality Supplier</div>
+      <div class="pulse-glow" style="display: inline-block; background: oklch(92% 0.06 150); color: oklch(38% 0.09 150); font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; padding: 7px 16px; border-radius: 999px; margin-bottom: 24px; animation: fadeInUp 0.7s ease both, pulseGlow 2.8s ease-in-out 1s infinite;">Certified Quality Supplier</div>
       <h1 style="font-family: Sora, sans-serif; font-size: clamp(34px, 4vw, 54px); line-height: 1.08; font-weight: 800; margin: 0 0 22px; letter-spacing: -0.01em; animation: fadeInUp 0.7s ease 0.1s both;">Your Trusted Partner in Kids' Wear</h1>
       <p style="font-size: 18px; line-height: 1.65; color: oklch(38% 0.02 80); max-width: 520px; margin: 0 0 34px; animation: fadeInUp 0.7s ease 0.2s both;">A professional foreign trade enterprise integrating design, production, sales, and export &mdash; based in Huzhou, Zhejiang, the heart of China's children's clothing manufacturing hub.</p>
       <div style="display: flex; gap: 16px; flex-wrap: wrap; animation: fadeInUp 0.7s ease 0.3s both;">
@@ -280,7 +283,7 @@
 
       <div class="products-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px;">
         <sc-for list="{{ products }}" as="p" hint-placeholder-count="6">
-          <div style="border: 1px solid oklch(91% 0.01 80); border-radius: 20px; overflow: hidden; background: oklch(98% 0.01 80); opacity: {{ p.style.opacity }}; transform: {{ p.style.transform }}; transition: {{ p.style.transition }}, box-shadow 0.25s, translate 0.25s;" style-hover="box-shadow: 0 16px 32px oklch(30% 0.02 80 / 0.12); translate: 0 -6px;">
+          <div class="prod-card" style="border: 1px solid oklch(91% 0.01 80); border-radius: 20px; overflow: hidden; background: oklch(98% 0.01 80); opacity: {{ p.style.opacity }}; transform: {{ p.style.transform }}; transition: {{ p.style.transition }}, box-shadow 0.25s, translate 0.25s;" style-hover="box-shadow: 0 16px 32px oklch(30% 0.02 80 / 0.12); translate: 0 -6px;">
             <image-slot id="{{ p.imgId }}" class="prod-img" style="width: 100%; height: clamp(200px, 28vw, 360px);" shape="rect" fit="contain" placeholder="{{ p.placeholder }}" src="{{ p.src }}"></image-slot>
             <div style="padding: 22px;">
               <div style="margin-bottom: 10px;">
@@ -694,16 +697,20 @@ class Component extends DCLogic {
   }
 
   revealStyle(shown, delay) {
+    const dur = window.innerWidth <= 640 ? "0.35s" : "0.6s";
+    const shift = window.innerWidth <= 640 ? "16px" : "28px";
     return {
       opacity: shown ? 1 : 0,
-      transform: shown ? "translateY(0)" : "translateY(28px)",
-      transition: `opacity 0.6s ease ${delay}s, transform 0.6s ease ${delay}s`
+      transform: shown ? "translateY(0)" : `translateY(${shift})`,
+      transition: `opacity ${dur} ease ${delay}s, transform ${dur} ease ${delay}s`
     };
   }
 
   stagger(list, sectionKey) {
     const shown = !!this.state.visible[sectionKey];
-    return list.map((item, i) => ({ ...item, style: this.revealStyle(shown, i * 0.08), src: item.src || "" }));
+    const isMobile = window.innerWidth <= 640;
+    const delay = isMobile ? 0.04 : 0.08;
+    return list.map((item, i) => ({ ...item, style: this.revealStyle(shown, i * delay), src: item.src || "" }));
   }
 
   renderVals() {
