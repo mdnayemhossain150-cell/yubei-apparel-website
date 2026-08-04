@@ -1548,6 +1548,126 @@ class Component extends DCLogic {
       });
     })();
   </script>
+  <!-- BACK TO TOP BUTTON -->
+  <style>
+    #backToTop {
+      position: fixed; bottom: 108px; right: 88px;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: white; border: 1.5px solid oklch(88% 0.01 80);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; z-index: 9997;
+      opacity: 0; transform: translateY(12px);
+      transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s, box-shadow 0.2s;
+      pointer-events: none;
+    }
+    #backToTop.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    #backToTop:hover { background: oklch(58% 0.15 35); box-shadow: 0 6px 20px oklch(58% 0.15 35 / 0.4); }
+    #backToTop:hover svg { stroke: white; }
+    @media (max-width: 640px) { #backToTop { bottom: 90px; right: 80px; width: 40px; height: 40px; } }
+  </style>
+  <button id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="oklch(40% 0.02 80)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+  <script>
+    (function() {
+      var btn = document.getElementById('backToTop');
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) { btn.classList.add('visible'); }
+        else { btn.classList.remove('visible'); }
+      }, { passive: true });
+    })();
+  </script>
+
+  <!-- STICKY QUOTE BAR (mobile only) -->
+  <style>
+    #stickyQuoteBar {
+      display: none;
+      position: fixed; bottom: 0; left: 0; right: 0;
+      z-index: 9996;
+      background: white;
+      border-top: 1px solid oklch(90% 0.01 80);
+      padding: 12px 20px;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.10);
+      align-items: center; justify-content: space-between; gap: 12px;
+    }
+    #stickyQuoteBar.show { display: flex; }
+    .sqb-text { font-size: 13px; font-weight: 600; color: oklch(30% 0.02 80); line-height: 1.3; }
+    .sqb-text span { display: block; font-size: 11.5px; font-weight: 400; color: oklch(55% 0.02 80); }
+    .sqb-btn {
+      background: oklch(58% 0.15 35); color: white;
+      padding: 11px 22px; border-radius: 999px;
+      font-weight: 700; font-size: 14px;
+      border: none; cursor: pointer; white-space: nowrap;
+      flex-shrink: 0;
+    }
+    @media (min-width: 641px) { #stickyQuoteBar { display: none !important; } }
+  </style>
+  <div id="stickyQuoteBar">
+    <div class="sqb-text">Interested in our products?<span>Get a quote in 24 hours</span></div>
+    <button class="sqb-btn" id="sqbBtn">Request Quote →</button>
+  </div>
+  <script>
+    (function() {
+      var bar = document.getElementById('stickyQuoteBar');
+      var sqbBtn = document.getElementById('sqbBtn');
+      var shown = false;
+
+      // Show bar only when on products page
+      function checkShow() {
+        var onProducts = document.getElementById('products') && document.getElementById('products').offsetParent !== null;
+        if (onProducts && !shown) { bar.classList.add('show'); shown = true; }
+        else if (!onProducts) { bar.classList.remove('show'); shown = false; }
+      }
+      setInterval(checkShow, 500);
+
+      sqbBtn.addEventListener('click', function() {
+        bar.classList.remove('show');
+        // trigger goQuote
+        var quoteLink = document.querySelector('[onclick*="goQuote"]');
+        if (quoteLink) quoteLink.click();
+      });
+    })();
+  </script>
+
+  <!-- IMAGE SKELETON SHIMMER -->
+  <style>
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    image-slot:not([src-loaded]) {
+      background: linear-gradient(90deg, oklch(93% 0.01 80) 25%, oklch(97% 0.005 80) 50%, oklch(93% 0.01 80) 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.6s ease-in-out infinite;
+      border-radius: 8px;
+      display: block;
+    }
+    image-slot[src-loaded] { animation: none; background: none; }
+  </style>
+  <script>
+    (function() {
+      function initSkeletons() {
+        document.querySelectorAll('image-slot').forEach(function(el) {
+          var src = el.getAttribute('src');
+          if (!src || src.includes('{{')) return;
+          var img = new Image();
+          img.onload = function() { el.setAttribute('src-loaded', '1'); };
+          img.onerror = function() { el.setAttribute('src-loaded', '1'); };
+          img.src = src;
+        });
+      }
+      // Run on load and again after framework renders
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() { setTimeout(initSkeletons, 500); });
+      } else {
+        setTimeout(initSkeletons, 500);
+      }
+      // Re-check periodically for dynamically rendered slots
+      setTimeout(initSkeletons, 2000);
+      setTimeout(initSkeletons, 4000);
+    })();
+  </script>
 
 </body>
 </html>
