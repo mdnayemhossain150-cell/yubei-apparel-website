@@ -200,6 +200,8 @@
     (function() {
       function easeOutExpo(t) { return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); }
       function animateCount(el) {
+        if (el._counting) return; // prevent double-firing
+        el._counting = true;
         const target = +el.dataset.target;
         const suffix = el.dataset.suffix || "";
         const duration = 2000;
@@ -208,26 +210,42 @@
           const elapsed = Math.min(now - start, duration);
           const progress = easeOutExpo(elapsed / duration);
           el.textContent = Math.round(progress * target) + suffix;
-          if (elapsed < duration) requestAnimationFrame(step);
+          if (elapsed < duration) {
+            requestAnimationFrame(step);
+          } else {
+            el._counting = false;
+          }
         }
         requestAnimationFrame(step);
       }
-      function startCounters() {
-        var delays = [0, 130, 260, 390];
-        var counters = document.querySelectorAll('#statsBanner .stat-count');
-        if (!counters.length) {
-          setTimeout(startCounters, 100);
-          return;
-        }
+      function tryRunCounters() {
+        const counters = document.querySelectorAll('#statsBanner .stat-count');
+        if (!counters.length) return;
         counters.forEach(function(el, i) {
-          setTimeout(function() { animateCount(el); }, delays[i]);
+          // If showing 0 or empty, re-animate
+          const val = parseInt(el.textContent);
+          if (!val || val === 0) {
+            setTimeout(function() { animateCount(el); }, i * 130);
+          }
         });
       }
-      // Wait for page to be ready, then start
+      // Watch for DOM changes — re-run counters whenever statsBanner content updates
+      const observer = new MutationObserver(function() {
+        tryRunCounters();
+      });
+      function attachObserver() {
+        const banner = document.getElementById('statsBanner');
+        if (banner) {
+          observer.observe(banner, { childList: true, subtree: true, characterData: true });
+          tryRunCounters();
+        } else {
+          setTimeout(attachObserver, 100);
+        }
+      }
       if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function() { setTimeout(startCounters, 300); });
+        document.addEventListener('DOMContentLoaded', attachObserver);
       } else {
-        setTimeout(startCounters, 300);
+        attachObserver();
       }
     })();
   </script>
