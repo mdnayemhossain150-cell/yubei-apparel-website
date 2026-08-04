@@ -417,7 +417,7 @@
 
       <div class="products-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px;">
         <sc-for list="{{ products }}" as="p" hint-placeholder-count="6">
-          <div class="prod-card" style="border: 1px solid oklch(91% 0.01 80); border-radius: 20px; overflow: hidden; background: oklch(98% 0.01 80); opacity: {{ p.style.opacity }}; transform: {{ p.style.transform }}; transition: {{ p.style.transition }}, box-shadow 0.25s, translate 0.25s;" style-hover="box-shadow: 0 16px 32px oklch(30% 0.02 80 / 0.12); translate: 0 -6px;">
+          <div class="prod-card" onclick="window._openLightbox(this)" data-src="{{ p.src }}" data-model="{{ p.style2 }}" data-size="{{ p.size }}" data-weight="{{ p.weight }}" data-season="{{ p.season }}" style="border: 1px solid oklch(91% 0.01 80); border-radius: 20px; overflow: hidden; background: oklch(98% 0.01 80); opacity: {{ p.style.opacity }}; transform: {{ p.style.transform }}; transition: {{ p.style.transition }}, box-shadow 0.25s, translate 0.25s; cursor: zoom-in;" style-hover="box-shadow: 0 16px 32px oklch(30% 0.02 80 / 0.12); translate: 0 -6px;">
             <image-slot id="{{ p.imgId }}" class="prod-img" style="width: 100%; height: clamp(200px, 28vw, 360px);" shape="rect" fit="contain" placeholder="{{ p.placeholder }}" src="{{ p.src }}"></image-slot>
             <div style="padding: 22px;">
               <div style="margin-bottom: 10px;">
@@ -427,6 +427,10 @@
                 <div><b style="color: oklch(24% 0.02 80);">Size:</b> {{ p.size }}</div>
                 <div><b style="color: oklch(24% 0.02 80);">Weight:</b> {{ p.weight }}</div>
                 <div><b style="color: oklch(24% 0.02 80);">Season:</b> {{ p.season }}</div>
+              </div>
+              <div style="margin-top: 14px; font-size: 12.5px; color: oklch(65% 0.02 80); display: flex; align-items: center; gap: 5px;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>
+                Tap to zoom
               </div>
             </div>
           </div>
@@ -1060,5 +1064,221 @@ class Component extends DCLogic {
       });
     })();
   </script>
+  <!-- PRODUCT LIGHTBOX -->
+  <style>
+    #lb-overlay {
+      display: none;
+      position: fixed; inset: 0; z-index: 99999;
+      background: rgba(0,0,0,0.92);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      align-items: center; justify-content: center;
+      padding: 20px;
+      animation: lbFadeIn 0.22s ease;
+    }
+    #lb-overlay.open { display: flex; }
+    @keyframes lbFadeIn { from { opacity: 0; } to { opacity: 1; } }
+    #lb-box {
+      position: relative;
+      display: flex; flex-direction: row; gap: 0;
+      background: white; border-radius: 24px;
+      overflow: hidden;
+      max-width: 900px; width: 100%;
+      max-height: 90vh;
+      animation: lbSlideUp 0.25s ease;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.5);
+    }
+    @keyframes lbSlideUp { from { transform: translateY(20px) scale(0.97); opacity: 0; } to { transform: none; opacity: 1; } }
+    #lb-img-wrap {
+      flex: 1.2; background: oklch(97% 0.01 80);
+      display: flex; align-items: center; justify-content: center;
+      min-height: 340px; padding: 32px;
+    }
+    #lb-img {
+      max-width: 100%; max-height: 60vh;
+      object-fit: contain; border-radius: 8px;
+      display: block;
+    }
+    #lb-placeholder {
+      width: 100%; height: 340px;
+      display: flex; align-items: center; justify-content: center;
+      color: oklch(65% 0.02 80); font-size: 14px; font-family: Inter, sans-serif;
+    }
+    #lb-info {
+      flex: 0.8; padding: 40px 36px;
+      display: flex; flex-direction: column; justify-content: center;
+      overflow-y: auto;
+    }
+    #lb-tag {
+      font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+      color: oklch(58% 0.15 35); margin-bottom: 10px;
+    }
+    #lb-model {
+      font-family: Sora, sans-serif; font-size: 26px; font-weight: 800;
+      color: oklch(14% 0.02 80); margin-bottom: 28px; line-height: 1.2;
+    }
+    .lb-field {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 13px 0; border-bottom: 1px solid oklch(93% 0.01 80);
+      font-family: Inter, sans-serif; font-size: 14px;
+    }
+    .lb-field:last-of-type { border-bottom: none; }
+    .lb-field-key { color: oklch(52% 0.02 80); font-weight: 500; }
+    .lb-field-val { color: oklch(18% 0.02 80); font-weight: 600; }
+    #lb-cta {
+      margin-top: 28px;
+      background: oklch(58% 0.15 35); color: white;
+      padding: 14px 28px; border-radius: 999px;
+      font-weight: 600; font-size: 15px; font-family: Inter, sans-serif;
+      border: none; cursor: pointer; width: 100%;
+      transition: background 0.2s;
+    }
+    #lb-cta:hover { background: oklch(50% 0.15 35); }
+    #lb-close {
+      position: absolute; top: 16px; right: 16px;
+      width: 36px; height: 36px; border-radius: 50%;
+      background: oklch(94% 0.01 80); border: none;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; z-index: 10; transition: background 0.2s;
+    }
+    #lb-close:hover { background: oklch(88% 0.01 80); }
+    #lb-prev, #lb-next {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 40px; height: 40px; border-radius: 50%;
+      background: white; border: 1px solid oklch(88% 0.01 80);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; z-index: 10; transition: background 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    #lb-prev { left: 12px; }
+    #lb-next { right: 12px; }
+    #lb-prev:hover, #lb-next:hover { background: oklch(58% 0.15 35); color: white; box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
+    #lb-counter {
+      position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%);
+      font-size: 12px; font-weight: 600; color: oklch(55% 0.02 80);
+      font-family: Inter, sans-serif; background: white;
+      padding: 4px 12px; border-radius: 999px;
+      border: 1px solid oklch(90% 0.01 80);
+    }
+    @media (max-width: 640px) {
+      #lb-box { flex-direction: column; max-height: 92vh; border-radius: 20px; }
+      #lb-img-wrap { min-height: 220px; padding: 20px; flex: none; }
+      #lb-img { max-height: 38vh; }
+      #lb-info { padding: 22px 20px 28px; flex: none; }
+      #lb-model { font-size: 20px; margin-bottom: 16px; }
+      #lb-prev { left: 6px; }
+      #lb-next { right: 6px; }
+    }
+  </style>
+
+  <div id="lb-overlay" onclick="if(event.target===this)window._closeLightbox()">
+    <div id="lb-box">
+      <button id="lb-close" onclick="window._closeLightbox()" aria-label="Close">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+      <button id="lb-prev" onclick="window._lbNav(-1)" aria-label="Previous">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button id="lb-next" onclick="window._lbNav(1)" aria-label="Next">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+      <div id="lb-img-wrap">
+        <img id="lb-img" src="" alt="" style="display:none;">
+        <div id="lb-placeholder">No image uploaded yet</div>
+      </div>
+      <div id="lb-info">
+        <div id="lb-tag">Product Detail</div>
+        <div id="lb-model">—</div>
+        <div class="lb-field"><span class="lb-field-key">Size</span><span class="lb-field-val" id="lb-size">—</span></div>
+        <div class="lb-field"><span class="lb-field-key">Weight</span><span class="lb-field-val" id="lb-weight">—</span></div>
+        <div class="lb-field"><span class="lb-field-key">Season</span><span class="lb-field-val" id="lb-season">—</span></div>
+        <button id="lb-cta" onclick="window._lbQuote()">Request a Quote →</button>
+      </div>
+      <div id="lb-counter"></div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      var cards = [];
+      var current = 0;
+
+      function getCards() {
+        return Array.from(document.querySelectorAll('.prod-card[data-model]'));
+      }
+
+      window._openLightbox = function(card) {
+        cards = getCards();
+        current = cards.indexOf(card);
+        showCard(current);
+        document.getElementById('lb-overlay').classList.add('open');
+        document.body.style.overflow = 'hidden';
+      };
+
+      window._closeLightbox = function() {
+        document.getElementById('lb-overlay').classList.remove('open');
+        document.body.style.overflow = '';
+      };
+
+      window._lbNav = function(dir) {
+        cards = getCards();
+        current = (current + dir + cards.length) % cards.length;
+        showCard(current);
+      };
+
+      function showCard(i) {
+        var card = cards[i];
+        if (!card) return;
+        var src = card.dataset.src || '';
+        var model = card.dataset.model || '—';
+        var size = card.dataset.size || '—';
+        var weight = card.dataset.weight || '—';
+        var season = card.dataset.season || '—';
+
+        // Try to get actual rendered image from image-slot
+        var imgSlot = card.querySelector('image-slot');
+        var actualSrc = src;
+        if (imgSlot) {
+          var rendered = imgSlot.querySelector('img');
+          if (rendered && rendered.src && !rendered.src.endsWith('/')) actualSrc = rendered.src;
+        }
+
+        var lbImg = document.getElementById('lb-img');
+        var lbPh = document.getElementById('lb-placeholder');
+        if (actualSrc && !actualSrc.includes('undefined')) {
+          lbImg.src = actualSrc;
+          lbImg.style.display = 'block';
+          lbPh.style.display = 'none';
+        } else {
+          lbImg.style.display = 'none';
+          lbPh.style.display = 'flex';
+        }
+
+        document.getElementById('lb-model').textContent = 'Model No: ' + model;
+        document.getElementById('lb-size').textContent = size;
+        document.getElementById('lb-weight').textContent = weight;
+        document.getElementById('lb-season').textContent = season;
+        document.getElementById('lb-counter').textContent = (i + 1) + ' / ' + cards.length;
+      }
+
+      window._lbQuote = function() {
+        window._closeLightbox();
+        setTimeout(function() {
+          var goQuote = document.querySelector('[onclick*="goQuote"]');
+          if (goQuote) goQuote.click();
+        }, 200);
+      };
+
+      // Keyboard navigation
+      document.addEventListener('keydown', function(e) {
+        var overlay = document.getElementById('lb-overlay');
+        if (!overlay.classList.contains('open')) return;
+        if (e.key === 'Escape') window._closeLightbox();
+        if (e.key === 'ArrowLeft') window._lbNav(-1);
+        if (e.key === 'ArrowRight') window._lbNav(1);
+      });
+    })();
+  </script>
+
 </body>
 </html>
