@@ -447,7 +447,7 @@ const SEASONS = [
   { key: "summer", label: "Summer", code: "SU" },
   { key: "autumn", label: "Autumn", code: "AU" },
   { key: "winter", label: "Winter", code: "WI" },
-  { key: "spring", label: "Spring", code: "SP" }
+  { key: "mix", label: "Mix Items", code: "MX" }
 ];
 function makeSeasonProducts(code, seasonLabel, count) {
   const out = [];
@@ -462,7 +462,7 @@ const PRODUCTS_BY_SEASON = {
   summer: makeSeasonProducts("SU", "Summer", 20),
   autumn: makeSeasonProducts("AU", "Autumn", 20),
   winter: makeSeasonProducts("WI", "Winter", 20),
-  spring: makeSeasonProducts("SP", "Spring", 20)
+  mix: makeSeasonProducts("MX", "Mix Items", 12)
 };
 const WINTER_PHOTOS = ["winter-01.jpg","winter-02.jpg","winter-03.jpg","winter-04.jpg","winter-05.jpg","winter-06.jpg","winter-07.jpg","winter-08.jpg","winter-09.jpg","winter-10.jpg","winter-11.jpg","winter-12.jpg","winter-13.jpg","winter-14.jpg","winter-15.jpg","winter-16.jpg","winter-17.jpg","winter-18.jpg","winter-19.jpg","winter-20.jpg"];
 PRODUCTS_BY_SEASON.winter.forEach((p, i) => { if (WINTER_PHOTOS[i]) p.src = "./assets/" + WINTER_PHOTOS[i]; });
@@ -506,6 +506,26 @@ const AUTUMN_OVERRIDES = {
 PRODUCTS_BY_SEASON.autumn.forEach((p, i) => {
   if (AUTUMN_PHOTOS[i]) p.src = "./assets/" + AUTUMN_PHOTOS[i];
   const ov = AUTUMN_OVERRIDES[i + 1];
+  if (ov) { p.style2 = ov.style2; p.size = ov.size; }
+});
+const MIX_PHOTOS = ["mix-01.jpg","mix-02.jpg","mix-03.jpg","mix-04.jpg","mix-05.jpg","mix-06.jpg","mix-07.jpg","mix-08.jpg","mix-09.jpg","mix-10.jpg","mix-11.jpg","mix-12.jpg"];
+const MIX_OVERRIDES = {
+  1: { style2: "YB0205", size: "120\u2013160cm" },
+  2: { style2: "YB0206", size: "120\u2013160cm" },
+  3: { style2: "YB0207", size: "120\u2013160cm" },
+  4: { style2: "YB0209", size: "120\u2013160cm" },
+  5: { style2: "YB0210", size: "120\u2013160cm" },
+  6: { style2: "YB0214", size: "120\u2013160cm" },
+  7: { style2: "YB0224", size: "120\u2013160cm" },
+  8: { style2: "YB0189", size: "6Y\u201314Y" },
+  9: { style2: "YB0185", size: "6Y\u201314Y" },
+  10: { style2: "YB0177", size: "6Y\u201314Y" },
+  11: { style2: "YB02296", size: "6Y\u201314Y" },
+  12: { style2: "YB0190", size: "6Y\u201314Y" }
+};
+PRODUCTS_BY_SEASON.mix.forEach((p, i) => {
+  if (MIX_PHOTOS[i]) p.src = "./assets/" + MIX_PHOTOS[i];
+  const ov = MIX_OVERRIDES[i + 1];
   if (ov) { p.style2 = ov.style2; p.size = ov.size; }
 });
 const PRODUCTS = PRODUCTS_BY_SEASON.summer;
