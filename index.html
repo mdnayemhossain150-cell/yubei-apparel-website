@@ -212,11 +212,23 @@
         }
         requestAnimationFrame(step);
       }
-      // Just run counters with staggered delay — visibility handled purely by CSS animation
-      var delays = [500, 630, 760, 890];
-      document.querySelectorAll('#statsBanner .stat-count').forEach(function(el, i) {
-        setTimeout(function() { animateCount(el); }, delays[i]);
-      });
+      function startCounters() {
+        var delays = [0, 130, 260, 390];
+        var counters = document.querySelectorAll('#statsBanner .stat-count');
+        if (!counters.length) {
+          setTimeout(startCounters, 100);
+          return;
+        }
+        counters.forEach(function(el, i) {
+          setTimeout(function() { animateCount(el); }, delays[i]);
+        });
+      }
+      // Wait for page to be ready, then start
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() { setTimeout(startCounters, 300); });
+      } else {
+        setTimeout(startCounters, 300);
+      }
     })();
   </script>
 
