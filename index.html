@@ -870,6 +870,103 @@
   </div>
   </sc-if>
 
+  <!-- ACTIVITY -->
+  <sc-if value="{{ showActivity }}" hint-placeholder-val="{{ false }}">
+  <div id="activity" style="padding: 80px 6vw; background: white;">
+    <div style="max-width: 1400px; margin: 0 auto;">
+      <a href="#" onClick="{{ goHome }}" style="display: inline-block; margin-bottom: 32px; color: oklch(45% 0.02 80); font-weight: 500; font-size: 14.5px;">&larr; Back to Home</a>
+
+      <!-- HEADER -->
+      <div style="text-align: center; margin-bottom: 60px;">
+        <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(58% 0.15 35); margin-bottom: 14px;">Our Activity</div>
+        <h2 style="font-family: Sora, sans-serif; font-size: clamp(28px, 3.5vw, 38px); font-weight: 700; margin: 0 0 16px;">Where We've Been & Who We've Met</h2>
+        <p style="font-size: 16.5px; color: oklch(40% 0.02 80); max-width: 600px; margin: 0 auto; line-height: 1.65;">We actively participate in international trade exhibitions and welcome buyers from around the world to visit our showroom in Zhili, Huzhou.</p>
+      </div>
+
+      <!-- EXHIBITION SECTION -->
+      <div style="margin-bottom: 72px;">
+        <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 32px;">
+          <div style="width: 44px; height: 44px; border-radius: 12px; background: oklch(95% 0.05 35); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0;">🏛️</div>
+          <div>
+            <div style="font-family: Sora, sans-serif; font-weight: 700; font-size: 20px; color: oklch(14% 0.02 80);">Huzhou Zhili Children's Clothing Exhibition</div>
+            <div style="font-size: 14px; color: oklch(52% 0.02 80); margin-top: 3px;">Zhili Children's Garments Global Selection Center · Huzhou, Zhejiang</div>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+          <div style="border-radius: 18px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid oklch(92% 0.01 80);">
+            <image-slot id="activity-01" style="width: 100%; height: 320px;" shape="rect" fit="cover" placeholder="Yubei showroom — front desk" src="./assets/activity-1.png"></image-slot>
+            <div style="padding: 16px 18px;">
+              <div style="font-weight: 700; font-size: 15px; margin-bottom: 4px;">Yubei Showroom</div>
+              <div style="font-size: 13.5px; color: oklch(48% 0.02 80); line-height: 1.55;">Our branded showroom at the Zhili exhibition center — featuring our full collection of children's clothing across all seasons.</div>
+            </div>
+          </div>
+          <div style="border-radius: 18px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid oklch(92% 0.01 80);">
+            <image-slot id="activity-02" style="width: 100%; height: 320px;" shape="rect" fit="cover" placeholder="Yubei showroom — Arabic sign" src="./assets/activity-2.png"></image-slot>
+            <div style="padding: 16px 18px;">
+              <div style="font-weight: 700; font-size: 15px; margin-bottom: 4px;">International Welcome</div>
+              <div style="font-size: 13.5px; color: oklch(48% 0.02 80); line-height: 1.55;">Our showroom proudly displays Arabic signage — welcoming buyers from the Middle East and ensuring they feel at home during their visit.</div>
+            </div>
+          </div>
+          <div style="border-radius: 18px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid oklch(92% 0.01 80);">
+            <image-slot id="activity-04" style="width: 100%; height: 320px;" shape="rect" fit="cover" placeholder="International buyer event" src="./assets/activity-4.jpg"></image-slot>
+            <div style="padding: 16px 18px;">
+              <div style="font-weight: 700; font-size: 15px; margin-bottom: 4px;">Global Buyer Event</div>
+              <div style="font-size: 13.5px; color: oklch(48% 0.02 80); line-height: 1.55;">International buyers from across Africa, the Middle East, and Southeast Asia gathering at the Zhili Children's Garments Global Selection Center.</div>
+            </div>
+          </div>
+          <div style="border-radius: 18px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid oklch(92% 0.01 80);">
+            <image-slot id="activity-05" style="width: 100%; height: 320px;" shape="rect" fit="cover" placeholder="Exhibition presentation" src="./assets/activity-5.jpg"></image-slot>
+            <div style="padding: 16px 18px;">
+              <div style="font-weight: 700; font-size: 15px; margin-bottom: 4px;">Industry Presentation — 2026 Exhibition</div>
+              <div style="font-size: 13.5px; color: oklch(48% 0.02 80); line-height: 1.55;">Zhili's world-leading supply chain showcased at the 2026 Wuxing District Children's Clothing Exhibition — 2 billion pieces annual capacity, 1 million+ SKU stock.</div>
+            </div>
+          </div>
+          <div style="border-radius: 18px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid oklch(92% 0.01 80);">
+            <image-slot id="activity-06" style="width: 100%; height: 320px;" shape="rect" fit="cover" placeholder="International buyers at exhibition" src="./assets/activity-6.jpg"></image-slot>
+            <div style="padding: 16px 18px;">
+              <div style="font-weight: 700; font-size: 15px; margin-bottom: 4px;">International Buyers at Zhili</div>
+              <div style="font-size: 13.5px; color: oklch(48% 0.02 80); line-height: 1.55;">Buyers from the Middle East, Africa, South Asia and beyond attending the Zhili Children's Garments exhibition — a true global gathering of wholesale buyers.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CUSTOMER MEETINGS SECTION -->
+      <div style="margin-bottom: 72px;">
+        <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 32px;">
+          <div style="width: 44px; height: 44px; border-radius: 12px; background: oklch(95% 0.05 35); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0;">🤝</div>
+          <div>
+            <div style="font-family: Sora, sans-serif; font-weight: 700; font-size: 20px; color: oklch(14% 0.02 80);">International Buyer Meetings</div>
+            <div style="font-size: 14px; color: oklch(52% 0.02 80); margin-top: 3px;">Welcoming buyers from around the world to our showroom</div>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 20px;">
+          <div style="border-radius: 18px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid oklch(92% 0.01 80);">
+            <image-slot id="activity-03" style="width: 100%; height: 400px;" shape="rect" fit="cover" placeholder="Customer meeting in showroom" src="./assets/activity-3.jpg"></image-slot>
+            <div style="padding: 16px 18px;">
+              <div style="font-weight: 700; font-size: 15px; margin-bottom: 4px;">Buyer Consultation</div>
+              <div style="font-size: 13.5px; color: oklch(48% 0.02 80); line-height: 1.55;">Our sales manager personally meeting international buyers, discussing product requirements, customization options, and pricing in our showroom.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VISIT US CTA -->
+      <div style="background: linear-gradient(135deg, oklch(97% 0.02 80) 0%, oklch(96% 0.03 35) 100%); border-radius: 24px; padding: 52px 40px; text-align: center; border: 1px solid oklch(90% 0.03 35);">
+        <div style="font-size: 32px; margin-bottom: 16px;">📍</div>
+        <h3 style="font-family: Sora, sans-serif; font-size: clamp(20px, 2.5vw, 26px); font-weight: 700; margin: 0 0 12px; color: oklch(14% 0.02 80);">You Are Always Welcome to Visit Us!</h3>
+        <p style="font-size: 15.5px; color: oklch(42% 0.02 80); max-width: 520px; margin: 0 auto 28px; line-height: 1.65;">Come see our showroom, browse the full collection, and meet our team in person. We are located in the heart of Zhili Town — the world's largest children's clothing hub.</p>
+        <div style="font-size: 14.5px; color: oklch(35% 0.02 80); font-weight: 600; margin-bottom: 24px;">📌 No. 317, Fangqian Road, Zhili Town, Huzhou, Zhejiang, China</div>
+        <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+          <a href="https://wa.me/8618367259637?text=Hi%2C%20I%27d%20like%20to%20visit%20your%20showroom." target="_blank" rel="noopener" style="background: oklch(58% 0.15 35); color: white; padding: 13px 28px; border-radius: 999px; font-weight: 600; font-size: 14.5px; text-decoration: none;">💬 Contact to Arrange Visit</a>
+          <a href="#contact" onClick="{{ goContact }}" style="border: 1.5px solid oklch(75% 0.02 80); color: oklch(24% 0.02 80); padding: 13px 28px; border-radius: 999px; font-weight: 600; font-size: 14.5px; text-decoration: none;">View Contact Details</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  </sc-if>
+
   <!-- CONTACT PAGE -->
   <sc-if value="{{ showContactPage }}" hint-placeholder-val="{{ false }}">
   <div style="padding: 80px 6vw; background: white;">
