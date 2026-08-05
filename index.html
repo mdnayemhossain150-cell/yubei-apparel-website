@@ -897,7 +897,7 @@
             </div>
           </div>
           <div style="border-radius: 18px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid oklch(92% 0.01 80);">
-            <image-slot id="activity-02" style="width: 100%; height: 320px;" shape="rect" fit="contain" placeholder="Yubei showroom — Arabic sign" src="./assets/activity-2.png"></image-slot>
+            <image-slot id="activity-02" class="activity-photo-zoom" data-full-src="./assets/activity-2.png" role="button" tabindex="0" aria-label="View full International Welcome photo" style="width: 100%; height: 320px; cursor: zoom-in;" shape="rect" fit="cover" placeholder="Yubei showroom — Arabic sign" src="./assets/activity-2.png"></image-slot>
             <div style="padding: 16px 18px;">
               <div style="font-weight: 700; font-size: 15px; margin-bottom: 4px;">International Welcome</div>
               <div style="font-size: 13.5px; color: oklch(48% 0.02 80); line-height: 1.55;">Our showroom proudly displays Arabic signage — welcoming buyers from the Middle East and ensuring they feel at home during their visit.</div>
@@ -1566,6 +1566,71 @@ class Component extends DCLogic {
       }
       setTimeout(fluctuate, randBetween(20000, 35000));
     })();
+    })();
+  </script>
+
+  <!-- ACTIVITY PHOTO VIEWER -->
+  <style>
+    #activityPhotoOverlay {
+      position: fixed; inset: 0; z-index: 10015; display: none;
+      align-items: center; justify-content: center; padding: 24px;
+      background: rgba(15,14,13,0.84);
+    }
+    #activityPhotoOverlay.open { display: flex; }
+    #activityPhotoFull {
+      max-width: min(94vw, 1100px); max-height: 90vh;
+      object-fit: contain; border-radius: 14px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.42);
+      background: white;
+    }
+    #activityPhotoClose {
+      position: fixed; top: 20px; right: 20px; z-index: 1;
+      width: 42px; height: 42px; border: none; border-radius: 50%;
+      background: white; color: oklch(22% 0.02 80);
+      font-size: 26px; line-height: 1; cursor: pointer;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.25);
+    }
+    @media (max-width: 640px) {
+      #activityPhotoOverlay { padding: 14px; }
+      #activityPhotoClose { top: 12px; right: 12px; }
+    }
+  </style>
+  <div id="activityPhotoOverlay" role="dialog" aria-modal="true" aria-label="Full activity photo">
+    <button id="activityPhotoClose" type="button" aria-label="Close full photo">&times;</button>
+    <img id="activityPhotoFull" src="" alt="Yubei showroom with Arabic welcome signage">
+  </div>
+  <script>
+    (function() {
+      var overlay = document.getElementById('activityPhotoOverlay');
+      var fullImage = document.getElementById('activityPhotoFull');
+
+      function openActivityPhoto(slot) {
+        fullImage.src = slot.getAttribute('data-full-src') || slot.getAttribute('src') || '';
+        overlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeActivityPhoto() {
+        overlay.classList.remove('open');
+        document.body.style.overflow = '';
+        fullImage.src = '';
+      }
+
+      document.addEventListener('click', function(e) {
+        var slot = e.target.closest('[data-full-src]');
+        if (slot) openActivityPhoto(slot);
+      });
+      document.addEventListener('keydown', function(e) {
+        var slot = e.target.closest && e.target.closest('[data-full-src]');
+        if (slot && (e.key === 'Enter' || e.key === ' ')) {
+          e.preventDefault();
+          openActivityPhoto(slot);
+        } else if (e.key === 'Escape' && overlay.classList.contains('open')) {
+          closeActivityPhoto();
+        }
+      });
+      document.getElementById('activityPhotoClose').addEventListener('click', closeActivityPhoto);
+      overlay.addEventListener('click', function(e) { if (e.target === overlay) closeActivityPhoto(); });
     })();
   </script>
 
