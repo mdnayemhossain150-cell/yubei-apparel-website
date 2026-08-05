@@ -73,6 +73,7 @@
   gtag('config', 'G-WW106PE6L3');
 </script>
 <script src="./support.js"></script>
+<script defer src="./language.js"></script>
 </head>
 <body>
 <template id="__bundler_thumbnail">
@@ -105,6 +106,19 @@
   }
   .nav-cta-short { display: none; }
   .mobile-menu-btn { display: none; }
+  #languageSwitcher {
+    width: 84px; padding: 8px 7px; border: 1px solid oklch(84% 0.01 80);
+    border-radius: 9px; background: white; color: oklch(24% 0.02 80);
+    font: 600 12px Inter, sans-serif; cursor: pointer; direction: ltr;
+  }
+  html[dir="rtl"] body { text-align: right; }
+  html[dir="rtl"] input, html[dir="rtl"] textarea, html[dir="rtl"] select { text-align: right; }
+  html[dir="rtl"] #languageSwitcher { text-align: left; }
+  html[dir="rtl"] .inquiry-remove { direction: ltr; }
+  @media (max-width: 640px) {
+    #languageSwitcher { width: 56px; padding: 8px 4px; }
+    .nav-cta-short { display: none !important; }
+  }
 </style>
 <script src="./image-slot.js"></script>
 </helmet>
@@ -123,6 +137,11 @@
         <a href="#activity" onClick="{{ goActivity }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 15px; white-space: nowrap; transition: color 0.2s;">Activity</a>
         <a href="#contact" onClick="{{ goContact }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 15px; white-space: nowrap; transition: color 0.2s;">Contact</a>
       </div>
+      <select id="languageSwitcher" aria-label="Choose language" data-i18n-skip>
+        <option value="en">EN</option>
+        <option value="zh">中文</option>
+        <option value="ar">العربية</option>
+      </select>
       <a href="#quote" onClick="{{ goQuote }}" class="nav-cta-full" style="background: oklch(58% 0.15 35); color: white; padding: 11px 22px; border-radius: 999px; font-weight: 600; font-size: 14px; white-space: nowrap; flex-shrink: 0; transition: transform 0.2s, background 0.2s; display: inline-block;" style-hover="background: oklch(50% 0.15 35); transform: scale(1.05);">Request Quote</a>
       <a href="#quote" onClick="{{ goQuote }}" class="nav-cta-short" style="background: oklch(58% 0.15 35); color: white; padding: 10px 16px; border-radius: 999px; font-weight: 600; font-size: 13px; white-space: nowrap; flex-shrink: 0;">Quote</a>
       <button class="mobile-menu-btn" onClick="{{ toggleMobileMenu }}" aria-label="Menu" style="border: none; background: transparent; width: 40px; height: 40px; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; padding: 0;">
@@ -1935,13 +1954,18 @@ class Component extends DCLogic {
       window._lbQuote = function() {
         var card = cards[current];
         if (!card) return;
-        var message = [
-          'Hello Yubei Apparel,',
-          '',
-          'I am interested in style ' + (card.dataset.model || '' ) + '.',
-          'Size: ' + (card.dataset.size || 'Please confirm'),
-          'Season: ' + (card.dataset.season || 'Please confirm'),
-          '',
+        var selectedLanguage = window.YubeiI18n ? window.YubeiI18n.getLanguage() : 'en';
+        var message = selectedLanguage === 'zh' ? [
+          '您好，语贝服饰：', '', '我对款号 ' + (card.dataset.model || '') + ' 感兴趣。',
+          '尺码：' + (card.dataset.size || '请确认'), '季节：' + (card.dataset.season || '请确认'), '',
+          '请提供库存情况、最低起订量、可选颜色和报价。'
+        ].join('\n') : selectedLanguage === 'ar' ? [
+          'مرحباً يوبي للملابس،', '', 'أنا مهتم بالموديل ' + (card.dataset.model || '') + '.',
+          'المقاس: ' + (card.dataset.size || 'يرجى التأكيد'), 'الموسم: ' + (card.dataset.season || 'يرجى التأكيد'), '',
+          'يرجى إرسال حالة التوفر والحد الأدنى للطلب والألوان وعرض السعر.'
+        ].join('\n') : [
+          'Hello Yubei Apparel,', '', 'I am interested in style ' + (card.dataset.model || '' ) + '.',
+          'Size: ' + (card.dataset.size || 'Please confirm'), 'Season: ' + (card.dataset.season || 'Please confirm'), '',
           'Please send the availability, MOQ, colors, and quotation.'
         ].join('\n');
         window.open('https://wa.me/8618367259637?text=' + encodeURIComponent(message), '_blank', 'noopener');
@@ -1950,16 +1974,19 @@ class Component extends DCLogic {
       window._lbSample = function() {
         var card = cards[current];
         if (!card) return;
-        var message = [
-          'Hello Yubei Apparel,',
-          '',
-          'I would like to request a sample.',
-          'Model: ' + (card.dataset.model || ''),
-          'Size: ' + (card.dataset.size || 'Please confirm'),
-          'Season: ' + (card.dataset.season || 'Please confirm'),
-          'Sample quantity: 1 piece',
-          '',
-          'Please confirm the sample price, available colors, and shipping cost.'
+        var selectedLanguage = window.YubeiI18n ? window.YubeiI18n.getLanguage() : 'en';
+        var message = selectedLanguage === 'zh' ? [
+          '您好，语贝服饰：', '', '我想申请样品。', '款号：' + (card.dataset.model || ''),
+          '尺码：' + (card.dataset.size || '请确认'), '季节：' + (card.dataset.season || '请确认'),
+          '样品数量：1件', '', '请确认样品价格、可选颜色和运费。'
+        ].join('\n') : selectedLanguage === 'ar' ? [
+          'مرحباً يوبي للملابس،', '', 'أرغب في طلب عينة.', 'الموديل: ' + (card.dataset.model || ''),
+          'المقاس: ' + (card.dataset.size || 'يرجى التأكيد'), 'الموسم: ' + (card.dataset.season || 'يرجى التأكيد'),
+          'كمية العينة: قطعة واحدة', '', 'يرجى تأكيد سعر العينة والألوان المتاحة وتكلفة الشحن.'
+        ].join('\n') : [
+          'Hello Yubei Apparel,', '', 'I would like to request a sample.', 'Model: ' + (card.dataset.model || ''),
+          'Size: ' + (card.dataset.size || 'Please confirm'), 'Season: ' + (card.dataset.season || 'Please confirm'),
+          'Sample quantity: 1 piece', '', 'Please confirm the sample price, available colors, and shipping cost.'
         ].join('\n');
         window.location.href = 'https://wa.me/8618367259637?text=' + encodeURIComponent(message);
       };

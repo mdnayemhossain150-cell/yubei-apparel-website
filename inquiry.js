@@ -36,6 +36,12 @@
   function storeBuyer() {
     try { localStorage.setItem(DETAILS_KEY, JSON.stringify(buyer)); } catch (e) {}
   }
+  function language() {
+    return window.YubeiI18n ? window.YubeiI18n.getLanguage() : 'en';
+  }
+  function translatedValue(value) {
+    return window.YubeiI18n ? window.YubeiI18n.translate(value) : value;
+  }
   function overlay() { return document.getElementById('inquiryOverlay'); }
   function status(message) { document.getElementById('inquiryStatus').textContent = message || ''; }
   function updateCount() {
@@ -138,27 +144,44 @@
     });
   }
   function summary() {
-    var lines = ['Hello Yubei Apparel,', ''];
-    if (buyer.name) lines.push('Name: ' + buyer.name);
-    if (buyer.company) lines.push('Company: ' + buyer.company);
-    if (buyer.country) lines.push('Country: ' + buyer.country);
-    if (buyer.deliveryDate) lines.push('Required delivery date: ' + buyer.deliveryDate);
-    if (buyer.destinationPort) lines.push('Destination port: ' + buyer.destinationPort);
-    if (buyer.targetPrice) lines.push('Target price: ' + buyer.currency + ' ' + buyer.targetPrice);
-    if (buyer.customization) lines.push('Customization: ' + buyer.customization);
-    if (buyer.contactMethod) lines.push('Preferred contact method: ' + buyer.contactMethod);
+    var selectedLanguage = language();
+    var labels = selectedLanguage === 'zh' ? {
+      hello: '您好，语贝服饰：', name: '姓名：', company: '公司：', country: '国家：',
+      delivery: '要求交货日期：', port: '目的港：', price: '目标价格：', custom: '定制要求：', contact: '首选联系方式：',
+      intro: '我对以下款式感兴趣，共 ', styleUnit: ' 个：', season: '季节：', size: '尺码：', quantity: '数量：', notes: '备注：',
+      unspecified: '未填写', pieces: ' 件', total: '总数量：', closing: '请提供库存情况、最低起订量和报价，谢谢。'
+    } : selectedLanguage === 'ar' ? {
+      hello: 'مرحباً يوبي للملابس،', name: 'الاسم: ', company: 'الشركة: ', country: 'الدولة: ',
+      delivery: 'تاريخ التسليم المطلوب: ', port: 'ميناء الوصول: ', price: 'السعر المستهدف: ', custom: 'متطلبات التخصيص: ', contact: 'طريقة التواصل المفضلة: ',
+      intro: 'أنا مهتم بالموديلات التالية، وعددها ', styleUnit: ':', season: 'الموسم: ', size: 'المقاس: ', quantity: 'الكمية: ', notes: 'ملاحظات: ',
+      unspecified: 'غير محدد', pieces: ' قطعة', total: 'إجمالي الكمية: ', closing: 'يرجى إرسال حالة التوفر والحد الأدنى للطلب وعرض السعر. شكراً.'
+    } : {
+      hello: 'Hello Yubei Apparel,', name: 'Name: ', company: 'Company: ', country: 'Country: ',
+      delivery: 'Required delivery date: ', port: 'Destination port: ', price: 'Target price: ', custom: 'Customization: ', contact: 'Preferred contact method: ',
+      intro: 'I am interested in the following ', styleUnit: ' style(s):', season: 'Season: ', size: 'Size: ', quantity: 'Quantity: ', notes: 'Notes: ',
+      unspecified: 'Not specified', pieces: ' pcs', total: 'Total quantity: ', closing: 'Please send availability, MOQ, and quotation. Thank you.'
+    };
+    var lines = [labels.hello, ''];
+    if (buyer.name) lines.push(labels.name + buyer.name);
+    if (buyer.company) lines.push(labels.company + buyer.company);
+    if (buyer.country) lines.push(labels.country + buyer.country);
+    if (buyer.deliveryDate) lines.push(labels.delivery + buyer.deliveryDate);
+    if (buyer.destinationPort) lines.push(labels.port + buyer.destinationPort);
+    if (buyer.targetPrice) lines.push(labels.price + buyer.currency + ' ' + buyer.targetPrice);
+    if (buyer.customization) lines.push(labels.custom + buyer.customization);
+    if (buyer.contactMethod) lines.push(labels.contact + translatedValue(buyer.contactMethod));
     if (buyer.name || buyer.company || buyer.country || buyer.deliveryDate || buyer.destinationPort || buyer.targetPrice || buyer.customization || buyer.contactMethod) lines.push('');
-    lines.push('I am interested in the following ' + items.length + ' style' + (items.length === 1 ? '' : 's') + ':');
+    lines.push(labels.intro + items.length + labels.styleUnit);
     items.forEach(function(item, index) {
       var line = (index + 1) + '. 🟠 ' + item.model;
-      if (item.season) line += ' | ' + item.season;
-      if (item.size) line += ' | Size: ' + item.size;
-      line += ' | Quantity: ' + (item.quantity ? item.quantity + ' pcs' : 'Not specified');
-      if (item.note) line += ' | Notes: ' + item.note;
+      if (item.season) line += ' | ' + labels.season + translatedValue(item.season);
+      if (item.size) line += ' | ' + labels.size + item.size;
+      line += ' | ' + labels.quantity + (item.quantity ? item.quantity + labels.pieces : labels.unspecified);
+      if (item.note) line += ' | ' + labels.notes + item.note;
       lines.push(line);
     });
-    if (getTotalQuantity()) lines.push('Total quantity: ' + getTotalQuantity().toLocaleString() + ' pcs');
-    lines.push('', 'Please send availability, MOQ, and quotation. Thank you.');
+    if (getTotalQuantity()) lines.push(labels.total + getTotalQuantity().toLocaleString() + labels.pieces);
+    lines.push('', labels.closing);
     return lines.join('\n');
   }
   function copySummary() {
@@ -216,7 +239,8 @@
   });
   document.getElementById('inquiryEmail').addEventListener('click', function() {
     if (!items.length) { status('Add at least one style first.'); return; }
-    window.location.href = 'mailto:358630530@qq.com?subject=' + encodeURIComponent('Product Inquiry - ' + items.length + ' Styles') + '&body=' + encodeURIComponent(summary());
+    var subject = language() === 'zh' ? '产品询价 - ' + items.length + ' 个款式' : language() === 'ar' ? 'استفسار منتجات - ' + items.length + ' موديلات' : 'Product Inquiry - ' + items.length + ' Styles';
+    window.location.href = 'mailto:358630530@qq.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(summary());
   });
   document.getElementById('inquiryClear').addEventListener('click', function() {
     if (!items.length || window.confirm('Clear all selected styles?')) { items = []; storeItems(true); status('Inquiry list cleared.'); }
