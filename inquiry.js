@@ -114,39 +114,21 @@
     });
   }
   function summary() {
-    var lines = [
-      'Hello Yubei Apparel,',
-      '',
-      'PRODUCT INQUIRY',
-      '================================'
-    ];
-    if (buyer.name || buyer.company || buyer.country) {
-      lines.push('BUYER DETAILS');
-      if (buyer.name) lines.push('Name       : ' + buyer.name);
-      if (buyer.company) lines.push('Company    : ' + buyer.company);
-      if (buyer.country) lines.push('Country    : ' + buyer.country);
-      lines.push('--------------------------------');
-    }
-    lines.push(
-      'SELECTED STYLES (' + items.length + ')',
-      ''
-    );
+    var lines = ['Hello Yubei Apparel,', ''];
+    if (buyer.name) lines.push('Name: ' + buyer.name);
+    if (buyer.company) lines.push('Company: ' + buyer.company);
+    if (buyer.country) lines.push('Country: ' + buyer.country);
+    if (buyer.name || buyer.company || buyer.country) lines.push('');
+    lines.push('I am interested in the following ' + items.length + ' style' + (items.length === 1 ? '' : 's') + ':');
     items.forEach(function(item, index) {
-      var number = String(index + 1).padStart(2, '0');
-      lines.push(number + '. MODEL ' + item.model);
-      lines.push('    Season  : ' + (item.season || 'Not specified'));
-      lines.push('    Size    : ' + (item.size || 'Not specified'));
-      lines.push('    Quantity: ' + (item.quantity ? item.quantity + ' pcs' : 'Not specified'));
-      if (item.note) lines.push('    Notes   : ' + item.note);
-      lines.push(index === items.length - 1 ? '================================' : '--------------------------------');
+      var line = (index + 1) + '. 🟠 ' + item.model;
+      if (item.season) line += ' | ' + item.season;
+      if (item.size) line += ' | Size: ' + item.size;
+      line += ' | Quantity: ' + (item.quantity ? item.quantity + ' pcs' : 'Not specified');
+      if (item.note) line += ' | Notes: ' + item.note;
+      lines.push(line);
     });
-    lines.push(
-      '',
-      'REQUEST',
-      'Please confirm availability, MOQ, and your best quotation.',
-      '',
-      'Thank you.'
-    );
+    lines.push('', 'Please send availability, MOQ, and quotation. Thank you.');
     return lines.join('\n');
   }
   function copySummary() {
