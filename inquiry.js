@@ -189,11 +189,7 @@
   document.getElementById('inquiryWhatsApp').addEventListener('click', function() {
     if (!items.length) { status('Add at least one style first.'); return; }
     var text = summary();
-    if (encodeURIComponent(text).length > 1800) copySummary().then(function() {
-      status('Summary copied. Paste it into WhatsApp.');
-      window.open('https://wa.me/8618367259637', '_blank', 'noopener');
-    });
-    else window.open('https://wa.me/8618367259637?text=' + encodeURIComponent(text), '_blank', 'noopener');
+    window.location.href = 'https://wa.me/8618367259637?text=' + encodeURIComponent(text);
   });
   document.getElementById('inquiryEmail').addEventListener('click', function() {
     if (!items.length) { status('Add at least one style first.'); return; }

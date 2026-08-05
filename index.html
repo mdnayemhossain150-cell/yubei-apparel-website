@@ -2072,6 +2072,12 @@ class Component extends DCLogic {
       #inquiryItems { overflow: visible; }
       .inquiry-item { grid-template-columns: 1fr 90px auto; }
       .inquiry-item .inquiry-field.notes { grid-column: 1 / -1; grid-row: 2; }
+      .inquiry-actions { display: grid; grid-template-columns: 1fr; }
+      .inquiry-action { width: 100%; min-width: 0; }
+      #inquiryWhatsApp { order: 1; }
+      #inquiryEmail { order: 2; }
+      #inquiryCopy { order: 3; }
+      #inquiryClear { order: 4; }
     }
   </style>
 
