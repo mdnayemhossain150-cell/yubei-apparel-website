@@ -570,6 +570,7 @@
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>
                 Tap to zoom
               </div>
+              <button class="inquiry-add-btn" type="button">+ Add to Inquiry</button>
             </div>
           </div>
         </sc-for>
@@ -1781,6 +1782,319 @@ class Component extends DCLogic {
         if (e.key === 'ArrowLeft') window._lbNav(-1);
         if (e.key === 'ArrowRight') window._lbNav(1);
       });
+    })();
+  </script>
+  <!-- LIGHTWEIGHT PRODUCT INQUIRY LIST -->
+  <style>
+    .inquiry-add-btn {
+      width: 100%; margin-top: 16px; padding: 11px 14px;
+      border: 1.5px solid oklch(78% 0.06 35); border-radius: 10px;
+      background: white; color: oklch(50% 0.15 35);
+      font: 700 13.5px Inter, sans-serif; cursor: pointer;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .inquiry-add-btn:hover, .inquiry-add-btn.selected {
+      background: oklch(58% 0.15 35); color: white; border-color: oklch(58% 0.15 35);
+    }
+    #inquiryFloat {
+      position: fixed; left: 24px; bottom: 24px; z-index: 9996;
+      border: none; border-radius: 999px; padding: 13px 20px;
+      background: oklch(24% 0.02 80); color: white;
+      box-shadow: 0 8px 26px rgba(0,0,0,0.2);
+      font: 700 14px Inter, sans-serif; cursor: pointer;
+      display: none; align-items: center; gap: 9px;
+    }
+    #inquiryFloat.visible { display: flex; }
+    #inquiryFloatCount {
+      min-width: 22px; height: 22px; padding: 0 5px; box-sizing: border-box;
+      border-radius: 999px; background: oklch(58% 0.15 35);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 12px;
+    }
+    #inquiryOverlay {
+      position: fixed; inset: 0; z-index: 10020; display: none;
+      background: rgba(20,18,16,0.5); padding: 24px;
+      align-items: center; justify-content: center;
+    }
+    #inquiryOverlay.open { display: flex; }
+    #inquiryPanel {
+      width: min(760px, 100%); max-height: 90vh; overflow: hidden;
+      background: white; border-radius: 22px; box-shadow: 0 24px 70px rgba(0,0,0,0.24);
+      display: flex; flex-direction: column;
+    }
+    .inquiry-head {
+      padding: 22px 24px; border-bottom: 1px solid oklch(91% 0.01 80);
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    }
+    .inquiry-head h3 { margin: 0; font: 700 21px Sora, sans-serif; }
+    #inquiryClose {
+      width: 38px; height: 38px; border-radius: 50%; border: none;
+      background: oklch(95% 0.01 80); cursor: pointer; font-size: 22px;
+    }
+    #inquiryItems { padding: 18px 24px; overflow-y: auto; display: grid; gap: 12px; }
+    .inquiry-item {
+      border: 1px solid oklch(90% 0.01 80); border-radius: 14px;
+      padding: 14px; display: grid; grid-template-columns: 1fr 130px 1.25fr auto;
+      align-items: end; gap: 12px;
+    }
+    .inquiry-model { font: 700 15px Sora, sans-serif; align-self: center; }
+    .inquiry-meta { display: block; margin-top: 4px; color: oklch(50% 0.02 80); font: 400 12px Inter, sans-serif; }
+    .inquiry-field label { display: block; margin-bottom: 5px; color: oklch(45% 0.02 80); font-size: 11.5px; font-weight: 700; }
+    .inquiry-field input {
+      width: 100%; box-sizing: border-box; border: 1px solid oklch(84% 0.01 80);
+      border-radius: 8px; padding: 9px 10px; font: 13px Inter, sans-serif;
+    }
+    .inquiry-remove {
+      width: 36px; height: 36px; border: none; border-radius: 9px;
+      background: oklch(96% 0.03 25); color: oklch(48% 0.16 25);
+      cursor: pointer; font-size: 18px;
+    }
+    #inquiryEmpty { padding: 42px 20px; text-align: center; color: oklch(48% 0.02 80); }
+    .inquiry-foot { padding: 18px 24px 22px; border-top: 1px solid oklch(91% 0.01 80); }
+    #inquiryStatus { min-height: 18px; margin-bottom: 10px; color: oklch(42% 0.08 150); font-size: 12.5px; }
+    .inquiry-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .inquiry-action {
+      flex: 1; min-width: 140px; border: none; border-radius: 999px;
+      padding: 12px 18px; font: 700 13.5px Inter, sans-serif; cursor: pointer;
+    }
+    #inquiryCopy { background: oklch(93% 0.02 80); color: oklch(25% 0.02 80); }
+    #inquiryWhatsApp { background: #25D366; color: white; }
+    #inquiryEmail { background: oklch(58% 0.15 35); color: white; }
+    #inquiryClear { background: transparent; color: oklch(48% 0.02 80); border: 1px solid oklch(84% 0.01 80); }
+    @media (max-width: 640px) {
+      #inquiryFloat { left: 14px; bottom: 14px; padding: 11px 15px; }
+      #inquiryOverlay { padding: 0; align-items: flex-end; }
+      #inquiryPanel { width: 100%; max-height: 92vh; border-radius: 22px 22px 0 0; }
+      .inquiry-head, #inquiryItems, .inquiry-foot { padding-left: 16px; padding-right: 16px; }
+      .inquiry-item { grid-template-columns: 1fr 90px auto; }
+      .inquiry-item .inquiry-field.notes { grid-column: 1 / -1; grid-row: 2; }
+    }
+  </style>
+
+  <button id="inquiryFloat" type="button" aria-label="Open inquiry list">
+    Inquiry List <span id="inquiryFloatCount">0</span>
+  </button>
+  <div id="inquiryOverlay" role="dialog" aria-modal="true" aria-labelledby="inquiryTitle">
+    <div id="inquiryPanel">
+      <div class="inquiry-head">
+        <div>
+          <h3 id="inquiryTitle">Your Product Inquiry</h3>
+          <div style="font-size: 12.5px; color: oklch(50% 0.02 80); margin-top: 5px;">Add up to 30 styles, quantities, and notes.</div>
+        </div>
+        <button id="inquiryClose" type="button" aria-label="Close inquiry list">&times;</button>
+      </div>
+      <div id="inquiryItems"></div>
+      <div class="inquiry-foot">
+        <div id="inquiryStatus" aria-live="polite"></div>
+        <div class="inquiry-actions">
+          <button class="inquiry-action" id="inquiryCopy" type="button">Copy Summary</button>
+          <button class="inquiry-action" id="inquiryWhatsApp" type="button">Send on WhatsApp</button>
+          <button class="inquiry-action" id="inquiryEmail" type="button">Send by Email</button>
+          <button class="inquiry-action" id="inquiryClear" type="button">Clear List</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      var STORAGE_KEY = 'yubeiInquiryListV1';
+      var MAX_ITEMS = 30;
+      var items = [];
+
+      try {
+        var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+        if (Array.isArray(saved)) items = saved.slice(0, MAX_ITEMS);
+      } catch (e) { items = []; }
+
+      function save() {
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(items)); } catch (e) {}
+        refresh();
+      }
+
+      function escapeText(value) { return String(value == null ? '' : value); }
+
+      function refreshButtons() {
+        document.querySelectorAll('.inquiry-add-btn').forEach(function(btn) {
+          var card = btn.closest('.prod-card');
+          var selected = card && items.some(function(item) { return item.model === card.dataset.model; });
+          btn.classList.toggle('selected', !!selected);
+          btn.textContent = selected ? '✓ Added to Inquiry' : '+ Add to Inquiry';
+        });
+      }
+
+      function refresh() {
+        var count = items.length;
+        document.getElementById('inquiryFloatCount').textContent = count;
+        document.getElementById('inquiryFloat').classList.toggle('visible', count > 0);
+        refreshButtons();
+        if (document.getElementById('inquiryOverlay').classList.contains('open')) renderItems();
+      }
+
+      function setStatus(message) {
+        document.getElementById('inquiryStatus').textContent = message || '';
+      }
+
+      window._addInquiryFromCard = function(button) {
+        var card = button.closest('.prod-card');
+        if (!card) return;
+        var model = card.dataset.model || '';
+        var existing = items.findIndex(function(item) { return item.model === model; });
+        if (existing >= 0) {
+          items.splice(existing, 1);
+          save();
+          return;
+        }
+        if (items.length >= MAX_ITEMS) {
+          openPanel();
+          setStatus('Your inquiry list can contain up to ' + MAX_ITEMS + ' styles.');
+          return;
+        }
+        items.push({
+          model: model,
+          size: card.dataset.size || '',
+          season: card.dataset.season || '',
+          quantity: '',
+          note: ''
+        });
+        save();
+      };
+
+      function renderItems() {
+        var container = document.getElementById('inquiryItems');
+        container.textContent = '';
+        if (!items.length) {
+          var empty = document.createElement('div');
+          empty.id = 'inquiryEmpty';
+          empty.textContent = 'Your inquiry list is empty. Add styles from the Products page.';
+          container.appendChild(empty);
+          return;
+        }
+        items.forEach(function(item, index) {
+          var row = document.createElement('div');
+          row.className = 'inquiry-item';
+
+          var info = document.createElement('div');
+          info.className = 'inquiry-model';
+          info.textContent = item.model;
+          var meta = document.createElement('span');
+          meta.className = 'inquiry-meta';
+          meta.textContent = [item.season, item.size].filter(Boolean).join(' · ');
+          info.appendChild(meta);
+
+          var quantityField = document.createElement('div');
+          quantityField.className = 'inquiry-field';
+          quantityField.innerHTML = '<label>Quantity</label>';
+          var quantity = document.createElement('input');
+          quantity.type = 'number'; quantity.min = '1'; quantity.inputMode = 'numeric';
+          quantity.placeholder = 'Pieces'; quantity.value = item.quantity || '';
+          quantity.addEventListener('input', function() { items[index].quantity = quantity.value; persistOnly(); });
+          quantityField.appendChild(quantity);
+
+          var noteField = document.createElement('div');
+          noteField.className = 'inquiry-field notes';
+          noteField.innerHTML = '<label>Notes</label>';
+          var note = document.createElement('input');
+          note.type = 'text'; note.maxLength = 120; note.placeholder = 'Color, label, or other request';
+          note.value = item.note || '';
+          note.addEventListener('input', function() { items[index].note = note.value; persistOnly(); });
+          noteField.appendChild(note);
+
+          var remove = document.createElement('button');
+          remove.type = 'button'; remove.className = 'inquiry-remove';
+          remove.setAttribute('aria-label', 'Remove ' + item.model); remove.innerHTML = '&times;';
+          remove.addEventListener('click', function() { items.splice(index, 1); save(); });
+
+          row.appendChild(info); row.appendChild(quantityField); row.appendChild(noteField); row.appendChild(remove);
+          container.appendChild(row);
+        });
+      }
+
+      function persistOnly() {
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(items)); } catch (e) {}
+      }
+
+      function summary() {
+        var lines = [
+          'Hello Yubei Apparel,',
+          '',
+          'I am interested in the following ' + items.length + ' style' + (items.length === 1 ? '' : 's') + ':'
+        ];
+        items.forEach(function(item, index) {
+          var line = (index + 1) + '. ' + escapeText(item.model);
+          if (item.season) line += ' | ' + escapeText(item.season);
+          if (item.size) line += ' | Size: ' + escapeText(item.size);
+          line += ' | Quantity: ' + (item.quantity ? escapeText(item.quantity) + ' pcs' : 'Not specified');
+          if (item.note) line += ' | Notes: ' + escapeText(item.note);
+          lines.push(line);
+        });
+        lines.push('', 'Please send availability, MOQ, and quotation. Thank you.');
+        return lines.join('\n');
+      }
+
+      function copySummary() {
+        if (!items.length) { setStatus('Add at least one style first.'); return Promise.resolve(false); }
+        var text = summary();
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          return navigator.clipboard.writeText(text).then(function() { setStatus('Inquiry summary copied.'); return true; });
+        }
+        var area = document.createElement('textarea');
+        area.value = text; area.style.position = 'fixed'; area.style.opacity = '0';
+        document.body.appendChild(area); area.select();
+        var copied = document.execCommand('copy'); area.remove();
+        setStatus(copied ? 'Inquiry summary copied.' : 'Could not copy automatically.');
+        return Promise.resolve(copied);
+      }
+
+      function openPanel() {
+        renderItems(); setStatus('');
+        document.getElementById('inquiryOverlay').classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closePanel() {
+        document.getElementById('inquiryOverlay').classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      document.getElementById('inquiryFloat').addEventListener('click', openPanel);
+      document.addEventListener('click', function(e) {
+        var addButton = e.target.closest('.inquiry-add-btn');
+        if (!addButton) return;
+        e.preventDefault();
+        e.stopPropagation();
+        window._addInquiryFromCard(addButton);
+      });
+      document.getElementById('inquiryClose').addEventListener('click', closePanel);
+      document.getElementById('inquiryOverlay').addEventListener('click', function(e) { if (e.target === this) closePanel(); });
+      document.getElementById('inquiryCopy').addEventListener('click', copySummary);
+      document.getElementById('inquiryWhatsApp').addEventListener('click', function() {
+        if (!items.length) { setStatus('Add at least one style first.'); return; }
+        var text = summary();
+        if (encodeURIComponent(text).length > 1800) {
+          copySummary().then(function() {
+            setStatus('Summary copied. Paste it into WhatsApp.');
+            window.open('https://wa.me/8618367259637', '_blank', 'noopener');
+          });
+        } else {
+          window.open('https://wa.me/8618367259637?text=' + encodeURIComponent(text), '_blank', 'noopener');
+        }
+      });
+      document.getElementById('inquiryEmail').addEventListener('click', function() {
+        if (!items.length) { setStatus('Add at least one style first.'); return; }
+        window.location.href = 'mailto:358630530@qq.com?subject=' + encodeURIComponent('Product Inquiry - ' + items.length + ' Styles') + '&body=' + encodeURIComponent(summary());
+      });
+      document.getElementById('inquiryClear').addEventListener('click', function() {
+        if (!items.length || window.confirm('Clear all selected styles?')) { items = []; save(); setStatus('Inquiry list cleared.'); }
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && document.getElementById('inquiryOverlay').classList.contains('open')) closePanel();
+      });
+      document.addEventListener('click', function(e) {
+        if (e.target.closest('[onclick*="setSeason"]')) setTimeout(refreshButtons, 100);
+      });
+
+      refresh();
     })();
   </script>
   <!-- BACK TO TOP BUTTON -->
