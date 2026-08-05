@@ -3,7 +3,10 @@
   var DETAILS_KEY = 'yubeiInquiryBuyerV1';
   var MAX_ITEMS = 30;
   var items = [];
-  var buyer = { name: '', company: '', country: '' };
+  var buyer = {
+    name: '', company: '', country: '', deliveryDate: '',
+    destinationPort: '', targetPrice: '', customization: ''
+  };
 
   try {
     var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
@@ -14,6 +17,10 @@
     buyer.name = savedBuyer.name || '';
     buyer.company = savedBuyer.company || '';
     buyer.country = savedBuyer.country || '';
+    buyer.deliveryDate = savedBuyer.deliveryDate || '';
+    buyer.destinationPort = savedBuyer.destinationPort || '';
+    buyer.targetPrice = savedBuyer.targetPrice || '';
+    buyer.customization = savedBuyer.customization || '';
   } catch (e) {}
 
   function storeItems(render) {
@@ -118,7 +125,11 @@
     if (buyer.name) lines.push('Name: ' + buyer.name);
     if (buyer.company) lines.push('Company: ' + buyer.company);
     if (buyer.country) lines.push('Country: ' + buyer.country);
-    if (buyer.name || buyer.company || buyer.country) lines.push('');
+    if (buyer.deliveryDate) lines.push('Required delivery date: ' + buyer.deliveryDate);
+    if (buyer.destinationPort) lines.push('Destination port: ' + buyer.destinationPort);
+    if (buyer.targetPrice) lines.push('Target price: ' + buyer.targetPrice);
+    if (buyer.customization) lines.push('Customization: ' + buyer.customization);
+    if (buyer.name || buyer.company || buyer.country || buyer.deliveryDate || buyer.destinationPort || buyer.targetPrice || buyer.customization) lines.push('');
     lines.push('I am interested in the following ' + items.length + ' style' + (items.length === 1 ? '' : 's') + ':');
     items.forEach(function(item, index) {
       var line = (index + 1) + '. 🟠 ' + item.model;
@@ -153,11 +164,19 @@
   document.getElementById('inquiryBuyerName').value = buyer.name;
   document.getElementById('inquiryBuyerCompany').value = buyer.company;
   document.getElementById('inquiryBuyerCountry').value = buyer.country;
+  document.getElementById('inquiryDeliveryDate').value = buyer.deliveryDate;
+  document.getElementById('inquiryDestinationPort').value = buyer.destinationPort;
+  document.getElementById('inquiryTargetPrice').value = buyer.targetPrice;
+  document.getElementById('inquiryCustomization').value = buyer.customization;
   document.getElementById('inquiryFloat').addEventListener('click', openPanel);
   document.getElementById('inquiryClose').addEventListener('click', closePanel);
   document.getElementById('inquiryBuyerName').addEventListener('input', function(e) { buyer.name = e.target.value; storeBuyer(); });
   document.getElementById('inquiryBuyerCompany').addEventListener('input', function(e) { buyer.company = e.target.value; storeBuyer(); });
   document.getElementById('inquiryBuyerCountry').addEventListener('input', function(e) { buyer.country = e.target.value; storeBuyer(); });
+  document.getElementById('inquiryDeliveryDate').addEventListener('input', function(e) { buyer.deliveryDate = e.target.value; storeBuyer(); });
+  document.getElementById('inquiryDestinationPort').addEventListener('input', function(e) { buyer.destinationPort = e.target.value; storeBuyer(); });
+  document.getElementById('inquiryTargetPrice').addEventListener('input', function(e) { buyer.targetPrice = e.target.value; storeBuyer(); });
+  document.getElementById('inquiryCustomization').addEventListener('input', function(e) { buyer.customization = e.target.value; storeBuyer(); });
   document.getElementById('inquiryApplyQuantity').addEventListener('click', function() {
     var quantity = document.getElementById('inquiryBulkQuantity').value;
     if (!items.length) { status('Add at least one style first.'); return; }

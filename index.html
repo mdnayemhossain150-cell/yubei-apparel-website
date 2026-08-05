@@ -1952,6 +1952,7 @@ class Component extends DCLogic {
       background: oklch(98% 0.008 80);
     }
     .inquiry-buyer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .inquiry-order-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 12px; }
     .inquiry-detail-field label { display: block; margin-bottom: 5px; color: oklch(45% 0.02 80); font-size: 11.5px; font-weight: 700; }
     .inquiry-detail-field input, #inquiryBulkQuantity {
       width: 100%; box-sizing: border-box; border: 1px solid oklch(84% 0.01 80);
@@ -2000,6 +2001,7 @@ class Component extends DCLogic {
       #inquiryPanel { width: 100%; max-height: 92vh; border-radius: 22px 22px 0 0; }
       .inquiry-head, .inquiry-details, #inquiryItems, .inquiry-foot { padding-left: 16px; padding-right: 16px; }
       .inquiry-buyer-grid { grid-template-columns: 1fr; }
+      .inquiry-order-grid { grid-template-columns: 1fr; }
       .inquiry-item { grid-template-columns: 1fr 90px auto; }
       .inquiry-item .inquiry-field.notes { grid-column: 1 / -1; grid-row: 2; }
     }
@@ -2030,6 +2032,24 @@ class Component extends DCLogic {
           <div class="inquiry-detail-field">
             <label for="inquiryBuyerCountry">Country</label>
             <input id="inquiryBuyerCountry" type="text" autocomplete="country-name" placeholder="Country">
+          </div>
+        </div>
+        <div class="inquiry-order-grid">
+          <div class="inquiry-detail-field">
+            <label for="inquiryDeliveryDate">Required delivery date</label>
+            <input id="inquiryDeliveryDate" type="date">
+          </div>
+          <div class="inquiry-detail-field">
+            <label for="inquiryDestinationPort">Destination port</label>
+            <input id="inquiryDestinationPort" type="text" maxlength="80" placeholder="Example: Port Klang">
+          </div>
+          <div class="inquiry-detail-field">
+            <label for="inquiryTargetPrice">Target price</label>
+            <input id="inquiryTargetPrice" type="text" maxlength="60" placeholder="Example: USD 6.50 per piece">
+          </div>
+          <div class="inquiry-detail-field">
+            <label for="inquiryCustomization">Customization requirements</label>
+            <input id="inquiryCustomization" type="text" maxlength="160" placeholder="Logo, label, colors, packaging">
           </div>
         </div>
         <div class="inquiry-bulk">
