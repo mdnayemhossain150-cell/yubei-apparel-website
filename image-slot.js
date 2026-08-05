@@ -1088,6 +1088,8 @@
       const editable = !!(window.omelette && window.omelette.writeFile);
       this.toggleAttribute('data-editable', editable);
       this._sub.style.display = editable ? '' : 'none';
+      this._img.loading = this.getAttribute('loading') === 'eager' ? 'eager' : 'lazy';
+      this._img.decoding = 'async';
 
       // Content. The sidecar is also writable by the agent's write_file
       // tool, so its value isn't guaranteed canvas-originated — only accept
@@ -1139,7 +1141,8 @@
           // flag, not complete, to know a load is in flight.
           this._loadPending = true;
           this._img.src = url;
-          this._ghost.src = url;
+          if (editable) this._ghost.src = url;
+          else this._ghost.removeAttribute('src');
         } else {
           // Same-src re-render — release if settled, so an ingest-set
           // spinner can't stick after a byte-identical re-upload (same

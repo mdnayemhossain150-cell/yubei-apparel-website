@@ -42,7 +42,15 @@
   @media (max-width: 640px) { .nav-links-desktop { display: none !important; } .nav-cta-full { display: none !important; } .nav-cta-short { display: inline-block !important; } .mobile-menu-btn { display: flex !important; } .new-arrivals-grid { grid-template-columns: repeat(2, 1fr) !important; } .gallery-grid-3 { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; } .products-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; } .products-grid .prod-img { height: clamp(140px, 42vw, 240px) !important; } .float-blob { animation: none !important; } .pulse-glow { animation: fadeInUp 0.7s ease both !important; } .prod-card { transition: none !important; } }
   .products-grid { contain: layout style; }
   .float-blob { will-change: transform; }
-  .prod-card { will-change: transform; }
+  @media (hover: hover) and (pointer: fine) {
+    .prod-card:hover { will-change: transform; }
+  }
+  @media (max-width: 640px) {
+    .prod-card {
+      content-visibility: auto;
+      contain-intrinsic-size: 520px;
+    }
+  }
   .nav-cta-short { display: none; }
   .mobile-menu-btn { display: none; }
 </style>
@@ -95,7 +103,7 @@
         <a href="#products" onClick="{{ goProducts }}" style="border: 1.5px solid oklch(75% 0.02 80); color: oklch(24% 0.02 80); padding: 15px 30px; border-radius: 999px; font-weight: 600; font-size: 15px; white-space: nowrap; transition: transform 0.2s, border-color 0.2s;" style-hover="transform: translateY(-3px) scale(1.03); border-color: oklch(58% 0.15 35);">View Collection</a>
       </div>
     </div>
-    <image-slot id="hero-img" style="width: 100%; height: min(480px, 40vw); position: relative; z-index: 1; animation: fadeInUp 0.8s ease 0.15s both;" shape="rounded" radius="24" placeholder="Drop hero photo — kids wearing overalls set" src="./assets/company-building.png"></image-slot>
+    <image-slot id="hero-img" loading="eager" style="width: 100%; height: min(480px, 40vw); position: relative; z-index: 1; animation: fadeInUp 0.8s ease 0.15s both;" shape="rounded" radius="24" placeholder="Drop hero photo — kids wearing overalls set" src="./assets/company-building.png"></image-slot>
   </div>
 
   <!-- STATS BANNER -->
@@ -453,7 +461,7 @@
     <div style="max-width: 1400px; margin: 0 auto;">
       <a href="#" onClick="{{ goHome }}" style="display: inline-block; margin-bottom: 32px; color: oklch(45% 0.02 80); font-weight: 500; font-size: 14.5px;">&larr; Back to Home</a>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 70px; align-items: center;">
-      <image-slot id="about-img" style="width: 100%; height: 420px;" shape="rounded" radius="24" placeholder="Drop showroom photo" src="./assets/about-hero.jpg"></image-slot>
+      <image-slot id="about-img" loading="eager" style="width: 100%; height: 420px;" shape="rounded" radius="24" placeholder="Drop showroom photo" src="./assets/about-hero.jpg"></image-slot>
       <div>
         <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(58% 0.15 35); margin-bottom: 14px;">About Us</div>
         <h2 style="font-family: Sora, sans-serif; font-size: clamp(28px, 4vw, 36px); font-weight: 700; margin: 0 0 20px; line-height: 1.15;">One-Stop Service for Global Clients</h2>
@@ -1189,13 +1197,13 @@ class Component extends DCLogic {
 
   goProducts(e) {
     if (e) e.preventDefault();
-    this.setState((s) => ({ view: "products", visible: { ...s.visible, products: true } }));
+    this.setState((s) => ({ view: "products", mobileMenuOpen: false, visible: { ...s.visible, products: true } }));
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   goAbout(e) {
     if (e) e.preventDefault();
-    this.setState((s) => ({ view: "about", visible: { ...s.visible, about: true } }));
+    this.setState((s) => ({ view: "about", mobileMenuOpen: false, visible: { ...s.visible, about: true } }));
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
@@ -1235,8 +1243,8 @@ class Component extends DCLogic {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
-  goAboutMobile(e) { this.goAbout(e); this.setState({ mobileMenuOpen: false }); }
-  goProductsMobile(e) { this.goProducts(e); this.setState({ mobileMenuOpen: false }); }
+  goAboutMobile(e) { this.goAbout(e); }
+  goProductsMobile(e) { this.goProducts(e); }
   goServicesMobile(e) { this.goServices(e); this.setState({ mobileMenuOpen: false }); }
   goCertificatesMobile(e) { this.goCertificates(e); this.setState({ mobileMenuOpen: false }); }
   goContactMobile(e) { this.goContact(e); }
@@ -2407,10 +2415,11 @@ class Component extends DCLogic {
         if (!src || src.includes('{{') || el.dataset.trackedSrc === src) return;
         el.dataset.trackedSrc = src;
         el.removeAttribute('src-loaded');
-        var img = new Image();
-        img.onload = function() { el.setAttribute('src-loaded', '1'); };
-        img.onerror = function() { el.setAttribute('src-loaded', '1'); };
-        img.src = src;
+        var img = el.shadowRoot && el.shadowRoot.querySelector('.frame img');
+        if (!img) { el.setAttribute('src-loaded', '1'); return; }
+        if (img.complete) { el.setAttribute('src-loaded', '1'); return; }
+        img.addEventListener('load', function() { el.setAttribute('src-loaded', '1'); }, { once: true });
+        img.addEventListener('error', function() { el.setAttribute('src-loaded', '1'); }, { once: true });
       }
 
       function initSkeletons(root) {
