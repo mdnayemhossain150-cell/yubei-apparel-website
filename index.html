@@ -1905,21 +1905,36 @@ class Component extends DCLogic {
   </style>
   <script>
     (function() {
-      function initSkeletons() {
-        document.querySelectorAll('image-slot').forEach(function(el) {
-          var src = el.getAttribute('src');
-          if (!src || src.includes('{{')) return;
-          var img = new Image();
-          img.onload = function() { el.setAttribute('src-loaded', '1'); };
-          img.onerror = function() { el.setAttribute('src-loaded', '1'); };
-          img.src = src;
-        });
+      function trackImageSlot(el) {
+        var src = el.getAttribute('src');
+        if (!src || src.includes('{{') || el.dataset.trackedSrc === src) return;
+        el.dataset.trackedSrc = src;
+        el.removeAttribute('src-loaded');
+        var img = new Image();
+        img.onload = function() { el.setAttribute('src-loaded', '1'); };
+        img.onerror = function() { el.setAttribute('src-loaded', '1'); };
+        img.src = src;
       }
-      // Run on load and again after framework renders
+
+      function initSkeletons(root) {
+        if (root.matches && root.matches('image-slot')) trackImageSlot(root);
+        if (root.querySelectorAll) root.querySelectorAll('image-slot').forEach(trackImageSlot);
+      }
+
+      var observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          if (mutation.type === 'attributes') trackImageSlot(mutation.target);
+          mutation.addedNodes.forEach(initSkeletons);
+        });
+      });
+
+      observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['src'] });
+
+      // Run on load and keep tracking views rendered later by the framework.
       if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function() { setTimeout(initSkeletons, 500); });
+        document.addEventListener('DOMContentLoaded', function() { setTimeout(function() { initSkeletons(document); }, 500); });
       } else {
-        setTimeout(initSkeletons, 500);
+        setTimeout(function() { initSkeletons(document); }, 500);
       }
 
     })();
