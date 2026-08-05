@@ -5,7 +5,8 @@
   var items = [];
   var buyer = {
     name: '', company: '', country: '', deliveryDate: '',
-    destinationPort: '', targetPrice: '', customization: ''
+    destinationPort: '', targetPrice: '', customization: '',
+    currency: 'USD', contactMethod: 'WhatsApp'
   };
 
   try {
@@ -21,11 +22,14 @@
     buyer.destinationPort = savedBuyer.destinationPort || '';
     buyer.targetPrice = savedBuyer.targetPrice || '';
     buyer.customization = savedBuyer.customization || '';
+    buyer.currency = savedBuyer.currency || 'USD';
+    buyer.contactMethod = savedBuyer.contactMethod || 'WhatsApp';
   } catch (e) {}
 
   function storeItems(render) {
     try { localStorage.setItem(STORAGE_KEY, JSON.stringify(items)); } catch (e) {}
     updateCount();
+    updateTotals();
     updateButtons();
     if (render && overlay().classList.contains('open')) renderItems();
   }
@@ -37,6 +41,19 @@
   function updateCount() {
     document.getElementById('inquiryFloatCount').textContent = items.length;
     document.getElementById('inquiryFloat').classList.toggle('visible', items.length > 0);
+  }
+  function getTotalQuantity() {
+    return items.reduce(function(sum, item) {
+      var quantity = Number(item.quantity);
+      return sum + (Number.isFinite(quantity) && quantity > 0 ? quantity : 0);
+    }, 0);
+  }
+  function updateTotals() {
+    var total = getTotalQuantity();
+    var average = items.length && total ? Math.round(total / items.length) : 0;
+    var text = items.length + ' selected style' + (items.length === 1 ? '' : 's') + ' · ' + total.toLocaleString() + ' total pieces';
+    if (average) text += ' · ' + average.toLocaleString() + ' average per style';
+    document.getElementById('inquiryTotals').textContent = text;
   }
   function updateButtons() {
     document.querySelectorAll('.inquiry-add-btn').forEach(function(button) {
@@ -127,9 +144,10 @@
     if (buyer.country) lines.push('Country: ' + buyer.country);
     if (buyer.deliveryDate) lines.push('Required delivery date: ' + buyer.deliveryDate);
     if (buyer.destinationPort) lines.push('Destination port: ' + buyer.destinationPort);
-    if (buyer.targetPrice) lines.push('Target price: ' + buyer.targetPrice);
+    if (buyer.targetPrice) lines.push('Target price: ' + buyer.currency + ' ' + buyer.targetPrice);
     if (buyer.customization) lines.push('Customization: ' + buyer.customization);
-    if (buyer.name || buyer.company || buyer.country || buyer.deliveryDate || buyer.destinationPort || buyer.targetPrice || buyer.customization) lines.push('');
+    if (buyer.contactMethod) lines.push('Preferred contact method: ' + buyer.contactMethod);
+    if (buyer.name || buyer.company || buyer.country || buyer.deliveryDate || buyer.destinationPort || buyer.targetPrice || buyer.customization || buyer.contactMethod) lines.push('');
     lines.push('I am interested in the following ' + items.length + ' style' + (items.length === 1 ? '' : 's') + ':');
     items.forEach(function(item, index) {
       var line = (index + 1) + '. 🟠 ' + item.model;
@@ -139,6 +157,7 @@
       if (item.note) line += ' | Notes: ' + item.note;
       lines.push(line);
     });
+    if (getTotalQuantity()) lines.push('Total quantity: ' + getTotalQuantity().toLocaleString() + ' pcs');
     lines.push('', 'Please send availability, MOQ, and quotation. Thank you.');
     return lines.join('\n');
   }
@@ -168,6 +187,8 @@
   document.getElementById('inquiryDestinationPort').value = buyer.destinationPort;
   document.getElementById('inquiryTargetPrice').value = buyer.targetPrice;
   document.getElementById('inquiryCustomization').value = buyer.customization;
+  document.getElementById('inquiryCurrency').value = buyer.currency;
+  document.getElementById('inquiryContactMethod').value = buyer.contactMethod;
   document.getElementById('inquiryFloat').addEventListener('click', openPanel);
   document.getElementById('inquiryClose').addEventListener('click', closePanel);
   document.getElementById('inquiryBuyerName').addEventListener('input', function(e) { buyer.name = e.target.value; storeBuyer(); });
@@ -177,6 +198,8 @@
   document.getElementById('inquiryDestinationPort').addEventListener('input', function(e) { buyer.destinationPort = e.target.value; storeBuyer(); });
   document.getElementById('inquiryTargetPrice').addEventListener('input', function(e) { buyer.targetPrice = e.target.value; storeBuyer(); });
   document.getElementById('inquiryCustomization').addEventListener('input', function(e) { buyer.customization = e.target.value; storeBuyer(); });
+  document.getElementById('inquiryCurrency').addEventListener('change', function(e) { buyer.currency = e.target.value; storeBuyer(); });
+  document.getElementById('inquiryContactMethod').addEventListener('change', function(e) { buyer.contactMethod = e.target.value; storeBuyer(); });
   document.getElementById('inquiryApplyQuantity').addEventListener('click', function() {
     var quantity = document.getElementById('inquiryBulkQuantity').value;
     if (!items.length) { status('Add at least one style first.'); return; }
@@ -205,5 +228,6 @@
   overlay().addEventListener('click', function(e) { if (e.target === overlay()) closePanel(); });
   document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && overlay().classList.contains('open')) closePanel(); });
   updateCount();
+  updateTotals();
   updateButtons();
 })();
