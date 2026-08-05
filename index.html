@@ -2058,10 +2058,18 @@ class Component extends DCLogic {
     @media (max-width: 640px) {
       #inquiryFloat { left: 14px; bottom: 14px; padding: 11px 15px; }
       #inquiryOverlay { padding: 0; align-items: flex-end; }
-      #inquiryPanel { width: 100%; max-height: 92vh; border-radius: 22px 22px 0 0; }
+      #inquiryPanel {
+        width: 100%; max-height: 92vh; max-height: 92dvh; border-radius: 22px 22px 0 0;
+        display: block; overflow-y: auto; overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+      }
+      .inquiry-head {
+        position: sticky; top: 0; z-index: 2; background: white;
+      }
       .inquiry-head, .inquiry-details, #inquiryItems, .inquiry-foot { padding-left: 16px; padding-right: 16px; }
       .inquiry-buyer-grid { grid-template-columns: 1fr; }
       .inquiry-order-grid { grid-template-columns: 1fr; }
+      #inquiryItems { overflow: visible; }
       .inquiry-item { grid-template-columns: 1fr 90px auto; }
       .inquiry-item .inquiry-field.notes { grid-column: 1 / -1; grid-row: 2; }
     }
