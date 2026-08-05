@@ -561,7 +561,7 @@
 
       <div class="products-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px;">
         <sc-for list="{{ products }}" as="p" hint-placeholder-count="6">
-          <div class="prod-card" onclick="window._openLightbox(this)" data-src="{{ p.src }}" data-model="{{ p.style2 }}" data-size="{{ p.size }}" data-weight="{{ p.weight }}" data-season="{{ p.season }}" style="border: 1px solid oklch(91% 0.01 80); border-radius: 20px; overflow: hidden; background: oklch(98% 0.01 80); opacity: {{ p.style.opacity }}; transform: {{ p.style.transform }}; transition: {{ p.style.transition }}, box-shadow 0.25s, translate 0.25s; cursor: zoom-in;" style-hover="box-shadow: 0 16px 32px oklch(30% 0.02 80 / 0.12); translate: 0 -6px;">
+          <div class="prod-card" data-src="{{ p.src }}" data-model="{{ p.style2 }}" data-size="{{ p.size }}" data-weight="{{ p.weight }}" data-season="{{ p.season }}" style="border: 1px solid oklch(91% 0.01 80); border-radius: 20px; overflow: hidden; background: oklch(98% 0.01 80); opacity: {{ p.style.opacity }}; transform: {{ p.style.transform }}; transition: {{ p.style.transition }}, box-shadow 0.25s, translate 0.25s; cursor: zoom-in;" style-hover="box-shadow: 0 16px 32px oklch(30% 0.02 80 / 0.12); translate: 0 -6px;">
             <image-slot id="{{ p.imgId }}" class="prod-img" style="width: 100%; height: clamp(200px, 28vw, 360px);" shape="rect" fit="contain" placeholder="{{ p.placeholder }}" src="{{ p.src }}"></image-slot>
             <div style="padding: 22px;">
               <div style="margin-bottom: 10px;">
@@ -1880,6 +1880,15 @@ class Component extends DCLogic {
         ].join('\n');
         window.open('https://wa.me/8618367259637?text=' + encodeURIComponent(message), '_blank', 'noopener');
       };
+
+      // Product cards are rendered by the page framework, so handle their
+      // clicks from the document instead of relying on an inline handler.
+      document.addEventListener('click', function(e) {
+        if (e.target.closest('.inquiry-add-btn')) return;
+        var card = e.target.closest('.prod-card[data-model]');
+        if (!card) return;
+        window._openLightbox(card);
+      });
 
       // Keyboard navigation
       document.addEventListener('keydown', function(e) {
