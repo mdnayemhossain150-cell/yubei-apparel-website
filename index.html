@@ -427,28 +427,23 @@
   </style>
   <script>
     (function() {
-      function initFaq() {
-        var list = document.getElementById('faqList');
-        if (!list || list._faqReady) return;
-        list._faqReady = true;
-        list.addEventListener('click', function(e) {
-          var btn = e.target.closest('.faq-q');
-          if (!btn) return;
-          var item = btn.closest('.faq-item');
-          var answer = item.querySelector('.faq-a');
-          var isOpen = item.classList.contains('open');
-          document.querySelectorAll('.faq-item').forEach(function(i) {
-            i.classList.remove('open');
-            i.querySelector('.faq-a').style.display = 'none';
-          });
-          if (!isOpen) {
-            item.classList.add('open');
-            answer.style.display = 'block';
-          }
+      document.addEventListener('click', function(e) {
+        var btn = e.target.closest('.faq-q');
+        if (!btn) return;
+        var list = btn.closest('#faqList');
+        if (!list) return;
+        var item = btn.closest('.faq-item');
+        var answer = item.querySelector('.faq-a');
+        var isOpen = item.classList.contains('open');
+        list.querySelectorAll('.faq-item').forEach(function(i) {
+          i.classList.remove('open');
+          i.querySelector('.faq-a').style.display = 'none';
         });
-      }
-      setTimeout(initFaq, 300);
-      setTimeout(initFaq, 1000);
+        if (!isOpen) {
+          item.classList.add('open');
+          answer.style.display = 'block';
+        }
+      });
     })();
   </script>
 
