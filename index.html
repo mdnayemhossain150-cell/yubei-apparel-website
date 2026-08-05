@@ -29,7 +29,9 @@
 <x-dc>
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <style>
   body { margin: 0; background: oklch(98% 0.01 80); color: oklch(24% 0.02 80); }
   a { color: oklch(52% 0.14 35); text-decoration: none; }
@@ -445,10 +447,8 @@
           }
         });
       }
-      // Try immediately and retry for framework render
       setTimeout(initFaq, 300);
-      setTimeout(initFaq, 800);
-      setTimeout(initFaq, 2000);
+      setTimeout(initFaq, 1000);
     })();
   </script>
 
@@ -907,27 +907,9 @@
               <div style="font-size: 13.5px; color: oklch(48% 0.02 80); line-height: 1.55;">Our showroom proudly displays Arabic signage — welcoming buyers from the Middle East and ensuring they feel at home during their visit.</div>
             </div>
           </div>
-          <div style="border-radius: 18px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid oklch(92% 0.01 80);">
-            <image-slot id="activity-04" style="width: 100%; height: 320px;" shape="rect" fit="cover" placeholder="International buyer event" src="./assets/activity-4.jpg"></image-slot>
-            <div style="padding: 16px 18px;">
-              <div style="font-weight: 700; font-size: 15px; margin-bottom: 4px;">Global Buyer Event</div>
-              <div style="font-size: 13.5px; color: oklch(48% 0.02 80); line-height: 1.55;">International buyers from across Africa, the Middle East, and Southeast Asia gathering at the Zhili Children's Garments Global Selection Center.</div>
-            </div>
-          </div>
-          <div style="border-radius: 18px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid oklch(92% 0.01 80);">
-            <image-slot id="activity-05" style="width: 100%; height: 320px;" shape="rect" fit="cover" placeholder="Exhibition presentation" src="./assets/activity-5.jpg"></image-slot>
-            <div style="padding: 16px 18px;">
-              <div style="font-weight: 700; font-size: 15px; margin-bottom: 4px;">Industry Presentation — 2026 Exhibition</div>
-              <div style="font-size: 13.5px; color: oklch(48% 0.02 80); line-height: 1.55;">Zhili's world-leading supply chain showcased at the 2026 Wuxing District Children's Clothing Exhibition — 2 billion pieces annual capacity, 1 million+ SKU stock.</div>
-            </div>
-          </div>
-          <div style="border-radius: 18px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid oklch(92% 0.01 80);">
-            <image-slot id="activity-06" style="width: 100%; height: 320px;" shape="rect" fit="cover" placeholder="International buyers at exhibition" src="./assets/activity-6.jpg"></image-slot>
-            <div style="padding: 16px 18px;">
-              <div style="font-weight: 700; font-size: 15px; margin-bottom: 4px;">International Buyers at Zhili</div>
-              <div style="font-size: 13.5px; color: oklch(48% 0.02 80); line-height: 1.55;">Buyers from the Middle East, Africa, South Asia and beyond attending the Zhili Children's Garments exhibition — a true global gathering of wholesale buyers.</div>
-            </div>
-          </div>
+</div>
+</div>
+</div>
         </div>
       </div>
 
@@ -1889,19 +1871,17 @@ class Component extends DCLogic {
     (function() {
       var bar = document.getElementById('stickyQuoteBar');
       var sqbBtn = document.getElementById('sqbBtn');
-      var shown = false;
 
-      // Show bar only when on products page
-      function checkShow() {
-        var onProducts = document.getElementById('products') && document.getElementById('products').offsetParent !== null;
-        if (onProducts && !shown) { bar.classList.add('show'); shown = true; }
-        else if (!onProducts) { bar.classList.remove('show'); shown = false; }
-      }
-      setInterval(checkShow, 500);
+      // Use MutationObserver on body to detect view changes - no polling
+      var obs = new MutationObserver(function() {
+        var prod = document.getElementById('products');
+        var visible = prod && prod.offsetParent !== null;
+        bar.classList.toggle('show', !!visible);
+      });
+      obs.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['style', 'class'] });
 
       sqbBtn.addEventListener('click', function() {
         bar.classList.remove('show');
-        // trigger goQuote
         var quoteLink = document.querySelector('[onclick*="goQuote"]');
         if (quoteLink) quoteLink.click();
       });
@@ -1911,13 +1891,13 @@ class Component extends DCLogic {
   <!-- IMAGE SKELETON SHIMMER -->
   <style>
     @keyframes shimmer {
-      0% { background-position: -200% 0; }
-      100% { background-position: 200% 0; }
+      0% { opacity: 0.5; }
+      50% { opacity: 1; }
+      100% { opacity: 0.5; }
     }
     image-slot:not([src-loaded]) {
-      background: linear-gradient(90deg, oklch(93% 0.01 80) 25%, oklch(97% 0.005 80) 50%, oklch(93% 0.01 80) 75%);
-      background-size: 200% 100%;
-      animation: shimmer 1.6s ease-in-out infinite;
+      background: oklch(93% 0.01 80);
+      animation: shimmer 1.8s ease-in-out infinite;
       border-radius: 8px;
       display: block;
     }
@@ -1941,9 +1921,7 @@ class Component extends DCLogic {
       } else {
         setTimeout(initSkeletons, 500);
       }
-      // Re-check periodically for dynamically rendered slots
-      setTimeout(initSkeletons, 2000);
-      setTimeout(initSkeletons, 4000);
+
     })();
   </script>
 
