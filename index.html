@@ -137,9 +137,8 @@
         <a href="#activity" onClick="{{ goActivity }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 15px; white-space: nowrap; transition: color 0.2s;">Activity</a>
         <a href="#contact" onClick="{{ goContact }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 15px; white-space: nowrap; transition: color 0.2s;">Contact</a>
       </div>
-      <select id="languageSwitcher" aria-label="Choose language" data-i18n-skip>
+      <select id="languageSwitcher" aria-label="Choose language">
         <option value="en">EN</option>
-        <option value="zh">中文</option>
         <option value="ar">العربية</option>
       </select>
       <a href="#quote" onClick="{{ goQuote }}" class="nav-cta-full" style="background: oklch(58% 0.15 35); color: white; padding: 11px 22px; border-radius: 999px; font-weight: 600; font-size: 14px; white-space: nowrap; flex-shrink: 0; transition: transform 0.2s, background 0.2s; display: inline-block;" style-hover="background: oklch(50% 0.15 35); transform: scale(1.05);">Request Quote</a>
@@ -621,7 +620,7 @@
     <div style="max-width: 1400px; margin: 0 auto;">
       <a href="#" onClick="{{ goHome }}" style="display: inline-block; margin-bottom: 32px; color: oklch(45% 0.02 80); font-weight: 500; font-size: 14.5px;">&larr; Back to Home</a>
       <div style="text-align: center; margin-bottom: 56px;">
-        <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(58% 0.15 35); margin-bottom: 14px;">{{ activeSeasonLabel }} Collection</div>
+        <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(58% 0.15 35); margin-bottom: 14px;">{{ activeSeasonTitle }}</div>
         <h2 style="font-family: Sora, sans-serif; font-size: clamp(28px, 3.5vw, 36px); font-weight: 700; margin: 0 0 16px;">Fashionable &amp; Comfortable Overalls Sets</h2>
         <p style="font-size: 16.5px; color: oklch(40% 0.02 80); max-width: 620px; margin: 0 auto; line-height: 1.65;">Our main product line features high-quality overalls sets for children &mdash; designed for comfort, durability, and style. More seasonal collections coming soon.</p>
       </div>
@@ -1074,7 +1073,7 @@
           <a href="#quote" onClick="{{ goQuote }}" style="display: inline-block; margin-top: 6px; background: oklch(58% 0.15 35); color: white; padding: 13px 28px; border-radius: 999px; font-weight: 600; font-size: 14.5px; text-align: center; width: fit-content; transition: transform 0.2s, box-shadow 0.2s;" style-hover="transform: translateY(-3px); box-shadow: 0 10px 24px oklch(58% 0.15 35 / 0.35);">Request a Quote</a>
         </div>
         <div style="border-radius: 18px; overflow: hidden; height: 380px; border: 1px solid oklch(91% 0.01 80);">
-          <iframe title="Yubei Apparel location map" src="https://www.google.com/maps?q=No.+317+Fangqian+Road+Zhili+Town+Huzhou+Zhejiang+China&output=embed" style="width: 100%; height: 100%; border: 0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <iframe id="locationMap" title="Yubei Apparel location map" src="https://www.google.com/maps?q=No.+317+Fangqian+Road+Zhili+Town+Huzhou+Zhejiang+China&output=embed" style="width: 100%; height: 100%; border: 0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
 
@@ -1087,7 +1086,7 @@
         <!-- content -->
         <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 40px;">
           <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.5);">Zhili · Huzhou · Zhejiang</div>
-          <div style="font-family: Sora, sans-serif; font-size: clamp(22px, 3.5vw, 36px); font-weight: 700; color: white; text-align: center; line-height: 1.2;">太湖之滨 &nbsp;·&nbsp; On the Shores of Taihu Lake</div>
+          <div style="font-family: Sora, sans-serif; font-size: clamp(22px, 3.5vw, 36px); font-weight: 700; color: white; text-align: center; line-height: 1.2;">On the Shores of Taihu Lake</div>
           <div style="font-size: 15px; color: rgba(255,255,255,0.7); text-align: center; max-width: 500px; line-height: 1.65;">Home to the world's largest children's clothing manufacturing hub — where 10 years of craftsmanship meets global fashion</div>
           <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 6px;">
             <div style="background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); border-radius: 999px; padding: 7px 18px; font-size: 13px; font-weight: 600; color: white;">🇨🇳 Made in China</div>
@@ -1114,7 +1113,7 @@
       </div>
       <div style="display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap;">
         <a href="mailto:358630530@qq.com" style="display: inline-block; background: oklch(58% 0.15 35); color: white; padding: 11px 26px; border-radius: 999px; font-weight: 600; font-size: 14px; transition: transform 0.2s, box-shadow 0.2s;" style-hover="transform: translateY(-3px) scale(1.03); box-shadow: 0 10px 24px oklch(58% 0.15 35 / 0.35);">Email Us Now</a>
-        <a href="https://wa.me/8618367259637" target="_blank" rel="noopener" aria-label="WhatsApp" style="width: 38px; height: 38px; border-radius: 50%; background: white; display: flex; align-items: center; justify-content: center; color: oklch(24% 0.02 80); transition: transform 0.2s, background 0.2s;" style-hover="transform: translateY(-3px); background: oklch(58% 0.15 35); color: white;">
+        <a href="https://wa.me/8618367259637" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" style="width: 38px; height: 38px; border-radius: 50%; background: white; display: flex; align-items: center; justify-content: center; color: oklch(24% 0.02 80); transition: transform 0.2s, background 0.2s;" style-hover="transform: translateY(-3px); background: oklch(58% 0.15 35); color: white;">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1-.2.2-.3.2-.6.1-.9-.5-1.9-1.2-2.7-2.1-.6-.7-1.1-1.4-1.4-2.1-.1-.3 0-.4.1-.6.2-.2.4-.4.6-.6.1-.2.2-.4.1-.6-.1-.2-.7-1.6-.9-2.1-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.7.7-1.1 1.5-1.1 2.5 0 1.5 1.1 3 1.2 3.2.2.2 2.1 3.3 5.1 4.5 3 1.2 3 .8 3.6.7.6-.1 1.7-.7 1.9-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/><path d="M12 2.3C6.7 2.3 2.4 6.6 2.4 11.9c0 1.9.5 3.6 1.5 5.2L2.3 21.7l4.7-1.5c1.5.8 3.2 1.3 5 1.3 5.3 0 9.6-4.3 9.6-9.6S17.3 2.3 12 2.3zm0 17.5c-1.7 0-3.3-.5-4.6-1.3l-.3-.2-3 1 1-2.9-.2-.3c-.9-1.4-1.4-3-1.4-4.7 0-4.6 3.7-8.3 8.3-8.3 4.6 0 8.3 3.7 8.3 8.3s-3.5 8.4-8.1 8.4z"/></svg>
         </a>
         <a href="https://www.facebook.com/profile.php?id=61590309144910" target="_blank" rel="noopener" aria-label="Facebook" style="width: 38px; height: 38px; border-radius: 50%; background: white; display: flex; align-items: center; justify-content: center; color: oklch(24% 0.02 80); transition: transform 0.2s, background 0.2s;" style-hover="transform: translateY(-3px); background: oklch(58% 0.15 35); color: white;">
@@ -1395,7 +1394,7 @@ class Component extends DCLogic {
       capabilities: this.stagger(CAPABILITIES, "about"),
       regions: REGIONS.map((name, i) => ({ name, style: this.revealStyle(!!v.regions, i * 0.07) })),
       featured: PRODUCTS.slice(0, 4).map((p) => ({ imgId: "feat-" + p.imgId, placeholder: "Drop photo \u2014 " + p.style2 })),
-      activeSeasonLabel: (SEASONS.find((s) => s.key === this.state.productSeason) || SEASONS[0]).label,
+      activeSeasonTitle: (SEASONS.find((s) => s.key === this.state.productSeason) || SEASONS[0]).label + " Collection",
       seasons: SEASONS.map((s) => {
         const active = this.state.productSeason === s.key;
         return { ...s, active, onClick: () => this.setSeason(s.key), btnStyle: { borderColor: active ? "oklch(58% 0.15 35)" : "oklch(80% 0.02 80)", background: active ? "oklch(58% 0.15 35)" : "white", color: active ? "white" : "oklch(30% 0.02 80)" } };
@@ -1955,11 +1954,7 @@ class Component extends DCLogic {
         var card = cards[current];
         if (!card) return;
         var selectedLanguage = window.YubeiI18n ? window.YubeiI18n.getLanguage() : 'en';
-        var message = selectedLanguage === 'zh' ? [
-          '您好，语贝服饰：', '', '我对款号 ' + (card.dataset.model || '') + ' 感兴趣。',
-          '尺码：' + (card.dataset.size || '请确认'), '季节：' + (card.dataset.season || '请确认'), '',
-          '请提供库存情况、最低起订量、可选颜色和报价。'
-        ].join('\n') : selectedLanguage === 'ar' ? [
+        var message = selectedLanguage === 'ar' ? [
           'مرحباً يوبي للملابس،', '', 'أنا مهتم بالموديل ' + (card.dataset.model || '') + '.',
           'المقاس: ' + (card.dataset.size || 'يرجى التأكيد'), 'الموسم: ' + (card.dataset.season || 'يرجى التأكيد'), '',
           'يرجى إرسال حالة التوفر والحد الأدنى للطلب والألوان وعرض السعر.'
@@ -1975,11 +1970,7 @@ class Component extends DCLogic {
         var card = cards[current];
         if (!card) return;
         var selectedLanguage = window.YubeiI18n ? window.YubeiI18n.getLanguage() : 'en';
-        var message = selectedLanguage === 'zh' ? [
-          '您好，语贝服饰：', '', '我想申请样品。', '款号：' + (card.dataset.model || ''),
-          '尺码：' + (card.dataset.size || '请确认'), '季节：' + (card.dataset.season || '请确认'),
-          '样品数量：1件', '', '请确认样品价格、可选颜色和运费。'
-        ].join('\n') : selectedLanguage === 'ar' ? [
+        var message = selectedLanguage === 'ar' ? [
           'مرحباً يوبي للملابس،', '', 'أرغب في طلب عينة.', 'الموديل: ' + (card.dataset.model || ''),
           'المقاس: ' + (card.dataset.size || 'يرجى التأكيد'), 'الموسم: ' + (card.dataset.season || 'يرجى التأكيد'),
           'كمية العينة: قطعة واحدة', '', 'يرجى تأكيد سعر العينة والألوان المتاحة وتكلفة الشحن.'

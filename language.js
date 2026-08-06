@@ -7,90 +7,6 @@
   var attributeState = new WeakMap();
 
   var translations = {
-    zh: {
-      'About': '关于我们', 'Products': '产品', 'Services': '服务', 'Certificates': '资质证书', 'Activity': '企业动态', 'Contact': '联系我们',
-      'Request Quote': '获取报价', 'Quote': '报价', '← Back to Home': '← 返回首页', 'View Collection': '查看产品',
-      'Certified Quality Supplier': '认证优质供应商', 'Professional Kidswear Manufacturer in China': '中国专业童装制造商',
-      "Yubei Apparel is a children's clothing manufacturer and exporter based in Zhili, Huzhou, China, offering wholesale kidswear, OEM, ODM, custom design, and private-label production for global buyers.": '语贝服饰位于中国湖州织里，是一家专业童装制造商和出口商，为全球买家提供童装批发、OEM、ODM、定制设计及自有品牌生产服务。',
-      'Years Experience': '行业经验', 'Styles': '款式', 'Countries': '出口国家', 'Repeat Buyers': '回购客户',
-      'New Arrivals': '新品上市', 'Latest Collection Highlights': '最新系列精选', 'Global Reach': '全球市场',
-      'Serving Clients Worldwide': '服务全球客户',
-      'Our products are exported to numerous countries and regions, with a strong footprint across these key markets — built on trust, consistent quality, and reliable service.': '我们的产品出口到多个国家和地区，凭借诚信、稳定品质和可靠服务，在重点市场建立了长期合作。',
-      'Our Core Advantages': '我们的核心优势', 'Common Buyer Questions': '买家常见问题',
-      'Everything you need to know before placing your first order.': '首次下单前需要了解的重要信息。',
-      'What is the minimum order quantity (MOQ)?': '最低起订量（MOQ）是多少？',
-      'How long is the production lead time?': '生产周期需要多久？',
-      'Can I request a sample before placing a bulk order?': '批量下单前可以申请样品吗？',
-      'What payment methods do you accept?': '你们接受哪些付款方式？', 'How does shipping work?': '如何安排运输？',
-      'Can I visit your factory?': '我可以参观你们的工厂吗？', 'Can you make custom designs with our own logo?': '可以生产带有我们自有标志的定制款吗？',
-      'Still have questions?': '还有其他问题？', 'Our team replies within 24 hours. Reach out via WhatsApp for the fastest response.': '我们的团队将在24小时内回复。通过 WhatsApp 联系可获得最快响应。',
-      'Ask on WhatsApp →': '通过 WhatsApp 咨询 →',
-      'About Us': '关于我们', 'One-Stop Service for Global Clients': '为全球客户提供一站式服务',
-      "We specialize in providing a one-stop service for global clients, including OEM, ODM, custom design, sample processing, and bulk wholesale. Our commitment is to deliver high-quality, comfortable, and fashionable children's clothing to customers worldwide.": '我们为全球客户提供一站式服务，包括 OEM、ODM、定制设计、来样加工和批量批发，致力于向世界各地客户提供优质、舒适、时尚的童装。',
-      'Our Mission': '我们的使命', 'Our Vision': '我们的愿景', 'A Look Inside Yubei': '走进语贝',
-      'Showroom': '展厅', 'Factory': '工厂', 'Founder & Vision': '创始人与愿景', 'Founder Speech': '创始人寄语',
-      'Fashionable & Comfortable Overalls Sets': '时尚舒适的童装套装',
-      'Our main product line features high-quality overalls sets for children — designed for comfort, durability, and style. More seasonal collections coming soon.': '我们的主打产品是高品质儿童套装，兼顾舒适、耐穿与时尚。更多四季新品将陆续推出。',
-      'Search by model number': '按款号搜索', 'Summer': '夏季', 'Autumn': '秋季', 'Winter': '冬季', 'Mix Items': '混合款',
-      'Size': '尺码', 'Weight': '重量', 'Season': '季节', 'Tap to zoom': '点击放大', '+ Add to Inquiry': '+ 加入询价', '✓ Added to Inquiry': '✓ 已加入询价',
-      'Product Detail': '产品详情', 'Ask About This Style on WhatsApp': '通过 WhatsApp 咨询此款', 'Request a Sample': '申请样品', 'No image uploaded yet': '暂无产品图片',
-      'Our Services': '我们的服务', 'Flexible Cooperation Models': '灵活的合作模式', 'From Inquiry to Delivery': '从询价到交付',
-      'Simple, transparent, and fast. Here\'s how we work with buyers around the world.': '流程简单、透明、高效。以下是我们与全球买家的合作方式。',
-      '1. Inquiry': '1. 提交询价', '2. Quotation': '2. 报价', '3. Sample & Confirm': '3. 样品确认', '4. Production': '4. 批量生产', '5. Delivery': '5. 发货',
-      'Send us your design, quantity, and requirements via WhatsApp or email': '通过 WhatsApp 或邮件发送您的设计、数量和要求',
-      'We reply with pricing, lead time, and available fabric options within 24hrs': '我们将在24小时内回复价格、交期和可选面料',
-      'We produce a sample for your approval before starting bulk production': '批量生产前先制作样品供您确认',
-      'Bulk manufacturing begins with strict quality inspection at every stage': '批量生产开始后，每个环节都进行严格质量检验',
-      'Your order ships worldwide by sea or air — we handle all export documentation': '订单可通过海运或空运发往全球，我们负责全部出口文件',
-      'Choose Your Plan': '选择您的生产方案', 'Pricing & Lead Time': '价格与交期',
-      'Choose your lead time and get the best price for your budget. Lower price for longer schedules': '根据预算选择交期，交期越充裕，价格越优惠。',
-      'Ready Stock Orders:': '现货订单：', 'Custom Orders:': '定制订单：', 'Immediate delivery': '立即发货', 'no minimum quantity': '不限最低数量',
-      'Why Buyers Choose Yubei': '买家选择语贝的理由', 'Quality & Compliance You Can Trust': '值得信赖的品质与合规',
-      'Now That You\'ve Seen Our Credentials': '了解我们的资质后', 'Let\'s talk business. Our team is ready to answer your questions, send samples, and give you the best price for your order.': '欢迎洽谈合作。我们的团队随时为您解答问题、寄送样品并提供有竞争力的报价。',
-      'Request a Quote →': '获取报价 →', '💬 WhatsApp Us': '💬 WhatsApp 联系我们',
-      'Tell Us What You Need': '告诉我们您的需求', 'Fill in your requirements below and our team will reply with pricing and lead time.': '请填写以下需求，我们的团队将回复价格和交期。',
-      'Name *': '姓名 *', 'Company': '公司', 'Email *': '邮箱 *', 'Phone / WhatsApp': '电话 / WhatsApp', 'Product Interest': '意向产品', 'Quantity Needed': '需求数量', 'Additional Requirements': '其他要求', 'Submit Request': '提交询价',
-      'Our Activity': '企业动态', "Where We've Been & Who We've Met": '我们的足迹与客户交流',
-      'We actively participate in international trade exhibitions and welcome buyers from around the world to visit our showroom in Zhili, Huzhou.': '我们积极参加国际贸易展会，并欢迎世界各地买家到访湖州织里展厅。',
-      "Huzhou Zhili Children's Clothing Exhibition": '湖州织里童装展', "Zhili Children's Garments Global Selection Center · Huzhou, Zhejiang": '织里童装全球选品中心 · 浙江湖州',
-      'Yubei Showroom': '语贝展厅', 'International Welcome': '欢迎国际买家', 'You Are Always Welcome to Visit Us!': '随时欢迎您来访！',
-      'Come see our showroom, browse the full collection, and meet our team in person. We are located in the heart of Zhili Town — the world\'s largest children\'s clothing hub.': '欢迎参观我们的展厅、浏览完整产品系列并与团队见面。我们位于全球最大的童装产业基地——织里镇。',
-      '💬 Contact to Arrange Visit': '💬 联系预约参观', 'View Contact Details': '查看联系方式',
-      'Get In Touch': '联系我们', "We'd Love to Hear From You": '期待您的联系',
-      "Whether you're exploring a bulk order, custom design, or a new partnership, our team in Huzhou is ready to help. Reach out and we'll respond within 24 hours.": '无论您需要批量订单、定制设计还是新的合作机会，我们的湖州团队都将竭诚协助，并在24小时内回复。',
-      'Address': '地址', 'Contact Person': '联系人', 'Business Hours': '营业时间', 'Email': '邮箱', 'Email Us Now': '立即发送邮件',
-      "Let's Build a Successful Partnership": '携手建立成功合作', 'Contact Us': '联系我们', 'Address:': '地址：', 'Contact:': '联系人：', 'Phone:': '电话：', 'Email:': '邮箱：',
-      'Your Product Inquiry': '您的产品询价', 'Add up to 30 styles, quantities, and notes.': '最多可添加30个款式、数量和备注。',
-      'Your name': '您的姓名', 'Country': '国家', 'Required delivery date': '要求交货日期', 'Destination port': '目的港', 'Target price': '目标价格', 'Customization requirements': '定制要求', 'Preferred contact method': '首选联系方式',
-      'Apply one quantity to all selected styles': '将同一数量应用到所有已选款式', 'Apply to All': '全部应用', 'Quantity': '数量', 'Notes': '备注',
-      'Copy Summary': '复制询价内容', 'Send on WhatsApp': '通过 WhatsApp 发送', 'Send by Email': '通过邮件发送', 'Clear List': '清空列表', 'Inquiry List': '询价清单',
-      'WhatsApp': 'WhatsApp', 'WeChat': '微信', 'Ready to Order?': '准备下单？', 'Interested in our products?': '对我们的产品感兴趣？', 'Get a quote in 24 hours': '24小时内获取报价',
-      'Your inquiry list is empty. Add styles from the Products page.': '询价清单为空。请从产品页面添加款式。',
-      'Example: YB-WI-001': '例如：YB-WI-001', 'Name': '姓名', 'Company name': '公司名称', 'Country': '国家',
-      'Example: Port Klang': '例如：巴生港', 'Example: 6.50 per piece': '例如：每件 6.50', 'Logo, label, colors, packaging': '标志、标签、颜色、包装',
-      'Example: 300 pieces each': '例如：每款300件', 'Pieces': '件数', 'Color, label, or other request': '颜色、标签或其他要求',
-      'Add at least one style first.': '请先添加至少一个款式。', 'Enter a valid quantity first.': '请先输入有效数量。',
-      'Inquiry summary copied.': '询价内容已复制。', 'Inquiry list cleared.': '询价清单已清空。', 'Choose language': '选择语言',
-      'Middle East': '中东', 'Southeast Asia': '东南亚', 'Central Asia': '中亚', 'Africa': '非洲', 'Europe & America': '欧洲与美洲', 'Why Choose Us': '为什么选择我们',
-      'Superior Quality': '卓越品质', 'We use premium fabrics and maintain strict quality control throughout the production process.': '我们采用优质面料，并在整个生产过程中实施严格的质量控制。',
-      'Rich Experience': '经验丰富', 'Years of experience exporting to diverse markets ensures we understand international standards and customer needs.': '多年多市场出口经验，使我们深入了解国际标准和客户需求。',
-      'Fashionable Design': '时尚设计', 'Our design team keeps up with global trends to create appealing and marketable products.': '我们的设计团队紧跟全球趋势，打造美观且具有市场竞争力的产品。',
-      'Reliable Supply Chain': '可靠供应链', 'A mature and stable supply chain ensures on-time delivery and consistent quality.': '成熟稳定的供应链确保按时交付和品质一致。',
-      'One-Stop Service': '一站式服务', 'We handle everything from design concept to finished product delivery, ensuring a seamless experience.': '从设计构思到成品交付，我们全程负责，确保合作顺畅。',
-      'Full-Season Collection': '全季产品系列', "We offer a comprehensive range of children's clothing designed to suit diverse seasonal needs.": '我们提供丰富的童装系列，满足不同季节的市场需求。',
-      'Specialization in Sets': '专注童装套装', "Our expertise lies in high-quality children's clothing sets, a top-selling category in global markets.": '我们专注高品质童装套装，这是全球市场的热销品类。',
-      'Ready Stock & Delivery': '现货与快速交付', 'We maintain substantial ready stock to enable quick response to urgent orders and fast delivery.': '我们备有充足现货，可快速响应紧急订单并及时交付。',
-      'Yes! We encourage buyers to request a sample before committing to a bulk order. This allows you to check the fabric quality, sizing, stitching, and design before production begins. Contact us via WhatsApp or email to arrange your sample.': '可以！我们建议买家在批量下单前申请样品，以确认面料品质、尺码、车工和设计。请通过 WhatsApp 或邮件联系我们安排样品。',
-      'We accept the following payment methods:': '我们接受以下付款方式：', 'Bank Transfer (T/T)': '银行电汇（T/T）', 'international wire transfer': '国际电汇', 'WeChat Pay': '微信支付', 'for buyers with WeChat': '适用于使用微信的买家', 'Alipay': '支付宝', 'fast and secure online payment': '快捷安全的在线支付',
-      'Please contact us to confirm payment details before transferring.': '转账前请联系我们确认付款信息。', 'Contact us for a shipping quote to your country.': '请联系我们获取发往您所在国家的运费报价。',
-      'Original Equipment Manufacturer': '原始设备制造（OEM）', 'We can produce your designs and brand them with your label.': '我们可按您的设计生产并使用您的品牌标签。',
-      'Original Design Manufacturer': '原始设计制造（ODM）', 'Our design team creates unique products based on your specifications and market needs.': '我们的设计团队根据您的规格和市场需求开发独特产品。',
-      'Customization': '定制服务', 'We offer customization in fabric, color, size, and printing/logo.': '我们提供面料、颜色、尺码以及印花或标志定制。',
-      'Wholesale': '批量批发', 'We welcome bulk wholesale orders with competitive pricing to suit your business.': '我们承接批量批发订单，并提供适合您业务的有竞争力价格。',
-      'Business License': '营业执照', 'Trademark Registration': '商标注册证', 'Chamber of Commerce Member': '商会会员证书', 'Quality Supplier Award': '优质供应商奖',
-      'Certifications': '资质认证', 'Our Strengths': '我们的实力', 'Strict Quality Control': '严格质量控制', 'Fast Turnaround': '快速交付', 'Flexible Pricing': '灵活定价', 'Countries Export Compliant': '符合多国出口要求',
-      'Request a Quote': '获取报价', 'Chat with us 👋': '联系我们 👋', 'Usually replies within minutes': '通常几分钟内回复', 'buyers viewing today': '位买家今日正在浏览', 'Open inquiry list': '打开询价清单', 'Back to top': '返回顶部'
-    },
     ar: {
       'About': 'من نحن', 'Products': 'المنتجات', 'Services': 'الخدمات', 'Certificates': 'الشهادات', 'Activity': 'الأنشطة', 'Contact': 'اتصل بنا',
       'Request Quote': 'اطلب عرض سعر', 'Quote': 'عرض سعر', '← Back to Home': 'العودة للرئيسية →', 'View Collection': 'عرض المجموعة',
@@ -164,7 +80,45 @@
       'Wholesale': 'البيع بالجملة', 'We welcome bulk wholesale orders with competitive pricing to suit your business.': 'نرحب بطلبات الجملة ونقدم أسعاراً تنافسية تناسب أعمالك.',
       'Business License': 'الرخصة التجارية', 'Trademark Registration': 'تسجيل العلامة التجارية', 'Chamber of Commerce Member': 'عضوية غرفة التجارة', 'Quality Supplier Award': 'جائزة المورّد المتميز',
       'Certifications': 'الشهادات', 'Our Strengths': 'نقاط قوتنا', 'Strict Quality Control': 'رقابة صارمة على الجودة', 'Fast Turnaround': 'سرعة في التنفيذ', 'Flexible Pricing': 'أسعار مرنة', 'Countries Export Compliant': 'متوافق مع متطلبات التصدير لعدة دول',
-      'Request a Quote': 'اطلب عرض سعر', 'Chat with us 👋': 'تواصل معنا 👋', 'Usually replies within minutes': 'نرد عادة خلال دقائق', 'buyers viewing today': 'مشترون يتصفحون اليوم', 'Open inquiry list': 'فتح قائمة الاستفسار', 'Back to top': 'العودة إلى الأعلى'
+      'Request a Quote': 'اطلب عرض سعر', 'Chat with us 👋': 'تواصل معنا 👋', 'Usually replies within minutes': 'نرد عادة خلال دقائق', 'buyers viewing today': 'مشترون يتصفحون اليوم', 'Open inquiry list': 'فتح قائمة الاستفسار', 'Back to top': 'العودة إلى الأعلى',
+      'Choose language': 'اختر اللغة', 'FAQ': 'الأسئلة الشائعة', 'Behind The Brand': 'خلف العلامة التجارية',
+      'Collection': 'المجموعة', 'Winter Collection': 'مجموعة الشتاء', 'Summer Collection': 'مجموعة الصيف', 'Autumn Collection': 'مجموعة الخريف', 'Mix Items Collection': 'مجموعة متنوعة',
+      'Model No:': 'رقم الموديل:', 'Size:': 'المقاس:', 'Weight:': 'الوزن:', 'Season:': 'الموسم:',
+      'Replace': 'استبدال', 'Edit': 'تعديل', 'Drop photo': 'أضف صورة', 'Chat on WhatsApp': 'تواصل عبر واتساب',
+      'Close inquiry list': 'إغلاق قائمة الاستفسار', 'Target price currency': 'عملة السعر المستهدف', 'Clear all selected styles?': 'هل تريد مسح جميع الموديلات المختارة؟', 'Could not copy automatically.': 'تعذر النسخ تلقائياً.',
+      'Dear Valued Customers and Partners, it is my pleasure to welcome you to Yubei and share the passion and vision behind our brand.': 'عملاءنا وشركاءنا الأعزاء، يسعدني أن أرحب بكم في يوبي وأن أشارككم الشغف والرؤية اللذين تقوم عليهما علامتنا التجارية.',
+      'Yubei was created with a simple belief: every child deserves clothing that is comfortable, stylish, and made with care.': 'تأسست يوبي انطلاقاً من إيمان بسيط: كل طفل يستحق ملابس مريحة وأنيقة ومصنوعة بعناية.',
+      "We believe children's clothing is not only about appearance, but also about comfort, confidence, and the beautiful memories created during childhood. Every design we create reflects our commitment to quality, creativity, and attention to detail.": 'نؤمن بأن ملابس الأطفال لا تتعلق بالمظهر فقط، بل بالراحة والثقة والذكريات الجميلة التي تتكوّن في الطفولة. ويعكس كل تصميم نقدمه التزامنا بالجودة والإبداع والاهتمام بالتفاصيل.',
+      "At Yubei, we continuously develop fashionable and practical children's wear while building trusted and lasting relationships with customers and partners around the world.": 'في يوبي نطوّر باستمرار ملابس أطفال عصرية وعملية، ونبني علاقات موثوقة وطويلة الأمد مع العملاء والشركاء حول العالم.',
+      'Thank you for your trust and support. Together, we hope to bring more happiness, confidence, and beautiful memories to children everywhere.': 'شكراً لثقتكم ودعمكم. ونتطلع معاً إلى منح الأطفال في كل مكان مزيداً من السعادة والثقة والذكريات الجميلة.',
+      "Founder of Yubei Children's Clothes": 'مؤسس يوبي لملابس الأطفال',
+      "To create high-quality children's clothing that combines comfort, creativity, and style, while bringing confidence and happiness to children and peace of mind to parents.": 'إنتاج ملابس أطفال عالية الجودة تجمع بين الراحة والإبداع والأناقة، وتمنح الأطفال الثقة والسعادة والوالدين راحة البال.',
+      "To become a trusted global children's fashion brand, recognized for quality, innovation, and meaningful partnerships with families and businesses worldwide.": 'أن نصبح علامة عالمية موثوقة في أزياء الأطفال، معروفة بالجودة والابتكار والشراكات القيّمة مع العائلات والشركات حول العالم.',
+      'For': 'بالنسبة إلى', '. For': '. أما بالنسبة إلى', 'custom orders': 'الطلبات المخصصة', '(your own design or label), the minimum is': '(بتصميمك أو علامتك الخاصة)، الحد الأدنى هو', '300 pieces per model': '300 قطعة لكل موديل',
+      'ready stock': 'المخزون الجاهز', 'orders, there is': 'فالطلبات متاحة', '— you can order as little or as much as you need at great prices.': '— ويمكنك طلب الكمية التي تحتاجها بأسعار ممتازة.',
+      '14 days': '14 يوماً', '20 days': '20 يوماً', '30 days': '30 يوماً', '60 days': '60 يوماً', 'Highest price': 'السعر الأعلى', 'Lower price': 'سعر أقل', 'Better price': 'سعر أفضل', 'Lowest price': 'أقل سعر',
+      '— Express production ·': '— إنتاج سريع ·', '— Standard production ·': '— إنتاج قياسي ·', '— Relaxed schedule ·': '— جدول زمني مرن ·', '— Best value ·': '— أفضل قيمة ·', 'Best price available': 'أفضل سعر متاح',
+      'Yes! We encourage buyers to request a sample before committing to a bulk order. This allows you to check the fabric quality, sizing, stitching, and design before production begins. Contact us via WhatsApp or email to arrange your sample.': 'نعم! نشجع المشترين على طلب عينة قبل تأكيد طلب الجملة، لتتمكن من فحص جودة القماش والمقاسات والخياطة والتصميم قبل بدء الإنتاج. تواصل معنا عبر واتساب أو البريد الإلكتروني لترتيب العينة.',
+      'We accept the following payment methods:': 'نقبل طرق الدفع التالية:', 'Bank Transfer (T/T)': 'التحويل البنكي (T/T)', '— international wire transfer': '— تحويل بنكي دولي', 'WeChat Pay': 'الدفع عبر WeChat', '— for buyers with WeChat': '— للمشترين الذين يستخدمون WeChat', 'Alipay': 'Alipay', '— fast and secure online payment': '— دفع إلكتروني سريع وآمن', 'Please contact us to confirm payment details before transferring.': 'يرجى التواصل معنا لتأكيد بيانات الدفع قبل التحويل.',
+      'We ship worldwide by': 'نشحن إلى جميع أنحاء العالم عبر', 'sea freight or air': 'الشحن البحري أو الجوي', 'depending on your needs and budget. We are flexible:': 'وفقاً لاحتياجاتك وميزانيتك، ونوفر خيارات مرنة:', 'We can arrange shipping': 'يمكننا ترتيب الشحن', 'for you — we handle everything from our factory to your door': 'لك — ونتولى كل شيء من مصنعنا حتى بابك', 'You can arrange your own shipping': 'يمكنك ترتيب الشحن بنفسك', "— if you have a preferred forwarder or courier, just let us know and we'll coordinate with them": '— إذا كان لديك وكيل شحن أو شركة توصيل مفضلة فأخبرنا وسننسق معهم', 'Contact us for a shipping quote to your country.': 'تواصل معنا للحصول على عرض شحن إلى بلدك.',
+      'Absolutely — you are': 'بالتأكيد —', 'very welcome to visit us anytime!': 'نرحب بزيارتك في أي وقت!', "🎉 Our factory is located at No. 317, Fangqian Road, Zhili Town, Huzhou, Zhejiang, China — in the heart of the world's largest children's clothing manufacturing hub. Contact Ms. Diana Sun via WhatsApp to arrange your visit.": '🎉 يقع مصنعنا في رقم 317، طريق فانغتشيان، بلدة تشيلي، هوتشو، تشجيانغ، الصين — في قلب أكبر مركز لصناعة ملابس الأطفال في العالم. تواصل مع السيدة ديانا سون عبر واتساب لترتيب زيارتك.',
+      'Yes! We specialize in OEM and ODM production. Our expert technical team can produce': 'نعم! نتخصص في إنتاج OEM وODM، ويستطيع فريقنا الفني الخبير تنفيذ', 'any design': 'أي تصميم', '— custom fabric, color, print, size, and your own brand label. Simply send us your design or concept and we will handle the rest. Minimum 300 pieces per model for custom orders.': '— مع تخصيص القماش واللون والطباعة والمقاس وعلامتك التجارية. أرسل لنا تصميمك أو فكرتك وسنتولى الباقي. الحد الأدنى للطلبات المخصصة هو 300 قطعة لكل موديل.',
+      'Custom': 'مخصص', 'Bulk': 'جملة', 'How It Works': 'آلية العمل',
+      'The longer your lead time, the better the price. Or buy from our ready stock for immediate delivery at great prices.': 'كلما كانت مدة الإنتاج أطول حصلت على سعر أفضل، أو يمكنك الشراء من مخزوننا الجاهز للتسليم الفوري بأسعار ممتازة.',
+      'Order Type': 'نوع الطلب', 'Min. Order (MOQ)': 'الحد الأدنى للطلب', 'Lead Time': 'مدة الإنتاج', 'Price Level': 'مستوى السعر',
+      '⚡ Express Custom': '⚡ طلب مخصص سريع', 'Rush production': 'إنتاج عاجل', 'Custom — 20 Days': 'طلب مخصص — 20 يوماً', 'Standard production': 'إنتاج قياسي', 'Custom — 30 Days': 'طلب مخصص — 30 يوماً', 'Relaxed schedule': 'جدول زمني مرن', 'Custom — 60 Days': 'طلب مخصص — 60 يوماً', 'Best value custom': 'أفضل قيمة للطلب المخصص',
+      '300 pcs / model': '300 قطعة / موديل', '~14 days': 'نحو 14 يوماً', '~20 days': 'نحو 20 يوماً', '~30 days': 'نحو 30 يوماً', '~60 days': 'نحو 60 يوماً', '★★★★★ Highest': '★★★★★ الأعلى', '★★★★☆ Lower': '★★★★☆ أقل', '★★★☆☆ Better': '★★★☆☆ أفضل', '★★☆☆☆ Lowest': '★★☆☆☆ الأدنى',
+      '🏪 Ready Stock': '🏪 مخزون جاهز', 'Buy from existing inventory': 'شراء من المخزون المتوفر', 'Flexible quantity': 'كمية مرنة', 'Immediate': 'فوري', '🏷️ Best Price': '🏷️ أفضل سعر',
+      '* Custom orders: MOQ 300 pieces per model · Any design possible · Expert technical team on-site | 🏪 Stock orders:': '* الطلبات المخصصة: الحد الأدنى 300 قطعة لكل موديل · إمكانية تنفيذ أي تصميم · فريق فني خبير في الموقع | 🏪 طلبات المخزون:', 'flexible quantity accepted': 'نقبل كميات مرنة', '— no minimum required': '— دون حد أدنى',
+      'Any Design Possible': 'إمكانية تنفيذ أي تصميم', 'Custom fabric, color, print, logo — our expert technical team can produce any design you need': 'قماش ولون وطباعة وشعار حسب الطلب — يستطيع فريقنا الفني تنفيذ أي تصميم تحتاجه', 'Custom orders ready in as little as 14 days. Stock orders ship immediately': 'الطلبات المخصصة جاهزة خلال 14 يوماً فقط، وطلبات المخزون تُشحن فوراً', 'Every piece inspected before shipment. Internationally certified. 98% repeat buyer rate': 'نفحص كل قطعة قبل الشحن. شهادات دولية ومعدل عودة المشترين 98٪', '30+ Countries Served': 'نخدم أكثر من 30 دولة', 'Experienced in international export — we handle shipping, customs, and all documentation': 'خبرة في التصدير الدولي — نتولى الشحن والجمارك وجميع المستندات', "Zhili — World's #1 Hub": 'تشيلي — المركز الأول عالمياً', "Based in Zhili Town, Huzhou — the world's largest children's clothing manufacturing center": 'مقرنا في بلدة تشيلي، هوتشو — أكبر مركز لصناعة ملابس الأطفال في العالم',
+      'We hold internationally recognized certifications confirming our quality management, product safety, and export compliance standards.': 'نحمل شهادات معترفاً بها دولياً تؤكد معايير إدارة الجودة وسلامة المنتجات والامتثال لمتطلبات التصدير.', 'Years Licensed': 'سنوات الترخيص', 'Quality Checks Passed': 'عمليات فحص جودة ناجحة',
+      'Officially registered enterprise, licensed for manufacturing and trade of apparel and related goods.': 'شركة مسجلة رسمياً ومرخصة لتصنيع وتجارة الملابس والمنتجات ذات الصلة.', 'Registered trademark certificate protecting our brand across clothing and apparel categories.': 'شهادة علامة تجارية مسجلة تحمي علامتنا ضمن فئات الملابس والأزياء.', "Recognized member of the Huzhou Zhili Children's Wear Chamber of Commerce, Overseas Trade Division.": 'عضو معترف به في قسم التجارة الخارجية بغرفة تجارة ملابس الأطفال في هوتشو تشيلي.', 'Presented for consistent product quality and reliability by bestsuppliers.com.': 'ممنوحة تقديراً لثبات جودة المنتجات والموثوقية من bestsuppliers.com.',
+      "Our branded showroom at the Zhili exhibition center — featuring our full collection of children's clothing across all seasons.": 'صالة عرض يوبي في مركز تشيلي للمعارض، وتضم مجموعتنا الكاملة من ملابس الأطفال لجميع المواسم.', 'Our showroom proudly displays Arabic signage — welcoming buyers from the Middle East and ensuring they feel at home during their visit.': 'تعرض صالة يوبي لافتات باللغة العربية ترحيباً بالمشترين من الشرق الأوسط وليشعروا بالراحة خلال زيارتهم.', 'View full International Welcome photo': 'عرض صورة الترحيب الدولي بالحجم الكامل',
+      'No. 317, Fangqian Road, Zhili Town, Huzhou, Zhejiang, China': 'رقم 317، طريق فانغتشيان، بلدة تشيلي، هوتشو، تشجيانغ، الصين', 'No. 317, Fangqian Road, Zhili Town, Huzhou, Zhejiang': 'رقم 317، طريق فانغتشيان، بلدة تشيلي، هوتشو، تشجيانغ', 'Ms. Diana Sun': 'السيدة ديانا سون',
+      'Mon – Sat · 9:00am – 6:00pm CST': 'الاثنين – السبت · 9:00 صباحاً – 6:00 مساءً بتوقيت الصين', 'GMT+8 · China Standard Time': 'غرينتش +8 · توقيت الصين القياسي', 'Zhili · Huzhou · Zhejiang': 'تشيلي · هوتشو · تشجيانغ', "Home to the world's largest children's clothing manufacturing hub — where 10 years of craftsmanship meets global fashion": 'موطن أكبر مركز لصناعة ملابس الأطفال في العالم — حيث تلتقي خبرة 10 سنوات مع الموضة العالمية', '🇨🇳 Made in China': '🇨🇳 صُنع في الصين', '✈️ Worldwide Shipping': '✈️ شحن إلى جميع أنحاء العالم', '⭐ Certified Exporter': '⭐ مصدّر معتمد',
+      'e.g. Summer overalls set': 'مثال: طقم صيفي للأطفال', 'e.g. 500 pcs': 'مثال: 500 قطعة', '© 2026 Huzhou Zhili Yubei Clothing Co., Ltd. — All rights reserved.': '© 2026 شركة هوتشو تشيلي يوبي للملابس المحدودة — جميع الحقوق محفوظة.',
+      '📌 No. 317, Fangqian Road, Zhili Town, Huzhou, Zhejiang, China': '📌 رقم 317، طريق فانغتشيان، بلدة تشيلي، هوتشو، تشجيانغ، الصين',
+      'Yubei logo': 'شعار يوبي', "Yubei children's clothing company in Zhili, Huzhou, China": 'شركة يوبي لملابس الأطفال في تشيلي، هوتشو، الصين', "Yubei kidswear showroom in Zhili children's clothing center": 'صالة عرض يوبي لملابس الأطفال في مركز تشيلي', "Yubei children's clothing showroom in Zhili": 'صالة عرض يوبي لملابس الأطفال في تشيلي', 'Yubei kidswear showroom welcoming international buyers': 'صالة عرض يوبي ترحب بالمشترين الدوليين', 'Yubei Apparel location map': 'خريطة موقع يوبي للملابس', 'Taihu Lake Huzhou': 'بحيرة تايهو في هوتشو'
     }
   };
 
@@ -172,10 +126,6 @@
     en: {
       title: "China Kidswear Manufacturer | Yubei Children's Clothing",
       description: "Yubei Apparel is a children's clothing manufacturer and exporter in Zhili, Huzhou, China, offering wholesale kidswear, OEM, ODM and private-label production."
-    },
-    zh: {
-      title: '中国童装制造商 | 语贝童装',
-      description: '语贝服饰位于中国湖州织里，提供童装批发、OEM、ODM、定制设计和自有品牌生产服务。'
     },
     ar: {
       title: 'مصنّع ملابس أطفال في الصين | يوبي للملابس',
@@ -189,16 +139,58 @@
     var table = translations[language] || {};
     if (table[value]) return table[value];
     var match = value.match(/^Model No:\s*(.+)$/);
-    if (match) return (language === 'zh' ? '款号：' : 'رقم الموديل: ') + match[1];
+    if (match) return 'رقم الموديل: ' + match[1];
     match = value.match(/^(\d+) selected styles? · ([\d,]+) total pieces(?: · ([\d,]+) average per style)?$/);
     if (match) {
-      if (language === 'zh') return match[1] + ' 个已选款式 · 共 ' + match[2] + ' 件' + (match[3] ? ' · 平均每款 ' + match[3] + ' 件' : '');
       if (match[1] === '1') return 'موديل واحد مختار · ' + match[2] + ' قطعة إجمالاً' + (match[3] ? ' · متوسط ' + match[3] + ' لكل موديل' : '');
       return match[1] + ' موديلات مختارة · ' + match[2] + ' قطعة إجمالاً' + (match[3] ? ' · متوسط ' + match[3] + ' لكل موديل' : '');
     }
     match = value.match(/^(\d+) matching styles?$/);
-    if (match) return language === 'zh' ? match[1] + ' 个匹配款式' : match[1] + ' موديلات مطابقة';
+    if (match) return match[1] + ' موديلات مطابقة';
+    match = value.match(/^Remove\s+(.+)$/);
+    if (match) return 'إزالة ' + match[1];
+    match = value.match(/^Applied\s+([\d,]+)\s+pieces to all\s+(\d+)\s+selected styles\.$/);
+    if (match) return 'تم تطبيق ' + match[1] + ' قطعة على جميع الموديلات المختارة وعددها ' + match[2] + '.';
+    match = value.match(/^Your inquiry list can contain up to\s+(\d+)\s+styles\.$/);
+    if (match) return 'يمكن أن تحتوي قائمة الاستفسار على ' + match[1] + ' موديلًا كحد أقصى.';
+    match = value.match(/^(.+) children's clothing by Yubei Apparel$/);
+    if (match) return 'ملابس أطفال من يوبي — ' + match[1];
+    match = value.match(/^View full (.+) photo$/);
+    if (match) return 'عرض صورة ' + translateValue(match[1], language) + ' بالحجم الكامل';
+    match = value.match(/^(.+) certificate for Yubei Apparel$/);
+    if (match) return 'شهادة ' + translateValue(match[1], language) + ' ليوبي للملابس';
+    match = value.match(/^Drop (.+) photo$/);
+    if (match) return 'أضف صورة ' + translateValue(match[1], language);
+    if (/^\* Custom orders: MOQ 300 pieces per model/.test(value)) return '* الطلبات المخصصة: الحد الأدنى 300 قطعة لكل موديل · إمكانية تنفيذ أي تصميم · فريق فني خبير في الموقع | 🏪 طلبات المخزون:';
+    if (value.indexOf('On the Shores of Taihu Lake') !== -1) return 'على ضفاف بحيرة تايهو';
+    var phraseMap = {
+      'Express production': 'إنتاج سريع',
+      'Standard production': 'إنتاج قياسي',
+      'Relaxed schedule': 'جدول زمني مرن',
+      'Best value': 'أفضل قيمة',
+      'Best price available': 'أفضل سعر متاح'
+    };
+    var replaced = value;
+    Object.keys(phraseMap).forEach(function(phrase) { replaced = replaced.split(phrase).join(phraseMap[phrase]); });
+    if (replaced !== value) return replaced;
     return value;
+  }
+
+  var whatsappMessages = {
+    'Hi, I have a question about your products.': 'مرحباً، لدي سؤال عن منتجاتكم.',
+    "Hi, I've seen your certifications and I'm interested in placing an order.": 'مرحباً، اطلعت على شهاداتكم وأنا مهتم بتقديم طلب.',
+    "Hi, I'd like to visit your showroom.": 'مرحباً، أود زيارة صالة العرض لديكم.',
+    "Hi, I'm interested in your children's clothing products.": 'مرحباً، أنا مهتم بمنتجات ملابس الأطفال لديكم.'
+  };
+
+  function translateWhatsAppHref(href, language) {
+    if (!href || language !== 'ar' || href.indexOf('wa.me/8618367259637?text=') === -1) return href;
+    var marker = '?text=';
+    var index = href.indexOf(marker);
+    if (index === -1) return href;
+    var message;
+    try { message = decodeURIComponent(href.slice(index + marker.length)); } catch (e) { return href; }
+    return whatsappMessages[message] ? href.slice(0, index + marker.length) + encodeURIComponent(whatsappMessages[message]) : href;
   }
 
   function shouldSkip(node) {
@@ -237,6 +229,15 @@
       state[name] = saved;
       if (current !== translated) element.setAttribute(name, translated);
     });
+    if (element.hasAttribute('href')) {
+      var currentHref = element.getAttribute('href');
+      var hrefState = state.href;
+      if (!hrefState || (currentHref !== hrefState.rendered && currentHref !== hrefState.original)) hrefState = { original: currentHref, rendered: currentHref };
+      var nextHref = translateWhatsAppHref(hrefState.original, currentLanguage);
+      hrefState.rendered = nextHref;
+      state.href = hrefState;
+      if (currentHref !== nextHref) element.setAttribute('href', nextHref);
+    }
     attributeState.set(element, state);
   }
 
@@ -262,16 +263,37 @@
     document.querySelectorAll('meta[property="og:description"], meta[name="twitter:description"]').forEach(function(el) { el.content = data.description; });
   }
 
+  function updateLanguageSpecificElements(language, root) {
+    var scope = root && root.querySelectorAll ? root : document;
+    var selector = scope.querySelector && scope.querySelector('#languageSwitcher');
+    if (!selector && root && root.id === 'languageSwitcher') selector = root;
+    if (selector) {
+      selector.value = language;
+      selector.setAttribute('aria-label', language === 'ar' ? 'اختر اللغة' : 'Choose language');
+    }
+    var map = scope.querySelector && scope.querySelector('#locationMap');
+    if (!map && root && root.id === 'locationMap') map = root;
+    if (map) {
+      var originalMapSrc = map.dataset.i18nOriginalSrc || map.getAttribute('src');
+      map.dataset.i18nOriginalSrc = originalMapSrc;
+      map.setAttribute('src', language === 'ar' ? originalMapSrc + (originalMapSrc.indexOf('?') === -1 ? '?' : '&') + 'hl=ar' : originalMapSrc);
+    }
+  }
+
   function setLanguage(language) {
-    if (!['en', 'zh', 'ar'].includes(language)) language = 'en';
+    if (!['en', 'ar'].includes(language)) language = 'en';
     currentLanguage = language;
-    document.documentElement.lang = language === 'zh' ? 'zh-CN' : language;
+    document.documentElement.lang = language;
     document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
     try { localStorage.setItem(STORAGE_KEY, language); } catch (e) {}
     var selector = document.getElementById('languageSwitcher');
-    if (selector && selector.value !== language) selector.value = language;
+    if (selector) {
+      if (selector.value !== language) selector.value = language;
+      selector.setAttribute('aria-label', language === 'ar' ? 'اختر اللغة' : 'Choose language');
+    }
     updateMetadata();
     translateTree(document.body);
+    updateLanguageSpecificElements(language, document);
     document.dispatchEvent(new CustomEvent('yubei:languagechange', { detail: { language: language } }));
   }
 
@@ -294,7 +316,11 @@
           translateTree(node);
           if (node.nodeType === Node.ELEMENT_NODE) {
             var selector = node.id === 'languageSwitcher' ? node : node.querySelector && node.querySelector('#languageSwitcher');
-            if (selector) selector.value = currentLanguage;
+            if (selector) {
+              selector.value = currentLanguage;
+              selector.setAttribute('aria-label', currentLanguage === 'ar' ? 'اختر اللغة' : 'Choose language');
+            }
+            updateLanguageSpecificElements(currentLanguage, node);
           }
         });
       });

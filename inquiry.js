@@ -116,7 +116,7 @@
       info.textContent = item.model;
       var meta = document.createElement('span');
       meta.className = 'inquiry-meta';
-      meta.textContent = [item.season, item.size].filter(Boolean).join(' · ');
+      meta.textContent = [translatedValue(item.season), item.size].filter(Boolean).join(' · ');
       info.appendChild(meta);
 
       var quantity = document.createElement('input');
@@ -145,12 +145,7 @@
   }
   function summary() {
     var selectedLanguage = language();
-    var labels = selectedLanguage === 'zh' ? {
-      hello: '您好，语贝服饰：', name: '姓名：', company: '公司：', country: '国家：',
-      delivery: '要求交货日期：', port: '目的港：', price: '目标价格：', custom: '定制要求：', contact: '首选联系方式：',
-      intro: '我对以下款式感兴趣，共 ', styleUnit: ' 个：', season: '季节：', size: '尺码：', quantity: '数量：', notes: '备注：',
-      unspecified: '未填写', pieces: ' 件', total: '总数量：', closing: '请提供库存情况、最低起订量和报价，谢谢。'
-    } : selectedLanguage === 'ar' ? {
+    var labels = selectedLanguage === 'ar' ? {
       hello: 'مرحباً يوبي للملابس،', name: 'الاسم: ', company: 'الشركة: ', country: 'الدولة: ',
       delivery: 'تاريخ التسليم المطلوب: ', port: 'ميناء الوصول: ', price: 'السعر المستهدف: ', custom: 'متطلبات التخصيص: ', contact: 'طريقة التواصل المفضلة: ',
       intro: 'أنا مهتم بالموديلات التالية، وعددها ', styleUnit: ':', season: 'الموسم: ', size: 'المقاس: ', quantity: 'الكمية: ', notes: 'ملاحظات: ',
@@ -239,7 +234,7 @@
   });
   document.getElementById('inquiryEmail').addEventListener('click', function() {
     if (!items.length) { status('Add at least one style first.'); return; }
-    var subject = language() === 'zh' ? '产品询价 - ' + items.length + ' 个款式' : language() === 'ar' ? 'استفسار منتجات - ' + items.length + ' موديلات' : 'Product Inquiry - ' + items.length + ' Styles';
+    var subject = language() === 'ar' ? 'استفسار منتجات - ' + items.length + ' موديلات' : 'Product Inquiry - ' + items.length + ' Styles';
     window.location.href = 'mailto:358630530@qq.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(summary());
   });
   document.getElementById('inquiryClear').addEventListener('click', function() {
@@ -251,6 +246,11 @@
   });
   overlay().addEventListener('click', function(e) { if (e.target === overlay()) closePanel(); });
   document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && overlay().classList.contains('open')) closePanel(); });
+  document.addEventListener('yubei:languagechange', function() {
+    updateTotals();
+    updateButtons();
+    if (overlay().classList.contains('open')) renderItems();
+  });
   updateCount();
   updateTotals();
   updateButtons();
