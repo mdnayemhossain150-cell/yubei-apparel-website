@@ -1090,6 +1090,7 @@
       this._sub.style.display = editable ? '' : 'none';
       this._img.loading = this.getAttribute('loading') === 'eager' ? 'eager' : 'lazy';
       this._img.decoding = 'async';
+      this._img.fetchPriority = this.getAttribute('fetchpriority') || (this._img.loading === 'eager' ? 'high' : 'auto');
       this._img.alt = this.getAttribute('alt') || this.getAttribute('placeholder') || '';
 
       // Content. The sidecar is also writable by the agent's write_file
