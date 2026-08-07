@@ -118,7 +118,21 @@
       'Mon – Sat · 9:00am – 6:00pm CST': 'الاثنين – السبت · 9:00 صباحاً – 6:00 مساءً بتوقيت الصين', 'GMT+8 · China Standard Time': 'غرينتش +8 · توقيت الصين القياسي', 'Zhili · Huzhou · Zhejiang': 'تشيلي · هوتشو · تشجيانغ', "Home to the world's largest children's clothing manufacturing hub — where 10 years of craftsmanship meets global fashion": 'موطن أكبر مركز لصناعة ملابس الأطفال في العالم — حيث تلتقي خبرة 10 سنوات مع الموضة العالمية', '🇨🇳 Made in China': '🇨🇳 صُنع في الصين', '✈️ Worldwide Shipping': '✈️ شحن إلى جميع أنحاء العالم', '⭐ Certified Exporter': '⭐ مصدّر معتمد',
       'e.g. Summer overalls set': 'مثال: طقم صيفي للأطفال', 'e.g. 500 pcs': 'مثال: 500 قطعة', '© 2026 Huzhou Zhili Yubei Clothing Co., Ltd. — All rights reserved.': '© 2026 شركة هوتشو تشيلي يوبي للملابس المحدودة — جميع الحقوق محفوظة.',
       '📌 North Gate, 1st Floor, Building B1, No. 9 Zhanwang Road, Zhili Town, Huzhou, Zhejiang, China (湖州市织里镇展望路9号B1幢1楼北大门，语贝服饰)': '📌 البوابة الشمالية، الطابق الأول، المبنى B1، رقم 9 طريق تشانوانغ، بلدة تشيلي، هوتشو، تشجيانغ، الصين (湖州市织里镇展望路9号B1幢1楼北大门，语贝服饰)',
-      'Yubei logo': 'شعار يوبي', "Yubei children's clothing company in Zhili, Huzhou, China": 'شركة يوبي لملابس الأطفال في تشيلي، هوتشو، الصين', "Yubei kidswear showroom in Zhili children's clothing center": 'صالة عرض يوبي لملابس الأطفال في مركز تشيلي', "Yubei children's clothing showroom in Zhili": 'صالة عرض يوبي لملابس الأطفال في تشيلي', 'Yubei kidswear showroom welcoming international buyers': 'صالة عرض يوبي ترحب بالمشترين الدوليين', 'Yubei Apparel location map': 'خريطة موقع يوبي للملابس', 'Taihu Lake Huzhou': 'بحيرة تايهو في هوتشو'
+      'Yubei logo': 'شعار يوبي', "Yubei children's clothing company in Zhili, Huzhou, China": 'شركة يوبي لملابس الأطفال في تشيلي، هوتشو، الصين', "Yubei kidswear showroom in Zhili children's clothing center": 'صالة عرض يوبي لملابس الأطفال في مركز تشيلي', "Yubei children's clothing showroom in Zhili": 'صالة عرض يوبي لملابس الأطفال في تشيلي', 'Yubei kidswear showroom welcoming international buyers': 'صالة عرض يوبي ترحب بالمشترين الدوليين', 'Yubei Apparel location map': 'خريطة موقع يوبي للملابس', 'Taihu Lake Huzhou': 'بحيرة تايهو في هوتشو',
+      'Home': 'الرئيسية', 'Menu': 'القائمة', 'Main navigation': 'التنقل الرئيسي', 'Mobile navigation': 'تنقل الهاتف', 'Product seasons': 'مواسم المنتجات', 'Yubei Apparel home': 'الصفحة الرئيسية ليوبي', 'Chat on WhatsApp': 'تواصل عبر واتساب', 'Close image': 'إغلاق الصورة', 'Close': 'إغلاق',
+      "Children's clothing manufacturer and exporter in Zhili, Huzhou, China.": 'مصنّع ومصدّر لملابس الأطفال في تشيلي، هوتشو، الصين.',
+      'Wholesale Kidswear': 'ملابس أطفال بالجملة', "Browse Yubei Apparel's summer, autumn, winter and mixed children's clothing collections. Search by model number and send one organized inquiry for up to 30 selected styles.": 'تصفح مجموعات يوبي الصيفية والخريفية والشتوية والمتنوعة لملابس الأطفال، وابحث برقم الموديل وأرسل استفساراً منظماً لما يصل إلى 30 موديلًا مختاراً.',
+      'Need OEM, ODM or private-label kidswear?': 'هل تحتاج إلى تصنيع OEM أو ODM أو ملابس أطفال بعلامتك الخاصة؟', 'Send your target styles, quantities, destination port and customization requirements. Our export team will reply with availability, MOQ and quotation.': 'أرسل الموديلات والكميات وميناء الوصول ومتطلبات التخصيص، وسيرد فريق التصدير بالتوفر والحد الأدنى للطلب وعرض السعر.',
+      "Meet Yubei Apparel, a children's clothing manufacturer and exporter located in Zhili, Huzhou—one of China's leading kidswear production centers.": 'تعرّف على يوبي للملابس، مصنّع ومصدّر لملابس الأطفال في تشيلي، هوتشو، أحد أهم مراكز إنتاج ملابس الأطفال في الصين.',
+      "Children's Clothing Manufacturing Built for Global Buyers": 'تصنيع ملابس الأطفال للمشترين حول العالم', 'Explore our showroom, production environment and the people behind Yubei Apparel.': 'اكتشف صالة العرض وبيئة الإنتاج والفريق الذي يقف خلف يوبي للملابس.',
+      'Quality, Creativity and Trusted Partnerships': 'الجودة والإبداع والشراكات الموثوقة', 'Tell us about your market, target styles and order requirements. Our team will reply within 24 hours.': 'أخبرنا عن سوقك والموديلات المطلوبة ومتطلبات الطلب، وسيرد فريقنا خلال 24 ساعة.',
+      "Choose wholesale ready stock, OEM, ODM or fully customized children's clothing production according to your market, schedule and budget.": 'اختر المخزون الجاهز بالجملة أو خدمات OEM وODM أو إنتاج ملابس أطفال مخصصة بالكامل وفق سوقك وجدولك وميزانيتك.',
+      'How We Work': 'آلية عملنا', 'Typical MOQ': 'الحد الأدنى المعتاد', 'Best For': 'الأنسب لـ', 'Urgent orders and market testing': 'الطلبات العاجلة واختبار السوق', 'Confirmed by style': 'يُحدد حسب الموديل', 'Based on design and quantity': 'حسب التصميم والكمية', 'OEM, ODM and private label': 'OEM وODM والعلامة الخاصة', 'Large Production Plan': 'خطة إنتاج كبيرة', 'Confirmed by quotation': 'يُحدد في عرض السعر', 'Flexible schedule': 'جدول مرن', 'Best factory pricing': 'أفضل سعر من المصنع',
+      'Share your product category, quantity, delivery date, destination port and customization requirements for an accurate quotation.': 'شارك فئة المنتج والكمية وتاريخ التسليم وميناء الوصول ومتطلبات التخصيص للحصول على عرض سعر دقيق.',
+      'Verified & Trusted': 'موثّق وموثوق', "Review the company registration, trademark, industry membership and supplier credentials that support reliable international cooperation with Yubei Apparel.": 'اطلع على تسجيل الشركة والعلامة التجارية والعضوية المهنية واعتمادات المورد التي تدعم التعاون الدولي الموثوق مع يوبي للملابس.',
+      "Let's talk business. Our team is ready to answer your questions and provide the best quotation for your order.": 'لنبدأ التعاون. فريقنا جاهز للإجابة عن أسئلتك وتقديم أفضل عرض سعر لطلبك.', 'WhatsApp Us': 'تواصل معنا عبر واتساب',
+      'Showroom & Exhibition': 'صالة العرض والمعرض', 'Contact to Arrange Visit': 'تواصل لترتيب الزيارة',
+      "Meet Yubei Apparel and explore our company, showroom, factory and global kidswear manufacturing capabilities.": 'تعرّف على يوبي واستكشف شركتنا وصالة العرض والمصنع وقدرات تصنيع ملابس الأطفال للأسواق العالمية.'
     }
   };
 
@@ -217,7 +231,7 @@
 
   function translateAttributes(element) {
     if (!(element instanceof Element) || element.closest('[data-i18n-skip]')) return;
-    var attrs = ['placeholder', 'aria-label', 'title'];
+    var attrs = ['placeholder', 'aria-label', 'title', 'alt'];
     var state = attributeState.get(element) || {};
     attrs.forEach(function(name) {
       if (!element.hasAttribute(name)) return;
@@ -255,6 +269,8 @@
   }
 
   function updateMetadata() {
+    var path = window.location.pathname.replace(/\/index\.html$/, '/').replace(/\/+$/, '') || '/';
+    if (path !== '/') return;
     var data = metadata[currentLanguage] || metadata.en;
     document.title = data.title;
     var description = document.querySelector('meta[name="description"]');

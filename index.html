@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <!-- Deployment refresh: 2026-08-07 -->
-<html lang="en">
+<html lang="en" data-initial-view="home">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <title>China Kidswear Manufacturer | Yubei Children's Clothing</title>
 <meta name="description" content="Yubei Apparel is a children's clothing manufacturer and exporter in Zhili, Huzhou, China, offering wholesale kidswear, OEM, ODM and private-label production.">
 <meta name="keywords" content="China kidswear manufacturer, children's clothing manufacturer China, Zhili children's clothing, wholesale kidswear China, OEM ODM kidswear, Yubei kidswear">
@@ -132,12 +133,12 @@
     <div style="display: flex; align-items: center; gap: 10px;"><img src="./assets/yubei-logo-nav-v1.webp" alt="Yubei logo" style="width: 40px; height: 40px; border-radius: 50%;"><div style="font-family: Sora, sans-serif; font-weight: 800; font-size: 22px; letter-spacing: 0.02em;">YUBEI <span style="color: oklch(58% 0.15 35);">APPAREL</span></div></div>
     <div style="display: flex; align-items: center; gap: clamp(12px, 2vw, 36px); flex-wrap: nowrap;">
       <div class="nav-links-desktop" style="display: flex; align-items: center; gap: clamp(12px, 2vw, 36px);">
-        <a href="#about" onClick="{{ goAbout }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 15px; white-space: nowrap; transition: color 0.2s;">About</a>
-        <a href="#products" onClick="{{ goProducts }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 15px; white-space: nowrap; transition: color 0.2s;">Products</a>
-        <a href="#services" onClick="{{ goServices }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 15px; white-space: nowrap; transition: color 0.2s;">Services</a>
-        <a href="#certificates" onClick="{{ goCertificates }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 15px; white-space: nowrap; transition: color 0.2s;">Certificates</a>
-        <a href="#activity" onClick="{{ goActivity }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 15px; white-space: nowrap; transition: color 0.2s;">Activity</a>
-        <a href="#contact" onClick="{{ goContact }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 15px; white-space: nowrap; transition: color 0.2s;">Contact</a>
+        <a href="/about" onClick="{{ goAbout }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 15px; white-space: nowrap; transition: color 0.2s;">About</a>
+        <a href="/products" onClick="{{ goProducts }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 15px; white-space: nowrap; transition: color 0.2s;">Products</a>
+        <a href="/services" onClick="{{ goServices }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 15px; white-space: nowrap; transition: color 0.2s;">Services</a>
+        <a href="/certificates" onClick="{{ goCertificates }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 15px; white-space: nowrap; transition: color 0.2s;">Certificates</a>
+        <a href="/activity" onClick="{{ goActivity }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 15px; white-space: nowrap; transition: color 0.2s;">Activity</a>
+        <a href="/contact" onClick="{{ goContact }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 15px; white-space: nowrap; transition: color 0.2s;">Contact</a>
       </div>
       <select id="languageSwitcher" aria-label="Choose language">
         <option value="en">EN</option>
@@ -152,12 +153,12 @@
   </div>
   <sc-if value="{{ mobileMenuOpen }}" hint-placeholder-val="{{ false }}">
   <div style="position: sticky; top: 76px; z-index: 49; background: oklch(98% 0.01 80); border-bottom: 1px solid oklch(90% 0.01 80); display: flex; flex-direction: column; padding: 8px 6vw 16px;">
-    <a href="#about" onClick="{{ goAboutMobile }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 16px; padding: 12px 0; border-bottom: 1px solid oklch(92% 0.01 80);">About</a>
-    <a href="#products" onClick="{{ goProductsMobile }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 16px; padding: 12px 0; border-bottom: 1px solid oklch(92% 0.01 80);">Products</a>
-    <a href="#services" onClick="{{ goServicesMobile }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 16px; padding: 12px 0; border-bottom: 1px solid oklch(92% 0.01 80);">Services</a>
-    <a href="#certificates" onClick="{{ goCertificatesMobile }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 16px; padding: 12px 0; border-bottom: 1px solid oklch(92% 0.01 80);">Certificates</a>
-    <a href="#activity" onClick="{{ goActivityMobile }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 16px; padding: 12px 0; border-bottom: 1px solid oklch(92% 0.01 80);">Activity</a>
-    <a href="#contact" onClick="{{ goContactMobile }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 16px; padding: 12px 0;">Contact</a>
+    <a href="/about" onClick="{{ goAboutMobile }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 16px; padding: 12px 0; border-bottom: 1px solid oklch(92% 0.01 80);">About</a>
+    <a href="/products" onClick="{{ goProductsMobile }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 16px; padding: 12px 0; border-bottom: 1px solid oklch(92% 0.01 80);">Products</a>
+    <a href="/services" onClick="{{ goServicesMobile }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 16px; padding: 12px 0; border-bottom: 1px solid oklch(92% 0.01 80);">Services</a>
+    <a href="/certificates" onClick="{{ goCertificatesMobile }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 16px; padding: 12px 0; border-bottom: 1px solid oklch(92% 0.01 80);">Certificates</a>
+    <a href="/activity" onClick="{{ goActivityMobile }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 16px; padding: 12px 0; border-bottom: 1px solid oklch(92% 0.01 80);">Activity</a>
+    <a href="/contact" onClick="{{ goContactMobile }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 16px; padding: 12px 0;">Contact</a>
   </div>
   </sc-if>
 
@@ -172,7 +173,7 @@
       <p style="font-size: 18px; line-height: 1.65; color: oklch(38% 0.02 80); max-width: 520px; margin: 0 0 34px; animation: fadeInUp 0.7s ease 0.2s both;">Yubei Apparel is a children's clothing manufacturer and exporter based in Zhili, Huzhou, China, offering wholesale kidswear, OEM, ODM, custom design, and private-label production for global buyers.</p>
       <div style="display: flex; gap: 16px; flex-wrap: wrap; animation: fadeInUp 0.7s ease 0.3s both;">
         <a href="#quote" onClick="{{ goQuote }}" style="background: oklch(58% 0.15 35); color: white; padding: 15px 30px; border-radius: 999px; font-weight: 600; font-size: 15px; white-space: nowrap; transition: transform 0.2s, box-shadow 0.2s;" style-hover="transform: translateY(-3px) scale(1.03); box-shadow: 0 10px 24px oklch(58% 0.15 35 / 0.35);">Request a Quote</a>
-        <a href="#products" onClick="{{ goProducts }}" style="border: 1.5px solid oklch(75% 0.02 80); color: oklch(24% 0.02 80); padding: 15px 30px; border-radius: 999px; font-weight: 600; font-size: 15px; white-space: nowrap; transition: transform 0.2s, border-color 0.2s;" style-hover="transform: translateY(-3px) scale(1.03); border-color: oklch(58% 0.15 35);">View Collection</a>
+        <a href="/products" onClick="{{ goProducts }}" style="border: 1.5px solid oklch(75% 0.02 80); color: oklch(24% 0.02 80); padding: 15px 30px; border-radius: 999px; font-weight: 600; font-size: 15px; white-space: nowrap; transition: transform 0.2s, border-color 0.2s;" style-hover="transform: translateY(-3px) scale(1.03); border-color: oklch(58% 0.15 35);">View Collection</a>
       </div>
     </div>
     <image-slot id="hero-img" loading="eager" alt="Yubei children's clothing company in Zhili, Huzhou, China" style="width: 100%; height: min(480px, 40vw); position: relative; z-index: 1; animation: fadeInUp 0.8s ease 0.15s both;" shape="rounded" radius="24" placeholder="Drop hero photo — kids wearing overalls set" src="./assets/company-building-optimized.webp"></image-slot>
@@ -319,28 +320,28 @@
       <h2 style="font-family: Sora, sans-serif; font-size: clamp(26px, 3.5vw, 34px); font-weight: 700; margin: 0;">Latest Collection Highlights</h2>
     </div>
     <div class="new-arrivals-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; content-visibility: auto; contain-intrinsic-size: auto 1200px;">
-      <a href="#products" onClick="{{ goProducts }}" style="display: block; border-radius: 18px; overflow: hidden;">
+      <a href="/products" onClick="{{ goProducts }}" style="display: block; border-radius: 18px; overflow: hidden;">
         <image-slot id="feat-new-01" style="width: 100%; height: clamp(150px, 34vw, 280px);" shape="rect" fit="contain" placeholder="Drop photo" data-defer-src="./assets/prod-new-01.jpg"></image-slot>
       </a>
-      <a href="#products" onClick="{{ goProducts }}" style="display: block; border-radius: 18px; overflow: hidden;">
+      <a href="/products" onClick="{{ goProducts }}" style="display: block; border-radius: 18px; overflow: hidden;">
         <image-slot id="feat-new-02" style="width: 100%; height: clamp(150px, 34vw, 280px);" shape="rect" fit="contain" placeholder="Drop photo" data-defer-src="./assets/prod-new-02.png"></image-slot>
       </a>
-      <a href="#products" onClick="{{ goProducts }}" style="display: block; border-radius: 18px; overflow: hidden;">
+      <a href="/products" onClick="{{ goProducts }}" style="display: block; border-radius: 18px; overflow: hidden;">
         <image-slot id="feat-new-03" style="width: 100%; height: clamp(150px, 34vw, 280px);" shape="rect" fit="contain" placeholder="Drop photo" data-defer-src="./assets/prod-new-03.png"></image-slot>
       </a>
-      <a href="#products" onClick="{{ goProducts }}" style="display: block; border-radius: 18px; overflow: hidden;">
+      <a href="/products" onClick="{{ goProducts }}" style="display: block; border-radius: 18px; overflow: hidden;">
         <image-slot id="feat-new-04" style="width: 100%; height: clamp(150px, 34vw, 280px);" shape="rect" fit="contain" placeholder="Drop photo" data-defer-src="./assets/prod-new-04.png"></image-slot>
       </a>
-      <a href="#products" onClick="{{ goProducts }}" style="display: block; border-radius: 18px; overflow: hidden;">
+      <a href="/products" onClick="{{ goProducts }}" style="display: block; border-radius: 18px; overflow: hidden;">
         <image-slot id="feat-new-05" style="width: 100%; height: clamp(150px, 34vw, 280px);" shape="rect" fit="contain" placeholder="Drop photo" data-defer-src="./assets/prod-new-05.jpg"></image-slot>
       </a>
-      <a href="#products" onClick="{{ goProducts }}" style="display: block; border-radius: 18px; overflow: hidden;">
+      <a href="/products" onClick="{{ goProducts }}" style="display: block; border-radius: 18px; overflow: hidden;">
         <image-slot id="feat-new-06" style="width: 100%; height: clamp(150px, 34vw, 280px);" shape="rect" fit="contain" placeholder="Drop photo" data-defer-src="./assets/prod-new-06.jpg"></image-slot>
       </a>
-      <a href="#products" onClick="{{ goProducts }}" style="display: block; border-radius: 18px; overflow: hidden;">
+      <a href="/products" onClick="{{ goProducts }}" style="display: block; border-radius: 18px; overflow: hidden;">
         <image-slot id="feat-new-07" style="width: 100%; height: clamp(150px, 34vw, 280px);" shape="rect" fit="contain" placeholder="Drop photo" data-defer-src="./assets/prod-new-07.jpg"></image-slot>
       </a>
-      <a href="#products" onClick="{{ goProducts }}" style="display: block; border-radius: 18px; overflow: hidden;">
+      <a href="/products" onClick="{{ goProducts }}" style="display: block; border-radius: 18px; overflow: hidden;">
         <image-slot id="feat-new-08" style="width: 100%; height: clamp(150px, 34vw, 280px);" shape="rect" fit="contain" placeholder="Drop photo" data-defer-src="./assets/prod-new-08.jpg"></image-slot>
       </a>
       <div style="display: block; border-radius: 18px; overflow: hidden;">
@@ -531,7 +532,7 @@
   <sc-if value="{{ showAbout }}" hint-placeholder-val="{{ false }}">
   <div id="about" ref="{{ aboutRef }}" style="padding: 80px 6vw; background: white; opacity: {{ aboutVisible.opacity }}; transform: {{ aboutVisible.transform }}; transition: {{ aboutVisible.transition }};">
     <div style="max-width: 1400px; margin: 0 auto;">
-      <a href="#" onClick="{{ goHome }}" style="display: inline-block; margin-bottom: 32px; color: oklch(45% 0.02 80); font-weight: 500; font-size: 14.5px;">&larr; Back to Home</a>
+      <a href="/" onClick="{{ goHome }}" style="display: inline-block; margin-bottom: 32px; color: oklch(45% 0.02 80); font-weight: 500; font-size: 14.5px;">&larr; Back to Home</a>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 70px; align-items: center;">
       <image-slot id="about-img" loading="lazy" alt="Yubei kidswear showroom in Zhili children's clothing center" style="width: 100%; height: 420px;" shape="rounded" radius="24" placeholder="Drop showroom photo" src="./assets/about-hero.jpg"></image-slot>
       <div>
@@ -620,7 +621,7 @@
   <sc-if value="{{ showProducts }}" hint-placeholder-val="{{ false }}">
   <div id="products" ref="{{ productsRef }}" style="padding: 90px 6vw; background: white;">
     <div style="max-width: 1400px; margin: 0 auto;">
-      <a href="#" onClick="{{ goHome }}" style="display: inline-block; margin-bottom: 32px; color: oklch(45% 0.02 80); font-weight: 500; font-size: 14.5px;">&larr; Back to Home</a>
+      <a href="/" onClick="{{ goHome }}" style="display: inline-block; margin-bottom: 32px; color: oklch(45% 0.02 80); font-weight: 500; font-size: 14.5px;">&larr; Back to Home</a>
       <div style="text-align: center; margin-bottom: 56px;">
         <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(58% 0.15 35); margin-bottom: 14px;">{{ activeSeasonTitle }}</div>
         <h2 style="font-family: Sora, sans-serif; font-size: clamp(28px, 3.5vw, 36px); font-weight: 700; margin: 0 0 16px;">Fashionable &amp; Comfortable Overalls Sets</h2>
@@ -702,7 +703,7 @@
   <sc-if value="{{ showServices }}" hint-placeholder-val="{{ false }}">
   <div id="services" ref="{{ servicesRef }}" style="padding: 90px 6vw; background: white;">
     <div style="max-width: 1400px; margin: 0 auto;">
-      <a href="#" onClick="{{ goHome }}" style="display: inline-block; margin-bottom: 32px; color: oklch(45% 0.02 80); font-weight: 500; font-size: 14.5px;">&larr; Back to Home</a>
+      <a href="/" onClick="{{ goHome }}" style="display: inline-block; margin-bottom: 32px; color: oklch(45% 0.02 80); font-weight: 500; font-size: 14.5px;">&larr; Back to Home</a>
 
       <!-- COOPERATION MODELS -->
       <div style="text-align: center; margin-bottom: 52px;">
@@ -875,7 +876,7 @@
   <sc-if value="{{ showCertificates }}" hint-placeholder-val="{{ false }}">
   <div id="certificates" ref="{{ certsRef }}" style="padding: 90px 6vw; background: oklch(96% 0.015 80);">
     <div style="max-width: 1400px; margin: 0 auto;">
-      <a href="#" onClick="{{ goHome }}" style="display: inline-block; margin-bottom: 32px; color: oklch(45% 0.02 80); font-weight: 500; font-size: 14.5px;">&larr; Back to Home</a>
+      <a href="/" onClick="{{ goHome }}" style="display: inline-block; margin-bottom: 32px; color: oklch(45% 0.02 80); font-weight: 500; font-size: 14.5px;">&larr; Back to Home</a>
       <div style="text-align: center; margin-bottom: 52px;">
         <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(58% 0.15 35); margin-bottom: 14px;">Certifications</div>
         <h2 style="font-family: Sora, sans-serif; font-size: clamp(26px, 3.5vw, 34px); font-weight: 700; margin: 0 0 16px;">Quality &amp; Compliance You Can Trust</h2>
@@ -938,7 +939,7 @@
   <sc-if value="{{ showQuote }}" hint-placeholder-val="{{ false }}">
   <div id="quote" style="padding: 90px 6vw; background: white;">
     <div style="max-width: 680px; margin: 0 auto;">
-      <a href="#" onClick="{{ goHome }}" style="display: inline-block; margin-bottom: 32px; color: oklch(45% 0.02 80); font-weight: 500; font-size: 14.5px;">&larr; Back to Home</a>
+      <a href="/" onClick="{{ goHome }}" style="display: inline-block; margin-bottom: 32px; color: oklch(45% 0.02 80); font-weight: 500; font-size: 14.5px;">&larr; Back to Home</a>
       <div style="text-align: center; margin-bottom: 44px;">
         <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(58% 0.15 35); margin-bottom: 14px;">Request a Quote</div>
         <h2 style="font-family: Sora, sans-serif; font-size: clamp(28px, 3.5vw, 36px); font-weight: 700; margin: 0 0 16px;">Tell Us What You Need</h2>
@@ -989,7 +990,7 @@
   <sc-if value="{{ showActivity }}" hint-placeholder-val="{{ false }}">
   <div id="activity" style="padding: 80px 6vw; background: white;">
     <div style="max-width: 1400px; margin: 0 auto;">
-      <a href="#" onClick="{{ goHome }}" style="display: inline-block; margin-bottom: 32px; color: oklch(45% 0.02 80); font-weight: 500; font-size: 14.5px;">&larr; Back to Home</a>
+      <a href="/" onClick="{{ goHome }}" style="display: inline-block; margin-bottom: 32px; color: oklch(45% 0.02 80); font-weight: 500; font-size: 14.5px;">&larr; Back to Home</a>
 
       <!-- HEADER -->
       <div style="text-align: center; margin-bottom: 60px;">
@@ -1036,7 +1037,7 @@
   <sc-if value="{{ showContactPage }}" hint-placeholder-val="{{ false }}">
   <div style="padding: 80px 6vw; background: white;">
     <div style="max-width: 1100px; margin: 0 auto;">
-      <a href="#" onClick="{{ goHome }}" style="display: inline-block; margin-bottom: 32px; color: oklch(45% 0.02 80); font-weight: 500; font-size: 14.5px;">&larr; Back to Home</a>
+      <a href="/" onClick="{{ goHome }}" style="display: inline-block; margin-bottom: 32px; color: oklch(45% 0.02 80); font-weight: 500; font-size: 14.5px;">&larr; Back to Home</a>
       <div style="text-align: center; margin-bottom: 48px;">
         <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(58% 0.15 35); margin-bottom: 14px;">Get In Touch</div>
         <h2 style="font-family: Sora, sans-serif; font-size: clamp(28px, 3.5vw, 36px); font-weight: 700; margin: 0 0 16px;">We'd Love to Hear From You</h2>
@@ -1079,7 +1080,7 @@
         <div style="font-size: 14.5px; color: oklch(35% 0.02 80); font-weight: 600; margin-bottom: 24px;">📌 North Gate, 1st Floor, Building B1, No. 9 Zhanwang Road, Zhili Town, Huzhou, Zhejiang, China (湖州市织里镇展望路9号B1幢1楼北大门，语贝服饰)</div>
         <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
           <a href="https://wa.me/8618367259637?text=Hi%2C%20I%27d%20like%20to%20visit%20your%20showroom." target="_blank" rel="noopener" style="background: oklch(58% 0.15 35); color: white; padding: 13px 28px; border-radius: 999px; font-weight: 600; font-size: 14.5px; text-decoration: none;">💬 Contact to Arrange Visit</a>
-          <a href="#contact" onClick="{{ goContact }}" style="border: 1.5px solid oklch(75% 0.02 80); color: oklch(24% 0.02 80); padding: 13px 28px; border-radius: 999px; font-weight: 600; font-size: 14.5px; text-decoration: none;">View Contact Details</a>
+          <a href="/contact" onClick="{{ goContact }}" style="border: 1.5px solid oklch(75% 0.02 80); color: oklch(24% 0.02 80); padding: 13px 28px; border-radius: 999px; font-weight: 600; font-size: 14.5px; text-decoration: none;">View Contact Details</a>
         </div>
       </div>
 
@@ -1264,8 +1265,29 @@ const SERVICES = [
   { tag: "Bulk", title: "Wholesale", desc: "We welcome bulk wholesale orders with competitive pricing to suit your business." }
 ];
 
+const ROUTE_VIEWS = ["home", "products", "about", "services", "certificates", "activity", "contact"];
+const HASH_VIEW = String(window.location.hash || "").replace(/^#/, "");
+const PAGE_VIEW = document.documentElement.getAttribute("data-initial-view") || "home";
+const INITIAL_VIEW = PAGE_VIEW === "home" && ROUTE_VIEWS.includes(HASH_VIEW)
+  ? HASH_VIEW
+  : (ROUTE_VIEWS.includes(PAGE_VIEW) ? PAGE_VIEW : "home");
+const INITIAL_VISIBLE_KEY = INITIAL_VIEW === "certificates" ? "certs" : INITIAL_VIEW;
+
 class Component extends DCLogic {
-  state = { visible: {}, view: "home", productSeason: "winter", quoteForm: {}, mobileMenuOpen: false, aboutGallery: "showroom" };
+  state = { visible: { [INITIAL_VISIBLE_KEY]: true }, view: INITIAL_VIEW, productSeason: "winter", quoteForm: {}, mobileMenuOpen: false, aboutGallery: "showroom" };
+
+  navigatePage(path, view, e) {
+    if (e) e.preventDefault();
+    const normalize = (value) => (value || "/").replace(/\/index\.html$/, "/").replace(/\/+$/, "") || "/";
+    if (normalize(window.location.pathname) !== normalize(path)) {
+      window.location.assign(path);
+      return false;
+    }
+    const visibleKey = view === "certificates" ? "certs" : view;
+    this.setState((s) => ({ view, mobileMenuOpen: false, visible: { ...s.visible, [visibleKey]: true } }));
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    return false;
+  }
 
   setGallery(key) {
     this.setState({ aboutGallery: key });
@@ -1280,27 +1302,19 @@ class Component extends DCLogic {
   }
 
   goProducts(e) {
-    if (e) e.preventDefault();
-    this.setState((s) => ({ view: "products", mobileMenuOpen: false, visible: { ...s.visible, products: true } }));
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    return this.navigatePage("/products", "products", e);
   }
 
   goAbout(e) {
-    if (e) e.preventDefault();
-    this.setState((s) => ({ view: "about", mobileMenuOpen: false, visible: { ...s.visible, about: true } }));
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    return this.navigatePage("/about", "about", e);
   }
 
   goServices(e) {
-    if (e) e.preventDefault();
-    this.setState((s) => ({ view: "services", visible: { ...s.visible, services: true } }));
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    return this.navigatePage("/services", "services", e);
   }
 
   goActivity(e) {
-    if (e) e.preventDefault();
-    this.setState((s) => ({ view: "activity", visible: { ...s.visible, activity: true } }));
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    return this.navigatePage("/activity", "activity", e);
   }
 
   goActivityMobile(e) {
@@ -1309,22 +1323,17 @@ class Component extends DCLogic {
   }
 
   goCertificates(e) {
-    if (e) e.preventDefault();
-    this.setState({ view: "certificates" });
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    return this.navigatePage("/certificates", "certificates", e);
   }
 
   goHome(e) {
-    if (e) e.preventDefault();
-    this.setState({ view: "home" });
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    const result = this.navigatePage("/", "home", e);
     setTimeout(function() { window._runStatCounters && window._runStatCounters(); }, 100);
+    return result;
   }
 
   goContact(e) {
-    if (e) e.preventDefault();
-    this.setState({ view: "contact", mobileMenuOpen: false });
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    return this.navigatePage("/contact", "contact", e);
   }
 
   goAboutMobile(e) { this.goAbout(e); }
