@@ -54,7 +54,7 @@
       'Your Product Inquiry': 'استفسار المنتجات', 'Add up to 30 styles, quantities, and notes.': 'أضف حتى 30 موديلًا مع الكميات والملاحظات.',
       'Your name': 'اسمك', 'Country': 'الدولة', 'Required delivery date': 'تاريخ التسليم المطلوب', 'Destination port': 'ميناء الوصول', 'Target price': 'السعر المستهدف', 'Customization requirements': 'متطلبات التخصيص', 'Preferred contact method': 'طريقة التواصل المفضلة',
       'Apply one quantity to all selected styles': 'تطبيق كمية واحدة على جميع الموديلات', 'Apply to All': 'تطبيق على الكل', 'Quantity': 'الكمية', 'Notes': 'ملاحظات',
-      'Copy Summary': 'نسخ الملخص', 'Send on WhatsApp': 'إرسال عبر واتساب', 'Send by Email': 'إرسال بالبريد', 'Clear List': 'مسح القائمة', 'Inquiry List': 'قائمة الاستفسار',
+      'Copy Summary': 'نسخ الملخص', 'Copy Model No.': 'نسخ رقم الموديل', 'Copied!': 'تم النسخ!', 'Send on WhatsApp': 'إرسال عبر واتساب', 'Send by Email': 'إرسال بالبريد', 'Clear List': 'مسح القائمة', 'Inquiry List': 'قائمة الاستفسار',
       'WhatsApp': 'واتساب', 'WeChat': 'ويتشات', 'Ready to Order?': 'جاهز للطلب؟', 'Interested in our products?': 'مهتم بمنتجاتنا؟', 'Get a quote in 24 hours': 'احصل على عرض خلال 24 ساعة',
       'Your inquiry list is empty. Add styles from the Products page.': 'قائمة الاستفسار فارغة. أضف موديلات من صفحة المنتجات.',
       'Example: YB-WI-001': 'مثال: YB-WI-001', 'Name': 'الاسم', 'Company name': 'اسم الشركة', 'Country': 'الدولة',

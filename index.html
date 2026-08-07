@@ -655,6 +655,7 @@
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>
                 Tap to zoom
               </div>
+              <button class="copy-model-btn" type="button">Copy Model No.</button>
               <button class="inquiry-add-btn" type="button">+ Add to Inquiry</button>
             </div>
           </div>
@@ -2003,9 +2004,54 @@ class Component extends DCLogic {
         window._lbNav(deltaX < 0 ? 1 : -1);
       }, { passive: true });
 
+      function fallbackCopyModel(model) {
+        var area = document.createElement('textarea');
+        area.value = model;
+        area.style.position = 'fixed';
+        area.style.opacity = '0';
+        document.body.appendChild(area);
+        area.select();
+        var copied = false;
+        try { copied = document.execCommand('copy'); } catch (err) {}
+        area.remove();
+        return copied;
+      }
+
+      function copyModelNumber(button) {
+        var card = button.closest('.prod-card[data-model]');
+        var model = card && card.dataset.model;
+        if (!model) return;
+        var showCopied = function(copied) {
+          if (!copied) return;
+          button.textContent = 'Copied!';
+          button.classList.add('copied');
+          clearTimeout(button._copyResetTimer);
+          button._copyResetTimer = setTimeout(function() {
+            button.textContent = 'Copy Model No.';
+            button.classList.remove('copied');
+          }, 1400);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(model).then(function() {
+            showCopied(true);
+          }).catch(function() {
+            showCopied(fallbackCopyModel(model));
+          });
+        } else {
+          showCopied(fallbackCopyModel(model));
+        }
+      }
+
       // Product cards are rendered by the page framework, so handle their
       // clicks from the document instead of relying on an inline handler.
       document.addEventListener('click', function(e) {
+        var copyButton = e.target.closest('.copy-model-btn');
+        if (copyButton) {
+          e.preventDefault();
+          e.stopPropagation();
+          copyModelNumber(copyButton);
+          return;
+        }
         if (e.target.closest('.inquiry-add-btn')) return;
         var card = e.target.closest('.prod-card[data-model]');
         if (!card) return;
@@ -2024,8 +2070,22 @@ class Component extends DCLogic {
   </script>
   <!-- LIGHTWEIGHT PRODUCT INQUIRY LIST -->
   <style>
+    .copy-model-btn {
+      width: 100%; margin-top: 14px; padding: 10px 14px;
+      border: 1px solid oklch(84% 0.02 80); border-radius: 10px;
+      background: oklch(96% 0.02 80); color: oklch(34% 0.02 80);
+      font: 700 13px Inter, sans-serif; cursor: pointer;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .copy-model-btn:hover {
+      background: oklch(92% 0.03 80); border-color: oklch(74% 0.04 80);
+    }
+    .copy-model-btn.copied {
+      background: oklch(92% 0.08 145); color: oklch(32% 0.1 145);
+      border-color: oklch(76% 0.1 145);
+    }
     .inquiry-add-btn {
-      width: 100%; margin-top: 16px; padding: 11px 14px;
+      width: 100%; margin-top: 8px; padding: 11px 14px;
       border: 1.5px solid oklch(78% 0.06 35); border-radius: 10px;
       background: white; color: oklch(50% 0.15 35);
       font: 700 13.5px Inter, sans-serif; cursor: pointer;
