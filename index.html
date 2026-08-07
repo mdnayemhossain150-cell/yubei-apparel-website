@@ -660,7 +660,6 @@
                 <button class="copy-model-btn" type="button">Copy Model No.</button>
                 <button class="share-product-btn" type="button">Share Product</button>
               </div>
-              <button class="request-sample-btn" type="button">Request Sample</button>
               <button class="inquiry-add-btn" type="button">+ Add to Inquiry</button>
             </div>
           </div>
@@ -2098,13 +2097,6 @@ class Component extends DCLogic {
           shareProduct(shareButton);
           return;
         }
-        var sampleButton = e.target.closest('.request-sample-btn');
-        if (sampleButton) {
-          e.preventDefault();
-          e.stopPropagation();
-          requestSampleForCard(sampleButton.closest('.prod-card[data-model]'));
-          return;
-        }
         if (e.target.closest('.inquiry-add-btn')) return;
         var card = e.target.closest('.prod-card[data-model]');
         if (!card) return;
@@ -2140,19 +2132,9 @@ class Component extends DCLogic {
       background: oklch(92% 0.08 145); color: oklch(32% 0.1 145);
       border-color: oklch(76% 0.1 145);
     }
-    .request-sample-btn {
-      width: 100%; margin-top: 8px; padding: 10px 14px;
-      border: 1px solid oklch(82% 0.06 145); border-radius: 10px;
-      background: oklch(96% 0.04 145); color: oklch(38% 0.11 145);
-      font: 700 13px Inter, sans-serif; cursor: pointer;
-      transition: background 0.2s, color 0.2s, border-color 0.2s;
-    }
-    .request-sample-btn:hover {
-      background: oklch(90% 0.08 145); border-color: oklch(70% 0.1 145);
-    }
     @media (max-width: 640px) {
       .product-utility-actions { grid-template-columns: 1fr; }
-      .copy-model-btn, .share-product-btn, .request-sample-btn, .inquiry-add-btn {
+      .copy-model-btn, .share-product-btn, .inquiry-add-btn {
         padding-left: 4px; padding-right: 4px; font-size: 11.5px;
       }
     }
