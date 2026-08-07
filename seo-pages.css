@@ -217,6 +217,29 @@ th { background: var(--soft); font-size: 13px; }
 td { font-size: 14px; }
 tr:last-child td { border-bottom: 0; }
 
+.pricing-plan-box { padding: 52px 48px; background: #f7f4ef; border-radius: 24px; }
+.pricing-plan-heading { margin-bottom: 40px; }
+.pricing-table-wrap { border: 0; border-radius: 12px; }
+.pricing-table { min-width: 680px; }
+.pricing-table th { padding: 16px 20px; color: var(--white); background: var(--brand); text-align: center; font-weight: 700; }
+.pricing-table th:first-child { text-align: left; border-radius: 12px 0 0; }
+.pricing-table th:last-child { border-radius: 0 12px 0 0; }
+.pricing-table td { padding: 18px 20px; text-align: center; background: var(--white); }
+.pricing-table tbody tr:nth-child(even) td { background: #fcfbf9; }
+.pricing-table td:first-child { text-align: left; }
+.pricing-table td small { display: block; margin-top: 3px; color: var(--muted); font-size: 12.5px; }
+.pricing-table td > strong { font-weight: 700; }
+.lead-time-badge { display: inline-block; padding: 4px 12px; color: #4c443a; background: #eee7dd; border-radius: 999px; font-size: 13px; font-weight: 700; white-space: nowrap; }
+.lead-time-badge.urgent { color: #8b2f21; background: #f9e2dc; }
+.price-high { color: var(--brand); }
+.price-low { color: #277349; }
+.pricing-table .ready-stock-row td { color: #235f42; background: #eaf6ee; }
+.lead-time-badge.stock { color: #175a39; background: #cdebd7; }
+.pricing-note { margin: 20px 0 0; color: var(--muted); text-align: center; font-size: 13px; line-height: 1.6; }
+html[dir="rtl"] .pricing-table th:first-child, html[dir="rtl"] .pricing-table td:first-child { text-align: right; }
+html[dir="rtl"] .pricing-table th:first-child { border-radius: 0 12px 0 0; }
+html[dir="rtl"] .pricing-table th:last-child { border-radius: 12px 0 0; }
+
 .filters { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 28px; }
 .filter-button {
   padding: 10px 22px;
@@ -406,6 +429,8 @@ html[dir="rtl"] #languageSwitcher { text-align: left; }
   .founder-speech { margin-top: 26px; font-size: 15px; }
   .founder-speech h3 { font-size: 22px; }
   .founder-values { grid-template-columns: 1fr; gap: 14px; }
+  .pricing-plan-box { padding: 34px 16px; border-radius: 20px; }
+  .pricing-plan-heading { margin-bottom: 28px; }
   .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 11px; }
   .certificate-grid { grid-template-columns: 1fr; gap: 28px; }
   .steps { grid-template-columns: 1fr; }
