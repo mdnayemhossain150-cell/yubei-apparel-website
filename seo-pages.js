@@ -52,4 +52,24 @@
       closeViewer();
     }
   });
+
+  var aboutTabs = Array.prototype.slice.call(document.querySelectorAll('[data-about-tab]'));
+  var aboutPanels = Array.prototype.slice.call(document.querySelectorAll('[data-about-panel]'));
+
+  function showAboutPanel(name) {
+    aboutTabs.forEach(function (button) {
+      var active = button.getAttribute('data-about-tab') === name;
+      button.classList.toggle('active', active);
+      button.setAttribute('aria-selected', String(active));
+    });
+    aboutPanels.forEach(function (panel) {
+      panel.hidden = panel.getAttribute('data-about-panel') !== name;
+    });
+  }
+
+  aboutTabs.forEach(function (button) {
+    button.addEventListener('click', function () {
+      showAboutPanel(button.getAttribute('data-about-tab'));
+    });
+  });
 })();
