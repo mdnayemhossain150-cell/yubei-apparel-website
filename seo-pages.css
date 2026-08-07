@@ -176,7 +176,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   display: block;
   width: 100%;
   height: 260px;
-  object-fit: contain;
+  object-fit: cover;
   background: #ebe5dc;
   border-radius: 18px;
   cursor: zoom-in;
