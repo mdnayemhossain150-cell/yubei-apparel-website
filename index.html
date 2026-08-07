@@ -656,7 +656,11 @@
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>
                 Tap to zoom
               </div>
-              <button class="copy-model-btn" type="button">Copy Model No.</button>
+              <div class="product-utility-actions">
+                <button class="copy-model-btn" type="button">Copy Model No.</button>
+                <button class="share-product-btn" type="button">Share Product</button>
+              </div>
+              <button class="request-sample-btn" type="button">Request Sample</button>
               <button class="inquiry-add-btn" type="button">+ Add to Inquiry</button>
             </div>
           </div>
@@ -1973,8 +1977,7 @@ class Component extends DCLogic {
         window.open('https://wa.me/8618367259637?text=' + encodeURIComponent(message), '_blank', 'noopener');
       };
 
-      window._lbSample = function() {
-        var card = cards[current];
+      function requestSampleForCard(card) {
         if (!card) return;
         var selectedLanguage = window.YubeiI18n ? window.YubeiI18n.getLanguage() : 'en';
         var message = selectedLanguage === 'ar' ? [
@@ -1987,6 +1990,10 @@ class Component extends DCLogic {
           'Sample quantity: 1 piece', '', 'Please confirm the sample price, available colors, and shipping cost.'
         ].join('\n');
         window.location.href = 'https://wa.me/8618367259637?text=' + encodeURIComponent(message);
+      }
+
+      window._lbSample = function() {
+        requestSampleForCard(cards[current]);
       };
 
       var touchStartX = 0;
@@ -2043,6 +2050,37 @@ class Component extends DCLogic {
         }
       }
 
+      function shareProduct(button) {
+        var card = button.closest('.prod-card[data-model]');
+        if (!card) return;
+        var model = card.dataset.model || '';
+        var size = card.dataset.size || '';
+        var season = card.dataset.season || '';
+        var selectedLanguage = window.YubeiI18n ? window.YubeiI18n.getLanguage() : 'en';
+        var productUrl = window.location.origin + window.location.pathname + '#products';
+        var shareText = selectedLanguage === 'ar'
+          ? 'ملابس يوبي للأطفال — الموديل ' + model + '\nالمقاس: ' + size + '\nالموسم: ' + season
+          : 'Yubei Kidswear — Model ' + model + '\nSize: ' + size + '\nSeason: ' + season;
+        var copyFallback = function() {
+          var copied = fallbackCopyModel(shareText + '\n' + productUrl);
+          if (!copied) return;
+          button.textContent = 'Link Copied!';
+          button.classList.add('copied');
+          clearTimeout(button._shareResetTimer);
+          button._shareResetTimer = setTimeout(function() {
+            button.textContent = 'Share Product';
+            button.classList.remove('copied');
+          }, 1400);
+        };
+        if (navigator.share) {
+          navigator.share({ title: 'Yubei Apparel — ' + model, text: shareText, url: productUrl }).catch(function(err) {
+            if (!err || err.name !== 'AbortError') copyFallback();
+          });
+        } else {
+          copyFallback();
+        }
+      }
+
       // Product cards are rendered by the page framework, so handle their
       // clicks from the document instead of relying on an inline handler.
       document.addEventListener('click', function(e) {
@@ -2051,6 +2089,20 @@ class Component extends DCLogic {
           e.preventDefault();
           e.stopPropagation();
           copyModelNumber(copyButton);
+          return;
+        }
+        var shareButton = e.target.closest('.share-product-btn');
+        if (shareButton) {
+          e.preventDefault();
+          e.stopPropagation();
+          shareProduct(shareButton);
+          return;
+        }
+        var sampleButton = e.target.closest('.request-sample-btn');
+        if (sampleButton) {
+          e.preventDefault();
+          e.stopPropagation();
+          requestSampleForCard(sampleButton.closest('.prod-card[data-model]'));
           return;
         }
         if (e.target.closest('.inquiry-add-btn')) return;
@@ -2071,19 +2123,38 @@ class Component extends DCLogic {
   </script>
   <!-- LIGHTWEIGHT PRODUCT INQUIRY LIST -->
   <style>
-    .copy-model-btn {
-      width: 100%; margin-top: 14px; padding: 10px 14px;
+    .product-utility-actions {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px;
+    }
+    .copy-model-btn, .share-product-btn {
+      width: 100%; padding: 10px 8px;
       border: 1px solid oklch(84% 0.02 80); border-radius: 10px;
       background: oklch(96% 0.02 80); color: oklch(34% 0.02 80);
       font: 700 13px Inter, sans-serif; cursor: pointer;
       transition: background 0.2s, color 0.2s, border-color 0.2s;
     }
-    .copy-model-btn:hover {
+    .copy-model-btn:hover, .share-product-btn:hover {
       background: oklch(92% 0.03 80); border-color: oklch(74% 0.04 80);
     }
-    .copy-model-btn.copied {
+    .copy-model-btn.copied, .share-product-btn.copied {
       background: oklch(92% 0.08 145); color: oklch(32% 0.1 145);
       border-color: oklch(76% 0.1 145);
+    }
+    .request-sample-btn {
+      width: 100%; margin-top: 8px; padding: 10px 14px;
+      border: 1px solid oklch(82% 0.06 145); border-radius: 10px;
+      background: oklch(96% 0.04 145); color: oklch(38% 0.11 145);
+      font: 700 13px Inter, sans-serif; cursor: pointer;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .request-sample-btn:hover {
+      background: oklch(90% 0.08 145); border-color: oklch(70% 0.1 145);
+    }
+    @media (max-width: 640px) {
+      .product-utility-actions { grid-template-columns: 1fr; }
+      .copy-model-btn, .share-product-btn, .request-sample-btn, .inquiry-add-btn {
+        padding-left: 4px; padding-right: 4px; font-size: 11.5px;
+      }
     }
     .inquiry-add-btn {
       width: 100%; margin-top: 8px; padding: 11px 14px;
