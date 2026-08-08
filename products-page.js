@@ -93,7 +93,7 @@
 
     var image = element('img');
     image.src = product.src;
-    image.alt = product.model + " children's clothing by Yubei Apparel";
+    image.alt = product.season + " kidswear overalls set, model " + product.model + ", size " + product.size + " — Yubei Apparel wholesale children's clothing";
     image.width = 800;
     image.height = 1000;
     image.loading = index < 2 ? 'eager' : 'lazy';
