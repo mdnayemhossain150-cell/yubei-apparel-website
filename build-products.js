@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /*
- * build-products.js — Yubei catalog generator (Phase A)
+ * build-products.js — Yubei catalog generator
  *
  * Reads products.json (single source of truth) and injects the static product
  * grid + ItemList JSON-LD into products.html, between persistent HTML markers.
@@ -8,12 +8,15 @@
  *
  * Usage:
  *   node build-products.js            # regenerate products.html in place
- *   node build-products.js <outPath>  # write result to <outPath> instead (used for local preview)
+ *   node build-products.js <outPath>  # write result to <outPath> instead (local preview)
  *
- * PUBLIC rule (Phase A): a product is shown publicly only if
- *   status is "ok" or "corrected", model and sizeRange are not "xxxxx",
- *   and notes do NOT contain "IP review". Everything else stays in
- *   products.json but is excluded from the public page and schema.
+ * DISPLAY RULES (B2B browse-all catalog):
+ *   - Show ALL products from products.json (confirmed duplicates are already
+ *     removed from the data; nothing else is hidden).
+ *   - Products are never hidden for a missing model or size.
+ *   - When model or size is unavailable ("xxxxx"), the card shows
+ *     "Available upon inquiry" instead — the literal "xxxxx" is never rendered.
+ *   - Photos are always shown (buyers select styles visually, then contact us).
  */
 'use strict';
 
@@ -24,6 +27,8 @@ var DIR = __dirname;
 var SITE = 'https://www.yubeichildrenclothes.com';
 var SEASON_ORDER = ['Winter', 'Summer', 'Autumn', 'Mix']; // Winter first = default visible tab
 var EAGER_COUNT = 2; // first N cards load eagerly for LCP
+var PLACEHOLDER = 'xxxxx';
+var AVAILABLE = 'Available upon inquiry';
 
 var dataPath = path.join(DIR, 'products.json');
 var htmlPath = path.join(DIR, 'products.html');
@@ -35,69 +40,75 @@ function escAttr(s) {
 function escText(s) {
   return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
+function has(v) { return v && v !== PLACEHOLDER; }
+function imageRef(p) { return p.image.replace(/\.[^.]+$/, ''); } // "autumn-02.jpg" -> "autumn-02"
 
-function isPublic(p) {
-  var placeholder = 'xxxxx';
-  if (p.status !== 'ok' && p.status !== 'corrected') return false;
-  if (!p.model || p.model === placeholder) return false;
-  if (!p.sizeRange || p.sizeRange === placeholder) return false;
-  if (p.notes && /IP review/i.test(p.notes)) return false;
-  return true;
-}
-
-function orderedPublic(products) {
-  var pub = products.filter(isPublic);
-  pub.sort(function (a, b) {
+function orderedProducts(products) {
+  var list = products.slice();
+  list.sort(function (a, b) {
     var sa = SEASON_ORDER.indexOf(a.season), sb = SEASON_ORDER.indexOf(b.season);
     if (sa !== sb) return sa - sb;
     return products.indexOf(a) - products.indexOf(b); // stable within season
   });
-  return pub;
+  return list;
 }
 
 function cardHtml(p, index) {
   var src = '/assets/' + p.image;
-  var alt = p.name + ' — model ' + p.model + ', size ' + p.sizeRange + ', ' + p.season + ' — Yubei Apparel wholesale kidswear';
+  var hasModel = has(p.model);
+  var hasSize = has(p.sizeRange);
+
+  // Visible text (never shows "xxxxx")
+  var displayModel = hasModel ? ('Model No: ' + escText(p.model)) : AVAILABLE;
+  var displaySize = hasSize ? escText(p.sizeRange) : AVAILABLE;
+
+  // Data attributes drive search / inquiry / share. Missing model gets a unique
+  // style reference (image basename) so inquiry de-duplication still works.
+  var dataModel = hasModel ? p.model : imageRef(p);
+  var dataSize = hasSize ? p.sizeRange : '';
+
+  var alt = p.name + ' — ' + (hasModel ? 'model ' + p.model + ', ' : '') + p.season +
+            (hasSize ? ', size ' + p.sizeRange : '') + ' — Yubei Apparel wholesale kidswear';
+
   var loading = index < EAGER_COUNT ? 'eager' : 'lazy';
   var fetchPriority = index === 0 ? ' fetchpriority="high"' : '';
+
   return '' +
-    '<article class="prod-card" data-model="' + escAttr(p.model) + '" data-size="' + escAttr(p.sizeRange) + '" data-season="' + escAttr(p.season) + '" data-src="' + escAttr(src) + '">' +
+    '<article class="prod-card" data-model="' + escAttr(dataModel) + '" data-size="' + escAttr(dataSize) + '" data-season="' + escAttr(p.season) + '" data-src="' + escAttr(src) + '">' +
       '<img src="' + escAttr(src) + '" alt="' + escAttr(alt) + '" width="800" height="1000" loading="' + loading + '" decoding="async" data-zoom' + fetchPriority + '>' +
       '<div class="product-body">' +
-        '<div class="product-model">Model No: ' + escText(p.model) + '</div>' +
-        '<div class="product-meta"><div><b>Size:</b> ' + escText(p.sizeRange) + '</div><div><b>Season:</b> ' + escText(p.season) + '</div></div>' +
+        '<div class="product-model">' + displayModel + '</div>' +
+        '<div class="product-meta"><div><b>Size:</b> ' + displaySize + '</div><div><b>Season:</b> ' + escText(p.season) + '</div></div>' +
         '<div class="product-actions"><button class="copy-model-btn" type="button">Copy Model No.</button><button class="share-product-btn" type="button">Share Product</button></div>' +
         '<button class="inquiry-add-btn" type="button">+ Add to Inquiry</button>' +
       '</div>' +
     '</article>';
 }
 
-function itemListJson(pub) {
-  var list = {
+function itemListJson(list) {
+  var out = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     name: 'Yubei Apparel Wholesale Kidswear Catalog',
-    numberOfItems: pub.length,
-    itemListElement: pub.map(function (p, i) {
-      return {
-        '@type': 'ListItem',
-        position: i + 1,
-        item: {
-          '@type': 'Product',
-          name: p.name,
-          sku: p.model,
-          category: p.category,
-          image: SITE + '/assets/' + p.image,
-          brand: { '@type': 'Brand', name: 'Yubei Apparel' }
-        }
+    numberOfItems: list.length,
+    itemListElement: list.map(function (p, i) {
+      var product = {
+        '@type': 'Product',
+        name: p.name,
+        category: p.category,
+        image: SITE + '/assets/' + p.image,
+        brand: { '@type': 'Brand', name: 'Yubei Apparel' }
       };
+      if (has(p.model)) product.sku = p.model; // omit sku when unavailable (never "xxxxx")
+      return { '@type': 'ListItem', position: i + 1, item: product };
     })
   };
-  return '<script type="application/ld+json">\n' + JSON.stringify(list, null, 2) + '\n</script>';
+  return '<script type="application/ld+json">\n' + JSON.stringify(out, null, 2) + '\n</script>';
 }
 
 function replaceBetween(html, startMarker, endMarker, inner) {
-  var re = new RegExp('(' + startMarker.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')[\\s\\S]*?(' + endMarker.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')');
+  var esc = function (s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); };
+  var re = new RegExp('(' + esc(startMarker) + ')[\\s\\S]*?(' + esc(endMarker) + ')');
   if (!re.test(html)) throw new Error('Markers not found: ' + startMarker + ' ... ' + endMarker);
   return html.replace(re, '$1\n' + inner + '\n$2');
 }
@@ -105,22 +116,25 @@ function replaceBetween(html, startMarker, endMarker, inner) {
 function main() {
   var data = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
   var html = fs.readFileSync(htmlPath, 'utf8');
-  var pub = orderedPublic(data.products);
+  var list = orderedProducts(data.products);
 
-  var cards = pub.map(cardHtml).join('\n');
-  var itemList = itemListJson(pub);
+  var cards = list.map(cardHtml).join('\n');
+  var itemList = itemListJson(list);
 
   html = replaceBetween(html, '<!--PRODUCTS:START-->', '<!--PRODUCTS:END-->', cards);
   html = replaceBetween(html, '<!--ITEMLIST:START-->', '<!--ITEMLIST:END-->', itemList);
 
+  if (html.indexOf(PLACEHOLDER) !== -1) throw new Error('Refusing to write: "' + PLACEHOLDER + '" leaked into output.');
+
   fs.writeFileSync(outPath, html);
 
   var counts = {};
-  pub.forEach(function (p) { counts[p.season] = (counts[p.season] || 0) + 1; });
+  list.forEach(function (p) { counts[p.season] = (counts[p.season] || 0) + 1; });
+  var availCount = list.filter(function (p) { return !has(p.model) || !has(p.sizeRange); }).length;
   console.log('Generated ' + path.basename(outPath));
-  console.log('Public products: ' + pub.length + ' of ' + data.products.length);
+  console.log('Products shown: ' + list.length + ' of ' + data.products.length);
   console.log('By season: ' + JSON.stringify(counts));
-  console.log('Excluded: ' + (data.products.length - pub.length) + ' (need_confirmation / xxxxx / IP-flagged)');
+  console.log('Cards showing "Available upon inquiry": ' + availCount);
 }
 
 main();
