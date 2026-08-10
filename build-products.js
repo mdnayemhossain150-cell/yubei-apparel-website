@@ -17,6 +17,8 @@
  *   - When model or size is unavailable ("xxxxx"), the card shows
  *     "Available upon inquiry" instead — the literal "xxxxx" is never rendered.
  *   - Photos are always shown (buyers select styles visually, then contact us).
+ *   - Products with "published": false are excluded from the public page and
+ *     schema (kept in products.json for internal reference only).
  */
 'use strict';
 
@@ -116,7 +118,8 @@ function replaceBetween(html, startMarker, endMarker, inner) {
 function main() {
   var data = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
   var html = fs.readFileSync(htmlPath, 'utf8');
-  var list = orderedProducts(data.products);
+  var published = data.products.filter(function (p) { return p.published !== false; });
+  var list = orderedProducts(published);
 
   var cards = list.map(cardHtml).join('\n');
   var itemList = itemListJson(list);
