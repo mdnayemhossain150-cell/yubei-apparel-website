@@ -19,6 +19,9 @@
  *   - Photos are always shown (buyers select styles visually, then contact us).
  *   - Products with "published": false are excluded from the public page and
  *     schema (kept in products.json for internal reference only).
+ *
+ * On an in-place regeneration this also stamps ONLY the /products <lastmod> in
+ * sitemap.xml with the current date (other pages' lastmod are left untouched).
  */
 'use strict';
 
@@ -34,7 +37,9 @@ var AVAILABLE = 'Available upon inquiry';
 
 var dataPath = path.join(DIR, 'products.json');
 var htmlPath = path.join(DIR, 'products.html');
+var sitemapPath = path.join(DIR, 'sitemap.xml');
 var outPath = process.argv[2] ? path.resolve(process.argv[2]) : htmlPath;
+var PRODUCTS_LOC = 'https://www.yubeichildrenclothes.com/products';
 
 function escAttr(s) {
   return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -115,6 +120,27 @@ function replaceBetween(html, startMarker, endMarker, inner) {
   return html.replace(re, '$1\n' + inner + '\n$2');
 }
 
+function todayStamp() {
+  var d = new Date();
+  var mm = String(d.getMonth() + 1).padStart(2, '0');
+  var dd = String(d.getDate()).padStart(2, '0');
+  return d.getFullYear() + '-' + mm + '-' + dd;
+}
+
+// Update ONLY the <lastmod> inside the /products <url> block (its <loc> precedes
+// the <lastmod>). No other page's lastmod is touched.
+function updateProductsLastmod() {
+  if (!fs.existsSync(sitemapPath)) { console.log('sitemap.xml: not found — lastmod not updated'); return; }
+  var xml = fs.readFileSync(sitemapPath, 'utf8');
+  var today = todayStamp();
+  var re = new RegExp('(<loc>' + PRODUCTS_LOC.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '</loc>\\s*<lastmod>)[^<]*(</lastmod>)');
+  if (!re.test(xml)) { console.log('sitemap.xml: /products entry not found — lastmod unchanged'); return; }
+  var updated = xml.replace(re, '$1' + today + '$2');
+  if (updated === xml) { console.log('sitemap.xml: /products lastmod already ' + today + ' — no change'); return; }
+  fs.writeFileSync(sitemapPath, updated);
+  console.log('sitemap.xml: /products lastmod set to ' + today);
+}
+
 function main() {
   var data = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
   var html = fs.readFileSync(htmlPath, 'utf8');
@@ -130,6 +156,9 @@ function main() {
   if (html.indexOf(PLACEHOLDER) !== -1) throw new Error('Refusing to write: "' + PLACEHOLDER + '" leaked into output.');
 
   fs.writeFileSync(outPath, html);
+
+  // Only stamp the real sitemap on an in-place regeneration (not scratchpad previews).
+  if (outPath === htmlPath) updateProductsLastmod();
 
   var counts = {};
   list.forEach(function (p) { counts[p.season] = (counts[p.season] || 0) + 1; });
