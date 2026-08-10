@@ -54,7 +54,7 @@ function orderedProducts(products) {
 }
 
 function cardHtml(p, index) {
-  var src = '/assets/' + p.image;
+  var src = './assets/' + p.image; // relative path — resolves in local preview, file://, and Vercel /products
   var hasModel = has(p.model);
   var hasSize = has(p.sizeRange);
 
