@@ -11,7 +11,7 @@
   var status = document.getElementById('productSearchStatus');
   if (!grid) return;
 
-  var LABELS = { summer: 'Summer', autumn: 'Autumn', winter: 'Winter', mix: 'Mix Items' };
+  var LABELS = { summer: 'Summer', autumn: 'Autumn', winter: 'Winter', mix: 'Mix' };
   var activeSeason = 'winter';
 
   function cards() {
