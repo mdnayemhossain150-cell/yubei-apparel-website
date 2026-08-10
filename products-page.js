@@ -109,7 +109,7 @@
     var body = element('div', 'product-body');
     body.appendChild(element('div', 'product-model', 'Model No: ' + product.model));
     var meta = element('div', 'product-meta');
-    meta.innerHTML = '<div><b>Size:</b> ' + product.size + '</div><div><b>Weight:</b> ' + product.weight + '</div><div><b>Season:</b> ' + product.season + '</div>';
+    meta.innerHTML = '<div><b>Size:</b> ' + product.size + '</div><div><b>Season:</b> ' + product.season + '</div>';
     body.appendChild(meta);
 
     var utilities = element('div', 'product-actions');
