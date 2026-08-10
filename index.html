@@ -1977,7 +1977,6 @@ class Component extends DCLogic {
         <div id="lb-tag">Product Detail</div>
         <div id="lb-model">—</div>
         <div class="lb-field"><span class="lb-field-key">Size</span><span class="lb-field-val" id="lb-size">—</span></div>
-        <div class="lb-field"><span class="lb-field-key">Weight</span><span class="lb-field-val" id="lb-weight">—</span></div>
         <div class="lb-field"><span class="lb-field-key">Season</span><span class="lb-field-val" id="lb-season">—</span></div>
         <button id="lb-cta" class="lb-action" onclick="window._lbQuote()">Ask About This Style on WhatsApp</button>
         <button id="lb-sample" class="lb-action" onclick="window._lbSample()">Request a Sample</button>
@@ -2044,7 +2043,6 @@ class Component extends DCLogic {
 
         document.getElementById('lb-model').textContent = 'Model No: ' + model;
         document.getElementById('lb-size').textContent = size;
-        document.getElementById('lb-weight').textContent = weight;
         document.getElementById('lb-season').textContent = season;
         document.getElementById('lb-counter').textContent = (i + 1) + ' / ' + cards.length;
       }
