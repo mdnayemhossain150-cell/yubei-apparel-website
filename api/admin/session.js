@@ -15,22 +15,6 @@ module.exports = function (req, res) {
 
   let session = null;
   try { session = auth.getSessionFromReq(req); } catch (e) { session = null; }
-
-  // Temporary, PREVIEW-ONLY safe logging: booleans only, no cookie value/secret.
-  if (process.env.VERCEL_ENV !== 'production') {
-    let hasSessionCookie = false;
-    try { hasSessionCookie = !!auth.parseCookies(req)[auth.SESSION_COOKIE]; } catch (e) {}
-    try {
-      console.log('[admin/session]', JSON.stringify({
-        event: 'check',
-        hasCookieHeader: !!(req.headers && req.headers.cookie),
-        hasSessionCookie: hasSessionCookie,
-        verified: !!session,
-        status: session ? 200 : 401
-      }));
-    } catch (e) {}
-  }
-
   if (!session) return json(res, 401, { authenticated: false });
 
   const account = accounts.getAccountById(session.sub);
