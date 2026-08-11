@@ -39,9 +39,15 @@
     </header>
 
     <div class="banner">
-      Read-only preview (Phase 1). This dashboard displays the live
-      <code>products.json</code> catalog. Editing, uploads and publishing are
-      intentionally disabled until a later approved phase.
+      Stage 2A preview. You can edit product fields to <b>preview</b> changes,
+      but <b>nothing is saved to the live website</b> — there is no persistence,
+      GitHub commit, or publishing yet. Photo upload and saving arrive in later
+      approved stages.
+    </div>
+
+    <div id="stagedBar" class="staged-bar" hidden>
+      <span id="stagedText"></span>
+      <button id="discardStaged" type="button" class="btn-ghost">Discard staged preview edits</button>
     </div>
 
     <section class="panel">
@@ -61,6 +67,43 @@
         <p id="loading" class="muted">Loading catalog…</p>
       </div>
     </section>
+  </div>
+
+  <!-- ============ EDIT MODAL (Stage 2A — PREVIEW ONLY, no persistence) ============ -->
+  <div id="editOverlay" class="modal-overlay" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="editTitle">
+      <div class="modal-head">
+        <h2 id="editTitle">Edit product</h2>
+        <button id="editClose" type="button" class="btn-ghost" aria-label="Close">×</button>
+      </div>
+      <p class="preview-warn">⚠ Preview only — changes are not saved to the live website.</p>
+      <form id="editForm" autocomplete="off">
+        <input type="hidden" id="editImage">
+        <label>Name<input id="f_name" type="text" maxlength="160"></label>
+        <div class="grid2">
+          <label>Model number<input id="f_model" type="text" maxlength="40" placeholder="blank = Available upon inquiry"></label>
+          <label>Size<input id="f_size" type="text" maxlength="40" placeholder="blank = Available upon inquiry"></label>
+        </div>
+        <label>Description<textarea id="f_description" maxlength="1000" rows="2"></textarea></label>
+        <div class="grid2">
+          <label>Category<input id="f_category" type="text" maxlength="60"></label>
+          <label>Season
+            <select id="f_season">
+              <option>Winter</option><option>Summer</option><option>Autumn</option><option>Mix</option>
+            </select>
+          </label>
+        </div>
+        <label>Colors (comma-separated)<input id="f_colors" type="text"></label>
+        <label class="check"><input id="f_published" type="checkbox"> Published (visible on public catalog)</label>
+        <p id="editError" class="error" role="alert" hidden></p>
+        <div id="editDiff" class="diff" hidden></div>
+        <div class="modal-actions">
+          <button type="submit" class="btn-primary" id="editPreviewBtn">Preview changes</button>
+          <button type="button" class="btn-ghost" id="editStageBtn" hidden>Keep as staged preview</button>
+          <button type="button" class="btn-ghost" id="editCancel">Cancel</button>
+        </div>
+      </form>
+    </div>
   </div>
 
   <script src="/admin/admin.js" defer></script>
