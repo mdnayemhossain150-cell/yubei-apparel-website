@@ -1,0 +1,12 @@
+{
+  "name": "yubei-admin",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Isolated read-only admin dashboard for the Yubei catalog (Phase 0/1). No third-party runtime dependencies — auth uses Node's built-in crypto only.",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "hash": "node scripts/hash-password.js"
+  }
+}

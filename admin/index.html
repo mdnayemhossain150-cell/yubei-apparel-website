@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Admin must never be indexed or followed by search engines. -->
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <meta name="googlebot" content="noindex, nofollow">
+  <title>Yubei Admin</title>
+  <link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body>
+  <!-- ===================== LOGIN VIEW ===================== -->
+  <main id="loginView" class="login-wrap" hidden>
+    <form id="loginForm" class="login-card" autocomplete="off">
+      <div class="brand-line"><b>YUBEI</b> <span>ADMIN</span></div>
+      <p class="sub">Sign in to manage the catalog</p>
+      <label>Username or email
+        <input id="username" name="username" type="text" autocomplete="username" required>
+      </label>
+      <label>Password
+        <input id="password" name="password" type="password" autocomplete="current-password" required>
+      </label>
+      <button id="loginBtn" type="submit" class="btn-primary">Sign in</button>
+      <p id="loginError" class="error" role="alert" hidden></p>
+      <p class="phase-note">Phase 0/1 — read-only preview. No changes can be saved yet.</p>
+    </form>
+  </main>
+
+  <!-- ===================== DASHBOARD VIEW ===================== -->
+  <div id="dashView" hidden>
+    <header class="topbar">
+      <div class="brand-line"><b>YUBEI</b> <span>ADMIN</span></div>
+      <div class="whoami">
+        <span id="roleBadge" class="badge"></span>
+        <span id="userLabel"></span>
+        <button id="logoutBtn" type="button" class="btn-ghost">Log out</button>
+      </div>
+    </header>
+
+    <div class="banner">
+      Read-only preview (Phase 1). This dashboard displays the live
+      <code>products.json</code> catalog. Editing, uploads and publishing are
+      intentionally disabled until a later approved phase.
+    </div>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h1>Product catalog</h1>
+        <div class="counts" id="counts"></div>
+      </div>
+
+      <!-- Future actions are shown but disabled (no write capability yet). -->
+      <div class="actions" id="mockActions" hidden>
+        <button class="btn-primary" type="button" disabled title="Available in a later approved phase">+ Add product</button>
+        <button class="btn-ghost" type="button" disabled title="Available in a later approved phase">Reorder</button>
+        <span class="mock-tag">disabled in read-only phase</span>
+      </div>
+
+      <div id="tableWrap" class="table-wrap">
+        <p id="loading" class="muted">Loading catalog…</p>
+      </div>
+    </section>
+  </div>
+
+  <script src="/admin/admin.js" defer></script>
+</body>
+</html>

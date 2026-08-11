@@ -1,0 +1,14 @@
+# Node
+node_modules/
+
+# Local environment / secrets — NEVER commit these
+.env
+.env.local
+.env.*.local
+
+# Vercel
+.vercel/
+
+# OS cruft
+.DS_Store
+Thumbs.db
