@@ -136,3 +136,25 @@ table.catalog img.thumb { width: 44px; height: 55px; object-fit: cover; border-r
 .diff .from { color: var(--danger); }
 .diff .to { color: var(--ok); }
 @media (max-width: 520px) { .grid2 { grid-template-columns: 1fr; } }
+
+/* ---------- Stage 2B: add / delete / reorder ---------- */
+.btn-danger {
+  background: var(--danger); color: #fff; border: 0; border-radius: 9px;
+  padding: 10px 14px; font-size: 14px; font-weight: 600; cursor: pointer;
+}
+.btn-danger:disabled { opacity: .5; cursor: not-allowed; }
+td.act { white-space: nowrap; }
+td.act .btn-ghost { padding: 4px 8px; font-size: 12px; margin: 0 1px; }
+.pill.new { color: #7fce8f; border-color: rgba(70,167,88,.6); background: rgba(70,167,88,.12); }
+.pill.del { color: var(--danger); border-color: rgba(229,72,77,.6); background: rgba(229,72,77,.12); }
+.row-deleted td { opacity: .55; text-decoration: line-through; }
+.row-deleted td.act { text-decoration: none; opacity: 1; }
+.thumb-pending {
+  width: 44px; height: 55px; display: flex; align-items: center; justify-content: center;
+  font-size: 10px; color: var(--muted); border: 1px dashed var(--line); border-radius: 6px; background: var(--panel-2);
+}
+.del-target {
+  margin: 8px 0; padding: 10px 12px; background: var(--panel-2);
+  border: 1px solid var(--line); border-radius: 8px; font-size: 14px; line-height: 1.7;
+}
+.del-target .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }

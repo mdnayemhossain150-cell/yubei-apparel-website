@@ -118,11 +118,31 @@ function validateFields(input) {
   return { ok: true, errors: [], fields: out };
 }
 
+// For Add: same strict whitelist + rules, but name/category/season are required,
+// and optional fields default (model/size blank -> placeholder, never invented).
+function validateNewProduct(input) {
+  const v = validateFields(input);
+  if (!v.ok) return v;
+  const missing = [];
+  ['name', 'category', 'season'].forEach(function (k) { if (!(k in v.fields)) missing.push(k); });
+  if (missing.length) {
+    return { ok: false, errors: missing.map(function (m) { return m + ' is required for a new product'; }), fields: {} };
+  }
+  const f = v.fields;
+  if (!('model' in f)) f.model = PLACEHOLDER;      // never invented
+  if (!('sizeRange' in f)) f.sizeRange = PLACEHOLDER; // never invented
+  if (!('colors' in f)) f.colors = [];
+  if (!('description' in f)) f.description = '';
+  if (!('published' in f)) f.published = true;
+  return { ok: true, errors: [], fields: f };
+}
+
 module.exports = {
   PLACEHOLDER: PLACEHOLDER,
   EDITABLE: EDITABLE,
   PROTECTED: PROTECTED,
   SEASONS: SEASONS,
   stripControl: stripControl,
-  validateFields: validateFields
+  validateFields: validateFields,
+  validateNewProduct: validateNewProduct
 };

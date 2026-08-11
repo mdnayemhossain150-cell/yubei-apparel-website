@@ -56,11 +56,10 @@
         <div class="counts" id="counts"></div>
       </div>
 
-      <!-- Future actions are shown but disabled (no write capability yet). -->
+      <!-- Stage 2B actions — all preview-only (nothing is persisted). -->
       <div class="actions" id="mockActions" hidden>
-        <button class="btn-primary" type="button" disabled title="Available in a later approved phase">+ Add product</button>
-        <button class="btn-ghost" type="button" disabled title="Available in a later approved phase">Reorder</button>
-        <span class="mock-tag">disabled in read-only phase</span>
+        <button class="btn-primary" type="button" id="addProductBtn" hidden>+ Add product</button>
+        <span class="mock-tag">Preview only — nothing is saved to the live website</span>
       </div>
 
       <div id="tableWrap" class="table-wrap">
@@ -103,6 +102,27 @@
           <button type="button" class="btn-ghost" id="editCancel">Cancel</button>
         </div>
       </form>
+    </div>
+  </div>
+
+  <!-- ============ DELETE CONFIRM (Stage 2B — PREVIEW ONLY) ============ -->
+  <div id="deleteOverlay" class="modal-overlay" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="delTitle">
+      <div class="modal-head">
+        <h2 id="delTitle">Delete product?</h2>
+        <button id="delClose" type="button" class="btn-ghost" aria-label="Close">×</button>
+      </div>
+      <p class="preview-warn">⚠ Preview only — the product is not removed from the live website.</p>
+      <p class="muted">You are about to stage deletion of:</p>
+      <div class="del-target">
+        <div><b>Name:</b> <span id="delName"></span></div>
+        <div><b>Model No.:</b> <span id="delModel"></span></div>
+      </div>
+      <p id="delError" class="error" role="alert" hidden></p>
+      <div class="modal-actions">
+        <button type="button" class="btn-danger" id="delConfirm">Stage deletion (preview)</button>
+        <button type="button" class="btn-ghost" id="delCancel">Cancel</button>
+      </div>
     </div>
   </div>
 
