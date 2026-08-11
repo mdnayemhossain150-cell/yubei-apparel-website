@@ -94,6 +94,10 @@
         </div>
         <label>Colors (comma-separated)<input id="f_colors" type="text"></label>
         <label class="check"><input id="f_published" type="checkbox"> Published (visible on public catalog)</label>
+        <label>Photo (optional — JPEG/PNG/WebP; auto-optimized to the catalog standard)
+          <input id="f_photo" type="file" accept="image/jpeg,image/png,image/webp">
+        </label>
+        <div id="photoPreview" class="photo-preview" hidden></div>
         <p id="editError" class="error" role="alert" hidden></p>
         <div id="editDiff" class="diff" hidden></div>
         <div class="modal-actions">
