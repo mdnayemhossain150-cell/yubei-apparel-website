@@ -120,30 +120,10 @@ function replaceBetween(html, startMarker, endMarker, inner) {
   return html.replace(re, '$1\n' + inner + '\n$2');
 }
 
-function todayStamp() {
-  var d = new Date();
-  var mm = String(d.getMonth() + 1).padStart(2, '0');
-  var dd = String(d.getDate()).padStart(2, '0');
-  return d.getFullYear() + '-' + mm + '-' + dd;
-}
-
-// Update ONLY the <lastmod> inside the /products <url> block (its <loc> precedes
-// the <lastmod>). No other page's lastmod is touched.
-function updateProductsLastmod() {
-  if (!fs.existsSync(sitemapPath)) { console.log('sitemap.xml: not found — lastmod not updated'); return; }
-  var xml = fs.readFileSync(sitemapPath, 'utf8');
-  var today = todayStamp();
-  var re = new RegExp('(<loc>' + PRODUCTS_LOC.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '</loc>\\s*<lastmod>)[^<]*(</lastmod>)');
-  if (!re.test(xml)) { console.log('sitemap.xml: /products entry not found — lastmod unchanged'); return; }
-  var updated = xml.replace(re, '$1' + today + '$2');
-  if (updated === xml) { console.log('sitemap.xml: /products lastmod already ' + today + ' — no change'); return; }
-  fs.writeFileSync(sitemapPath, updated);
-  console.log('sitemap.xml: /products lastmod set to ' + today);
-}
-
-function main() {
-  var data = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
-  var html = fs.readFileSync(htmlPath, 'utf8');
+// Pure: inject the product cards + ItemList JSON-LD into the given HTML template
+// using the supplied data. Returns { html, list }. Throws on placeholder leak or
+// missing markers. No filesystem access — safe to import from other code.
+function renderProductsHtml(html, data) {
   var published = data.products.filter(function (p) { return p.published !== false; });
   var list = orderedProducts(published);
 
@@ -155,11 +135,51 @@ function main() {
 
   if (html.indexOf(PLACEHOLDER) !== -1) throw new Error('Refusing to write: "' + PLACEHOLDER + '" leaked into output.');
 
-  fs.writeFileSync(outPath, html);
+  return { html: html, list: list };
+}
+
+function todayStamp() {
+  var d = new Date();
+  var mm = String(d.getMonth() + 1).padStart(2, '0');
+  var dd = String(d.getDate()).padStart(2, '0');
+  return d.getFullYear() + '-' + mm + '-' + dd;
+}
+
+// Pure: stamp ONLY the <lastmod> inside the /products <url> block (its <loc>
+// precedes the <lastmod>). Returns { xml, status } where status is
+// 'updated' | 'unchanged' | 'not_found'. No filesystem access.
+function stampProductsLastmod(xml, today) {
+  var re = new RegExp('(<loc>' + PRODUCTS_LOC.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '</loc>\\s*<lastmod>)[^<]*(</lastmod>)');
+  if (!re.test(xml)) return { xml: xml, status: 'not_found' };
+  var updated = xml.replace(re, '$1' + today + '$2');
+  if (updated === xml) return { xml: xml, status: 'unchanged' };
+  return { xml: updated, status: 'updated' };
+}
+
+// Update ONLY the /products <lastmod> in sitemap.xml on disk (CLI in-place mode).
+// No other page's lastmod is touched.
+function updateProductsLastmod() {
+  if (!fs.existsSync(sitemapPath)) { console.log('sitemap.xml: not found — lastmod not updated'); return; }
+  var xml = fs.readFileSync(sitemapPath, 'utf8');
+  var today = todayStamp();
+  var r = stampProductsLastmod(xml, today);
+  if (r.status === 'not_found') { console.log('sitemap.xml: /products entry not found — lastmod unchanged'); return; }
+  if (r.status === 'unchanged') { console.log('sitemap.xml: /products lastmod already ' + today + ' — no change'); return; }
+  fs.writeFileSync(sitemapPath, r.xml);
+  console.log('sitemap.xml: /products lastmod set to ' + today);
+}
+
+function main() {
+  var data = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
+  var html = fs.readFileSync(htmlPath, 'utf8');
+  var result = renderProductsHtml(html, data);
+
+  fs.writeFileSync(outPath, result.html);
 
   // Only stamp the real sitemap on an in-place regeneration (not scratchpad previews).
   if (outPath === htmlPath) updateProductsLastmod();
 
+  var list = result.list;
   var counts = {};
   list.forEach(function (p) { counts[p.season] = (counts[p.season] || 0) + 1; });
   var availCount = list.filter(function (p) { return !has(p.model) || !has(p.sizeRange); }).length;
@@ -169,4 +189,29 @@ function main() {
   console.log('Cards showing "Available upon inquiry": ' + availCount);
 }
 
-main();
+// Run the CLI only when executed directly. Importing this module (e.g. from the
+// future admin publish pipeline) exposes the pure generator functions below
+// WITHOUT running main() or touching the filesystem.
+if (require.main === module) {
+  main();
+}
+
+module.exports = {
+  SITE: SITE,
+  SEASON_ORDER: SEASON_ORDER,
+  EAGER_COUNT: EAGER_COUNT,
+  PLACEHOLDER: PLACEHOLDER,
+  AVAILABLE: AVAILABLE,
+  PRODUCTS_LOC: PRODUCTS_LOC,
+  escAttr: escAttr,
+  escText: escText,
+  has: has,
+  imageRef: imageRef,
+  orderedProducts: orderedProducts,
+  cardHtml: cardHtml,
+  itemListJson: itemListJson,
+  replaceBetween: replaceBetween,
+  renderProductsHtml: renderProductsHtml,
+  todayStamp: todayStamp,
+  stampProductsLastmod: stampProductsLastmod
+};
