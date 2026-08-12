@@ -195,7 +195,7 @@
 
   <!-- NAV -->
   <div style="position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 18px 6vw; background: oklch(98% 0.01 80 / 0.92); backdrop-filter: blur(8px); border-bottom: 1px solid oklch(90% 0.01 80);">
-    <div style="display: flex; align-items: center; gap: 10px;"><img src="./assets/yubei-logo-nav-v1.webp" alt="Yubei logo" style="width: 40px; height: 40px; border-radius: 50%;"><div style="font-family: Sora, sans-serif; font-weight: 800; font-size: 22px; letter-spacing: 0.02em;">YUBEI <span style="color: oklch(58% 0.15 35);">APPAREL</span></div></div>
+    <div style="display: flex; align-items: center; gap: 10px;"><img src="./assets/yubei-logo-nav-v1.webp" alt="Yubei logo" width="40" height="40" style="width: 40px; height: 40px; border-radius: 50%;"><div style="font-family: Sora, sans-serif; font-weight: 800; font-size: 22px; letter-spacing: 0.02em;">YUBEI <span style="color: oklch(58% 0.15 35);">APPAREL</span></div></div>
     <div style="display: flex; align-items: center; gap: clamp(12px, 2vw, 36px); flex-wrap: nowrap;">
       <div class="nav-links-desktop" style="display: flex; align-items: center; gap: clamp(12px, 2vw, 36px);">
         <a href="/about" onClick="{{ goAbout }}" style="color: oklch(30% 0.02 80); font-weight: 500; font-size: 15px; white-space: nowrap; transition: color 0.2s;">About</a>
@@ -1151,7 +1151,7 @@
       <!-- TAIHU LAKE PHOTO BANNER -->
       <div style="margin-top: 72px; position: relative; border-radius: 28px; overflow: hidden; height: 420px;">
         <!-- photo background -->
-        <img src="./assets/taihu-lake.jpg.jpg" alt="Taihu Lake Huzhou" loading="lazy" decoding="async" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;">
+        <img src="./assets/taihu-lake.jpg.jpg" alt="Taihu Lake Huzhou" width="900" height="500" loading="lazy" decoding="async" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;">
         <!-- dark overlay -->
         <div style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.3) 100%);"></div>
         <!-- content -->
@@ -1281,7 +1281,7 @@ PRODUCTS_BY_SEASON.autumn.forEach((p, i) => {
   const ov = AUTUMN_OVERRIDES[i + 1];
   if (ov) { p.style2 = ov.style2; p.size = ov.size; }
 });
-const MIX_PHOTOS = ["mix-01.jpg","mix-02.jpg","mix-03.jpg","mix-04.jpg","mix-05.jpg","mix-06.jpg","mix-07.jpg","mix-08.jpg","mix-09.jpg","mix-10.jpg","mix-11.jpg","mix-12.jpg","mix-13.jpg","mix-14.jpg","mix-15.jpg","mix-16.jpg","mix-17.jpg","mix-18.jpg","mix-19.jpg","mix-20.jpg","mix-21.jpg","mix-22.jpg","mix-23.jpg","mix-24.jpg","mix-25.jpg","mix-26.jpg","mix-27.jpg","mix-28.jpg","mix-29.jpg","mix-30.jpg","mix-31.jpg","mix-32.jpg","mix-33.png"];
+const MIX_PHOTOS = ["mix-01.jpg","mix-02.jpg","mix-03.jpg","mix-04.jpg","mix-05.jpg","mix-06.jpg","mix-07.jpg","mix-08.jpg","mix-09.jpg","mix-10.jpg","mix-11.jpg","mix-12.jpg","mix-13.jpg","mix-14.jpg","mix-15.jpg","mix-16.jpg","mix-17.jpg","mix-18.jpg","mix-19.jpg","mix-20.jpg","mix-21.jpg","mix-22.jpg","mix-23.jpg","mix-24.jpg","mix-25.jpg","mix-26.jpg","mix-27.jpg","mix-28.jpg","mix-29.jpg","mix-30.jpg","mix-31.jpg","mix-32.jpg","mix-33.jpg"];
 const MIX_OVERRIDES = {
   1: { style2: "YB0205", size: "120\u2013160cm" },
   2: { style2: "YB0206", size: "120\u2013160cm" },
