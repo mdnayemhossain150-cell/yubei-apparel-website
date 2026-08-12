@@ -152,6 +152,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   background: #f2eee7;
 }
 .hero-photo { max-height: 520px; object-fit: cover; border-radius: 24px; box-shadow: var(--shadow); }
+.contact-city-photo { height: auto; max-height: none; aspect-ratio: 900 / 500; object-fit: contain; }
 .gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
 .gallery img { aspect-ratio: 4 / 3; object-fit: cover; border-radius: 16px; cursor: zoom-in; }
 .gallery-title { margin: 42px 0 20px; font: 750 22px Sora, Arial, sans-serif; }
