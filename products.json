@@ -26,7 +26,7 @@
       { "image": "winter-12.jpg", "reason": "Byte-identical duplicate of winter-07.jpg (YB0176-1)" },
       { "image": "winter-13.jpg", "reason": "Byte-identical duplicate of winter-09.jpg (Q0033)" }
     ],
-    "counts": { "winter": 17, "summer": 20, "autumn": 23, "mix": 32, "total": 92, "confirmed": 75, "need_confirmation": 17, "with_placeholder_fields": 15 }
+    "counts": { "winter": 17, "summer": 20, "autumn": 23, "mix": 33, "total": 93, "confirmed": 76, "need_confirmation": 17, "with_placeholder_fields": 15 }
   },
 
   "products": [
@@ -125,7 +125,8 @@
     { "model": "YB0277", "slug": "yb0277-mix", "season": "Mix", "image": "mix-29.jpg", "name": "Girls' Lace-Vest Overlay Shirt & Wide-Leg Jeans", "category": "Shirt & Jeans Set", "sizeRange": "120-160", "colors": ["Khaki","Lavender","Pink","Red"], "status": "ok", "notes": "Kept unchanged. Same model as Autumn-09 (cross-season duplicate)." },
     { "model": "YB0275", "slug": "yb0275", "season": "Mix", "image": "mix-30.jpg", "name": "Girls' Ruffle Flower-Appliqué Peplum Shirt & Jeans", "category": "Shirt & Jeans Set", "sizeRange": "120-160", "colors": ["Pink","Purple","Khaki","Black"], "status": "ok", "notes": "Kept unchanged." },
     { "model": "YB0273", "slug": "yb0273", "season": "Mix", "image": "mix-31.jpg", "name": "Girls' Bow-Tie Flower Shirt & Wide-Leg Jeans", "category": "Shirt & Jeans Set", "sizeRange": "120-160", "colors": ["Pink","Brown","Grey","White"], "status": "ok", "notes": "Kept unchanged." },
-    { "model": "YB0264", "slug": "yb0264-mix", "season": "Mix", "image": "mix-32.jpg", "name": "Girls' Embroidered Peplum Tie-Neck Shirt & Jeans", "category": "Shirt & Jeans Set", "sizeRange": "120-160", "colors": ["Pink","Brown","Khaki"], "status": "ok", "notes": "Kept unchanged. Same model as Autumn-07 (cross-season duplicate)." }
+    { "model": "YB0264", "slug": "yb0264-mix", "season": "Mix", "image": "mix-32.jpg", "name": "Girls' Embroidered Peplum Tie-Neck Shirt & Jeans", "category": "Shirt & Jeans Set", "sizeRange": "120-160", "colors": ["Pink","Brown","Khaki"], "status": "ok", "notes": "Kept unchanged. Same model as Autumn-07 (cross-season duplicate)." },
+    { "model": "YB008", "slug": "yb008", "season": "Mix", "image": "mix-33.png", "name": "Girls' Sequin-Panel Sweatshirt & Wide-Leg Jeans Set", "category": "Sweatshirt & Jeans Set", "sizeRange": "120-160", "colors": ["White","Black"], "status": "ok", "notes": "Added from supplied product photo." }
 
   ]
 }
