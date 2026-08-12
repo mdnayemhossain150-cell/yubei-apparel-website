@@ -39,6 +39,16 @@ commit; because it never touches `products.json` / `products.html` / `sitemap.xm
 / `assets/`, there is no data state to recover. (Real Git-backed writes begin
 only at Stage 2D-3, after 2D-2a **and** 2D-2b are complete and approved.)
 
+## Stage 2D-2b note (authoritative image processing — dry run)
+`image-process` + `imageProcess.js` decode/re-encode with `sharp` **in memory
+only** — no `assets/` write, no persistence, no GitHub. Rollback is a single
+local `git revert` of the 2D-2b commit, which also restores `package.json` /
+`package-lock.json` (removing the `sharp` dependency; `node_modules` is
+gitignored, so a fresh `npm install` reflects the revert). Because nothing is
+written to `assets/` / `products.json` / `products.html` / `sitemap.xml`, there
+is no data state to recover. (Real Git-backed writes begin only at Stage 2D-3,
+after 2D-2a **and** 2D-2b are complete and approved.)
+
 ## Abandoning the admin feature entirely
 Since nothing on `main` changed, "removing" the admin is trivial:
 - Simply **do not merge** `admin-dashboard`. Production is unaffected.

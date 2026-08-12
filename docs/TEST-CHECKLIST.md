@@ -85,6 +85,18 @@ Automated harness `test-2d2.js` covers these (34 assertions); re-verify on previ
 - ☐ Every response reports `persisted: false`; photo-pending adds are excluded and listed under `pendingAdds` (deferred to Stage 2D-2b).
 - ☐ `git status` after using the preview shows `products.json` / `products.html` / `sitemap.xml` / `assets/` **unchanged**.
 
+## G2. Authoritative image processing — dry run (Stage 2D-2b — NOTHING WRITTEN)
+Automated harness `test-2d2b.js` covers these; re-verify on preview:
+- ☐ `POST /api/admin/image-process` requires session (401), `image:upload` (403), CSRF (403).
+- ☐ Inputs JPEG/PNG/WebP are decoded and re-encoded to canonical JPEG (825px, q≤86, metadata stripped); PNG/WebP alpha flattened to white.
+- ☐ EXIF/GPS/XMP/ICC metadata is **absent** in the output.
+- ☐ Rejected: SVG, GIF, AVIF, TIFF, animated (415); corrupt/unreadable (422); pixel bomb > ~40 MP (422); output > 300 KB after q86→q80→q74 (422); request too large (413).
+- ☐ Safe filename: replace → product's OWN file (server-derived); add → batch-aware non-colliding `<season>-NN.jpg` (two same-season adds get distinct names).
+- ☐ `publish-preview` with photos: photo-bearing adds are **fully composable** (not `pendingAdds`); asset manifest lists path/action/bytes/sha256; would-be commit carries the bytes in memory only.
+- ☐ **Image-only replace:** `products.json`/`products.html` byte-identical, asset manifest has the replace entry, and sitemap `/products` lastmod **is** stamped (approved decision).
+- ☐ Backward-compat: `publish-preview` with **no photos** behaves identically to 2D-2a (zero-op neutral; no sitemap stamp).
+- ☐ **`assets/` file count and total bytes UNCHANGED** by the whole flow; `git status assets/` empty. `persisted:false` everywhere; no `fs.write`/GitHub in the endpoints.
+
 ## H. Data integrity & SEO preservation
 - ☐ `products.json` remains valid JSON after every operation (no trailing commas / corruption).
 - ☐ `_meta.counts` stays accurate after add/delete/publish changes.

@@ -2,11 +2,14 @@
   "name": "yubei-admin",
   "version": "0.1.0",
   "private": true,
-  "description": "Isolated read-only admin dashboard for the Yubei catalog (Phase 0/1). No third-party runtime dependencies — auth uses Node's built-in crypto only.",
+  "description": "Isolated admin dashboard for the Yubei catalog. Auth uses Node's built-in crypto only; sharp is used server-side (Stage 2D-2b) for authoritative dry-run image processing (decode/re-encode in memory, no persistence).",
   "engines": {
     "node": ">=18"
   },
   "scripts": {
     "hash": "node scripts/hash-password.js"
+  },
+  "dependencies": {
+    "sharp": "0.33.5"
   }
 }

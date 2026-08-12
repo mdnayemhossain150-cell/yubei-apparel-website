@@ -228,12 +228,19 @@
       var payload = { dataUrl: dataUrl };
       if (state.editMode === 'add') { payload.mode = 'add'; payload.season = els.f_season.value; }
       else { payload.mode = 'replace'; payload.image = els.editImage.value; }
-      return api('/api/admin/image-validate', { method: 'POST', body: JSON.stringify(payload) }).then(function (r) {
+      // Stage 2D-2b: authoritative server-side decode/re-encode (sharp). The
+      // browser Canvas step above is only a pre-shrink; the SERVER output is the
+      // source of truth for the staged bytes.
+      return api('/api/admin/image-process', { method: 'POST', body: JSON.stringify(payload) }).then(function (r) {
         if (r.status === 200 && r.body.preview) {
-          els.editForm._photo = { dataUrl: dataUrl, targetFilename: r.body.targetFilename };
-          els.photoPreview.innerHTML = '<img src="' + dataUrl + '" alt="preview">' +
-            '<div class="pinfo">Optimized ' + r.body.width + '×' + r.body.height + ' · ' + Math.round(r.body.bytes / 1024) +
-            ' KB · → <b>' + esc(r.body.targetFilename) + '</b> <span class="muted">(preview only)</span></div>';
+          els.editForm._photo = {
+            dataUrl: r.body.processedDataUrl, targetFilename: r.body.targetFilename,
+            bytes: r.body.bytes, sha256: r.body.sha256, width: r.body.width, height: r.body.height
+          };
+          els.photoPreview.innerHTML = '<img src="' + r.body.processedDataUrl + '" alt="preview">' +
+            '<div class="pinfo">Processed ' + r.body.width + '×' + r.body.height + ' · ' + Math.round(r.body.bytes / 1024) +
+            ' KB · sha ' + esc(String(r.body.sha256).slice(0, 10)) + '… · → <b>' + esc(r.body.targetFilename) +
+            '</b> <span class="muted">(processed server-side, preview only)</span></div>';
           show(els.editStageBtn);
         } else {
           els.editForm._photo = null;
@@ -377,13 +384,17 @@
   // Collect the staged operations into the shape the server expects. The server
   // RE-VALIDATES everything; this is only a convenience for the round trip.
   function collectOps() {
-    var ops = { edits: {}, deletes: [], adds: [] };
+    var ops = { edits: {}, deletes: [], adds: [], photos: [] };
     Object.keys(state.staged).forEach(function (img) { ops.edits[img] = state.staged[img]; });
     Object.keys(state.deletes).forEach(function (img) { ops.deletes.push(img); });
     if (isReordered()) ops.order = state.order.slice();
+    // Replace-photo operations: send the processed JPEG bytes for the would-be commit.
+    Object.keys(state.photos).forEach(function (img) {
+      ops.photos.push({ image: img, dataUrl: state.photos[img].dataUrl });
+    });
     state.adds.forEach(function (a) {
       ops.adds.push({
-        image: a._photoTarget || null,
+        dataUrl: a._photoDataUrl || null, // photo-bearing adds are fully composable
         fields: {
           name: a.name, model: a.model, sizeRange: a.sizeRange, description: a.description,
           category: a.category, season: a.season, colors: a.colors, published: a.published
@@ -413,8 +424,17 @@
     var b = r.body, s = b.summary || {}, c = b.counts || {}, sm = b.sitemap || {};
     var seasons = Object.keys(c.bySeason || {}).map(function (k) { return k + ' ' + c.bySeason[k]; }).join(' · ');
     var pending = (b.pendingAdds || []).length
-      ? '<div class="pp-warn">' + b.pendingAdds.length + ' new product(s) excluded — image pending (Stage 2D-2b): ' +
-        esc(b.pendingAdds.map(function (p) { return p.name; }).join(', ')) + '</div>'
+      ? '<div class="pp-warn">' + b.pendingAdds.length + ' new product(s) excluded — ' +
+        esc(b.pendingAdds.map(function (p) { return p.name + ' (' + p.reason + ')'; }).join('; ')) + '</div>'
+      : '';
+    var wc = b.wouldBeCommit || {};
+    var assetRows = (b.assets || []).length
+      ? '<div class="pp-row"><b>Assets to write (' + b.assets.length + ', ' + Math.round((wc.totalAssetBytes || 0) / 1024) + ' KB):</b></div>' +
+        (b.assets || []).map(function (a) {
+          return '<div class="pp-row pp-asset"><span class="pill ' + (a.action === 'add' ? 'new' : 'photo') + '">' + esc(a.action) + '</span> ' +
+            '<span class="mono">' + esc(a.path) + '</span> · ' + a.width + '×' + a.height + ' · ' + Math.round(a.bytes / 1024) +
+            ' KB · sha ' + esc(String(a.sha256).slice(0, 10)) + '…</div>';
+        }).join('')
       : '';
     els.publishBody.innerHTML =
       '<p class="pp-note">' + esc(b.note) + '</p>' +
@@ -422,6 +442,7 @@
         '<span class="pill">' + (s.edited || 0) + ' edits</span>' +
         '<span class="pill">' + (s.deleted || 0) + ' deletes</span>' +
         '<span class="pill">' + (s.added || 0) + ' adds</span>' +
+        '<span class="pill">' + (s.photosReplaced || 0) + ' photo swaps</span>' +
         (s.reordered ? '<span class="pill">reordered</span>' : '') +
         '<span class="pill ' + (s.effectiveChange ? 'corrected' : 'ok') + '">' +
           (s.effectiveChange ? 'changes to publish' : 'no effective change') + '</span>' +
@@ -430,6 +451,9 @@
       bytesLine(b.productsHtml, 'products.html') +
       '<div class="pp-row"><b>sitemap.xml</b>: ' +
         (sm.changed ? '/products lastmod → ' + esc(sm.lastmod) : 'unchanged (no stamp — no catalog change)') + '</div>' +
+      assetRows +
+      '<div class="pp-row"><b>Would-be commit:</b> ' + (wc.fileCount || 0) + ' file(s) — ' +
+        esc((wc.textFiles || []).join(', ') || 'no text files') + (b.assets && b.assets.length ? ' + ' + b.assets.length + ' asset(s)' : '') + '</div>' +
       '<div class="pp-row"><b>Catalog:</b> ' + c.shown + ' shown of ' + c.total +
         ' · ' + esc(seasons) + ' · ' + c.availableUponInquiry + ' “Available upon inquiry”</div>' +
       diffBlock('products.json diff', b.productsJson.diff) +
