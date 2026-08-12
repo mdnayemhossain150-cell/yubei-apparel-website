@@ -1235,7 +1235,7 @@ const PRODUCTS_BY_SEASON = {
   summer: makeSeasonProducts("SU", "Summer", 20),
   autumn: makeSeasonProducts("AU", "Autumn", 20),
   winter: makeSeasonProducts("WI", "Winter", 20),
-  mix: makeSeasonProducts("MX", "Mix Items", 32)
+  mix: makeSeasonProducts("MX", "Mix Items", 33)
 };
 const WINTER_PHOTOS = ["winter-01.jpg","winter-02.jpg","winter-03.jpg","winter-04.jpg","winter-05.jpg","winter-06.jpg","winter-07.jpg","winter-08.jpg","winter-09.jpg","winter-10.jpg","winter-11.jpg","winter-12.jpg","winter-13.jpg","winter-14.jpg","winter-15.jpg","winter-16.jpg","winter-17.jpg","winter-18.jpg","winter-19.jpg","winter-20.jpg"];
 PRODUCTS_BY_SEASON.winter.forEach((p, i) => { if (WINTER_PHOTOS[i]) p.src = "./assets/" + WINTER_PHOTOS[i]; });
@@ -1281,7 +1281,7 @@ PRODUCTS_BY_SEASON.autumn.forEach((p, i) => {
   const ov = AUTUMN_OVERRIDES[i + 1];
   if (ov) { p.style2 = ov.style2; p.size = ov.size; }
 });
-const MIX_PHOTOS = ["mix-01.jpg","mix-02.jpg","mix-03.jpg","mix-04.jpg","mix-05.jpg","mix-06.jpg","mix-07.jpg","mix-08.jpg","mix-09.jpg","mix-10.jpg","mix-11.jpg","mix-12.jpg","mix-13.jpg","mix-14.jpg","mix-15.jpg","mix-16.jpg","mix-17.jpg","mix-18.jpg","mix-19.jpg","mix-20.jpg","mix-21.jpg","mix-22.jpg","mix-23.jpg","mix-24.jpg","mix-25.jpg","mix-26.jpg","mix-27.jpg","mix-28.jpg","mix-29.jpg","mix-30.jpg","mix-31.jpg","mix-32.jpg"];
+const MIX_PHOTOS = ["mix-01.jpg","mix-02.jpg","mix-03.jpg","mix-04.jpg","mix-05.jpg","mix-06.jpg","mix-07.jpg","mix-08.jpg","mix-09.jpg","mix-10.jpg","mix-11.jpg","mix-12.jpg","mix-13.jpg","mix-14.jpg","mix-15.jpg","mix-16.jpg","mix-17.jpg","mix-18.jpg","mix-19.jpg","mix-20.jpg","mix-21.jpg","mix-22.jpg","mix-23.jpg","mix-24.jpg","mix-25.jpg","mix-26.jpg","mix-27.jpg","mix-28.jpg","mix-29.jpg","mix-30.jpg","mix-31.jpg","mix-32.jpg","mix-33.png"];
 const MIX_OVERRIDES = {
   1: { style2: "YB0205", size: "120\u2013160cm" },
   2: { style2: "YB0206", size: "120\u2013160cm" },
@@ -1314,7 +1314,8 @@ const MIX_OVERRIDES = {
   29: { style2: "YB0277", size: "120\u2013160cm" },
   30: { style2: "YB0275", size: "120\u2013160cm" },
   31: { style2: "YB0273", size: "120\u2013160cm" },
-  32: { style2: "YB0264", size: "120\u2013160cm" }
+  32: { style2: "YB0264", size: "120\u2013160cm" },
+  33: { style2: "YB008", size: "120\u2013160cm" }
 };
 PRODUCTS_BY_SEASON.mix.forEach((p, i) => {
   if (MIX_PHOTOS[i]) p.src = "./assets/" + MIX_PHOTOS[i];
