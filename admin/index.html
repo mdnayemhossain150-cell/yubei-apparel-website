@@ -47,6 +47,7 @@
 
     <div id="stagedBar" class="staged-bar" hidden>
       <span id="stagedText"></span>
+      <button id="previewPublishBtn" type="button" class="btn-primary" hidden>Preview publish (dry run)</button>
       <button id="discardStaged" type="button" class="btn-ghost">Discard staged preview edits</button>
     </div>
 
@@ -126,6 +127,23 @@
       <div class="modal-actions">
         <button type="button" class="btn-danger" id="delConfirm">Stage deletion (preview)</button>
         <button type="button" class="btn-ghost" id="delCancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ PUBLISH PREVIEW (Stage 2D-2a — DRY RUN, NOTHING WRITTEN) ============ -->
+  <div id="publishOverlay" class="modal-overlay" hidden>
+    <div class="modal modal-wide" role="dialog" aria-modal="true" aria-labelledby="publishTitle">
+      <div class="modal-head">
+        <h2 id="publishTitle">Publish preview — dry run</h2>
+        <button id="publishClose" type="button" class="btn-ghost" aria-label="Close">×</button>
+      </div>
+      <p class="preview-warn">⚠ Dry run only — nothing is written. No files change, no GitHub, no token.</p>
+      <div id="publishBody">
+        <p class="muted">Composing preview…</p>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn-ghost" id="publishCloseBtn">Close</button>
       </div>
     </div>
   </div>

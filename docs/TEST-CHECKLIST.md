@@ -73,6 +73,18 @@ For each: change in admin → Save → verify commit → verify preview reflects
 - ☐ GitHub token is **fine-grained, single-repo, write-scoped**, stored only as a Vercel server-side env var; never returned to the browser or logged.
 - ☐ Commit author/identity is acceptable and traceable (audit).
 
+## G1. Publish preview — dry run (Stage 2D-2a — NOTHING WRITTEN)
+Automated harness `test-2d2.js` covers these (34 assertions); re-verify on preview:
+- ☐ `POST /api/admin/publish-preview` requires session (401), `publish:preview` (403), CSRF (403).
+- ☐ Server RE-VALIDATES every op: protected/unknown fields, unknown product, non-permutation order, unknown delete → 400.
+- ☐ **Neutrality:** a zero-op (or net-zero) preview reports `products.json` **byte-identical**, `products.html` **byte-identical**, and sitemap **unchanged (no lastmod stamp)**.
+- ☐ Edit/delete/reorder compose correctly; only changed products' bytes differ (unchanged products preserved verbatim).
+- ☐ Sitemap `/products` lastmod is stamped to today **only when** there is an actual catalog change.
+- ☐ `xxxxx` never leaks into the response; generator rejection surfaces as 422, not 500.
+- ☐ Response returns **compact unified diffs only** — the full `products.html` is never sent to the browser.
+- ☐ Every response reports `persisted: false`; photo-pending adds are excluded and listed under `pendingAdds` (deferred to Stage 2D-2b).
+- ☐ `git status` after using the preview shows `products.json` / `products.html` / `sitemap.xml` / `assets/` **unchanged**.
+
 ## H. Data integrity & SEO preservation
 - ☐ `products.json` remains valid JSON after every operation (no trailing commas / corruption).
 - ☐ `_meta.counts` stays accurate after add/delete/publish changes.

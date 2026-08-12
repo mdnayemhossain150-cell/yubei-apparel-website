@@ -20,6 +20,10 @@ const PERMISSIONS = {
   PRODUCT_REORDER: 'product:reorder',
   IMAGE_UPLOAD: 'image:upload',
   CONTENT_EDIT_APPROVED: 'content:edit_approved',
+  // Stage 2D-2a: dry-run compose of the whole would-be publish (in-memory diff
+  // of products.json/products.html/sitemap). This is READ-ONLY — it never
+  // writes and is distinct from the real (future, approved) publish:commit.
+  PUBLISH_PREVIEW: 'publish:preview',
 
   // Super Admin only (technical / administrative)
   USER_MANAGE: 'user:manage',
@@ -38,7 +42,8 @@ const CONTENT_PERMS = [
   PERMISSIONS.PRODUCT_PUBLISH,
   PERMISSIONS.PRODUCT_REORDER,
   PERMISSIONS.IMAGE_UPLOAD,
-  PERMISSIONS.CONTENT_EDIT_APPROVED
+  PERMISSIONS.CONTENT_EDIT_APPROVED,
+  PERMISSIONS.PUBLISH_PREVIEW
 ];
 
 const SUPER_ONLY_PERMS = [

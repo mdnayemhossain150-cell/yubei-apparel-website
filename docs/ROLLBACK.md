@@ -32,6 +32,13 @@ If production must return entirely to the pre-admin baseline:
 
 ---
 
+## Stage 2D-2a note (publish preview — dry run)
+The `publish-preview` endpoint and `compose.js` **write nothing** — no files, no
+git, no GitHub. Rolling back Stage 2D-2a is a single local `git revert` of its
+commit; because it never touches `products.json` / `products.html` / `sitemap.xml`
+/ `assets/`, there is no data state to recover. (Real Git-backed writes begin
+only at Stage 2D-3, after 2D-2a **and** 2D-2b are complete and approved.)
+
 ## Abandoning the admin feature entirely
 Since nothing on `main` changed, "removing" the admin is trivial:
 - Simply **do not merge** `admin-dashboard`. Production is unaffected.

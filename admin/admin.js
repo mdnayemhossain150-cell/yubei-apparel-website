@@ -24,6 +24,9 @@
     logoutBtn: $('logoutBtn'), roleBadge: $('roleBadge'), userLabel: $('userLabel'),
     counts: $('counts'), tableWrap: $('tableWrap'), mockActions: $('mockActions'), addProductBtn: $('addProductBtn'),
     stagedBar: $('stagedBar'), stagedText: $('stagedText'), discardStaged: $('discardStaged'),
+    previewPublishBtn: $('previewPublishBtn'),
+    publishOverlay: $('publishOverlay'), publishBody: $('publishBody'),
+    publishClose: $('publishClose'), publishCloseBtn: $('publishCloseBtn'),
     editOverlay: $('editOverlay'), editForm: $('editForm'), editImage: $('editImage'), editTitle: $('editTitle'),
     editClose: $('editClose'), editCancel: $('editCancel'), editError: $('editError'), editDiff: $('editDiff'), editStageBtn: $('editStageBtn'),
     f_name: $('f_name'), f_model: $('f_model'), f_size: $('f_size'), f_description: $('f_description'),
@@ -157,6 +160,7 @@
     if (isReordered()) parts.push('reordered');
     if (!parts.length) { hide(els.stagedBar); return; }
     els.stagedText.textContent = 'Staged preview: ' + parts.join(', ') + ' — not saved to the live website.';
+    if (els.previewPublishBtn) { if (can('publish:preview')) show(els.previewPublishBtn); else hide(els.previewPublishBtn); }
     show(els.stagedBar);
   }
   function renderCounts(data) {
@@ -368,6 +372,81 @@
   });
 
   els.discardStaged.addEventListener('click', function () { resetStaging(); state.order = state.originalOrder.slice(); renderTable(); });
+
+  // ---------- Stage 2D-2a: publish preview (dry run — nothing written) ----------
+  // Collect the staged operations into the shape the server expects. The server
+  // RE-VALIDATES everything; this is only a convenience for the round trip.
+  function collectOps() {
+    var ops = { edits: {}, deletes: [], adds: [] };
+    Object.keys(state.staged).forEach(function (img) { ops.edits[img] = state.staged[img]; });
+    Object.keys(state.deletes).forEach(function (img) { ops.deletes.push(img); });
+    if (isReordered()) ops.order = state.order.slice();
+    state.adds.forEach(function (a) {
+      ops.adds.push({
+        image: a._photoTarget || null,
+        fields: {
+          name: a.name, model: a.model, sizeRange: a.sizeRange, description: a.description,
+          category: a.category, season: a.season, colors: a.colors, published: a.published
+        }
+      });
+    });
+    return ops;
+  }
+
+  function bytesLine(section, label) {
+    var same = section.identical;
+    return '<div class="pp-row"><b>' + esc(label) + '</b>: ' +
+      section.currentBytes + ' → ' + section.proposedBytes + ' bytes ' +
+      (same ? '<span class="pill ok">byte-identical</span>' : '<span class="pill corrected">changed</span>') + '</div>';
+  }
+  function diffBlock(title, diff) {
+    if (!diff) return '<div class="pp-row muted">' + esc(title) + ': no changes.</div>';
+    return '<div class="pp-diff"><div class="pp-diff-head">' + esc(title) + '</div><pre>' + esc(diff) + '</pre></div>';
+  }
+  function renderPublishResult(r) {
+    if (r.status === 401) { closePublish(); showLogin('Session expired. Please sign in again.'); return; }
+    if (r.status !== 200) {
+      var msg = r.body.fieldErrors ? JSON.stringify(r.body.fieldErrors) : (r.body.detail || r.body.error || ('Error (' + r.status + ').'));
+      els.publishBody.innerHTML = '<p class="error">' + esc(msg) + '</p>';
+      return;
+    }
+    var b = r.body, s = b.summary || {}, c = b.counts || {}, sm = b.sitemap || {};
+    var seasons = Object.keys(c.bySeason || {}).map(function (k) { return k + ' ' + c.bySeason[k]; }).join(' · ');
+    var pending = (b.pendingAdds || []).length
+      ? '<div class="pp-warn">' + b.pendingAdds.length + ' new product(s) excluded — image pending (Stage 2D-2b): ' +
+        esc(b.pendingAdds.map(function (p) { return p.name; }).join(', ')) + '</div>'
+      : '';
+    els.publishBody.innerHTML =
+      '<p class="pp-note">' + esc(b.note) + '</p>' +
+      '<div class="pp-summary">' +
+        '<span class="pill">' + (s.edited || 0) + ' edits</span>' +
+        '<span class="pill">' + (s.deleted || 0) + ' deletes</span>' +
+        '<span class="pill">' + (s.added || 0) + ' adds</span>' +
+        (s.reordered ? '<span class="pill">reordered</span>' : '') +
+        '<span class="pill ' + (s.effectiveChange ? 'corrected' : 'ok') + '">' +
+          (s.effectiveChange ? 'changes to publish' : 'no effective change') + '</span>' +
+      '</div>' + pending +
+      bytesLine(b.productsJson, 'products.json') +
+      bytesLine(b.productsHtml, 'products.html') +
+      '<div class="pp-row"><b>sitemap.xml</b>: ' +
+        (sm.changed ? '/products lastmod → ' + esc(sm.lastmod) : 'unchanged (no stamp — no catalog change)') + '</div>' +
+      '<div class="pp-row"><b>Catalog:</b> ' + c.shown + ' shown of ' + c.total +
+        ' · ' + esc(seasons) + ' · ' + c.availableUponInquiry + ' “Available upon inquiry”</div>' +
+      diffBlock('products.json diff', b.productsJson.diff) +
+      diffBlock('products.html diff', b.productsHtml.diff);
+  }
+  function openPublish() {
+    show(els.publishOverlay);
+    els.publishBody.innerHTML = '<p class="muted">Composing preview…</p>';
+    api('/api/admin/publish-preview', { method: 'POST', body: JSON.stringify(collectOps()) })
+      .then(renderPublishResult)
+      .catch(function () { els.publishBody.innerHTML = '<p class="error">Network error building preview.</p>'; });
+  }
+  function closePublish() { hide(els.publishOverlay); }
+  if (els.previewPublishBtn) els.previewPublishBtn.addEventListener('click', openPublish);
+  els.publishClose.addEventListener('click', closePublish);
+  els.publishCloseBtn.addEventListener('click', closePublish);
+  els.publishOverlay.addEventListener('click', function (e) { if (e.target === els.publishOverlay) closePublish(); });
 
   // ---------- Auth ----------
   function checkSession() {
