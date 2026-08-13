@@ -298,6 +298,30 @@ html[dir="rtl"] .pricing-table th:last-child { border-radius: 12px 0 0; }
 .certificate-copy p, .activity-copy p { margin: 0; color: var(--muted); font-size: 13.5px; }
 .activity-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
 .activity-card img { height: 350px; object-fit: cover; cursor: zoom-in; }
+.canton-fair-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.canton-fair-card {
+  overflow: hidden;
+  margin: 0;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: 0 8px 22px rgba(48,38,25,.05);
+}
+.canton-fair-photo {
+  display: grid;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  place-items: center;
+  background: #f2eee7;
+}
+.canton-fair-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  cursor: zoom-in;
+}
+.canton-fair-card figcaption { padding: 15px 18px 17px; color: var(--text); font-weight: 700; }
 
 .contact-grid { display: grid; grid-template-columns: 1fr 1.25fr; gap: 46px; align-items: start; }
 .contact-list { display: grid; gap: 18px; }
@@ -442,6 +466,7 @@ html[dir="rtl"] #languageSwitcher { text-align: left; }
   .product-actions { grid-template-columns: 1fr; }
   .activity-grid { grid-template-columns: 1fr; }
   .activity-card img { height: 280px; }
+  .canton-fair-grid { grid-template-columns: 1fr; }
   .footer-inner { grid-template-columns: 1fr; }
   .inquiry-details-grid { grid-template-columns: 1fr; }
   .inquiry-item { grid-template-columns: 1fr 1fr; }
