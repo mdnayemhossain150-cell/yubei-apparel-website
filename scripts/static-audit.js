@@ -9,7 +9,8 @@ const SITE = 'https://www.yubeichildrenclothes.com';
 const PAGES = {
   'index.html': '/', 'products.html': '/products', 'about.html': '/about',
   'services.html': '/services', 'certificates.html': '/certificates',
-  'activity.html': '/activity', 'contact.html': '/contact'
+  'activity.html': '/activity', 'contact.html': '/contact',
+  'zhili-childrens-clothing-manufacturer.html': '/zhili-childrens-clothing-manufacturer'
 };
 const errors = [];
 const warnings = [];
