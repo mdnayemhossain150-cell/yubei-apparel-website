@@ -26,7 +26,7 @@
       { "image": "winter-12.jpg", "reason": "Byte-identical duplicate of winter-07.jpg (YB0176-1)" },
       { "image": "winter-13.jpg", "reason": "Byte-identical duplicate of winter-09.jpg (Q0033)" }
     ],
-    "counts": { "winter": 17, "summer": 20, "autumn": 29, "mix": 33, "total": 99, "confirmed": 82, "need_confirmation": 17, "with_placeholder_fields": 15 }
+    "counts": { "winter": 17, "summer": 24, "autumn": 29, "mix": 33, "total": 103, "confirmed": 86, "need_confirmation": 17, "with_placeholder_fields": 15 }
   },
 
   "products": [
@@ -69,6 +69,10 @@
     { "model": "YB016", "slug": "yb016", "season": "Summer", "image": "summer-18.jpg", "name": "Girls' Ruffle-Hem Cami Blouse & Wide Pants", "category": "Blouse Set", "sizeRange": "110-150", "colors": ["Lavender","Blue","Pink"], "status": "corrected", "notes": "CODE-SHIFT FIX: was YB021, image shows YB016." },
     { "model": "xxxxx", "slug": "xxxxx", "season": "Summer", "image": "summer-19.jpg", "name": "Girls' Denim Cross-Tie Vest & Denim Midi Skirt", "category": "Denim Set", "sizeRange": "xxxxx", "colors": ["Navy"], "status": "need_confirmation", "notes": "NEED CONFIRMATION: site had YB016 (that code belongs to summer-18); this image shows NO code. Provide correct code + size." },
     { "model": "xxxxx", "slug": "xxxxx", "season": "Summer", "image": "summer-20.jpg", "name": "Girls' Denim Collared Vest & Wide-Leg Pants Set", "category": "Denim Vest Set", "sizeRange": "xxxxx", "colors": ["Navy"], "status": "need_confirmation", "notes": "NEED CONFIRMATION: no code or size on image. Was fake code YB-SU-020." },
+    { "model": "YB850", "slug": "yb850", "season": "Summer", "image": "summer-21.jpg", "name": "Girls' STORYBOOK Bear Tee & Tiered Skirt Set", "category": "Tee & Skirt Set", "sizeRange": "100-140", "colors": ["White/Pink","White/Black"], "status": "ok", "notes": "New (2026-08). Model YB850 and size 100-140 printed on image." },
+    { "model": "YB852", "slug": "yb852", "season": "Summer", "image": "summer-22.jpg", "name": "Girls' Bow-Collar Blouse & Bubble Shorts Set", "category": "Blouse & Shorts Set", "sizeRange": "100-140", "colors": ["White/Black","Pink/Black"], "status": "ok", "notes": "New (2026-08). Model YB852 and size 100-140 printed on image." },
+    { "model": "YB853", "slug": "yb853", "season": "Summer", "image": "summer-23.jpg", "name": "Girls' Love Layered Tee & Pleated Skirt Set", "category": "Tee & Skirt Set", "sizeRange": "100-140", "colors": ["White/Black","Mint/Black","Yellow/Black"], "status": "ok", "notes": "New (2026-08). Model YB853 and size 100-140 printed on image." },
+    { "model": "YB855", "slug": "yb855", "season": "Summer", "image": "summer-24.jpg", "name": "Girls' Character Tee & Gingham Bubble Skirt Set", "category": "Tee & Skirt Set", "sizeRange": "100-130", "colors": ["White/Black","White/Burgundy"], "status": "ok", "notes": "New (2026-08). Model YB855 and size 100-130 printed on image." },
 
     { "model": "YB0224", "slug": "yb0224", "season": "Autumn", "image": "autumn-01.jpg", "name": "Girls' Denim-Vest Shirt & Wide-Leg Pants Set", "category": "Shirt & Vest Set", "sizeRange": "120-160", "colors": ["Mint","Beige","Pink"], "status": "ok", "notes": "Verified correct. Same model as Mix-07 (cross-season duplicate)." },
     { "model": "xxxxx", "slug": "xxxxx", "season": "Autumn", "image": "autumn-02.jpg", "name": "Girls' Tailored Vest & White Shirt with Wide Pants", "category": "Shirt & Vest Set", "sizeRange": "xxxxx", "colors": ["Black","Tan","Grey"], "status": "need_confirmation", "notes": "NEED CONFIRMATION: no code/size on image. Was fake code YB-AU-002." },
