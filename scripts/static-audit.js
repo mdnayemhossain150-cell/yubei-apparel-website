@@ -10,7 +10,8 @@ const PAGES = {
   'index.html': '/', 'products.html': '/products', 'about.html': '/about',
   'services.html': '/services', 'certificates.html': '/certificates',
   'activity.html': '/activity', 'contact.html': '/contact',
-  'zhili-childrens-clothing-manufacturer.html': '/zhili-childrens-clothing-manufacturer'
+  'zhili-childrens-clothing-manufacturer.html': '/zhili-childrens-clothing-manufacturer',
+  'china-childrens-clothing-manufacturer.html': '/china-childrens-clothing-manufacturer'
 };
 const errors = [];
 const warnings = [];
