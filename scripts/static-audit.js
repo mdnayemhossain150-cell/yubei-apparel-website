@@ -11,7 +11,8 @@ const PAGES = {
   'services.html': '/services', 'certificates.html': '/certificates',
   'activity.html': '/activity', 'contact.html': '/contact',
   'zhili-childrens-clothing-manufacturer.html': '/zhili-childrens-clothing-manufacturer',
-  'china-childrens-clothing-manufacturer.html': '/china-childrens-clothing-manufacturer'
+  'china-childrens-clothing-manufacturer.html': '/china-childrens-clothing-manufacturer',
+  'oem-childrens-clothing-manufacturer.html': '/oem-childrens-clothing-manufacturer'
 };
 const errors = [];
 const warnings = [];
