@@ -26,7 +26,7 @@
       { "image": "winter-12.jpg", "reason": "Byte-identical duplicate of winter-07.jpg (YB0176-1)" },
       { "image": "winter-13.jpg", "reason": "Byte-identical duplicate of winter-09.jpg (Q0033)" }
     ],
-    "counts": { "winter": 17, "summer": 24, "autumn": 29, "mix": 33, "total": 103, "confirmed": 86, "need_confirmation": 17, "with_placeholder_fields": 15 }
+    "counts": { "winter": 17, "summer": 28, "autumn": 33, "mix": 33, "total": 111, "confirmed": 94, "need_confirmation": 17, "with_placeholder_fields": 15 }
   },
 
   "products": [
@@ -73,6 +73,10 @@
     { "model": "YB852", "slug": "yb852", "season": "Summer", "image": "summer-22.jpg", "name": "Girls' Bow-Collar Blouse & Bubble Shorts Set", "category": "Blouse & Shorts Set", "sizeRange": "100-140", "colors": ["White/Black","Pink/Black"], "status": "ok", "notes": "New (2026-08). Model YB852 and size 100-140 printed on image." },
     { "model": "YB853", "slug": "yb853", "season": "Summer", "image": "summer-23.jpg", "name": "Girls' Love Layered Tee & Pleated Skirt Set", "category": "Tee & Skirt Set", "sizeRange": "100-140", "colors": ["White/Black","Mint/Black","Yellow/Black"], "status": "ok", "notes": "New (2026-08). Model YB853 and size 100-140 printed on image." },
     { "model": "YB855", "slug": "yb855", "season": "Summer", "image": "summer-24.jpg", "name": "Girls' Character Tee & Gingham Bubble Skirt Set", "category": "Tee & Skirt Set", "sizeRange": "100-130", "colors": ["White/Black","White/Burgundy"], "status": "ok", "notes": "New (2026-08). Model YB855 and size 100-130 printed on image." },
+    { "model": "YB24819", "slug": "yb24819", "season": "Summer", "image": "summer-25.jpg", "name": "Girls' Heart Tee & Utility Bib Overalls Set", "category": "Bib Overalls Set", "sizeRange": "120-160", "colors": ["Mustard","Charcoal","Cream"], "status": "ok", "notes": "New (2026-08). Model YB24819 and size 120-160 printed on image." },
+    { "model": "YB24818", "slug": "yb24818", "season": "Summer", "image": "summer-26.jpg", "name": "Girls' Long-Sleeve Tee & Utility Bib Overalls Set", "category": "Bib Overalls Set", "sizeRange": "120-160", "colors": ["Mustard","Brown"], "status": "ok", "notes": "New (2026-08). Model YB24818 and size 120-160 printed on image." },
+    { "model": "YB24817", "slug": "yb24817", "season": "Summer", "image": "summer-27.jpg", "name": "Girls' Graphic Tee & Relaxed Bib Overalls Set", "category": "Bib Overalls Set", "sizeRange": "120-160", "colors": ["Cream","Charcoal","Mustard"], "status": "ok", "notes": "New (2026-08). Model YB24817 and size 120-160 printed on image." },
+    { "model": "YB24815", "slug": "yb24815", "season": "Summer", "image": "summer-28.jpg", "name": "Girls' Tulip Tee & Drawstring Bib Overalls Set", "category": "Bib Overalls Set", "sizeRange": "120-160", "colors": ["Yellow","Cream","Khaki"], "status": "ok", "notes": "New (2026-08). Model YB24815 and size 120-160 printed on image." },
 
     { "model": "YB0224", "slug": "yb0224", "season": "Autumn", "image": "autumn-01.jpg", "name": "Girls' Denim-Vest Shirt & Wide-Leg Pants Set", "category": "Shirt & Vest Set", "sizeRange": "120-160", "colors": ["Mint","Beige","Pink"], "status": "ok", "notes": "Verified correct. Same model as Mix-07 (cross-season duplicate)." },
     { "model": "xxxxx", "slug": "xxxxx", "season": "Autumn", "image": "autumn-02.jpg", "name": "Girls' Tailored Vest & White Shirt with Wide Pants", "category": "Shirt & Vest Set", "sizeRange": "xxxxx", "colors": ["Black","Tan","Grey"], "status": "need_confirmation", "notes": "NEED CONFIRMATION: no code/size on image. Was fake code YB-AU-002." },
