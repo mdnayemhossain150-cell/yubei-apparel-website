@@ -99,15 +99,13 @@ function itemListJson(list) {
     name: 'Yubei Apparel Wholesale Kidswear Catalog',
     numberOfItems: list.length,
     itemListElement: list.map(function (p, i) {
-      var product = {
-        '@type': 'Product',
+      var modelRef = has(p.model) ? p.model : imageRef(p);
+      return {
+        '@type': 'ListItem',
+        position: i + 1,
         name: p.name,
-        category: p.category,
-        image: SITE + '/assets/' + p.image,
-        brand: { '@type': 'Brand', name: 'Yubei Apparel' }
+        url: SITE + '/products?model=' + encodeURIComponent(modelRef)
       };
-      if (has(p.model)) product.sku = p.model; // omit sku when unavailable (never "xxxxx")
-      return { '@type': 'ListItem', position: i + 1, item: product };
     })
   };
   return '<script type="application/ld+json">\n' + JSON.stringify(out, null, 2) + '\n</script>';
