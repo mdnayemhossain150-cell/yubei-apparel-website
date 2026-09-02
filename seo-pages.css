@@ -127,6 +127,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
   letter-spacing: -.02em;
 }
 .page-hero p { max-width: 760px; margin: 0 auto; color: var(--muted); font-size: clamp(16px, 2vw, 18px); }
+.collection-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 24px; }
+.collection-links a { padding: 9px 16px; color: var(--brand-dark); background: var(--white); border: 1px solid #dfc8bd; border-radius: 999px; font-size: 14px; font-weight: 700; }
+.collection-links a:hover { color: var(--white); background: var(--brand); border-color: var(--brand); }
 .breadcrumb { max-width: 1400px; margin: 0 auto; padding: 22px 6vw 0; color: var(--muted); font-size: 13px; }
 .breadcrumb a { color: var(--brand); }
 
@@ -273,6 +276,10 @@ html[dir="rtl"] .pricing-table th:last-child { border-radius: 12px 0 0; }
   border-radius: 18px;
 }
 .prod-card > img { display: block; width: 100%; height: clamp(200px, 28vw, 360px); object-fit: contain; background: #f2f0ec; cursor: zoom-in; }
+.collection-product-link { display: block; height: 100%; }
+.collection-product-link > img { display: block; width: 100%; height: clamp(200px, 28vw, 360px); object-fit: contain; background: #f2f0ec; }
+.collection-product-link:hover .product-model { color: var(--brand); }
+.collection-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 38px; }
 .product-body { padding: 18px; }
 .product-model { margin-bottom: 8px; font: 750 16px Sora, Arial, sans-serif; }
 .product-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 10px; color: var(--muted); font-size: 13px; }
