@@ -74,7 +74,9 @@ function cardHtml(p, index) {
   var dataModel = hasModel ? p.model : imageRef(p);
   var dataSize = hasSize ? p.sizeRange : '';
 
-  var alt = p.name + ' — ' + (hasModel ? 'model ' + p.model + ', ' : '') + p.season +
+  var collectionName = p.season === 'Mix' ? 'Custom Design' : p.season;
+  var collectionLabel = p.season === 'Mix' ? 'Collection:' : 'Season:';
+  var alt = p.name + ' — ' + (hasModel ? 'model ' + p.model + ', ' : '') + collectionName +
             (hasSize ? ', size ' + p.sizeRange : '') + ' — Yubei Apparel wholesale kidswear';
 
   var loading = index < EAGER_COUNT ? 'eager' : 'lazy';
@@ -85,7 +87,7 @@ function cardHtml(p, index) {
       '<img src="' + escAttr(src) + '" alt="' + escAttr(alt) + '" width="800" height="1000" loading="' + loading + '" decoding="async" data-zoom' + fetchPriority + '>' +
       '<div class="product-body">' +
         '<div class="product-model">' + displayModel + '</div>' +
-        '<div class="product-meta"><div><b>Size:</b> ' + displaySize + '</div><div><b>Season:</b> ' + escText(p.season) + '</div></div>' +
+        '<div class="product-meta"><div><b>Size:</b> ' + displaySize + '</div><div><b>' + collectionLabel + '</b> ' + escText(collectionName) + '</div></div>' +
         '<div class="product-actions"><button class="copy-model-btn" type="button">Copy Model No.</button><button class="share-product-btn" type="button">Share Product</button></div>' +
         '<button class="inquiry-add-btn" type="button">+ Add to Inquiry</button>' +
       '</div>' +

@@ -42,6 +42,9 @@
   function translatedValue(value) {
     return window.YubeiI18n ? window.YubeiI18n.translate(value) : value;
   }
+  function collectionName(season) {
+    return translatedValue(season === 'Mix' ? 'Custom Design' : season);
+  }
   function overlay() { return document.getElementById('inquiryOverlay'); }
   function status(message) { document.getElementById('inquiryStatus').textContent = message || ''; }
   function updateCount() {
@@ -116,7 +119,7 @@
       info.textContent = item.model;
       var meta = document.createElement('span');
       meta.className = 'inquiry-meta';
-      meta.textContent = [translatedValue(item.season), item.size].filter(Boolean).join(' · ');
+      meta.textContent = [collectionName(item.season), item.size].filter(Boolean).join(' · ');
       info.appendChild(meta);
 
       var quantity = document.createElement('input');
@@ -148,12 +151,12 @@
     var labels = selectedLanguage === 'ar' ? {
       hello: 'مرحباً يوبي للملابس،', name: 'الاسم: ', company: 'الشركة: ', country: 'الدولة: ',
       delivery: 'تاريخ التسليم المطلوب: ', port: 'ميناء الوصول: ', price: 'السعر المستهدف: ', custom: 'متطلبات التخصيص: ', contact: 'طريقة التواصل المفضلة: ',
-      intro: 'أنا مهتم بالموديلات التالية، وعددها ', styleUnit: ':', season: 'الموسم: ', size: 'المقاس: ', quantity: 'الكمية: ', notes: 'ملاحظات: ',
+      intro: 'أنا مهتم بالموديلات التالية، وعددها ', styleUnit: ':', season: 'الموسم: ', collection: 'المجموعة: ', size: 'المقاس: ', quantity: 'الكمية: ', notes: 'ملاحظات: ',
       unspecified: 'غير محدد', pieces: ' قطعة', total: 'إجمالي الكمية: ', closing: 'يرجى إرسال حالة التوفر والحد الأدنى للطلب وعرض السعر. شكراً.'
     } : {
       hello: 'Hello Yubei Apparel,', name: 'Name: ', company: 'Company: ', country: 'Country: ',
       delivery: 'Required delivery date: ', port: 'Destination port: ', price: 'Target price: ', custom: 'Customization: ', contact: 'Preferred contact method: ',
-      intro: 'I am interested in the following ', styleUnit: ' style(s):', season: 'Season: ', size: 'Size: ', quantity: 'Quantity: ', notes: 'Notes: ',
+      intro: 'I am interested in the following ', styleUnit: ' style(s):', season: 'Season: ', collection: 'Collection: ', size: 'Size: ', quantity: 'Quantity: ', notes: 'Notes: ',
       unspecified: 'Not specified', pieces: ' pcs', total: 'Total quantity: ', closing: 'Please send availability, MOQ, and quotation. Thank you.'
     };
     var lines = [labels.hello, ''];
@@ -169,7 +172,7 @@
     lines.push(labels.intro + items.length + labels.styleUnit);
     items.forEach(function(item, index) {
       var line = (index + 1) + '. 🟠 ' + item.model;
-      if (item.season) line += ' | ' + labels.season + translatedValue(item.season);
+      if (item.season) line += ' | ' + (item.season === 'Mix' ? labels.collection : labels.season) + collectionName(item.season);
       if (item.size) line += ' | ' + labels.size + item.size;
       line += ' | ' + labels.quantity + (item.quantity ? item.quantity + labels.pieces : labels.unspecified);
       if (item.note) line += ' | ' + labels.notes + item.note;
