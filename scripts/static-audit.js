@@ -15,7 +15,8 @@ const PAGES = {
   'winter-childrens-clothing-wholesale.html': '/winter-childrens-clothing-wholesale',
   'zhili-childrens-clothing-manufacturer.html': '/zhili-childrens-clothing-manufacturer',
   'china-childrens-clothing-manufacturer.html': '/china-childrens-clothing-manufacturer',
-  'oem-childrens-clothing-manufacturer.html': '/oem-childrens-clothing-manufacturer'
+  'oem-childrens-clothing-manufacturer.html': '/oem-childrens-clothing-manufacturer',
+  'wholesale-kidswear-rfq-guide.html': '/wholesale-kidswear-rfq-guide'
 };
 try {
   const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, 'products.json'), 'utf8'));
