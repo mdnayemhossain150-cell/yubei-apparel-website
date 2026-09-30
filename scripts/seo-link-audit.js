@@ -4,7 +4,16 @@
 var fs = require('fs');
 var path = require('path');
 var root = path.resolve(__dirname, '..');
-var files = fs.readdirSync(root).filter(function (file) { return file.endsWith('.html'); });
+function htmlFiles(dir, prefix) {
+  return fs.readdirSync(dir, { withFileTypes: true }).reduce(function (out, entry) {
+    if (entry.name === '.git' || entry.name === 'node_modules') return out;
+    var relative = prefix ? path.join(prefix, entry.name) : entry.name;
+    if (entry.isDirectory()) return out.concat(htmlFiles(path.join(dir, entry.name), relative));
+    if (entry.name.endsWith('.html')) out.push(relative);
+    return out;
+  }, []);
+}
+var files = htmlFiles(root, '');
 var titles = new Map();
 var descriptions = new Map();
 var errors = [];

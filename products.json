@@ -29,6 +29,3037 @@
     "counts": { "winter": 17, "summer": 28, "autumn": 33, "mix": 33, "total": 111, "confirmed": 94, "need_confirmation": 17, "with_placeholder_fields": 15 }
   },
 
+  "_canonical_product_architecture": {
+    "version": "2.1-approved-87",
+    "purpose": "One approved canonical record per verified real product. Legacy products[] records remain unchanged for catalog, filter, seasonal-page and inquiry compatibility during Phase B.",
+    "generator_rules": [
+      "Only records with pageStatus 'approved' may generate an individual product page.",
+      "A generated page requires a verified non-placeholder model, a permanent non-placeholder slug, a verified size range, at least one image and a designated primary image.",
+      "The primary image must also appear in images[].",
+      "Models or slugs equal to 'xxxxx' are always rejected.",
+      "Records with unresolved model conflicts are never generated or added to the sitemap."
+    ]
+  },
+  "canonicalProducts": [
+    {
+      "model": "YB0281",
+      "slug": "yb0281",
+      "name": "Girls' Sporty Hooded Zip Tracksuit Set",
+      "sizeRange": "6Y-14Y",
+      "seasonTags": [
+        "Winter"
+      ],
+      "categoryTags": [
+        "Tracksuit"
+      ],
+      "colors": [
+        "Tan",
+        "Navy",
+        "Grey"
+      ],
+      "primaryImage": "winter-01.jpg",
+      "images": [
+        {
+          "src": "winter-01.jpg",
+          "alt": "Girls' Sporty Hooded Zip Tracksuit Set, model YB0281"
+        }
+      ],
+      "sourceRecords": [
+        "winter-01.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "129#",
+        "31536#",
+        "JZ-07"
+      ]
+    },
+    {
+      "model": "YB0184",
+      "slug": "yb0184",
+      "name": "Girls' Polo-Collar Sweatshirt & Side-Stripe Pants Set",
+      "sizeRange": "6Y-14Y",
+      "seasonTags": [
+        "Winter"
+      ],
+      "categoryTags": [
+        "Sweatshirt Set"
+      ],
+      "colors": [
+        "Grey",
+        "Pink",
+        "Black"
+      ],
+      "primaryImage": "winter-02.jpg",
+      "images": [
+        {
+          "src": "winter-02.jpg",
+          "alt": "Girls' Polo-Collar Sweatshirt & Side-Stripe Pants Set, model YB0184"
+        }
+      ],
+      "sourceRecords": [
+        "winter-02.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB0189",
+        "YB0281",
+        "YB0185"
+      ]
+    },
+    {
+      "model": "YB0185",
+      "slug": "yb0185",
+      "name": "Girls' Peplum Zip Hoodie & Wide-Leg Pants Set",
+      "sizeRange": "6Y-14Y",
+      "seasonTags": [
+        "Winter",
+        "Mix"
+      ],
+      "categoryTags": [
+        "Peplum Hoodie Set"
+      ],
+      "colors": [
+        "Pink",
+        "Black",
+        "Brown"
+      ],
+      "primaryImage": "winter-03.jpg",
+      "images": [
+        {
+          "src": "winter-03.jpg",
+          "alt": "Girls' peplum zip hoodie and wide-leg pants set, model YB0185"
+        },
+        {
+          "src": "mix-09.jpg",
+          "alt": "Additional photograph of model YB0185"
+        }
+      ],
+      "sourceRecords": [
+        "winter-03.jpg",
+        "mix-09.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB0281",
+        "YB0184",
+        "Q0151"
+      ]
+    },
+    {
+      "model": "Q0151",
+      "slug": "q0151",
+      "name": "Girls' Shearling Zip Jacket with Star & Wide-Leg Pants",
+      "sizeRange": "6Y-14Y",
+      "seasonTags": [
+        "Winter"
+      ],
+      "categoryTags": [
+        "Jacket Set"
+      ],
+      "colors": [
+        "Beige",
+        "Cream",
+        "Burgundy"
+      ],
+      "primaryImage": "winter-04.jpg",
+      "images": [
+        {
+          "src": "winter-04.jpg",
+          "alt": "Girls' Shearling Zip Jacket with Star & Wide-Leg Pants, model Q0151"
+        }
+      ],
+      "sourceRecords": [
+        "winter-04.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB0172",
+        "YB0176-1",
+        "YB0177"
+      ]
+    },
+    {
+      "model": "YB0172",
+      "slug": "yb0172",
+      "name": "Girls' Fur-Front Zip Jacket & Wide-Leg Pants Set",
+      "sizeRange": "6Y-14Y",
+      "seasonTags": [
+        "Winter"
+      ],
+      "categoryTags": [
+        "Jacket Set"
+      ],
+      "colors": [
+        "Cream",
+        "Brown",
+        "Black"
+      ],
+      "primaryImage": "winter-05.jpg",
+      "images": [
+        {
+          "src": "winter-05.jpg",
+          "alt": "Girls' Fur-Front Zip Jacket & Wide-Leg Pants Set, model YB0172"
+        }
+      ],
+      "sourceRecords": [
+        "winter-05.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "Q0151",
+        "YB0176-1",
+        "YB0177"
+      ]
+    },
+    {
+      "model": "YB02222",
+      "slug": "yb02222",
+      "name": "Girls' Textured Fleece Star Jacket & Pants Set",
+      "sizeRange": "6Y-14Y",
+      "seasonTags": [
+        "Winter"
+      ],
+      "categoryTags": [
+        "Fleece Jacket Set"
+      ],
+      "colors": [
+        "Grey",
+        "Tan",
+        "Brown"
+      ],
+      "primaryImage": "winter-06.jpg",
+      "images": [
+        {
+          "src": "winter-06.jpg",
+          "alt": "Girls' Textured Fleece Star Jacket & Pants Set, model YB02222"
+        }
+      ],
+      "sourceRecords": [
+        "winter-06.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB0281",
+        "YB0184",
+        "YB0185"
+      ]
+    },
+    {
+      "model": "YB0176-1",
+      "slug": "yb0176-1",
+      "name": "Girls' Quilted-Pattern Fleece Jacket & Wide-Leg Pants",
+      "sizeRange": "6Y-14Y",
+      "seasonTags": [
+        "Winter"
+      ],
+      "categoryTags": [
+        "Jacket Set"
+      ],
+      "colors": [
+        "Tan",
+        "Black",
+        "Cream"
+      ],
+      "primaryImage": "winter-07.jpg",
+      "images": [
+        {
+          "src": "winter-07.jpg",
+          "alt": "Girls' Quilted-Pattern Fleece Jacket & Wide-Leg Pants, model YB0176-1"
+        }
+      ],
+      "sourceRecords": [
+        "winter-07.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "Q0151",
+        "YB0172",
+        "YB0177"
+      ]
+    },
+    {
+      "model": "129#",
+      "slug": "129",
+      "name": "Girls' Color-Block Zip Hoodie & Track Pants Set",
+      "sizeRange": "6Y-14Y",
+      "seasonTags": [
+        "Winter"
+      ],
+      "categoryTags": [
+        "Tracksuit"
+      ],
+      "colors": [
+        "Green",
+        "Black",
+        "Pink"
+      ],
+      "primaryImage": "winter-08.jpg",
+      "images": [
+        {
+          "src": "winter-08.jpg",
+          "alt": "Girls' Color-Block Zip Hoodie & Track Pants Set, model 129#"
+        }
+      ],
+      "sourceRecords": [
+        "winter-08.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB0281",
+        "31536#",
+        "JZ-07"
+      ]
+    },
+    {
+      "model": "Q0033",
+      "slug": "q0033",
+      "name": "Girls' Mickey Puffer Vest, Hoodie & Pants (3-Piece)",
+      "sizeRange": "120-160",
+      "seasonTags": [
+        "Winter"
+      ],
+      "categoryTags": [
+        "3-Piece Vest Set"
+      ],
+      "colors": [
+        "Brown",
+        "Cream",
+        "Pink"
+      ],
+      "primaryImage": "winter-09.jpg",
+      "images": [
+        {
+          "src": "winter-09.jpg",
+          "alt": "Girls' Mickey Puffer Vest, Hoodie & Pants (3-Piece), model Q0033"
+        }
+      ],
+      "sourceRecords": [
+        "winter-09.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB0281",
+        "YB0184",
+        "YB0185"
+      ]
+    },
+    {
+      "model": "YB0175",
+      "slug": "yb0175",
+      "name": "Girls' Faux Fur Vest over Top & Wide-Leg Pants",
+      "sizeRange": "6Y-14Y",
+      "seasonTags": [
+        "Winter"
+      ],
+      "categoryTags": [
+        "Fur Vest Set"
+      ],
+      "colors": [
+        "Brown",
+        "Cream",
+        "Burgundy"
+      ],
+      "primaryImage": "winter-10.jpg",
+      "images": [
+        {
+          "src": "winter-10.jpg",
+          "alt": "Girls' Faux Fur Vest over Top & Wide-Leg Pants, model YB0175"
+        }
+      ],
+      "sourceRecords": [
+        "winter-10.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "Q0044-2",
+        "YB0193-1",
+        "YB0281"
+      ]
+    },
+    {
+      "model": "Q0161",
+      "slug": "q0161",
+      "name": "Girls' Star-Embroidered Fleece Vest, Striped Tee & Pants",
+      "sizeRange": "6Y-14Y",
+      "seasonTags": [
+        "Winter"
+      ],
+      "categoryTags": [
+        "Vest Set"
+      ],
+      "colors": [
+        "Black",
+        "Grey"
+      ],
+      "primaryImage": "winter-14.jpg",
+      "images": [
+        {
+          "src": "winter-14.jpg",
+          "alt": "Girls' Star-Embroidered Fleece Vest, Striped Tee & Pants, model Q0161"
+        }
+      ],
+      "sourceRecords": [
+        "winter-14.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB0214",
+        "YB0205",
+        "YB0206"
+      ]
+    },
+    {
+      "model": "Q0044-2",
+      "slug": "q0044-2",
+      "name": "Girls' Faux Fur Vest, Long-Sleeve Top & Pants",
+      "sizeRange": "6Y-14Y",
+      "seasonTags": [
+        "Winter"
+      ],
+      "categoryTags": [
+        "Fur Vest Set"
+      ],
+      "colors": [
+        "Cream",
+        "Black",
+        "Grey"
+      ],
+      "primaryImage": "winter-15.jpg",
+      "images": [
+        {
+          "src": "winter-15.jpg",
+          "alt": "Girls' Faux Fur Vest, Long-Sleeve Top & Pants, model Q0044-2"
+        }
+      ],
+      "sourceRecords": [
+        "winter-15.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB0175",
+        "YB0193-1",
+        "YB0281"
+      ]
+    },
+    {
+      "model": "YB0193-1",
+      "slug": "yb0193-1",
+      "name": "Girls' Faux Fur Vest with Pocket Flap & Pants",
+      "sizeRange": "6Y-14Y",
+      "seasonTags": [
+        "Winter"
+      ],
+      "categoryTags": [
+        "Fur Vest Set"
+      ],
+      "colors": [
+        "Burgundy",
+        "Grey",
+        "Cream"
+      ],
+      "primaryImage": "winter-16.jpg",
+      "images": [
+        {
+          "src": "winter-16.jpg",
+          "alt": "Girls' Faux Fur Vest with Pocket Flap & Pants, model YB0193-1"
+        }
+      ],
+      "sourceRecords": [
+        "winter-16.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB0175",
+        "Q0044-2",
+        "YB0281"
+      ]
+    },
+    {
+      "model": "YB02136",
+      "slug": "yb02136",
+      "name": "Girls' Hooded Zip Sweatshirt & Wide-Leg Pants Set",
+      "sizeRange": "6Y-14Y",
+      "seasonTags": [
+        "Winter"
+      ],
+      "categoryTags": [
+        "Hooded Set"
+      ],
+      "colors": [
+        "Black",
+        "Taupe",
+        "Cream"
+      ],
+      "primaryImage": "winter-17.jpg",
+      "images": [
+        {
+          "src": "winter-17.jpg",
+          "alt": "Girls' Hooded Zip Sweatshirt & Wide-Leg Pants Set, model YB02136"
+        }
+      ],
+      "sourceRecords": [
+        "winter-17.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB0281",
+        "YB0184",
+        "YB0185"
+      ]
+    },
+    {
+      "model": "Q0044",
+      "slug": "q0044",
+      "name": "Girls' Quilted Puffer Vest, Ribbed Top & Pants",
+      "sizeRange": "6Y-14Y",
+      "seasonTags": [
+        "Winter"
+      ],
+      "categoryTags": [
+        "Puffer Vest Set"
+      ],
+      "colors": [
+        "Brown",
+        "Burgundy",
+        "Black"
+      ],
+      "primaryImage": "winter-19.jpg",
+      "images": [
+        {
+          "src": "winter-19.jpg",
+          "alt": "Girls' Quilted Puffer Vest, Ribbed Top & Pants, model Q0044"
+        }
+      ],
+      "sourceRecords": [
+        "winter-19.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB02296",
+        "YB0281",
+        "YB0184"
+      ]
+    },
+    {
+      "model": "85021#",
+      "slug": "85021",
+      "name": "Girls' STORYBOOK Bear Tee & Skirt Set",
+      "sizeRange": "100-140",
+      "seasonTags": [
+        "Summer"
+      ],
+      "categoryTags": [
+        "Tee & Skirt Set"
+      ],
+      "colors": [
+        "White/Black",
+        "White/Pink"
+      ],
+      "primaryImage": "summer-01.jpg",
+      "images": [
+        {
+          "src": "summer-01.jpg",
+          "alt": "Girls' STORYBOOK Bear Tee & Skirt Set, model 85021#"
+        }
+      ],
+      "sourceRecords": [
+        "summer-01.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "85321#",
+        "84921#",
+        "YB850"
+      ]
+    },
+    {
+      "model": "85321#",
+      "slug": "85321",
+      "name": "Girls' 'Love' Cami-Overlay Tee & Skirt Set",
+      "sizeRange": "100-140",
+      "seasonTags": [
+        "Summer"
+      ],
+      "categoryTags": [
+        "Tee & Skirt Set"
+      ],
+      "colors": [
+        "Mint",
+        "White",
+        "Yellow"
+      ],
+      "primaryImage": "summer-02.jpg",
+      "images": [
+        {
+          "src": "summer-02.jpg",
+          "alt": "Girls' 'Love' Cami-Overlay Tee & Skirt Set, model 85321#"
+        }
+      ],
+      "sourceRecords": [
+        "summer-02.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "85021#",
+        "84921#",
+        "YB850"
+      ]
+    },
+    {
+      "model": "85221#",
+      "slug": "85221",
+      "name": "Girls' Bow-Collar Blouse & Shorts Set",
+      "sizeRange": "100-140",
+      "seasonTags": [
+        "Summer"
+      ],
+      "categoryTags": [
+        "Blouse & Shorts Set"
+      ],
+      "colors": [
+        "White",
+        "Pink"
+      ],
+      "primaryImage": "summer-03.jpg",
+      "images": [
+        {
+          "src": "summer-03.jpg",
+          "alt": "Girls' Bow-Collar Blouse & Shorts Set, model 85221#"
+        }
+      ],
+      "sourceRecords": [
+        "summer-03.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB852",
+        "85021#",
+        "85321#"
+      ]
+    },
+    {
+      "model": "711321#",
+      "slug": "711321",
+      "name": "Girls' Puppy-Print Tee & Denim Shorts Set",
+      "sizeRange": "100-140",
+      "seasonTags": [
+        "Summer"
+      ],
+      "categoryTags": [
+        "Tee & Shorts Set"
+      ],
+      "colors": [
+        "Yellow",
+        "Pink",
+        "Green"
+      ],
+      "primaryImage": "summer-04.jpg",
+      "images": [
+        {
+          "src": "summer-04.jpg",
+          "alt": "Girls' Puppy-Print Tee & Denim Shorts Set, model 711321#"
+        }
+      ],
+      "sourceRecords": [
+        "summer-04.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "85021#",
+        "85321#",
+        "85221#"
+      ]
+    },
+    {
+      "model": "84921#",
+      "slug": "84921",
+      "name": "Girls' Polka-Dot Cami Tee & Bubble Skirt Set",
+      "sizeRange": "100-130",
+      "seasonTags": [
+        "Summer"
+      ],
+      "categoryTags": [
+        "Tee & Skirt Set"
+      ],
+      "colors": [
+        "Pink",
+        "Green"
+      ],
+      "primaryImage": "summer-05.jpg",
+      "images": [
+        {
+          "src": "summer-05.jpg",
+          "alt": "Girls' Polka-Dot Cami Tee & Bubble Skirt Set, model 84921#"
+        }
+      ],
+      "sourceRecords": [
+        "summer-05.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "85021#",
+        "85321#",
+        "YB850"
+      ]
+    },
+    {
+      "model": "YB253274-63",
+      "slug": "yb253274-63",
+      "name": "Girls' Crochet Overlay Tee & Ruffle-Hem Wide-Leg Jeans Set",
+      "sizeRange": "100-130",
+      "seasonTags": [
+        "Summer"
+      ],
+      "categoryTags": [
+        "Cami Set",
+        "Tee & Jeans Set"
+      ],
+      "colors": [
+        "Yellow",
+        "Grey",
+        "White",
+        "Blue"
+      ],
+      "primaryImage": "summer-33.jpg",
+      "images": [
+        {
+          "src": "summer-33.jpg",
+          "alt": "Girls' crochet overlay tee and ruffle-hem wide-leg jeans set, model YB253274-63"
+        },
+        {
+          "src": "summer-09.jpg",
+          "alt": "Additional photograph of model YB253274-63"
+        }
+      ],
+      "sourceRecords": [
+        "summer-09.jpg",
+        "summer-33.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB849",
+        "YB257123",
+        "YB257122"
+      ]
+    },
+    {
+      "model": "YB002",
+      "slug": "yb002",
+      "name": "Girls' Denim Vest, Puff-Sleeve Shirt & Wide-Leg Jeans Set",
+      "sizeRange": "110-150",
+      "seasonTags": [
+        "Summer",
+        "Autumn"
+      ],
+      "categoryTags": [
+        "Shirt & Vest Set",
+        "Denim Set"
+      ],
+      "colors": [
+        "Denim Blue",
+        "Blue",
+        "White"
+      ],
+      "primaryImage": "autumn-31.webp",
+      "images": [
+        {
+          "src": "autumn-31.webp",
+          "alt": "Girls' denim vest, puff-sleeve shirt and wide-leg jeans set, model YB002"
+        },
+        {
+          "src": "summer-13.jpg",
+          "alt": "Additional photograph of model YB002"
+        }
+      ],
+      "sourceRecords": [
+        "summer-13.jpg",
+        "autumn-31.webp"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB009",
+        "YB0224",
+        "YB0277"
+      ]
+    },
+    {
+      "model": "YB009",
+      "slug": "yb009",
+      "name": "Girls' Denim Pinafore Top & Wide-Leg Jeans",
+      "sizeRange": "110-150",
+      "seasonTags": [
+        "Summer"
+      ],
+      "categoryTags": [
+        "Denim Set"
+      ],
+      "colors": [
+        "Denim Blue"
+      ],
+      "primaryImage": "summer-16.jpg",
+      "images": [
+        {
+          "src": "summer-16.jpg",
+          "alt": "Girls' Denim Pinafore Top & Wide-Leg Jeans, model YB009"
+        }
+      ],
+      "sourceRecords": [
+        "summer-16.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB002",
+        "YB0014",
+        "YB253198-43"
+      ]
+    },
+    {
+      "model": "YB021",
+      "slug": "yb021",
+      "name": "Girls' Sailor-Bow Blouse & Ruffle-Hem Wide Pants",
+      "sizeRange": "110-150",
+      "seasonTags": [
+        "Summer"
+      ],
+      "categoryTags": [
+        "Blouse Set"
+      ],
+      "colors": [
+        "Navy",
+        "Pink",
+        "Blue"
+      ],
+      "primaryImage": "summer-17.jpg",
+      "images": [
+        {
+          "src": "summer-17.jpg",
+          "alt": "Girls' Sailor-Bow Blouse & Ruffle-Hem Wide Pants, model YB021"
+        }
+      ],
+      "sourceRecords": [
+        "summer-17.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB016",
+        "85021#",
+        "85321#"
+      ]
+    },
+    {
+      "model": "YB016",
+      "slug": "yb016",
+      "name": "Girls' Ruffle-Hem Cami Blouse & Wide Pants",
+      "sizeRange": "110-150",
+      "seasonTags": [
+        "Summer"
+      ],
+      "categoryTags": [
+        "Blouse Set"
+      ],
+      "colors": [
+        "Lavender",
+        "Blue",
+        "Pink"
+      ],
+      "primaryImage": "summer-18.jpg",
+      "images": [
+        {
+          "src": "summer-18.jpg",
+          "alt": "Girls' Ruffle-Hem Cami Blouse & Wide Pants, model YB016"
+        }
+      ],
+      "sourceRecords": [
+        "summer-18.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB021",
+        "85021#",
+        "85321#"
+      ]
+    },
+    {
+      "model": "YB850",
+      "slug": "yb850",
+      "name": "Girls' STORYBOOK Bear Tee & Tiered Skirt Set",
+      "sizeRange": "100-140",
+      "seasonTags": [
+        "Summer"
+      ],
+      "categoryTags": [
+        "Tee & Skirt Set"
+      ],
+      "colors": [
+        "White/Pink",
+        "White/Black"
+      ],
+      "primaryImage": "summer-21.jpg",
+      "images": [
+        {
+          "src": "summer-21.jpg",
+          "alt": "Girls' STORYBOOK Bear Tee & Tiered Skirt Set, model YB850"
+        }
+      ],
+      "sourceRecords": [
+        "summer-21.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "85021#",
+        "85321#",
+        "84921#"
+      ]
+    },
+    {
+      "model": "YB852",
+      "slug": "yb852",
+      "name": "Girls' Bow-Collar Blouse & Bubble Shorts Set",
+      "sizeRange": "100-140",
+      "seasonTags": [
+        "Summer"
+      ],
+      "categoryTags": [
+        "Blouse & Shorts Set"
+      ],
+      "colors": [
+        "White/Black",
+        "Pink/Black"
+      ],
+      "primaryImage": "summer-22.jpg",
+      "images": [
+        {
+          "src": "summer-22.jpg",
+          "alt": "Girls' Bow-Collar Blouse & Bubble Shorts Set, model YB852"
+        }
+      ],
+      "sourceRecords": [
+        "summer-22.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "85221#",
+        "85021#",
+        "85321#"
+      ]
+    },
+    {
+      "model": "YB853",
+      "slug": "yb853",
+      "name": "Girls' Love Layered Tee & Pleated Skirt Set",
+      "sizeRange": "100-140",
+      "seasonTags": [
+        "Summer"
+      ],
+      "categoryTags": [
+        "Tee & Skirt Set"
+      ],
+      "colors": [
+        "White/Black",
+        "Mint/Black",
+        "Yellow/Black"
+      ],
+      "primaryImage": "summer-23.jpg",
+      "images": [
+        {
+          "src": "summer-23.jpg",
+          "alt": "Girls' Love Layered Tee & Pleated Skirt Set, model YB853"
+        }
+      ],
+      "sourceRecords": [
+        "summer-23.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "85021#",
+        "85321#",
+        "84921#"
+      ]
+    },
+    {
+      "model": "YB855",
+      "slug": "yb855",
+      "name": "Girls' Character Tee & Gingham Bubble Skirt Set",
+      "sizeRange": "100-130",
+      "seasonTags": [
+        "Summer"
+      ],
+      "categoryTags": [
+        "Tee & Skirt Set"
+      ],
+      "colors": [
+        "White/Black",
+        "White/Burgundy"
+      ],
+      "primaryImage": "summer-24.jpg",
+      "images": [
+        {
+          "src": "summer-24.jpg",
+          "alt": "Girls' Character Tee & Gingham Bubble Skirt Set, model YB855"
+        }
+      ],
+      "sourceRecords": [
+        "summer-24.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "85021#",
+        "85321#",
+        "84921#"
+      ]
+    },
+    {
+      "model": "YB24819",
+      "slug": "yb24819",
+      "name": "Girls' Heart Tee & Utility Bib Overalls Set",
+      "sizeRange": "120-160",
+      "seasonTags": [
+        "Summer"
+      ],
+      "categoryTags": [
+        "Bib Overalls Set"
+      ],
+      "colors": [
+        "Mustard",
+        "Charcoal",
+        "Cream"
+      ],
+      "primaryImage": "summer-25.jpg",
+      "images": [
+        {
+          "src": "summer-25.jpg",
+          "alt": "Girls' Heart Tee & Utility Bib Overalls Set, model YB24819"
+        }
+      ],
+      "sourceRecords": [
+        "summer-25.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB24818",
+        "YB24817",
+        "YB24815"
+      ]
+    },
+    {
+      "model": "YB24818",
+      "slug": "yb24818",
+      "name": "Girls' Long-Sleeve Tee & Utility Bib Overalls Set",
+      "sizeRange": "120-160",
+      "seasonTags": [
+        "Summer"
+      ],
+      "categoryTags": [
+        "Bib Overalls Set"
+      ],
+      "colors": [
+        "Mustard",
+        "Brown"
+      ],
+      "primaryImage": "summer-26.jpg",
+      "images": [
+        {
+          "src": "summer-26.jpg",
+          "alt": "Girls' Long-Sleeve Tee & Utility Bib Overalls Set, model YB24818"
+        }
+      ],
+      "sourceRecords": [
+        "summer-26.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB24819",
+        "YB24817",
+        "YB24815"
+      ]
+    },
+    {
+      "model": "YB24817",
+      "slug": "yb24817",
+      "name": "Girls' Graphic Tee & Relaxed Bib Overalls Set",
+      "sizeRange": "120-160",
+      "seasonTags": [
+        "Summer"
+      ],
+      "categoryTags": [
+        "Bib Overalls Set"
+      ],
+      "colors": [
+        "Cream",
+        "Charcoal",
+        "Mustard"
+      ],
+      "primaryImage": "summer-27.jpg",
+      "images": [
+        {
+          "src": "summer-27.jpg",
+          "alt": "Girls' Graphic Tee & Relaxed Bib Overalls Set, model YB24817"
+        }
+      ],
+      "sourceRecords": [
+        "summer-27.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB24819",
+        "YB24818",
+        "YB24815"
+      ]
+    },
+    {
+      "model": "YB24815",
+      "slug": "yb24815",
+      "name": "Girls' Tulip Tee & Drawstring Bib Overalls Set",
+      "sizeRange": "120-160",
+      "seasonTags": [
+        "Summer"
+      ],
+      "categoryTags": [
+        "Bib Overalls Set"
+      ],
+      "colors": [
+        "Yellow",
+        "Cream",
+        "Khaki"
+      ],
+      "primaryImage": "summer-28.jpg",
+      "images": [
+        {
+          "src": "summer-28.jpg",
+          "alt": "Girls' Tulip Tee & Drawstring Bib Overalls Set, model YB24815"
+        }
+      ],
+      "sourceRecords": [
+        "summer-28.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB24819",
+        "YB24818",
+        "YB24817"
+      ]
+    },
+    {
+      "model": "YB849",
+      "slug": "yb849",
+      "name": "Girls' Lace Overlay Tee & Split-Hem Wide-Leg Jeans Set",
+      "sizeRange": "110-140",
+      "seasonTags": [
+        "Summer"
+      ],
+      "categoryTags": [
+        "Tee & Jeans Set"
+      ],
+      "colors": [
+        "Grey",
+        "Pink",
+        "White"
+      ],
+      "primaryImage": "summer-29.jpg",
+      "images": [
+        {
+          "src": "summer-29.jpg",
+          "alt": "Girls' Lace Overlay Tee & Split-Hem Wide-Leg Jeans Set, model YB849"
+        }
+      ],
+      "sourceRecords": [
+        "summer-29.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB253274-63",
+        "YB257123",
+        "YB257122"
+      ]
+    },
+    {
+      "model": "YB257123",
+      "slug": "yb257123",
+      "name": "Girls' Graphic Tee & Appliqué Wide-Leg Jeans Set",
+      "sizeRange": "100-140",
+      "seasonTags": [
+        "Summer"
+      ],
+      "categoryTags": [
+        "Tee & Jeans Set"
+      ],
+      "colors": [
+        "Grey",
+        "White",
+        "Blue"
+      ],
+      "primaryImage": "summer-30.jpg",
+      "images": [
+        {
+          "src": "summer-30.jpg",
+          "alt": "Girls' Graphic Tee & Appliqué Wide-Leg Jeans Set, model YB257123"
+        }
+      ],
+      "sourceRecords": [
+        "summer-30.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB253274-63",
+        "YB849",
+        "YB257122"
+      ]
+    },
+    {
+      "model": "YB257122",
+      "slug": "yb257122",
+      "name": "Girls' Lace-Hem Graphic Tee & Appliqué Wide-Leg Jeans Set",
+      "sizeRange": "100-140",
+      "seasonTags": [
+        "Summer"
+      ],
+      "categoryTags": [
+        "Tee & Jeans Set"
+      ],
+      "colors": [
+        "Pink",
+        "Green",
+        "Yellow",
+        "Blue"
+      ],
+      "primaryImage": "summer-31.jpg",
+      "images": [
+        {
+          "src": "summer-31.jpg",
+          "alt": "Girls' Lace-Hem Graphic Tee & Appliqué Wide-Leg Jeans Set, model YB257122"
+        }
+      ],
+      "sourceRecords": [
+        "summer-31.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB253274-63",
+        "YB849",
+        "YB257123"
+      ]
+    },
+    {
+      "model": "YB253279-65",
+      "slug": "yb253279-65",
+      "name": "Girls' Sheer Overlay Tee & Ruffle-Hem Wide-Leg Jeans Set",
+      "sizeRange": "100-130",
+      "seasonTags": [
+        "Summer"
+      ],
+      "categoryTags": [
+        "Tee & Jeans Set"
+      ],
+      "colors": [
+        "Red",
+        "Pink",
+        "Blue"
+      ],
+      "primaryImage": "summer-32.jpg",
+      "images": [
+        {
+          "src": "summer-32.jpg",
+          "alt": "Girls' Sheer Overlay Tee & Ruffle-Hem Wide-Leg Jeans Set, model YB253279-65"
+        }
+      ],
+      "sourceRecords": [
+        "summer-32.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB253274-63",
+        "YB849",
+        "YB257123"
+      ]
+    },
+    {
+      "model": "YB253272-61",
+      "slug": "yb253272-61",
+      "name": "Girls' Sheer Camisole Tee & Ruffle-Hem Wide-Leg Jeans Set",
+      "sizeRange": "100-130",
+      "seasonTags": [
+        "Summer"
+      ],
+      "categoryTags": [
+        "Tee & Jeans Set"
+      ],
+      "colors": [
+        "Yellow",
+        "Red",
+        "Pink",
+        "Blue"
+      ],
+      "primaryImage": "summer-34.jpg",
+      "images": [
+        {
+          "src": "summer-34.jpg",
+          "alt": "Girls' Sheer Camisole Tee & Ruffle-Hem Wide-Leg Jeans Set, model YB253272-61"
+        }
+      ],
+      "sourceRecords": [
+        "summer-34.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB253274-63",
+        "YB849",
+        "YB257123"
+      ]
+    },
+    {
+      "model": "YB0224",
+      "slug": "yb0224",
+      "name": "Girls' Denim-Vest Shirt & Wide-Leg Pants Set",
+      "sizeRange": "120-160",
+      "seasonTags": [
+        "Autumn",
+        "Mix"
+      ],
+      "categoryTags": [
+        "Shirt & Vest Set"
+      ],
+      "colors": [
+        "Mint",
+        "Beige",
+        "Pink"
+      ],
+      "primaryImage": "autumn-01.jpg",
+      "images": [
+        {
+          "src": "autumn-01.jpg",
+          "alt": "Girls' denim-vest shirt and wide-leg pants set, model YB0224"
+        },
+        {
+          "src": "mix-07.jpg",
+          "alt": "Additional photograph of model YB0224"
+        }
+      ],
+      "sourceRecords": [
+        "autumn-01.jpg",
+        "mix-07.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB002",
+        "YB0277",
+        "YB0185"
+      ]
+    },
+    {
+      "model": "YB0264",
+      "slug": "yb0264",
+      "name": "Girls' Embroidered Tie-Neck Peplum Shirt & Jeans Set",
+      "sizeRange": "120-160",
+      "seasonTags": [
+        "Autumn",
+        "Mix"
+      ],
+      "categoryTags": [
+        "Shirt & Jeans Set"
+      ],
+      "colors": [
+        "Light Blue",
+        "Pink",
+        "Brown",
+        "Khaki"
+      ],
+      "primaryImage": "mix-32.jpg",
+      "images": [
+        {
+          "src": "mix-32.jpg",
+          "alt": "Girls' embroidered tie-neck peplum shirt and jeans set, model YB0264"
+        },
+        {
+          "src": "autumn-06.jpg",
+          "alt": "Additional photograph of model YB0264"
+        }
+      ],
+      "sourceRecords": [
+        "autumn-06.jpg",
+        "mix-32.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB0292",
+        "YB0277",
+        "YB0290"
+      ]
+    },
+    {
+      "model": "YB0292",
+      "slug": "yb0292",
+      "name": "Girls' Sailor-Collar Tie Shirt & Rhinestone Jeans",
+      "sizeRange": "120-160",
+      "seasonTags": [
+        "Autumn",
+        "Mix"
+      ],
+      "categoryTags": [
+        "Shirt & Jeans Set"
+      ],
+      "colors": [
+        "Green",
+        "Yellow",
+        "Black",
+        "Khaki"
+      ],
+      "primaryImage": "mix-21.jpg",
+      "images": [
+        {
+          "src": "mix-21.jpg",
+          "alt": "Girls' sailor-collar tie shirt and rhinestone jeans, model YB0292"
+        },
+        {
+          "src": "autumn-08.jpg",
+          "alt": "Additional photograph of model YB0292"
+        }
+      ],
+      "sourceRecords": [
+        "autumn-08.jpg",
+        "mix-21.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB0264",
+        "YB0277",
+        "YB0290"
+      ]
+    },
+    {
+      "model": "YB0277",
+      "slug": "yb0277",
+      "name": "Girls' Lace-Vest Overlay Shirt & Wide-Leg Jeans Set",
+      "sizeRange": "120-160",
+      "seasonTags": [
+        "Autumn",
+        "Mix"
+      ],
+      "categoryTags": [
+        "Shirt & Vest Set",
+        "Shirt & Jeans Set"
+      ],
+      "colors": [
+        "Pink",
+        "Khaki",
+        "Lavender",
+        "Red"
+      ],
+      "primaryImage": "mix-29.jpg",
+      "images": [
+        {
+          "src": "mix-29.jpg",
+          "alt": "Girls' lace-vest overlay shirt and wide-leg jeans set, model YB0277"
+        },
+        {
+          "src": "autumn-09.jpg",
+          "alt": "Additional photograph of model YB0277"
+        }
+      ],
+      "sourceRecords": [
+        "autumn-09.jpg",
+        "mix-29.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB002",
+        "YB0224",
+        "YB0264"
+      ]
+    },
+    {
+      "model": "315628#",
+      "slug": "315628",
+      "name": "Girls' Bustier-Overlay Tee & Lace-Hem Flared Jeans",
+      "sizeRange": "120-160",
+      "seasonTags": [
+        "Autumn"
+      ],
+      "categoryTags": [
+        "Tee & Jeans Set"
+      ],
+      "colors": [
+        "Green",
+        "Pink"
+      ],
+      "primaryImage": "autumn-10.jpg",
+      "images": [
+        {
+          "src": "autumn-10.jpg",
+          "alt": "Girls' Bustier-Overlay Tee & Lace-Hem Flared Jeans, model 315628#"
+        }
+      ],
+      "sourceRecords": [
+        "autumn-10.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB253274-63",
+        "YB849",
+        "YB257123"
+      ]
+    },
+    {
+      "model": "315128#",
+      "slug": "315128",
+      "name": "Girls' Lace-Bustier Peplum Tee & Wide-Leg Jeans",
+      "sizeRange": "120-160",
+      "seasonTags": [
+        "Autumn"
+      ],
+      "categoryTags": [
+        "Tee & Jeans Set"
+      ],
+      "colors": [
+        "Pink",
+        "Blue"
+      ],
+      "primaryImage": "autumn-11.jpg",
+      "images": [
+        {
+          "src": "autumn-11.jpg",
+          "alt": "Girls' Lace-Bustier Peplum Tee & Wide-Leg Jeans, model 315128#"
+        }
+      ],
+      "sourceRecords": [
+        "autumn-11.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB253274-63",
+        "YB849",
+        "YB257123"
+      ]
+    },
+    {
+      "model": "31136#",
+      "slug": "31136",
+      "name": "Girls' Navy Polo & Side-Stripe Midi Skirt Set",
+      "sizeRange": "6Y-14Y",
+      "seasonTags": [
+        "Autumn"
+      ],
+      "categoryTags": [
+        "Polo & Skirt Set"
+      ],
+      "colors": [
+        "White",
+        "Pink",
+        "Grey"
+      ],
+      "primaryImage": "autumn-12.jpg",
+      "images": [
+        {
+          "src": "autumn-12.jpg",
+          "alt": "Girls' Navy Polo & Side-Stripe Midi Skirt Set, model 31136#"
+        }
+      ],
+      "sourceRecords": [
+        "autumn-12.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB002",
+        "YB0224",
+        "YB0264"
+      ]
+    },
+    {
+      "model": "111536#",
+      "slug": "111536",
+      "name": "Girls' Color-Block Polo & Track Pants Set",
+      "sizeRange": "6Y-14Y",
+      "seasonTags": [
+        "Autumn"
+      ],
+      "categoryTags": [
+        "Polo Set"
+      ],
+      "colors": [
+        "Pink",
+        "White",
+        "Green"
+      ],
+      "primaryImage": "autumn-13.jpg",
+      "images": [
+        {
+          "src": "autumn-13.jpg",
+          "alt": "Girls' Color-Block Polo & Track Pants Set, model 111536#"
+        }
+      ],
+      "sourceRecords": [
+        "autumn-13.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB002",
+        "YB0224",
+        "YB0264"
+      ]
+    },
+    {
+      "model": "31536#",
+      "slug": "31536",
+      "name": "Girls' Zip-Polo Tracksuit Set",
+      "sizeRange": "6Y-14Y",
+      "seasonTags": [
+        "Autumn"
+      ],
+      "categoryTags": [
+        "Tracksuit"
+      ],
+      "colors": [
+        "Blue",
+        "Beige",
+        "Pink"
+      ],
+      "primaryImage": "autumn-14.jpg",
+      "images": [
+        {
+          "src": "autumn-14.jpg",
+          "alt": "Girls' Zip-Polo Tracksuit Set, model 31536#"
+        }
+      ],
+      "sourceRecords": [
+        "autumn-14.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB0281",
+        "129#",
+        "JZ-07"
+      ]
+    },
+    {
+      "model": "315528#",
+      "slug": "315528",
+      "name": "Girls' Cami-Overlay Tee & Lace-Hem Jeans Set",
+      "sizeRange": "120-160",
+      "seasonTags": [
+        "Autumn"
+      ],
+      "categoryTags": [
+        "Tee & Jeans Set"
+      ],
+      "colors": [
+        "Pink",
+        "Lavender"
+      ],
+      "primaryImage": "autumn-17.jpg",
+      "images": [
+        {
+          "src": "autumn-17.jpg",
+          "alt": "Girls' Cami-Overlay Tee & Lace-Hem Jeans Set, model 315528#"
+        }
+      ],
+      "sourceRecords": [
+        "autumn-17.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB253274-63",
+        "YB849",
+        "YB257123"
+      ]
+    },
+    {
+      "model": "16236#",
+      "slug": "16236",
+      "name": "Girls' Graphic Tee & Side-Stripe Track Pants Set",
+      "sizeRange": "6Y-14Y",
+      "seasonTags": [
+        "Autumn"
+      ],
+      "categoryTags": [
+        "Tee Set"
+      ],
+      "colors": [
+        "Pink",
+        "Blue"
+      ],
+      "primaryImage": "autumn-18.jpg",
+      "images": [
+        {
+          "src": "autumn-18.jpg",
+          "alt": "Girls' Graphic Tee & Side-Stripe Track Pants Set, model 16236#"
+        }
+      ],
+      "sourceRecords": [
+        "autumn-18.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB002",
+        "YB0224",
+        "YB0264"
+      ]
+    },
+    {
+      "model": "YB0214",
+      "slug": "yb0214",
+      "name": "Girls' Belted Lapel Vest & Wide-Leg Pants Set",
+      "sizeRange": "120-160",
+      "seasonTags": [
+        "Autumn",
+        "Mix"
+      ],
+      "categoryTags": [
+        "Vest Set"
+      ],
+      "colors": [
+        "Blue",
+        "Green",
+        "Mint",
+        "Lilac"
+      ],
+      "primaryImage": "autumn-20.jpg",
+      "images": [
+        {
+          "src": "autumn-20.jpg",
+          "alt": "Girls' belted lapel vest and wide-leg pants set, model YB0214"
+        },
+        {
+          "src": "mix-06.jpg",
+          "alt": "Additional photograph of model YB0214"
+        }
+      ],
+      "sourceRecords": [
+        "autumn-20.jpg",
+        "mix-06.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "Q0161",
+        "YB0205",
+        "YB0206"
+      ]
+    },
+    {
+      "model": "YB008",
+      "slug": "yb008",
+      "name": "Girls' Sequin-Panel Fur-Trim Sweatshirt & Monogram Jeans",
+      "sizeRange": "120-160",
+      "seasonTags": [
+        "Autumn",
+        "Mix"
+      ],
+      "categoryTags": [
+        "Sweatshirt & Jeans Set"
+      ],
+      "colors": [
+        "White",
+        "Black"
+      ],
+      "primaryImage": "autumn-21.jpg",
+      "images": [
+        {
+          "src": "autumn-21.jpg",
+          "alt": "Girls' sequin-panel fur-trim sweatshirt and monogram jeans, model YB008"
+        },
+        {
+          "src": "mix-33.jpg",
+          "alt": "Additional photograph of model YB008"
+        }
+      ],
+      "sourceRecords": [
+        "autumn-21.jpg",
+        "mix-33.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB001",
+        "YB006",
+        "YB007"
+      ]
+    },
+    {
+      "model": "YB001",
+      "slug": "yb001",
+      "name": "Girls' Pearl-Shoulder Lace-Hem Sweatshirt & Scarf-Tie Ruffle Jeans",
+      "sizeRange": "120-160",
+      "seasonTags": [
+        "Autumn"
+      ],
+      "categoryTags": [
+        "Sweatshirt & Jeans Set"
+      ],
+      "colors": [
+        "White",
+        "Black"
+      ],
+      "primaryImage": "autumn-23.jpg",
+      "images": [
+        {
+          "src": "autumn-23.jpg",
+          "alt": "Girls' Pearl-Shoulder Lace-Hem Sweatshirt & Scarf-Tie Ruffle Jeans, model YB001"
+        }
+      ],
+      "sourceRecords": [
+        "autumn-23.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB008",
+        "YB006",
+        "YB007"
+      ]
+    },
+    {
+      "model": "JZ-07",
+      "slug": "jz-07",
+      "name": "Girls' Leopard-Trim Zip Hoodie & Wide-Leg Pants Tracksuit",
+      "sizeRange": "10Y-16Y",
+      "seasonTags": [
+        "Autumn"
+      ],
+      "categoryTags": [
+        "Tracksuit"
+      ],
+      "colors": [
+        "Tan"
+      ],
+      "primaryImage": "autumn-24.jpg",
+      "images": [
+        {
+          "src": "autumn-24.jpg",
+          "alt": "Girls' Leopard-Trim Zip Hoodie & Wide-Leg Pants Tracksuit, model JZ-07"
+        }
+      ],
+      "sourceRecords": [
+        "autumn-24.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB0281",
+        "129#",
+        "31536#"
+      ]
+    },
+    {
+      "model": "JZ-019",
+      "slug": "jz-019",
+      "name": "Girls' Logo Hoodie & Wide-Leg Pants Tracksuit",
+      "sizeRange": "10Y-16Y",
+      "seasonTags": [
+        "Autumn"
+      ],
+      "categoryTags": [
+        "Tracksuit"
+      ],
+      "colors": [
+        "Cream",
+        "Tan",
+        "Olive",
+        "Black"
+      ],
+      "primaryImage": "autumn-25.jpg",
+      "images": [
+        {
+          "src": "autumn-25.jpg",
+          "alt": "Girls' Logo Hoodie & Wide-Leg Pants Tracksuit, model JZ-019"
+        }
+      ],
+      "sourceRecords": [
+        "autumn-25.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB0281",
+        "129#",
+        "31536#"
+      ]
+    },
+    {
+      "model": "JZ-016",
+      "slug": "jz-016",
+      "name": "Girls' Side-Stripe Hoodie & Wide-Leg Pants Tracksuit",
+      "sizeRange": "10Y-16Y",
+      "seasonTags": [
+        "Autumn"
+      ],
+      "categoryTags": [
+        "Tracksuit"
+      ],
+      "colors": [
+        "Lime",
+        "Tan",
+        "Black",
+        "Navy"
+      ],
+      "primaryImage": "autumn-26.jpg",
+      "images": [
+        {
+          "src": "autumn-26.jpg",
+          "alt": "Girls' Side-Stripe Hoodie & Wide-Leg Pants Tracksuit, model JZ-016"
+        }
+      ],
+      "sourceRecords": [
+        "autumn-26.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB0281",
+        "129#",
+        "31536#"
+      ]
+    },
+    {
+      "model": "40",
+      "slug": "40",
+      "name": "Girls' Color-Block Zip Track Jacket & Wide-Leg Pants Set",
+      "sizeRange": "110-160",
+      "seasonTags": [
+        "Autumn"
+      ],
+      "categoryTags": [
+        "Tracksuit"
+      ],
+      "colors": [
+        "Pink",
+        "Tan",
+        "Purple"
+      ],
+      "primaryImage": "autumn-27.jpg",
+      "images": [
+        {
+          "src": "autumn-27.jpg",
+          "alt": "Girls' Color-Block Zip Track Jacket & Wide-Leg Pants Set, model 40"
+        }
+      ],
+      "sourceRecords": [
+        "autumn-27.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB0281",
+        "129#",
+        "31536#"
+      ]
+    },
+    {
+      "model": "24583",
+      "slug": "24583",
+      "name": "Girls' Contrast-Pocket Hoodie & Cargo Jogger Set",
+      "sizeRange": "110-160",
+      "seasonTags": [
+        "Autumn"
+      ],
+      "categoryTags": [
+        "Hooded Cargo Set"
+      ],
+      "colors": [
+        "Pink",
+        "Brown",
+        "Olive"
+      ],
+      "primaryImage": "autumn-28.jpg",
+      "images": [
+        {
+          "src": "autumn-28.jpg",
+          "alt": "Girls' Contrast-Pocket Hoodie & Cargo Jogger Set, model 24583"
+        }
+      ],
+      "sourceRecords": [
+        "autumn-28.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB529139",
+        "YB002",
+        "YB0224"
+      ]
+    },
+    {
+      "model": "JZ-020",
+      "slug": "jz-020",
+      "name": "Girls' Side-Stripe Zip Hoodie & Wide-Leg Pants Tracksuit",
+      "sizeRange": "10Y-16Y",
+      "seasonTags": [
+        "Autumn"
+      ],
+      "categoryTags": [
+        "Tracksuit"
+      ],
+      "colors": [
+        "Cream",
+        "Black",
+        "Navy"
+      ],
+      "primaryImage": "autumn-29.jpg",
+      "images": [
+        {
+          "src": "autumn-29.jpg",
+          "alt": "Girls' Side-Stripe Zip Hoodie & Wide-Leg Pants Tracksuit, model JZ-020"
+        }
+      ],
+      "sourceRecords": [
+        "autumn-29.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB0281",
+        "129#",
+        "31536#"
+      ]
+    },
+    {
+      "model": "YB0014",
+      "slug": "yb0014",
+      "name": "Girls' Heart-Rhinestone Denim Vest, Puff-Sleeve Shirt & Wide-Leg Jeans Set",
+      "sizeRange": "110-150",
+      "seasonTags": [
+        "Autumn"
+      ],
+      "categoryTags": [
+        "Denim Set"
+      ],
+      "colors": [
+        "Blue",
+        "White"
+      ],
+      "primaryImage": "autumn-30.webp",
+      "images": [
+        {
+          "src": "autumn-30.webp",
+          "alt": "Girls' Heart-Rhinestone Denim Vest, Puff-Sleeve Shirt & Wide-Leg Jeans Set, model YB0014"
+        }
+      ],
+      "sourceRecords": [
+        "autumn-30.webp"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB002",
+        "YB009",
+        "YB253198-43"
+      ]
+    },
+    {
+      "model": "YB253198-43",
+      "slug": "yb253198-43",
+      "name": "Girls' Denim Cami Vest, Long-Sleeve Tee & Wide-Leg Pants Set",
+      "sizeRange": "120-160",
+      "seasonTags": [
+        "Autumn"
+      ],
+      "categoryTags": [
+        "Denim Set"
+      ],
+      "colors": [
+        "Blue",
+        "Pink",
+        "Cream"
+      ],
+      "primaryImage": "autumn-34.webp",
+      "images": [
+        {
+          "src": "autumn-34.webp",
+          "alt": "Girls' denim cami vest, long-sleeve tee and wide-leg pants set, model YB253198-43"
+        }
+      ],
+      "sourceRecords": [
+        "autumn-34.webp"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB255293",
+        "YB2531910-45",
+        "YB0014"
+      ]
+    },
+    {
+      "model": "YB255293",
+      "slug": "yb255293",
+      "name": "Girls' Color-Block Denim Jacket & Side-Stripe Pants Set",
+      "sizeRange": "120-160",
+      "seasonTags": [
+        "Autumn"
+      ],
+      "categoryTags": [
+        "Denim Jacket Set"
+      ],
+      "colors": [
+        "Brown",
+        "Black",
+        "Blue"
+      ],
+      "primaryImage": "autumn-37.webp",
+      "images": [
+        {
+          "src": "autumn-37.webp",
+          "alt": "Girls' Color-Block Denim Jacket & Side-Stripe Pants Set, model YB255293"
+        }
+      ],
+      "sourceRecords": [
+        "autumn-37.webp"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB002",
+        "YB0224",
+        "YB0264"
+      ]
+    },
+    {
+      "model": "YB2531910-45",
+      "slug": "yb2531910-45",
+      "name": "Girls' Printed Lace-Hem Long-Sleeve Top",
+      "sizeRange": "120-160",
+      "seasonTags": [
+        "Autumn"
+      ],
+      "categoryTags": [
+        "Long-Sleeve Top"
+      ],
+      "colors": [
+        "Pink",
+        "Cream"
+      ],
+      "primaryImage": "autumn-38.webp",
+      "images": [
+        {
+          "src": "autumn-38.webp",
+          "alt": "Girls' Printed Lace-Hem Long-Sleeve Top, model YB2531910-45"
+        }
+      ],
+      "sourceRecords": [
+        "autumn-38.webp"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB002",
+        "YB0224",
+        "YB0264"
+      ]
+    },
+    {
+      "model": "YB253273-62",
+      "slug": "yb253273-62",
+      "name": "Girls' Lace Peplum Overlay Tee & Ruffle-Hem Wide-Leg Jeans Set",
+      "sizeRange": "100-130",
+      "seasonTags": [
+        "Autumn"
+      ],
+      "categoryTags": [
+        "Tee & Jeans Set"
+      ],
+      "colors": [
+        "Pink",
+        "Yellow",
+        "White",
+        "Blue"
+      ],
+      "primaryImage": "autumn-39.webp",
+      "images": [
+        {
+          "src": "autumn-39.webp",
+          "alt": "Girls' Lace Peplum Overlay Tee & Ruffle-Hem Wide-Leg Jeans Set, model YB253273-62"
+        }
+      ],
+      "sourceRecords": [
+        "autumn-39.webp"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB253274-63",
+        "YB849",
+        "YB257123"
+      ]
+    },
+    {
+      "model": "YB253276-65",
+      "slug": "yb253276-65",
+      "name": "Girls' Sheer Overlay Tee & Ruffle-Hem Wide-Leg Jeans Set",
+      "sizeRange": "100-130",
+      "seasonTags": [
+        "Autumn"
+      ],
+      "categoryTags": [
+        "Tee & Jeans Set"
+      ],
+      "colors": [
+        "Red",
+        "Pink",
+        "Blue"
+      ],
+      "primaryImage": "autumn-40.webp",
+      "images": [
+        {
+          "src": "autumn-40.webp",
+          "alt": "Girls' Sheer Overlay Tee & Ruffle-Hem Wide-Leg Jeans Set, model YB253276-65"
+        }
+      ],
+      "sourceRecords": [
+        "autumn-40.webp"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB253274-63",
+        "YB849",
+        "YB257123"
+      ]
+    },
+    {
+      "model": "YB0205",
+      "slug": "yb0205",
+      "name": "Girls' Belted Collar Vest & Wide-Leg Pants Set",
+      "sizeRange": "120-160",
+      "seasonTags": [
+        "Mix"
+      ],
+      "categoryTags": [
+        "Vest Set"
+      ],
+      "colors": [
+        "Pink",
+        "Blue",
+        "Olive"
+      ],
+      "primaryImage": "mix-01.jpg",
+      "images": [
+        {
+          "src": "mix-01.jpg",
+          "alt": "Girls' Belted Collar Vest & Wide-Leg Pants Set, model YB0205"
+        }
+      ],
+      "sourceRecords": [
+        "mix-01.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "Q0161",
+        "YB0214",
+        "YB0206"
+      ]
+    },
+    {
+      "model": "YB0206",
+      "slug": "yb0206",
+      "name": "Girls' Pinstripe Vest & Wide-Leg Pants Set",
+      "sizeRange": "120-160",
+      "seasonTags": [
+        "Mix"
+      ],
+      "categoryTags": [
+        "Vest Set"
+      ],
+      "colors": [
+        "Cream",
+        "Grey",
+        "Brown"
+      ],
+      "primaryImage": "mix-02.jpg",
+      "images": [
+        {
+          "src": "mix-02.jpg",
+          "alt": "Girls' Pinstripe Vest & Wide-Leg Pants Set, model YB0206"
+        }
+      ],
+      "sourceRecords": [
+        "mix-02.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "Q0161",
+        "YB0214",
+        "YB0205"
+      ]
+    },
+    {
+      "model": "YB0207",
+      "slug": "yb0207",
+      "name": "Girls' Pinstripe Lapel Vest & Wide-Leg Pants Set",
+      "sizeRange": "120-160",
+      "seasonTags": [
+        "Mix"
+      ],
+      "categoryTags": [
+        "Vest Set"
+      ],
+      "colors": [
+        "Cream",
+        "Taupe",
+        "Grey"
+      ],
+      "primaryImage": "mix-03.jpg",
+      "images": [
+        {
+          "src": "mix-03.jpg",
+          "alt": "Girls' Pinstripe Lapel Vest & Wide-Leg Pants Set, model YB0207"
+        }
+      ],
+      "sourceRecords": [
+        "mix-03.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "Q0161",
+        "YB0214",
+        "YB0205"
+      ]
+    },
+    {
+      "model": "YB0209",
+      "slug": "yb0209",
+      "name": "Girls' Button Vest & Wide-Leg Pants Set",
+      "sizeRange": "120-160",
+      "seasonTags": [
+        "Mix"
+      ],
+      "categoryTags": [
+        "Vest Set"
+      ],
+      "colors": [
+        "Taupe",
+        "Grey",
+        "Blue"
+      ],
+      "primaryImage": "mix-04.jpg",
+      "images": [
+        {
+          "src": "mix-04.jpg",
+          "alt": "Girls' Button Vest & Wide-Leg Pants Set, model YB0209"
+        }
+      ],
+      "sourceRecords": [
+        "mix-04.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "Q0161",
+        "YB0214",
+        "YB0205"
+      ]
+    },
+    {
+      "model": "YB0210",
+      "slug": "yb0210",
+      "name": "Girls' Belted Vest with Shirt & Wide-Leg Pants",
+      "sizeRange": "120-160",
+      "seasonTags": [
+        "Mix"
+      ],
+      "categoryTags": [
+        "Vest Set"
+      ],
+      "colors": [
+        "Olive",
+        "Lilac",
+        "Blue"
+      ],
+      "primaryImage": "mix-05.jpg",
+      "images": [
+        {
+          "src": "mix-05.jpg",
+          "alt": "Girls' Belted Vest with Shirt & Wide-Leg Pants, model YB0210"
+        }
+      ],
+      "sourceRecords": [
+        "mix-05.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "Q0161",
+        "YB0214",
+        "YB0205"
+      ]
+    },
+    {
+      "model": "YB0189",
+      "slug": "yb0189",
+      "name": "Girls' Half-Zip Pocket Sweatshirt & Wide Pants",
+      "sizeRange": "6Y-14Y",
+      "seasonTags": [
+        "Mix"
+      ],
+      "categoryTags": [
+        "Sweatshirt Set"
+      ],
+      "colors": [
+        "Grey",
+        "Pink",
+        "Cream"
+      ],
+      "primaryImage": "mix-08.jpg",
+      "images": [
+        {
+          "src": "mix-08.jpg",
+          "alt": "Girls' Half-Zip Pocket Sweatshirt & Wide Pants, model YB0189"
+        }
+      ],
+      "sourceRecords": [
+        "mix-08.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB0184",
+        "YB0185",
+        "YB0224"
+      ]
+    },
+    {
+      "model": "YB0177",
+      "slug": "yb0177",
+      "name": "Girls' Fur-Collar Zip Jacket & Side-Stripe Pants",
+      "sizeRange": "6Y-14Y",
+      "seasonTags": [
+        "Mix"
+      ],
+      "categoryTags": [
+        "Jacket Set"
+      ],
+      "colors": [
+        "Grey",
+        "Cream",
+        "Pink"
+      ],
+      "primaryImage": "mix-10.jpg",
+      "images": [
+        {
+          "src": "mix-10.jpg",
+          "alt": "Girls' Fur-Collar Zip Jacket & Side-Stripe Pants, model YB0177"
+        }
+      ],
+      "sourceRecords": [
+        "mix-10.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "Q0151",
+        "YB0172",
+        "YB0176-1"
+      ]
+    },
+    {
+      "model": "YB02296",
+      "slug": "yb02296",
+      "name": "Girls' Puffer Vest with Ribbed Sleeves & Pants",
+      "sizeRange": "6Y-14Y",
+      "seasonTags": [
+        "Mix"
+      ],
+      "categoryTags": [
+        "Puffer Vest Set"
+      ],
+      "colors": [
+        "Grey",
+        "Black",
+        "Navy"
+      ],
+      "primaryImage": "mix-11.jpg",
+      "images": [
+        {
+          "src": "mix-11.jpg",
+          "alt": "Girls' Puffer Vest with Ribbed Sleeves & Pants, model YB02296"
+        }
+      ],
+      "sourceRecords": [
+        "mix-11.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "Q0044",
+        "YB0185",
+        "YB0224"
+      ]
+    },
+    {
+      "model": "YB0190",
+      "slug": "yb0190",
+      "name": "Girls' Fur Zip Jacket with Star & Wide Pants",
+      "sizeRange": "6Y-14Y",
+      "seasonTags": [
+        "Mix"
+      ],
+      "categoryTags": [
+        "Fur Jacket Set"
+      ],
+      "colors": [
+        "Beige",
+        "Grey",
+        "Pink"
+      ],
+      "primaryImage": "mix-12.jpg",
+      "images": [
+        {
+          "src": "mix-12.jpg",
+          "alt": "Girls' Fur Zip Jacket with Star & Wide Pants, model YB0190"
+        }
+      ],
+      "sourceRecords": [
+        "mix-12.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB0185",
+        "YB0224",
+        "YB0264"
+      ]
+    },
+    {
+      "model": "YB529139",
+      "slug": "yb529139",
+      "name": "Girls' Raglan Denim-Sleeve Hoodie & Cargo Pants",
+      "sizeRange": "120-160",
+      "seasonTags": [
+        "Mix"
+      ],
+      "categoryTags": [
+        "Hooded Cargo Set"
+      ],
+      "colors": [
+        "Tan",
+        "Olive"
+      ],
+      "primaryImage": "mix-13.jpg",
+      "images": [
+        {
+          "src": "mix-13.jpg",
+          "alt": "Girls' Raglan Denim-Sleeve Hoodie & Cargo Pants, model YB529139"
+        }
+      ],
+      "sourceRecords": [
+        "mix-13.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "24583",
+        "YB0185",
+        "YB0224"
+      ]
+    },
+    {
+      "model": "529639",
+      "slug": "529639",
+      "name": "Girls' Color-Block Zip Hoodie & Side-Stripe Pants",
+      "sizeRange": "120-160",
+      "seasonTags": [
+        "Mix"
+      ],
+      "categoryTags": [
+        "Tracksuit"
+      ],
+      "colors": [
+        "Pink",
+        "Cream"
+      ],
+      "primaryImage": "mix-14.jpg",
+      "images": [
+        {
+          "src": "mix-14.jpg",
+          "alt": "Girls' Color-Block Zip Hoodie & Side-Stripe Pants, model 529639"
+        }
+      ],
+      "sourceRecords": [
+        "mix-14.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB0281",
+        "129#",
+        "31536#"
+      ]
+    },
+    {
+      "model": "529339",
+      "slug": "529339",
+      "name": "Girls' Denim Vest, Contrast-Sleeve Top & Track Pants",
+      "sizeRange": "120-160",
+      "seasonTags": [
+        "Mix"
+      ],
+      "categoryTags": [
+        "Denim Vest Set"
+      ],
+      "colors": [
+        "Brown",
+        "Black"
+      ],
+      "primaryImage": "mix-15.jpg",
+      "images": [
+        {
+          "src": "mix-15.jpg",
+          "alt": "Girls' Denim Vest, Contrast-Sleeve Top & Track Pants, model 529339"
+        }
+      ],
+      "sourceRecords": [
+        "mix-15.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB0185",
+        "YB0224",
+        "YB0264"
+      ]
+    },
+    {
+      "model": "YB529739",
+      "slug": "yb529739",
+      "name": "Girls' Two-Tone Denim Hoodie & Wide-Leg Pants",
+      "sizeRange": "120-160",
+      "seasonTags": [
+        "Mix"
+      ],
+      "categoryTags": [
+        "Denim Hooded Set"
+      ],
+      "colors": [
+        "Blue"
+      ],
+      "primaryImage": "mix-16.jpg",
+      "images": [
+        {
+          "src": "mix-16.jpg",
+          "alt": "Girls' Two-Tone Denim Hoodie & Wide-Leg Pants, model YB529739"
+        }
+      ],
+      "sourceRecords": [
+        "mix-16.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB0185",
+        "YB0224",
+        "YB0264"
+      ]
+    },
+    {
+      "model": "YB006",
+      "slug": "yb006",
+      "name": "Girls' 3D-Flower Pearl Sweatshirt & Star Jeans",
+      "sizeRange": "120-160",
+      "seasonTags": [
+        "Mix"
+      ],
+      "categoryTags": [
+        "Sweatshirt & Jeans Set"
+      ],
+      "colors": [
+        "White",
+        "Black"
+      ],
+      "primaryImage": "mix-17.jpg",
+      "images": [
+        {
+          "src": "mix-17.jpg",
+          "alt": "Girls' 3D-Flower Pearl Sweatshirt & Star Jeans, model YB006"
+        }
+      ],
+      "sourceRecords": [
+        "mix-17.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB008",
+        "YB001",
+        "YB007"
+      ]
+    },
+    {
+      "model": "YB007",
+      "slug": "yb007",
+      "name": "Girls' Heart-Appliqué Pearl Sweatshirt & Jeans",
+      "sizeRange": "120-160",
+      "seasonTags": [
+        "Mix"
+      ],
+      "categoryTags": [
+        "Sweatshirt & Jeans Set"
+      ],
+      "colors": [
+        "White",
+        "Black"
+      ],
+      "primaryImage": "mix-19.jpg",
+      "images": [
+        {
+          "src": "mix-19.jpg",
+          "alt": "White color variant of girls' heart-appliqué pearl sweatshirt and jeans, model YB007"
+        },
+        {
+          "src": "mix-20.jpg",
+          "alt": "Black color variant of girls' heart-appliqué pearl sweatshirt and jeans, model YB007"
+        }
+      ],
+      "sourceRecords": [
+        "mix-19.jpg",
+        "mix-20.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB008",
+        "YB001",
+        "YB006"
+      ]
+    },
+    {
+      "model": "YB0290",
+      "slug": "yb0290",
+      "name": "Girls' 3D-Flower Shirt & Rhinestone Jeans",
+      "sizeRange": "120-160",
+      "seasonTags": [
+        "Mix"
+      ],
+      "categoryTags": [
+        "Shirt & Jeans Set"
+      ],
+      "colors": [
+        "Pink",
+        "Grey",
+        "Olive",
+        "Brown"
+      ],
+      "primaryImage": "mix-22.jpg",
+      "images": [
+        {
+          "src": "mix-22.jpg",
+          "alt": "Girls' 3D-Flower Shirt & Rhinestone Jeans, model YB0290"
+        }
+      ],
+      "sourceRecords": [
+        "mix-22.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB0264",
+        "YB0292",
+        "YB0277"
+      ]
+    },
+    {
+      "model": "YB0285",
+      "slug": "yb0285",
+      "name": "Girls' Contrast V-Collar Rhinestone Shirt & Jeans",
+      "sizeRange": "120-160",
+      "seasonTags": [
+        "Mix"
+      ],
+      "categoryTags": [
+        "Shirt & Jeans Set"
+      ],
+      "colors": [
+        "Pink",
+        "Beige",
+        "Black"
+      ],
+      "primaryImage": "mix-24.jpg",
+      "images": [
+        {
+          "src": "mix-24.jpg",
+          "alt": "Girls' Contrast V-Collar Rhinestone Shirt & Jeans, model YB0285"
+        }
+      ],
+      "sourceRecords": [
+        "mix-24.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB0264",
+        "YB0292",
+        "YB0277"
+      ]
+    },
+    {
+      "model": "YB0282",
+      "slug": "yb0282",
+      "name": "Girls' Lace-Panel Tie Shirt & Starry Jeans",
+      "sizeRange": "120-160",
+      "seasonTags": [
+        "Mix"
+      ],
+      "categoryTags": [
+        "Shirt & Jeans Set"
+      ],
+      "colors": [
+        "White",
+        "Pink",
+        "Lavender",
+        "Yellow"
+      ],
+      "primaryImage": "mix-25.jpg",
+      "images": [
+        {
+          "src": "mix-25.jpg",
+          "alt": "Girls' Lace-Panel Tie Shirt & Starry Jeans, model YB0282"
+        }
+      ],
+      "sourceRecords": [
+        "mix-25.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB0264",
+        "YB0292",
+        "YB0277"
+      ]
+    },
+    {
+      "model": "YB0280",
+      "slug": "yb0280",
+      "name": "Girls' Bow-Tie Ruffle-Waist Shirt & Jeans",
+      "sizeRange": "120-160",
+      "seasonTags": [
+        "Mix"
+      ],
+      "categoryTags": [
+        "Shirt & Jeans Set"
+      ],
+      "colors": [
+        "Yellow",
+        "Red",
+        "Pink",
+        "Lavender"
+      ],
+      "primaryImage": "mix-26.jpg",
+      "images": [
+        {
+          "src": "mix-26.jpg",
+          "alt": "Girls' Bow-Tie Ruffle-Waist Shirt & Jeans, model YB0280"
+        }
+      ],
+      "sourceRecords": [
+        "mix-26.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB0264",
+        "YB0292",
+        "YB0277"
+      ]
+    },
+    {
+      "model": "YB0279",
+      "slug": "yb0279",
+      "name": "Girls' Sailor Cross-Tie Shirt & Wide-Leg Jeans",
+      "sizeRange": "120-160",
+      "seasonTags": [
+        "Mix"
+      ],
+      "categoryTags": [
+        "Shirt & Jeans Set"
+      ],
+      "colors": [
+        "Khaki",
+        "Yellow",
+        "Pink",
+        "Blue"
+      ],
+      "primaryImage": "mix-27.jpg",
+      "images": [
+        {
+          "src": "mix-27.jpg",
+          "alt": "Girls' Sailor Cross-Tie Shirt & Wide-Leg Jeans, model YB0279"
+        }
+      ],
+      "sourceRecords": [
+        "mix-27.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB0264",
+        "YB0292",
+        "YB0277"
+      ]
+    },
+    {
+      "model": "YB0278",
+      "slug": "yb0278",
+      "name": "Girls' Classic Collared Shirt & Rhinestone Jeans",
+      "sizeRange": "120-160",
+      "seasonTags": [
+        "Mix"
+      ],
+      "categoryTags": [
+        "Shirt & Jeans Set"
+      ],
+      "colors": [
+        "Pink",
+        "Blue",
+        "Khaki",
+        "Green"
+      ],
+      "primaryImage": "mix-28.jpg",
+      "images": [
+        {
+          "src": "mix-28.jpg",
+          "alt": "Girls' Classic Collared Shirt & Rhinestone Jeans, model YB0278"
+        }
+      ],
+      "sourceRecords": [
+        "mix-28.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB0264",
+        "YB0292",
+        "YB0277"
+      ]
+    },
+    {
+      "model": "YB0275",
+      "slug": "yb0275",
+      "name": "Girls' Ruffle Flower-Appliqué Peplum Shirt & Jeans",
+      "sizeRange": "120-160",
+      "seasonTags": [
+        "Mix"
+      ],
+      "categoryTags": [
+        "Shirt & Jeans Set"
+      ],
+      "colors": [
+        "Pink",
+        "Purple",
+        "Khaki",
+        "Black"
+      ],
+      "primaryImage": "mix-30.jpg",
+      "images": [
+        {
+          "src": "mix-30.jpg",
+          "alt": "Girls' Ruffle Flower-Appliqué Peplum Shirt & Jeans, model YB0275"
+        }
+      ],
+      "sourceRecords": [
+        "mix-30.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB0264",
+        "YB0292",
+        "YB0277"
+      ]
+    },
+    {
+      "model": "YB0273",
+      "slug": "yb0273",
+      "name": "Girls' Bow-Tie Flower Shirt & Wide-Leg Jeans",
+      "sizeRange": "120-160",
+      "seasonTags": [
+        "Mix"
+      ],
+      "categoryTags": [
+        "Shirt & Jeans Set"
+      ],
+      "colors": [
+        "Pink",
+        "Brown",
+        "Grey",
+        "White"
+      ],
+      "primaryImage": "mix-31.jpg",
+      "images": [
+        {
+          "src": "mix-31.jpg",
+          "alt": "Girls' Bow-Tie Flower Shirt & Wide-Leg Jeans, model YB0273"
+        }
+      ],
+      "sourceRecords": [
+        "mix-31.jpg"
+      ],
+      "verificationStatus": "verified",
+      "pageStatus": "approved",
+      "relatedModels": [
+        "YB0264",
+        "YB0292",
+        "YB0277"
+      ]
+    }
+  ],
+  "unresolvedProductGroups": [
+    {
+      "model": "YB0286",
+      "records": ["autumn-05.jpg", "mix-23.jpg"],
+      "reason": "The records show different named styles and cannot be consolidated safely from catalog data alone.",
+      "pageStatus": "hold-model-conflict"
+    }
+  ],
+
   "products": [
 
     { "model": "YB0281", "slug": "yb0281", "season": "Winter", "image": "winter-01.jpg", "name": "Girls' Sporty Hooded Zip Tracksuit Set", "category": "Tracksuit", "sizeRange": "6Y-14Y", "colors": ["Tan","Navy","Grey"], "status": "corrected", "notes": "Was fake code YB-WI-001 + wrong size 110-150cm." },

@@ -24,7 +24,7 @@
   }
 
   function productDetails(element) {
-    var card = element.closest('.prod-card');
+    var card = element.closest('.prod-card, [data-product-detail]');
     if (!card) return {};
     return {
       product_model: cleanText(card.dataset.model, 60),
@@ -48,7 +48,9 @@
     var addButton = target.closest('.inquiry-add-btn');
     if (addButton) {
       var addDetails = productDetails(addButton);
-      addDetails.action = addButton.classList.contains('selected') ? 'remove' : 'add';
+      // Direct inquiry handlers update the selected class before the click
+      // bubbles here, so the resulting state describes the completed action.
+      addDetails.action = addButton.classList.contains('selected') ? 'add' : 'remove';
       sendEvent('product_inquiry_update', addDetails);
       return;
     }

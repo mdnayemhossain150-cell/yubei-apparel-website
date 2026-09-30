@@ -10,10 +10,21 @@ const PAGES = {
   'index.html': '/', 'products.html': '/products', 'about.html': '/about',
   'services.html': '/services', 'certificates.html': '/certificates',
   'activity.html': '/activity', 'contact.html': '/contact',
+  'summer-childrens-clothing-wholesale.html': '/summer-childrens-clothing-wholesale',
+  'autumn-childrens-clothing-wholesale.html': '/autumn-childrens-clothing-wholesale',
+  'winter-childrens-clothing-wholesale.html': '/winter-childrens-clothing-wholesale',
   'zhili-childrens-clothing-manufacturer.html': '/zhili-childrens-clothing-manufacturer',
   'china-childrens-clothing-manufacturer.html': '/china-childrens-clothing-manufacturer',
   'oem-childrens-clothing-manufacturer.html': '/oem-childrens-clothing-manufacturer'
 };
+try {
+  const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, 'products.json'), 'utf8'));
+  (manifest.canonicalProducts || [])
+    .filter(product => product.pageStatus === 'approved')
+    .forEach(product => { PAGES['product/' + product.slug + '.html'] = '/product/' + product.slug; });
+} catch (error) {
+  // The dedicated products.json validation below reports the parse error.
+}
 const errors = [];
 const warnings = [];
 const ok = [];
@@ -24,14 +35,38 @@ function fail(message) { errors.push(message); }
 function warn(message) { warnings.push(message); }
 function pass(message) { ok.push(message); }
 
+const htmlFiles = fs.readdirSync(ROOT).filter(file => file.endsWith('.html'));
+for (const file of htmlFiles) {
+  if (!Object.prototype.hasOwnProperty.call(PAGES, file)) fail(file + ': missing from static audit page map');
+}
+for (const file of Object.keys(PAGES)) {
+  if (!fs.existsSync(path.join(ROOT, file))) fail(file + ': listed in static audit page map but file is missing');
+}
+
+const pageTitles = new Map();
+const pageDescriptions = new Map();
+
 for (const [file, route] of Object.entries(PAGES)) {
   const html = read(file);
   const title = /<title>([\s\S]*?)<\/title>/i.exec(html);
   const description = /<meta\s+name=["']description["']\s+content=["']([^"']*)["']/i.exec(html);
   const canonicals = matches(html, /<link\s+rel=["']canonical["']\s+href=["']([^"']+)["']/gi);
   const h1s = matches(html, /<h1\b/gi);
+  const robots = /<meta\s+name=["']robots["']\s+content=["']([^"']*)["']/i.exec(html);
   if (!title || !title[1].trim()) fail(file + ': missing title');
   if (!description || !description[1].trim()) fail(file + ': missing meta description');
+  if (title && title[1].trim()) {
+    const value = title[1].trim();
+    if (pageTitles.has(value)) fail(file + ': duplicate title also used by ' + pageTitles.get(value));
+    pageTitles.set(value, file);
+  }
+  if (description && description[1].trim()) {
+    const value = description[1].trim();
+    if (pageDescriptions.has(value)) fail(file + ': duplicate meta description also used by ' + pageDescriptions.get(value));
+    pageDescriptions.set(value, file);
+  }
+  if (!robots) fail(file + ': missing robots meta directive');
+  else if (!/\bindex\b/i.test(robots[1]) || !/\bfollow\b/i.test(robots[1])) fail(file + ': robots meta must include index and follow');
   if (canonicals.length !== 1) fail(file + ': expected one canonical, found ' + canonicals.length);
   else if (canonicals[0][1] !== SITE + route) fail(file + ': incorrect canonical ' + canonicals[0][1]);
   if (h1s.length !== 1) fail(file + ': expected one H1, found ' + h1s.length);
@@ -41,7 +76,9 @@ for (const [file, route] of Object.entries(PAGES)) {
   for (const key of ['twitter:card', 'twitter:title', 'twitter:description', 'twitter:image']) {
     if (!new RegExp('<meta\\s+name=["\']' + key + '["\']', 'i').test(html)) fail(file + ': missing ' + key);
   }
-  for (const block of matches(html, /<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)) {
+  const jsonLdBlocks = matches(html, /<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi);
+  if (!jsonLdBlocks.length) fail(file + ': missing JSON-LD structured data');
+  for (const block of jsonLdBlocks) {
     try { JSON.parse(block[1]); } catch (e) { fail(file + ': invalid JSON-LD: ' + e.message); }
   }
   const images = matches(html, /<img\b[^>]*>/gi);
@@ -75,6 +112,7 @@ let catalog;
 try { catalog = JSON.parse(read('products.json')); } catch (e) { fail('products.json: invalid JSON: ' + e.message); }
 if (catalog) {
   const products = Array.isArray(catalog.products) ? catalog.products : [];
+  const canonicalProducts = Array.isArray(catalog.canonicalProducts) ? catalog.canonicalProducts : [];
   const duplicateGroups = (field, skipPlaceholder) => {
     const groups = new Map();
     products.forEach(p => {
@@ -89,6 +127,15 @@ if (catalog) {
   duplicateGroups('model', true).forEach(([value, files]) => warn('duplicate model "' + value + '": ' + files.join(', ')));
   products.forEach(p => { if (!fs.existsSync(path.join(ROOT, 'assets', p.image))) fail('products.json: missing asset ' + p.image); });
   pass('products.json: parsed and ' + products.length + ' product assets checked');
+  canonicalProducts.forEach(p => {
+    if (!Array.isArray(p.images) || !p.images.length) fail('canonical product ' + p.model + ': images[] is empty');
+    if (!p.primaryImage || !p.images.some(image => image.src === p.primaryImage)) fail('canonical product ' + p.model + ': invalid primary image');
+    (p.images || []).forEach(image => { if (!fs.existsSync(path.join(ROOT, 'assets', image.src))) fail('canonical product ' + p.model + ': missing asset ' + image.src); });
+    if (p.pageStatus === 'approved' && (p.model === 'xxxxx' || String(p.slug).includes('xxxxx') || p.verificationStatus !== 'verified')) {
+      fail('canonical product ' + p.model + ': unverified or placeholder record marked for generation');
+    }
+  });
+  pass('products.json: ' + canonicalProducts.length + ' canonical product records checked');
 }
 
 console.log('Static audit: ' + ok.length + ' checks passed, ' + warnings.length + ' warnings, ' + errors.length + ' errors');

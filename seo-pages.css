@@ -297,6 +297,7 @@ html[dir="rtl"] .pricing-table th:last-child { border-radius: 12px 0 0; }
 }
 .inquiry-add-btn { width: 100%; margin-top: 9px; color: var(--brand-dark); border-color: #e8a18f; }
 .inquiry-add-btn.selected { color: #176039; background: #def5e5; border-color: #a5d9b6; }
+.product-detail-link { display: block; margin-top: 10px; color: var(--brand-dark); font-size: 13px; font-weight: 750; text-align: center; text-decoration: underline; text-underline-offset: 3px; }
 
 .certificate-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px; }
 .certificate-card img { height: 320px; object-fit: contain; }

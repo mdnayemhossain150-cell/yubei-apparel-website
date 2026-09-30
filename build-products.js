@@ -38,7 +38,10 @@ var AVAILABLE = 'Available upon inquiry';
 var dataPath = path.join(DIR, 'products.json');
 var htmlPath = path.join(DIR, 'products.html');
 var sitemapPath = path.join(DIR, 'sitemap.xml');
-var outPath = process.argv[2] ? path.resolve(process.argv[2]) : htmlPath;
+var checkOnly = process.argv.indexOf('--check') !== -1;
+var patchOnly = process.argv.indexOf('--patch') !== -1;
+var outArg = process.argv.slice(2).find(function (arg) { return arg.indexOf('--') !== 0; });
+var outPath = outArg ? path.resolve(outArg) : htmlPath;
 var PRODUCTS_LOC = 'https://www.yubeichildrenclothes.com/products';
 
 function escAttr(s) {
@@ -60,7 +63,7 @@ function orderedProducts(products) {
   return list;
 }
 
-function cardHtml(p, index) {
+function cardHtml(p, index, generatedPages) {
   var src = './assets/' + p.image; // relative path — resolves in local preview, file://, and Vercel /products
   var hasModel = has(p.model);
   var hasSize = has(p.sizeRange);
@@ -81,6 +84,8 @@ function cardHtml(p, index) {
 
   var loading = index < EAGER_COUNT ? 'eager' : 'lazy';
   var fetchPriority = index === 0 ? ' fetchpriority="high"' : '';
+  var generated = generatedPages.get(p.model);
+  var detailsLink = generated ? '<a class="product-detail-link" href="/product/' + escAttr(generated.slug) + '">View Product Details</a>' : '';
 
   return '' +
     '<article class="prod-card" data-model="' + escAttr(dataModel) + '" data-size="' + escAttr(dataSize) + '" data-season="' + escAttr(p.season) + '" data-src="' + escAttr(src) + '">' +
@@ -90,11 +95,12 @@ function cardHtml(p, index) {
         '<div class="product-meta"><div><b>Size:</b> ' + displaySize + '</div><div><b>' + collectionLabel + '</b> ' + escText(collectionName) + '</div></div>' +
         '<div class="product-actions"><button class="copy-model-btn" type="button">Copy Model No.</button><button class="share-product-btn" type="button">Share Product</button></div>' +
         '<button class="inquiry-add-btn" type="button">+ Add to Inquiry</button>' +
+        detailsLink +
       '</div>' +
     '</article>';
 }
 
-function itemListJson(list) {
+function itemListJson(list, generatedPages) {
   var out = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
@@ -102,11 +108,12 @@ function itemListJson(list) {
     numberOfItems: list.length,
     itemListElement: list.map(function (p, i) {
       var modelRef = has(p.model) ? p.model : imageRef(p);
+      var generated = generatedPages.get(p.model);
       return {
         '@type': 'ListItem',
         position: i + 1,
         name: p.name,
-        url: SITE + '/products?model=' + encodeURIComponent(modelRef)
+        url: generated ? SITE + '/product/' + generated.slug : SITE + '/products?model=' + encodeURIComponent(modelRef)
       };
     })
   };
@@ -118,6 +125,16 @@ function replaceBetween(html, startMarker, endMarker, inner) {
   var re = new RegExp('(' + esc(startMarker) + ')[\\s\\S]*?(' + esc(endMarker) + ')');
   if (!re.test(html)) throw new Error('Markers not found: ' + startMarker + ' ... ' + endMarker);
   return html.replace(re, '$1\n' + inner + '\n$2');
+}
+
+function filePatch(relativePath, original, updated) {
+  var before = original.replace(/\r\n/g, '\n').split('\n');
+  var after = updated.replace(/\r\n/g, '\n').split('\n');
+  return ['*** Begin Patch', '*** Update File: ' + relativePath, '@@']
+    .concat(before.map(function (line) { return '-' + line; }))
+    .concat(after.map(function (line) { return '+' + line; }))
+    .concat(['*** End Patch'])
+    .join('\n');
 }
 
 function todayStamp() {
@@ -143,17 +160,35 @@ function updateProductsLastmod() {
 
 function main() {
   var data = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
-  var html = fs.readFileSync(htmlPath, 'utf8');
+  var sourceHtml = fs.readFileSync(htmlPath, 'utf8');
+  var html = sourceHtml;
   var published = data.products.filter(function (p) { return p.published !== false; });
   var list = orderedProducts(published);
+  var generatedPages = new Map();
+  (data.canonicalProducts || []).forEach(function (product) {
+    if (product.pageStatus === 'approved' && product.verificationStatus === 'verified') {
+      generatedPages.set(product.model, product);
+    }
+  });
 
-  var cards = list.map(cardHtml).join('\n');
-  var itemList = itemListJson(list);
+  var cards = list.map(function (product, index) { return cardHtml(product, index, generatedPages); }).join('\n');
+  var itemList = itemListJson(list, generatedPages);
 
   html = replaceBetween(html, '<!--PRODUCTS:START-->', '<!--PRODUCTS:END-->', cards);
   html = replaceBetween(html, '<!--ITEMLIST:START-->', '<!--ITEMLIST:END-->', itemList);
 
   if (html.indexOf(PLACEHOLDER) !== -1) throw new Error('Refusing to write: "' + PLACEHOLDER + '" leaked into output.');
+
+  if (checkOnly) {
+    if (html !== sourceHtml) throw new Error('products.html is out of date; run node build-products.js');
+    console.log('Catalog generator check passed for ' + list.length + ' products.');
+    return;
+  }
+
+  if (patchOnly) {
+    process.stdout.write(filePatch('products.html', sourceHtml, html));
+    return;
+  }
 
   fs.writeFileSync(outPath, html);
 
