@@ -17,7 +17,8 @@ const PAGES = {
   'china-childrens-clothing-manufacturer.html': '/china-childrens-clothing-manufacturer',
   'oem-childrens-clothing-manufacturer.html': '/oem-childrens-clothing-manufacturer',
   'wholesale-kidswear-rfq-guide.html': '/wholesale-kidswear-rfq-guide',
-  'how-to-source-wholesale-childrens-clothing-from-china.html': '/how-to-source-wholesale-childrens-clothing-from-china'
+  'how-to-source-wholesale-childrens-clothing-from-china.html': '/how-to-source-wholesale-childrens-clothing-from-china',
+  'kidswear-oem-odm-ready-stock-guide.html': '/kidswear-oem-odm-ready-stock-guide'
 };
 try {
   const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, 'products.json'), 'utf8'));
