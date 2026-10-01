@@ -85,6 +85,7 @@
 
 @media (max-width: 560px) {
   .product-detail-section { padding-top: 24px; padding-bottom: 52px; }
+  .product-summary { padding-right: 80px; }
   .product-summary h1 { font-size: 28px; }
   .product-facts > div { grid-template-columns: 1fr; gap: 4px; }
   .related-product-grid { grid-template-columns: 1fr; }

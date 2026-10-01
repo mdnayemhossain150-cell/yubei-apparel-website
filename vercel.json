@@ -1,6 +1,9 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "rewrites": [
+    { "source": "/favicon.ico", "destination": "/assets/yubei-logo-nav-v1.webp" }
+  ],
   "headers": [
     {
       "source": "/(.*)",
